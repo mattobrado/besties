@@ -3,6 +3,7 @@ import { onAuthStateChanged } from "firebase/auth";
 import { signOut } from "firebase/auth";
 import { auth } from "./firebase";
 import { Link, Outlet, useNavigate } from "react-router-dom";
+import content from "./content";
 
 const Root = () => {
   const navigate = useNavigate();
@@ -36,7 +37,7 @@ const Root = () => {
   return (
     <>
       <div id="sidebar">
-        <h1>besties 👯‍♂️</h1>
+        <h1>{content.appName}</h1>
         <nav>
           <ul>
             <li>

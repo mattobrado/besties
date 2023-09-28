@@ -1,7 +1,8 @@
 import { MouseEventHandler, useState } from "react";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "./firebase";
-import { NavLink, useNavigate } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
+import content from "./content";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -31,13 +32,13 @@ const Login = () => {
           <div>
             <form>
               <div>
-                <label htmlFor="email-address">email address</label>
+                <label htmlFor="email-address">{content.emailAddress}</label>
                 <input
                   id="email-address"
                   name="email"
                   type="email"
                   required
-                  placeholder="email address"
+                  placeholder={content.emailAddress}
                   onChange={(e) => setEmail(e.target.value)}
                 />
               </div>
@@ -49,7 +50,7 @@ const Login = () => {
                   name="password"
                   type="password"
                   required
-                  placeholder="password"
+                  placeholder={content.password}
                   onChange={(e) => setPassword(e.target.value)}
                 />
               </div>
@@ -59,8 +60,8 @@ const Login = () => {
               </div>
             </form>
 
-            <p className="text-sm text-white text-center">
-              No account yet? <NavLink to="/signUp">sign up</NavLink>
+            <p className="text-sm text-center">
+              {content.goToSignUpMessage} <Link to={`/signUp`}>sign up</Link>
             </p>
           </div>
         </section>

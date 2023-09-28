@@ -1,7 +1,8 @@
 import { MouseEventHandler, useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { createUserWithEmailAndPassword } from "firebase/auth";
-import { auth } from "../firebase";
+import { auth } from "./firebase";
+import content from "./content";
 
 const SignUp = () => {
   const navigate = useNavigate();
@@ -33,39 +34,39 @@ const SignUp = () => {
       <section>
         <div>
           <div>
-            <h1> FocusApp </h1>
             <form>
               <div>
-                <label htmlFor="email-address">email address</label>
+                <label htmlFor="email-address">{content.emailAddress}</label>
                 <input
                   type="email"
-                  label="email address"
+                  label={content.emailAddress}
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   required
-                  placeholder="email address"
+                  placeholder={content.emailAddress}
                 />
               </div>
 
               <div>
-                <label htmlFor="password">Password</label>
+                <label htmlFor="password">{content.password}</label>
                 <input
                   type="password"
                   label="Create password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   required
-                  placeholder="Password"
+                  placeholder={content.password}
                 />
               </div>
 
               <button type="submit" onClick={onSubmit}>
-                sign up
+                {content.signUp}
               </button>
             </form>
 
-            <p>
-              Already have an account? <NavLink to="/login">Sign in</NavLink>
+            <p className="text-sm text-center">
+              {content.goToLoginMessage}{" "}
+              <NavLink to="/login">{content.logIn}</NavLink>
             </p>
           </div>
         </div>
