@@ -4,6 +4,7 @@ const content = {
   goToSignUpMessage: "No account yet?",
   emailAddress: "email address",
   logIn: "log in",
+  logOut: "log out",
   password: "password",
   signUp: "sign up",
 };

@@ -52,16 +52,27 @@ const Root = () => {
           </button>
           <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav">
-              <li className="nav-item">
-                <Link className="nav-link active" to={`login`}>
-                  {content.logIn}
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link className="nav-link active" to={`sign-up`}>
-                  {content.signUp}
-                </Link>
-              </li>
+              {!auth.currentUser && (
+                <li className="nav-item">
+                  <Link className="nav-link" to={`login`}>
+                    {content.logIn}
+                  </Link>
+                </li>
+              )}
+              {!auth.currentUser && (
+                <li className="nav-item">
+                  <Link className="nav-link" to={`sign-up`}>
+                    {content.signUp}
+                  </Link>
+                </li>
+              )}
+              {auth.currentUser && (
+                <li className="nav-item">
+                  <a className="nav-link" onClick={handleLogout}>
+                    {content.logOut}
+                  </a>
+                </li>
+              )}
             </ul>
           </div>
         </div>

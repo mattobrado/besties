@@ -48,7 +48,9 @@ const EmailForm = ({
         />{" "}
       </div>
       <div>
-        <button onClick={onClick}>{buttonText}</button>
+        <button className="btn btn-primary" onClick={onClick}>
+          {buttonText}
+        </button>
       </div>{" "}
     </form>
   </div>
