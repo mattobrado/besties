@@ -1,5 +1,5 @@
 import { MouseEventHandler } from "react";
-import content from "../content";
+import content from "../../content";
 import { NavLink } from "react-router-dom";
 
 const EmailForm = ({
