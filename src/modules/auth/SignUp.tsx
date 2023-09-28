@@ -35,7 +35,9 @@ const SignUp = () => {
       buttonText={content.signUp}
       goToButtonText={content.logIn}
       goToMessage={content.goToLoginMessage}
-      goToRoute={"/login"}
+      goToRoute={{
+        pathname: "/login",
+      }}
       isSignUp={true}
       onClick={onSubmit}
       setEmail={setEmail}

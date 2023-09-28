@@ -1,6 +1,6 @@
 import { MouseEventHandler } from "react";
 import content from "../../content";
-import { NavLink } from "react-router-dom";
+import { Link, Path } from "react-router-dom";
 
 const EmailForm = ({
   buttonText,
@@ -15,13 +15,13 @@ const EmailForm = ({
   buttonText: String;
   goToButtonText: String;
   goToMessage: String;
-  goToRoute: String;
+  goToRoute: Partial<Path>;
   isSignUp?: boolean;
   onClick: MouseEventHandler<HTMLButtonElement>;
   setEmail: React.Dispatch<React.SetStateAction<string>>;
   setPassword: React.Dispatch<React.SetStateAction<string>>;
 }) => (
-  <div className="container">
+  <div className="card m-3 p-4">
     <form>
       <div className="form-group">
         <label htmlFor="exampleInputEmail1">{content.emailAddress}</label>
@@ -61,7 +61,7 @@ const EmailForm = ({
       </div>{" "}
     </form>
     <p className="text-sm text-center">
-      {goToMessage} <NavLink to={goToRoute}>{goToButtonText}</NavLink>
+      {goToMessage} <Link to={goToRoute}>{goToButtonText}</Link>
     </p>
   </div>
 );
