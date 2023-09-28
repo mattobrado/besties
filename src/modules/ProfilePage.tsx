@@ -1,94 +1,54 @@
 const ProfilePage = () => (
-  <div className="container py-5 h-100">
-    <div className="row d-flex justify-content-center align-items-center h-100">
-      <div className="col col-lg-9 col-xl-7">
+  <div className="container d-flex justify-content-center align-items-center">
+    <div className="row">
+      <div className="col">
+        <img
+          src="https://i.imgur.com/Qtrsrk5.jpg"
+          className="img-fluid"
+          style={{ maxWidth: "100" }}
+        />
+
+        <div className="text-center">
+          <div className="profile">
+            <img src="https://i.imgur.com/JgYD2nQ.jpg" />
+          </div>
+        </div>
+
+        <div className="mt-3 text-center">
+          <h1 className="mb-0">first last</h1>
+          <h5 className="mb-0 text-muted">@handle</h5>
+          <p className="text-muted d-block mb-2">bio</p>
+
+          <button className="btn btn-primary follow">follow</button>
+
+          <div className="d-flex justify-content-between align-items-center mt-4 px-4">
+            <div>
+              <h6 className="mb-0">Followers 👤</h6>
+              <span>142</span>
+            </div>
+
+            <div>
+              <h6 className="mb-0">Popularity 🩷</h6>
+              <span>8,797</span>
+            </div>
+
+            <div>
+              <h6 className="mb-0">Rank 🏆</h6>
+              <span>3</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="container">
+        <h1 className="mt-3 text-center">besties</h1>
         <div className="card">
-          <div className="rounded-top text-white d-flex flex-row">
-            <div className="ms-4 mt-5 d-flex flex-column">
-              <img
-                src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-profiles/avatar-1.webp"
-                alt="Generic placeholder image"
-                className="img-fluid img-thumbnail mt-4 mb-2"
-              />
-              <button
-                type="button"
-                className="btn btn-outline-dark"
-                data-mdb-ripple-color="dark"
-              >
-                Edit profile
-              </button>
-            </div>
-            <div className="ms-3">
-              <h5>Andy Horwitz</h5>
-              <p>New York</p>
-            </div>
-          </div>
-          <div className="p-4 text-black">
-            <div className="d-flex justify-content-end text-center py-1">
-              <div>
-                <p className="mb-1 h5">253</p>
-                <p className="small text-muted mb-0">Photos</p>
-              </div>
-              <div className="px-3">
-                <p className="mb-1 h5">1026</p>
-                <p className="small text-muted mb-0">Followers</p>
-              </div>
-              <div>
-                <p className="mb-1 h5">478</p>
-                <p className="small text-muted mb-0">Following</p>
-              </div>
-            </div>
-          </div>
-          <div className="card-body p-4 text-black">
-            <div className="mb-5">
-              <p className="lead fw-normal mb-1">About</p>
-              <div className="p-4">
-                <p className="font-italic mb-1">Web Developer</p>
-                <p className="font-italic mb-1">Lives in New York</p>
-                <p className="font-italic mb-0">Photographer</p>
-              </div>
-            </div>
-            <div className="d-flex justify-content-between align-items-center mb-4">
-              <p className="lead fw-normal mb-0">Recent photos</p>
-              <p className="mb-0">
-                <a href="#!" className="text-muted">
-                  Show all
-                </a>
-              </p>
-            </div>
-            <div className="row g-2">
-              <div className="col mb-2">
-                <img
-                  src="https://mdbcdn.b-cdn.net/img/Photos/Lightbox/Original/img%20(112).webp"
-                  alt="image 1"
-                  className="w-100 rounded-3"
-                />
-              </div>
-              <div className="col mb-2">
-                <img
-                  src="https://mdbcdn.b-cdn.net/img/Photos/Lightbox/Original/img%20(107).webp"
-                  alt="image 1"
-                  className="w-100 rounded-3"
-                />
-              </div>
-            </div>
-            <div className="row g-2">
-              <div className="col">
-                <img
-                  src="https://mdbcdn.b-cdn.net/img/Photos/Lightbox/Original/img%20(108).webp"
-                  alt="image 1"
-                  className="w-100 rounded-3"
-                />
-              </div>
-              <div className="col">
-                <img
-                  src="https://mdbcdn.b-cdn.net/img/Photos/Lightbox/Original/img%20(114).webp"
-                  alt="image 1"
-                  className="w-100 rounded-3"
-                />
-              </div>
-            </div>
-          </div>
+          <ol className="list-group list-group-numbered list-group-flush text-center">
+            <li className="list-group-item">amy</li>
+            <li className="list-group-item">billy</li>
+            <li className="list-group-item">chuck</li>
+            <li className="list-group-item">dante</li>
+            <li className="list-group-item">eve</li>
+          </ol>
         </div>
       </div>
     </div>
