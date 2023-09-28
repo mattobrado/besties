@@ -66,7 +66,7 @@ const Root = () => {
           </div>
         </div>
       </nav>{" "}
-      <div id="detail">
+      <div className="container" id="detail">
         <Outlet />
       </div>
     </>
