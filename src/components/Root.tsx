@@ -53,39 +53,19 @@ const Root = () => {
           <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav">
               <li className="nav-item">
-                <a className="nav-link active" aria-current="page" href="#">
-                  Home
-                </a>
+                <Link className="nav-link active" to={`login`}>
+                  {content.logIn}
+                </Link>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="#">
-                  Features
-                </a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link" href="#">
-                  Pricing
-                </a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link disabled" aria-disabled="true">
-                  Disabled
-                </a>
+                <Link className="nav-link active" to={`sign-up`}>
+                  {content.signUp}
+                </Link>
               </li>
             </ul>
           </div>
         </div>
       </nav>{" "}
-      <nav>
-        <ul>
-          <li>
-            <Link to={`login`}>login</Link>
-          </li>
-          <li>
-            <a href={`contacts/2`}>your bestie</a>
-          </li>
-        </ul>
-      </nav>
       <div id="detail">
         <Outlet />
       </div>

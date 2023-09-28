@@ -61,7 +61,7 @@ const Login = () => {
             </form>
 
             <p className="text-sm text-center">
-              {content.goToSignUpMessage} <Link to={`/signUp`}>sign up</Link>
+              {content.goToSignUpMessage} <Link to={`/sign-up`}>sign up</Link>
             </p>
           </div>
         </section>
