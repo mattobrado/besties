@@ -27,18 +27,15 @@ const Login = () => {
   };
 
   return (
-    <>
-      <EmailForm
-        buttonText={content.logIn}
-        onClick={onLogin}
-        setEmail={setEmail}
-        setPassword={setPassword}
-      />
-      <p className="text-sm text-center">
-        {content.goToSignUpMessage}{" "}
-        <Link to={`/sign-up`}>{content.signUp}</Link>
-      </p>
-    </>
+    <EmailForm
+      buttonText={content.logIn}
+      goToButtonText={content.signUp}
+      goToMessage={content.goToSignUpMessage}
+      goToRoute={"/sign-up"}
+      onClick={onLogin}
+      setEmail={setEmail}
+      setPassword={setPassword}
+    />
   );
 };
 

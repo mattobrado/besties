@@ -1,14 +1,21 @@
 import { MouseEventHandler } from "react";
 import content from "../content";
+import { NavLink } from "react-router-dom";
 
 const EmailForm = ({
   buttonText,
+  goToButtonText,
+  goToMessage,
+  goToRoute,
   isSignUp,
   onClick,
   setEmail,
   setPassword,
 }: {
   buttonText: String;
+  goToButtonText: String;
+  goToMessage: String;
+  goToRoute: String;
   isSignUp?: boolean;
   onClick: MouseEventHandler<HTMLButtonElement>;
   setEmail: React.Dispatch<React.SetStateAction<string>>;
@@ -53,6 +60,9 @@ const EmailForm = ({
         </button>
       </div>{" "}
     </form>
+    <p className="text-sm text-center">
+      {goToMessage} <NavLink to={goToRoute}>{goToButtonText}</NavLink>
+    </p>
   </div>
 );
 export default EmailForm;

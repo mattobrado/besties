@@ -1,5 +1,5 @@
 import { MouseEventHandler, useState } from "react";
-import { NavLink, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../firebase";
 import content from "../content";
@@ -31,19 +31,16 @@ const SignUp = () => {
   };
 
   return (
-    <>
-      <EmailForm
-        buttonText={content.signUp}
-        isSignUp={true}
-        onClick={onSubmit}
-        setEmail={setEmail}
-        setPassword={setPassword}
-      />
-      <p className="text-sm text-center">
-        {content.goToLoginMessage}{" "}
-        <NavLink to="/login">{content.logIn}</NavLink>
-      </p>
-    </>
+    <EmailForm
+      buttonText={content.signUp}
+      goToButtonText={content.logIn}
+      goToMessage={content.goToLoginMessage}
+      goToRoute={"/login"}
+      isSignUp={true}
+      onClick={onSubmit}
+      setEmail={setEmail}
+      setPassword={setPassword}
+    />
   );
 };
 
