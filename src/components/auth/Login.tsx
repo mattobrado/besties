@@ -2,7 +2,7 @@ import { MouseEventHandler, useState } from "react";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../firebase";
 import { useNavigate } from "react-router-dom";
-import content from "../../content";
+import CONTENT from "../../constants/content";
 import {
   Box,
   Button,
@@ -21,6 +21,7 @@ import {
 } from "@chakra-ui/react";
 import { OAuthButtonGroup } from "./OAuthButtonGroup";
 import { PasswordField } from "./PasswordField";
+import ROUTES from "../../constants/routes";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -33,7 +34,7 @@ const Login = () => {
       .then((userCredential) => {
         // Signed in
         const user = userCredential.user;
-        navigate("/");
+        navigate(ROUTES.ROOT);
         console.log(user);
       })
       .catch((error) => {
@@ -52,13 +53,13 @@ const Login = () => {
       <Stack spacing="8">
         <Stack spacing="6">
           <Stack spacing={{ base: "2", md: "3" }} textAlign="center">
-            <Heading>{content.heartEmoji}</Heading>
+            <Heading>{CONTENT.heartEmoji}</Heading>
             <Heading size={{ base: "xs", md: "sm" }}>
-              {content.logInToYourAccount}
+              {CONTENT.logInToYourAccount}
             </Heading>
             <Text color="fg.muted">
-              {content.dontHaveAnAccount}{" "}
-              <Link href="/sign-up">{content.signUp}</Link>
+              {CONTENT.dontHaveAnAccount}{" "}
+              <Link href="/sign-up">{CONTENT.signUp}</Link>
             </Text>
           </Stack>
         </Stack>
@@ -72,24 +73,24 @@ const Login = () => {
           <Stack spacing="6">
             <Stack spacing="5">
               <FormControl isInvalid={true}>
-                <FormLabel htmlFor="email">{content.emailAddress}</FormLabel>
+                <FormLabel htmlFor="email">{CONTENT.emailAddress}</FormLabel>
                 <Input id="email" type="email" />
-                <FormErrorMessage>{content.error}</FormErrorMessage>
+                <FormErrorMessage>{CONTENT.error}</FormErrorMessage>
               </FormControl>
               <PasswordField />
             </Stack>
             <HStack justify="space-between">
-              <Checkbox defaultChecked>{content.rememberMe}</Checkbox>
+              <Checkbox defaultChecked>{CONTENT.rememberMe}</Checkbox>
               <Button variant="text" size="sm">
-                {content.forgotPassword}
+                {CONTENT.forgotPassword}
               </Button>
             </HStack>
             <Stack spacing="6">
-              <Button>{content.logIn}</Button>
+              <Button>{CONTENT.logIn}</Button>
               <HStack>
                 <Divider />
                 <Text textStyle="sm" whiteSpace="nowrap" color="fg.muted">
-                  {content.orContinueWith}
+                  {CONTENT.orContinueWith}
                 </Text>
                 <Divider />
               </HStack>

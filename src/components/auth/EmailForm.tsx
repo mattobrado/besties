@@ -1,5 +1,5 @@
 import { MouseEventHandler } from "react";
-import content from "../../content";
+import CONTENT from "../../constants/content";
 import { Link, Path } from "react-router-dom";
 
 const EmailForm = ({
@@ -24,7 +24,7 @@ const EmailForm = ({
   <div className="card m-3 p-4">
     <form>
       <div className="form-group">
-        <label htmlFor="exampleInputEmail1">{content.emailAddress}</label>
+        <label htmlFor="exampleInputEmail1">{CONTENT.emailAddress}</label>
         <input
           className="form-control"
           aria-describedby="emailHelp"
@@ -32,7 +32,7 @@ const EmailForm = ({
           name="email"
           type="email"
           required
-          placeholder={content.emailAddress}
+          placeholder={CONTENT.emailAddress}
           onChange={(e) => setEmail(e.target.value)}
         />
         {isSignUp && (
@@ -42,7 +42,7 @@ const EmailForm = ({
         )}
       </div>
       <div className="form-group">
-        <label htmlFor="exampleInputPassword1">{content.password}</label>
+        <label htmlFor="exampleInputPassword1">{CONTENT.password}</label>
         <input
           className="form-control"
           aria-describedby="emailHelp"
@@ -50,7 +50,7 @@ const EmailForm = ({
           name="password"
           type="password"
           required
-          placeholder={content.password}
+          placeholder={CONTENT.password}
           onChange={(e) => setPassword(e.target.value)}
         />{" "}
       </div>

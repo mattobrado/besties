@@ -1,4 +1,4 @@
-const content = {
+const CONTENT = {
   appName: "besties 👯‍♂️",
   dontHaveAnAccount: "don't have an account?",
   emailAddress: "email",
@@ -17,4 +17,4 @@ const content = {
   signUp: "sign up",
 };
 
-export default content;
+export default CONTENT;

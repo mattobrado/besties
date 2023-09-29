@@ -6,23 +6,24 @@ import SignUp from "./components/auth/SignUp";
 import ProfilePage from "./components/ProfilePage";
 import Home from "./components/home/Home";
 import Layout from "./components/layout/Layout";
+import ROUTES from "./constants/routes";
 
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: ROUTES.ROOT,
     element: <Root />,
     errorElement: <ErrorPage />,
     children: [
       {
-        path: "login",
+        path: ROUTES.LOGIN,
         element: <Login />,
       },
       {
-        path: "sign-up",
+        path: ROUTES.SIGN_UP,
         element: <SignUp />,
       },
       {
-        path: "protected",
+        path: ROUTES.PROTECTED,
         element: <Layout />,
         children: [
           {

@@ -2,7 +2,7 @@ import { MouseEventHandler, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../firebase";
-import content from "../../content";
+import CONTENT from "../../constants/content";
 import EmailForm from "./EmailForm";
 
 const SignUp = () => {
@@ -32,9 +32,9 @@ const SignUp = () => {
 
   return (
     <EmailForm
-      buttonText={content.signUp}
-      goToButtonText={content.logIn}
-      goToMessage={content.goToLoginMessage}
+      buttonText={CONTENT.signUp}
+      goToButtonText={CONTENT.logIn}
+      goToMessage={CONTENT.goToLoginMessage}
       goToRoute={{
         pathname: "/login",
       }}

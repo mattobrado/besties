@@ -10,7 +10,7 @@ import {
   useDisclosure,
   useMergeRefs,
 } from "@chakra-ui/react";
-import content from "../../content";
+import CONTENT from "../../constants/content";
 import { forwardRef, useRef } from "react";
 
 export const PasswordField = forwardRef<HTMLInputElement, InputProps>(
@@ -28,7 +28,7 @@ export const PasswordField = forwardRef<HTMLInputElement, InputProps>(
 
     return (
       <FormControl isInvalid={true}>
-        <FormLabel htmlFor="password">{content.password}</FormLabel>
+        <FormLabel htmlFor="password">{CONTENT.password}</FormLabel>
         <InputGroup>
           <InputRightElement>
             <IconButton
@@ -48,7 +48,7 @@ export const PasswordField = forwardRef<HTMLInputElement, InputProps>(
             {...props}
           />
         </InputGroup>
-        <FormErrorMessage>{content.error}</FormErrorMessage>
+        <FormErrorMessage>{CONTENT.error}</FormErrorMessage>
       </FormControl>
     );
   }

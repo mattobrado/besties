@@ -1,7 +1,8 @@
 import { Link, useNavigate } from "react-router-dom";
-import content from "../content";
+import CONTENT from "../constants/content";
 import { auth } from "../firebase";
 import { signOut } from "firebase/auth";
+import ROUTES from "../constants/routes";
 
 const NavBar = () => {
   const navigate = useNavigate();
@@ -10,7 +11,7 @@ const NavBar = () => {
     signOut(auth)
       .then(() => {
         // Sign-out successful.
-        navigate("/");
+        navigate(ROUTES.ROOT);
         console.log("Signed out successfully");
       })
       .catch((error) => {
@@ -20,7 +21,7 @@ const NavBar = () => {
   return (
     <nav className="navbar">
       <div className="container-fluid">
-        <span className="navbar-brand h1">{content.appName}</span>
+        <span className="navbar-brand h1">{CONTENT.appName}</span>
         <button
           className="navbar-toggler"
           type="button"
@@ -36,22 +37,22 @@ const NavBar = () => {
           <ul className="navbar-nav">
             {!auth.currentUser && (
               <li className="nav-item">
-                <Link className="nav-link" to={`login`}>
-                  {content.logIn}
+                <Link className="nav-link" to={ROUTES.LOGIN}>
+                  {CONTENT.logIn}
                 </Link>
               </li>
             )}
             {!auth.currentUser && (
               <li className="nav-item">
-                <Link className="nav-link" to={`sign-up`}>
-                  {content.signUp}
+                <Link className="nav-link" to={ROUTES.SIGN_UP}>
+                  {CONTENT.signUp}
                 </Link>
               </li>
             )}
             {auth.currentUser && (
               <li className="nav-item">
                 <a className="nav-link" onClick={handleLogout}>
-                  {content.logOut}
+                  {CONTENT.logOut}
                 </a>
               </li>
             )}
