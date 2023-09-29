@@ -2,6 +2,7 @@ const content = {
   appName: "besties 👯‍♂️",
   dontHaveAnAccount: "don't have an account?",
   emailAddress: "email",
+  error: "error",
   forgotPassword: "forgot password?",
   goToLoginMessage: "Already have an account?",
   goToSignUpMessage: "No account yet?",

@@ -10,6 +10,7 @@ import {
   Container,
   Divider,
   FormControl,
+  FormErrorMessage,
   FormLabel,
   Heading,
   HStack,
@@ -70,9 +71,10 @@ const Login = () => {
         >
           <Stack spacing="6">
             <Stack spacing="5">
-              <FormControl>
+              <FormControl isInvalid={true}>
                 <FormLabel htmlFor="email">{content.emailAddress}</FormLabel>
                 <Input id="email" type="email" />
+                <FormErrorMessage>{content.error}</FormErrorMessage>
               </FormControl>
               <PasswordField />
             </Stack>
