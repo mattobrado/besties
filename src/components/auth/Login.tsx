@@ -27,18 +27,22 @@ import { useForm } from "react-hook-form";
 
 const Login = () => {
   const { login, isLoading } = useLogin();
+
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
-  const handleLogin = async (data) => {
+
+  const handleLogin = async (data: any) => {
     console.log(data);
-    login({
-      email: data.email,
-      password: data.password,
-      redirectTo: ROUTES.HOME,
-    });
+    if (data?.email && data?.password) {
+      login({
+        email: data.email,
+        password: data.password,
+        redirectTo: ROUTES.HOME,
+      });
+    }
   };
 
   return (
@@ -56,7 +60,7 @@ const Login = () => {
             </Heading>
             <Text color="fg.muted">
               {CONTENT.dontHaveAnAccount}{" "}
-              <Link href="/sign-up">{CONTENT.signUp}</Link>
+              <Link href={ROUTES.SIGN_UP}>{CONTENT.signUp}</Link>
             </Text>
           </Stack>
         </Stack>
