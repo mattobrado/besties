@@ -1,8 +1,9 @@
-import { MouseEventHandler, useState } from "react";
-import { signInWithEmailAndPassword } from "firebase/auth";
-import { auth } from "../../firebase";
-import { useNavigate } from "react-router-dom";
-import { CONTENT, ROUTES } from "../../constants/constants";
+import {
+  CONTENT,
+  INPUT_TYPE,
+  ROUTES,
+  VALIDATE,
+} from "../../constants/constants";
 import {
   Box,
   Button,
@@ -21,26 +22,23 @@ import {
 } from "@chakra-ui/react";
 import { OAuthButtonGroup } from "./OAuthButtonGroup";
 import { PasswordField } from "./PasswordField";
+import { useLogin } from "../../hooks/useAuth";
+import { useForm } from "react-hook-form";
 
 const Login = () => {
-  const navigate = useNavigate();
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-
-  const onLogin: MouseEventHandler<HTMLButtonElement> = (e) => {
-    e.preventDefault();
-    signInWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        // Signed in
-        const user = userCredential.user;
-        navigate(ROUTES.ROOT);
-        console.log(user);
-      })
-      .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        console.log(errorCode, errorMessage);
-      });
+  const { login, isLoading } = useLogin();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+  const handleLogin = async (data) => {
+    console.log(data);
+    login({
+      email: data.email,
+      password: data.password,
+      redirectTo: ROUTES.HOME,
+    });
   };
 
   return (
@@ -70,31 +68,54 @@ const Login = () => {
           borderRadius={{ base: "none", sm: "xl" }}
         >
           <Stack spacing="6">
-            <Stack spacing="5">
-              <FormControl isInvalid={true}>
-                <FormLabel htmlFor="email">{CONTENT.emailAddress}</FormLabel>
-                <Input id="email" type="email" />
-                <FormErrorMessage>{CONTENT.error}</FormErrorMessage>
-              </FormControl>
-              <PasswordField />
-            </Stack>
-            <HStack justify="space-between">
-              <Checkbox defaultChecked>{CONTENT.rememberMe}</Checkbox>
-              <Button variant="text" size="sm">
-                {CONTENT.forgotPassword}
-              </Button>
-            </HStack>
-            <Stack spacing="6">
-              <Button>{CONTENT.logIn}</Button>
-              <HStack>
-                <Divider />
-                <Text textStyle="sm" whiteSpace="nowrap" color="fg.muted">
-                  {CONTENT.orContinueWith}
-                </Text>
-                <Divider />
+            <form onSubmit={handleSubmit(handleLogin)}>
+              <Stack spacing="5">
+                <FormControl isInvalid={!!errors.email}>
+                  <FormLabel htmlFor={INPUT_TYPE.EMAIL}>
+                    {CONTENT.emailAddress}
+                  </FormLabel>
+                  <Input
+                    id={INPUT_TYPE.EMAIL}
+                    type={INPUT_TYPE.EMAIL}
+                    {...register(INPUT_TYPE.EMAIL, VALIDATE.EMAIL)}
+                  />
+                  <FormErrorMessage>
+                    {typeof errors.email?.message === "string" &&
+                      errors.email.message}
+                  </FormErrorMessage>{" "}
+                </FormControl>
+                <PasswordField
+                  errors={errors}
+                  {...register(INPUT_TYPE.PASSWORD, VALIDATE.PASSWORD)}
+                />
+              </Stack>
+              <HStack justify="space-between">
+                <Checkbox defaultChecked>{CONTENT.rememberMe}</Checkbox>
+                <Button variant="text" size="sm">
+                  {CONTENT.forgotPassword}
+                </Button>
               </HStack>
-              <OAuthButtonGroup />
-            </Stack>
+              <Stack spacing="6">
+                <Button
+                  mt="4"
+                  type="submit"
+                  size="md"
+                  w="full"
+                  isLoading={isLoading}
+                  loadingText="Logging In"
+                >
+                  {CONTENT.logIn}
+                </Button>
+                <HStack>
+                  <Divider />
+                  <Text textStyle="sm" whiteSpace="nowrap" color="fg.muted">
+                    {CONTENT.orContinueWith}
+                  </Text>
+                  <Divider />
+                </HStack>
+                <OAuthButtonGroup />
+              </Stack>
+            </form>
           </Stack>
         </Box>
       </Stack>

@@ -1,7 +1,7 @@
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "../firebase";
 import { useState } from "react";
-import { ROUTES } from "../constants/constants";
+import { ROUTES, TOAST_DURATION } from "../constants/constants";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import { useToast } from "@chakra-ui/react";
@@ -38,7 +38,7 @@ export const useLogin = () => {
           status: "success",
           isClosable: true,
           position: "top",
-          duration: 5000,
+          duration: TOAST_DURATION,
         });
         const user = userCredential.user;
         navigate(redirectTo);
@@ -53,7 +53,7 @@ export const useLogin = () => {
           description: errorMessage,
           isClosable: true,
           position: "top",
-          duration: 5000,
+          duration: TOAST_DURATION,
         });
         console.log(errorCode, errorMessage);
         return false;
