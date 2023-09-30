@@ -6,7 +6,7 @@ import SignUp from "./components/auth/SignUp";
 import ProfilePage from "./components/ProfilePage";
 import Home from "./components/home/Home";
 import Layout from "./components/layout/Layout";
-import ROUTES from "./constants/routes";
+import { ROUTES } from "./constants/constants";
 
 const router = createBrowserRouter([
   {

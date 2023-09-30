@@ -2,7 +2,7 @@ import { MouseEventHandler, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../firebase";
-import CONTENT from "../../constants/content";
+import { CONTENT } from "../../constants/constants";
 import EmailForm from "./EmailForm";
 
 const SignUp = () => {

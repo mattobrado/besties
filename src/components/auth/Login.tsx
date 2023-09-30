@@ -2,7 +2,7 @@ import { MouseEventHandler, useState } from "react";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../firebase";
 import { useNavigate } from "react-router-dom";
-import CONTENT from "../../constants/content";
+import { CONTENT, ROUTES } from "../../constants/constants";
 import {
   Box,
   Button,
@@ -21,7 +21,6 @@ import {
 } from "@chakra-ui/react";
 import { OAuthButtonGroup } from "./OAuthButtonGroup";
 import { PasswordField } from "./PasswordField";
-import ROUTES from "../../constants/routes";
 
 const Login = () => {
   const navigate = useNavigate();

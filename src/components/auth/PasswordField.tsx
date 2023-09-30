@@ -10,7 +10,7 @@ import {
   useDisclosure,
   useMergeRefs,
 } from "@chakra-ui/react";
-import CONTENT from "../../constants/content";
+import { CONTENT } from "../../constants/constants";
 import { forwardRef, useRef } from "react";
 
 export const PasswordField = forwardRef<HTMLInputElement, InputProps>(

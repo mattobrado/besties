@@ -1,5 +1,5 @@
 import { MouseEventHandler } from "react";
-import CONTENT from "../../constants/content";
+import { CONTENT } from "../../constants/constants";
 import { Link, Path } from "react-router-dom";
 
 const EmailForm = ({

@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { Outlet, useLocation, useNavigate } from "react-router-dom";
 import { useAuth } from "../../hooks/useAuth";
-import ROUTES from "../../constants/routes";
+import { ROUTES } from "../../constants/constants";
 
 const Layout = () => {
   const { pathname } = useLocation();

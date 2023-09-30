@@ -1,8 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
-import CONTENT from "../constants/content";
+import { CONTENT, ROUTES } from "../constants/constants";
 import { auth } from "../firebase";
 import { signOut } from "firebase/auth";
-import ROUTES from "../constants/routes";
 
 const NavBar = () => {
   const navigate = useNavigate();

@@ -1,4 +1,4 @@
-const CONTENT = {
+export const CONTENT = {
   appName: "besties 👯‍♂️",
   dontHaveAnAccount: "don't have an account?",
   emailAddress: "email",
@@ -17,4 +17,12 @@ const CONTENT = {
   signUp: "sign up",
 };
 
-export default CONTENT;
+const PROTECTED = "/protected";
+
+export const ROUTES = {
+  LOGIN: "/login",
+  PROTECTED,
+  ROOT: "/",
+  SIGN_UP: "/sign-up",
+  HOME: PROTECTED + "/home",
+};
