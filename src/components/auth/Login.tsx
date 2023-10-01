@@ -4,15 +4,7 @@ import {
   ROUTES,
   VALIDATE,
 } from "../../constants/constants";
-import {
-  Button,
-  Checkbox,
-  Divider,
-  HStack,
-  Stack,
-  Text,
-} from "@chakra-ui/react";
-import { OAuthButtonGroup } from "./OAuthButtonGroup";
+import { Button, Checkbox, HStack, Stack } from "@chakra-ui/react";
 import { PasswordField } from "./PasswordField";
 import { useLogin } from "../../hooks/useAuth";
 import { useForm } from "react-hook-form";
@@ -57,7 +49,7 @@ const Login = () => {
       >
         <Stack spacing="5">
           <AuthFormField
-            error={errors.email}
+            error={errors?.email}
             inputType={INPUT_TYPE.EMAIL}
             label={CONTENT.emailAddress}
             register={register}

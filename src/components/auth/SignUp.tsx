@@ -1,21 +1,16 @@
-import {
-  Box,
-  FormControl,
-  FormLabel,
-  Input,
-  InputGroup,
-  HStack,
-  InputRightElement,
-  Stack,
-  Button,
-  FormErrorMessage,
-} from "@chakra-ui/react";
+import { Box, HStack } from "@chakra-ui/react";
 import { useState } from "react";
-import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
-import { CONTENT, ROUTES, VALIDATE } from "../../constants/constants";
+import {
+  CONTENT,
+  INPUT_TYPE,
+  ROUTES,
+  VALIDATE,
+} from "../../constants/constants";
 import { useSignup } from "../../hooks/useAuth";
 import { useForm } from "react-hook-form";
 import AuthFormContainer from "./AuthFormContainer";
+import AuthFormField from "./AuthFormField";
+import { PasswordField } from "./PasswordField";
 
 export default function Signup() {
   const [showPassword, setShowPassword] = useState(false);
@@ -51,46 +46,30 @@ export default function Signup() {
         loadingText: CONTENT.signingUp,
       }}
     >
-      <HStack>
-        <Box>
-          <FormControl id="firstName" isRequired>
-            <FormLabel>First Name</FormLabel>
-            <Input type="text" />
-          </FormControl>
-        </Box>
-        <Box>
-          <FormControl id="lastName">
-            <FormLabel>Last Name</FormLabel>
-            <Input type="text" />
-          </FormControl>
-        </Box>
-      </HStack>
-      <FormControl isInvalid={!!errors.username} py="2">
-        <FormLabel>{CONTENT.username}</FormLabel>
-        <Input {...register("username", VALIDATE.USERNAME)} />
-        <FormErrorMessage>
-          {typeof errors.username?.message === "string" &&
-            errors.username?.message}
-        </FormErrorMessage>
-      </FormControl>
-      <FormControl id="email" isRequired>
-        <FormLabel>Email address</FormLabel>
-        <Input type="email" />
-      </FormControl>
-      <FormControl id="password" isRequired>
-        <FormLabel>Password</FormLabel>
-        <InputGroup>
-          <Input type={showPassword ? "text" : "password"} />
-          <InputRightElement h={"full"}>
-            <Button
-              variant={"ghost"}
-              onClick={() => setShowPassword((showPassword) => !showPassword)}
-            >
-              {showPassword ? <ViewIcon /> : <ViewOffIcon />}
-            </Button>
-          </InputRightElement>
-        </InputGroup>
-      </FormControl>
+      <AuthFormField
+        error={errors?.email}
+        inputType={INPUT_TYPE.EMAIL}
+        label={CONTENT.emailAddress}
+        register={register}
+        validate={VALIDATE.EMAIL}
+      />
+      <AuthFormField
+        error={errors?.fullName}
+        inputType={INPUT_TYPE.FULL_NAME}
+        label={CONTENT.fullName}
+        register={register}
+      />
+      <AuthFormField
+        error={errors?.username}
+        inputType={INPUT_TYPE.USERNAME}
+        label={CONTENT.username}
+        register={register}
+        validate={VALIDATE.USERNAME}
+      />
+      <PasswordField
+        passwordError={errors?.password}
+        {...register(INPUT_TYPE.PASSWORD, VALIDATE.PASSWORD)}
+      />
     </AuthFormContainer>
   );
 }

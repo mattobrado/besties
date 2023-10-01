@@ -32,6 +32,7 @@ export const CONTENT = {
   signupSuccess: "account created",
   username: "username",
   usernameTaken: "username already exists",
+  fullName: "full name",
 };
 
 export const PROTECTED = "/protected";
@@ -50,6 +51,8 @@ export const ROUTES = {
 export const INPUT_TYPE = {
   EMAIL: "email",
   PASSWORD: "password",
+  USERNAME: "username",
+  FULL_NAME: "fullName",
 };
 
 export const VALIDATE = {

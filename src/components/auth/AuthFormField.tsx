@@ -23,7 +23,7 @@ const AuthFormField = ({
   inputType: string;
   label: string;
   register: UseFormRegister<FieldValues>;
-  validate: any;
+  validate?: any;
 }) => (
   <FormControl isInvalid={!!error}>
     <FormLabel htmlFor={inputType}>{label}</FormLabel>
