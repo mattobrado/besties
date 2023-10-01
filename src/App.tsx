@@ -14,6 +14,7 @@ const router = createBrowserRouter([
     element: <Root />,
     errorElement: <ErrorPage />,
     children: [
+      { path: ROUTES.ROOT, element: "public root" },
       {
         path: ROUTES.LOGIN,
         element: <Login />,
@@ -30,6 +31,18 @@ const router = createBrowserRouter([
             path: ROUTES.HOME,
             element: <Home />,
           },
+          // {
+          //   path: ROUTES.USERS,
+          //   element: <Users />,
+          // },
+          // {
+          //   path: ROUTES.PROFILE,
+          //   element: <Profile />,
+          // },
+          // {
+          //   path: ROUTES.COMMENTS,
+          //   element: <Comments />,
+          // },
         ],
       },
       {

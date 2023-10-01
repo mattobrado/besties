@@ -12,6 +12,7 @@ export const CONTENT = {
   loggingIn: "signing In",
   logIn: "sign in",
   logInToYourAccount: "log in to your account",
+  logo: "👯‍♂️",
   logOut: "log out",
   orContinueWith: "or continue with",
   password: "password",
@@ -22,14 +23,17 @@ export const CONTENT = {
   signUp: "sign up",
 };
 
-const PROTECTED = "/protected";
+export const PROTECTED = "/protected";
 
 export const ROUTES = {
+  COMMENTS: PROTECTED + "/comments/:id",
+  HOME: PROTECTED + "/home",
   LOGIN: "/login",
+  PROFILE: PROTECTED + "/profile/:id",
   PROTECTED,
   ROOT: "/",
   SIGN_UP: "/sign-up",
-  HOME: PROTECTED + "/home",
+  USERS: PROTECTED + "/users",
 };
 
 export const TOAST_DURATION = 5000;
