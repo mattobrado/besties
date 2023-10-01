@@ -30,37 +30,30 @@ export const useLogin = () => {
     redirectTo?: string;
   }) => {
     setLoading(true);
-    await signInWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        // Signed in
-        toast({
-          title: "you are signed in",
-          status: "success",
-          isClosable: true,
-          position: "top",
-          duration: TOAST_DURATION,
-        });
-        const user = userCredential.user;
-        navigate(redirectTo);
-        console.log(user);
-      })
-      .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        toast({
-          title: "logging in failed",
-          status: "error",
-          description: errorMessage,
-          isClosable: true,
-          position: "top",
-          duration: TOAST_DURATION,
-        });
-        console.log(errorCode, errorMessage);
-        return false;
+    try {
+      await signInWithEmailAndPassword(auth, email, password);
+      toast({
+        title: "you are signed in",
+        status: "success",
+        isClosable: true,
+        position: "top",
+        duration: TOAST_DURATION,
       });
-    setLoading(false);
-    return true;
+      navigate(redirectTo);
+    } catch (error: any) {
+      toast({
+        title: "logging in failed",
+        status: "error",
+        description: error?.message,
+        isClosable: true,
+        position: "top",
+        duration: TOAST_DURATION,
+      });
+      return false;
+    } finally {
+      setLoading(false);
+      return true;
+    }
   };
-
   return { login, isLoading };
 };

@@ -29,19 +29,23 @@ const Login = () => {
   const { login, isLoading } = useLogin();
 
   const {
-    register,
-    handleSubmit,
     formState: { errors },
+    handleSubmit,
+    register,
+    reset,
   } = useForm();
 
   const handleLogin = async (data: any) => {
-    console.log(data);
-    if (data?.email && data?.password) {
-      login({
-        email: data.email,
-        password: data.password,
-        redirectTo: ROUTES.HOME,
-      });
+    if (!(data?.email && data?.password)) {
+      return;
+    }
+    const succeeded = await login({
+      email: data.email,
+      password: data.password,
+      redirectTo: ROUTES.HOME,
+    });
+    if (succeeded) {
+      reset();
     }
   };
 
