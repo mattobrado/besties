@@ -1,3 +1,5 @@
+import { ToastPosition } from "@chakra-ui/react";
+
 export const CONTENT = {
   appName: "besties 👯‍♂️",
   dontHaveAnAccount: "don't have an account?",
@@ -5,12 +7,13 @@ export const CONTENT = {
   error: "error",
   forgotPassword: "forgot password?",
   goToLoginMessage: "Already have an account?",
-  goToSignUpMessage: "No account yet?",
+  goToSignupMessage: "No account yet?",
   heartEmoji: "🩷",
   invalidEmailAddress: "email address is not valid",
   invalidPassword: "password must be at least 8 characters long",
   loggingIn: "signing In",
   logIn: "sign in",
+  loginSuccess: "You are logged in",
   logInToYourAccount: "log in to your account",
   logo: "👯‍♂️",
   logOut: "log out",
@@ -21,7 +24,10 @@ export const CONTENT = {
   pleaseEnterPassword: "please enter password",
   rememberMe: "remember me",
   signInToYourAccount: "sign in to your account",
-  signUp: "sign up",
+  signup: "sign up",
+  signupFailed: "signing Up failed",
+  signupSuccess: "account created",
+  usernameTaken: "username already exists",
 };
 
 export const PROTECTED = "/protected";
@@ -33,11 +39,9 @@ export const ROUTES = {
   PROFILE: PROTECTED + "/profile/:id",
   PROTECTED,
   ROOT: "/",
-  SIGN_UP: "/sign-up",
+  SIGN_UP: "/signup",
   USERS: PROTECTED + "/users",
 };
-
-export const TOAST_DURATION = 5000;
 
 export const INPUT_TYPE = {
   EMAIL: "email",
@@ -79,4 +83,14 @@ export const VALIDATE = {
       message: "Username must be alphanumeric",
     },
   },
+};
+
+export const TOAST_PROPS: {
+  duration: number;
+  isClosable: boolean;
+  position: ToastPosition;
+} = {
+  duration: 3000,
+  isClosable: true,
+  position: "top",
 };

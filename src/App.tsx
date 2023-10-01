@@ -2,7 +2,7 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import Root from "./components/Root";
 import ErrorPage from "./components/ErrorPage";
 import Login from "./components/auth/Login";
-import SignUp from "./components/auth/SignUp";
+import Signup from "./components/auth/Signup";
 import ProfilePage from "./components/ProfilePage";
 import Home from "./components/home/Home";
 import Layout from "./components/layout/Layout";
@@ -21,7 +21,7 @@ const router = createBrowserRouter([
       },
       {
         path: ROUTES.SIGN_UP,
-        element: <SignUp />,
+        element: <Signup />,
       },
       {
         path: ROUTES.PROTECTED,

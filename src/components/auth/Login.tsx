@@ -60,7 +60,7 @@ const Login = () => {
             </Heading>
             <Text color="fg.muted">
               {CONTENT.dontHaveAnAccount}{" "}
-              <Link href={ROUTES.SIGN_UP}>{CONTENT.signUp}</Link>
+              <Link href={ROUTES.SIGN_UP}>{CONTENT.signup}</Link>
             </Text>
           </Stack>
         </Stack>
