@@ -49,6 +49,11 @@ const Login = () => {
           },
         }}
         onSubmit={handleSubmit(handleLogin)}
+        buttonProps={{
+          isLoading,
+          label: CONTENT.login,
+          loadingText: CONTENT.loggingIn,
+        }}
       >
         <Stack spacing="5">
           <AuthFormField
@@ -69,26 +74,6 @@ const Login = () => {
             {CONTENT.forgotPassword}
           </Button>
         </HStack>
-        <Stack spacing="6">
-          <Button
-            mt="4"
-            type="submit"
-            size="md"
-            w="full"
-            isLoading={isLoading}
-            loadingText={CONTENT.loggingIn}
-          >
-            {CONTENT.login}
-          </Button>
-          <HStack>
-            <Divider />
-            <Text textStyle="sm" whiteSpace="nowrap" color="fg.muted">
-              {CONTENT.orContinueWith}
-            </Text>
-            <Divider />
-          </HStack>
-          <OAuthButtonGroup />
-        </Stack>
       </AuthFormContainer>
     </>
   );
