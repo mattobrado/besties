@@ -12,12 +12,14 @@ import {
 } from "@chakra-ui/react";
 import { CONTENT, INPUT_TYPE } from "../../constants/constants";
 import { forwardRef, useRef } from "react";
-import { FieldErrors, FieldValues } from "react-hook-form";
+import { FieldError, FieldErrorsImpl, Merge } from "react-hook-form";
 import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
 
 export const PasswordField = forwardRef<
   HTMLInputElement,
-  InputProps & { errors: FieldErrors<FieldValues> }
+  InputProps & {
+    passwordError?: FieldError | Merge<FieldError, FieldErrorsImpl<any>>;
+  }
 >((props, ref) => {
   const { isOpen, onToggle } = useDisclosure();
   const inputRef = useRef<HTMLInputElement>(null);
@@ -31,7 +33,7 @@ export const PasswordField = forwardRef<
   };
 
   return (
-    <FormControl isInvalid={!!props.errors?.password}>
+    <FormControl isInvalid={!!props.passwordError}>
       <FormLabel htmlFor={INPUT_TYPE.PASSWORD}>{CONTENT.password}</FormLabel>
       <InputGroup>
         <InputRightElement>
@@ -53,8 +55,8 @@ export const PasswordField = forwardRef<
         />
       </InputGroup>
       <FormErrorMessage>
-        {typeof props.errors?.password?.message === "string" &&
-          props.errors.password.message}
+        {typeof props.passwordError?.message === "string" &&
+          props.passwordError?.message}
       </FormErrorMessage>
     </FormControl>
   );

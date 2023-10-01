@@ -53,17 +53,6 @@ export default function Signup() {
     >
       <HStack>
         <Box>
-          <FormControl isInvalid={!!errors.username} py="2">
-            <FormLabel>{CONTENT.username}</FormLabel>
-            <Input
-              placeholder="username"
-              {...register("username", VALIDATE.USERNAME)}
-            />
-            <FormErrorMessage>
-              {typeof errors.username?.message === "string" &&
-                errors.username?.message}
-            </FormErrorMessage>
-          </FormControl>
           <FormControl id="firstName" isRequired>
             <FormLabel>First Name</FormLabel>
             <Input type="text" />
@@ -76,6 +65,14 @@ export default function Signup() {
           </FormControl>
         </Box>
       </HStack>
+      <FormControl isInvalid={!!errors.username} py="2">
+        <FormLabel>{CONTENT.username}</FormLabel>
+        <Input {...register("username", VALIDATE.USERNAME)} />
+        <FormErrorMessage>
+          {typeof errors.username?.message === "string" &&
+            errors.username?.message}
+        </FormErrorMessage>
+      </FormControl>
       <FormControl id="email" isRequired>
         <FormLabel>Email address</FormLabel>
         <Input type="email" />
