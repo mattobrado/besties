@@ -56,7 +56,7 @@ const Login = () => {
             validate={VALIDATE.EMAIL}
           />
           <PasswordField
-            passwordError={errors?.password}
+            error={errors?.password}
             {...register(INPUT_TYPE.PASSWORD, VALIDATE.PASSWORD)}
           />
         </Stack>

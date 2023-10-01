@@ -67,7 +67,7 @@ export default function Signup() {
         validate={VALIDATE.USERNAME}
       />
       <PasswordField
-        passwordError={errors?.password}
+        error={errors?.password}
         {...register(INPUT_TYPE.PASSWORD, VALIDATE.PASSWORD)}
       />
     </AuthFormContainer>

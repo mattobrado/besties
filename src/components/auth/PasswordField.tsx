@@ -18,7 +18,7 @@ import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
 export const PasswordField = forwardRef<
   HTMLInputElement,
   InputProps & {
-    passwordError?: FieldError | Merge<FieldError, FieldErrorsImpl<any>>;
+    error?: FieldError | Merge<FieldError, FieldErrorsImpl<any>>;
   }
 >((props, ref) => {
   const { isOpen, onToggle } = useDisclosure();
@@ -33,7 +33,7 @@ export const PasswordField = forwardRef<
   };
 
   return (
-    <FormControl isInvalid={!!props.passwordError}>
+    <FormControl isInvalid={!!props.error}>
       <FormLabel htmlFor={INPUT_TYPE.PASSWORD}>{CONTENT.password}</FormLabel>
       <InputGroup>
         <InputRightElement>
@@ -55,8 +55,7 @@ export const PasswordField = forwardRef<
         />
       </InputGroup>
       <FormErrorMessage>
-        {typeof props.passwordError?.message === "string" &&
-          props.passwordError?.message}
+        {typeof props.error?.message === "string" && props.error?.message}
       </FormErrorMessage>
     </FormControl>
   );
