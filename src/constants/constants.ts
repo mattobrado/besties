@@ -9,6 +9,7 @@ export const CONTENT = {
   heartEmoji: "🩷",
   invalidEmailAddress: "email address is not valid",
   invalidPassword: "password must be at least 8 characters long",
+  loggingIn: "signing In",
   logIn: "sign in",
   logInToYourAccount: "log in to your account",
   logOut: "log out",

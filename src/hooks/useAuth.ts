@@ -49,10 +49,8 @@ export const useLogin = () => {
         position: "top",
         duration: TOAST_DURATION,
       });
-      return false;
     } finally {
       setLoading(false);
-      return true;
     }
   };
   return { login, isLoading };

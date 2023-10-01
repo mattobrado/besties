@@ -32,21 +32,17 @@ const Login = () => {
     formState: { errors },
     handleSubmit,
     register,
-    reset,
   } = useForm();
 
   const handleLogin = async (data: any) => {
     if (!(data?.email && data?.password)) {
       return;
     }
-    const succeeded = await login({
+    await login({
       email: data.email,
       password: data.password,
       redirectTo: ROUTES.HOME,
     });
-    if (succeeded) {
-      reset();
-    }
   };
 
   return (
@@ -110,7 +106,7 @@ const Login = () => {
                   size="md"
                   w="full"
                   isLoading={isLoading}
-                  loadingText="Logging In"
+                  loadingText={CONTENT.loggingIn}
                 >
                   {CONTENT.logIn}
                 </Button>
