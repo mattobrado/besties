@@ -43,21 +43,21 @@ export const VALIDATE = {
   EMAIL: {
     required: {
       value: true,
-      message: "Please enter an email address",
+      message: CONTENT.pleaseEnterAnEmailAddress,
     },
     pattern: {
       value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-      message: "Email address is not valid",
+      message: CONTENT.invalidEmailAddress,
     },
   },
   PASSWORD: {
     required: {
       value: true,
-      message: "Please enter password",
+      message: CONTENT.pleaseEnterPassword,
     },
     minLength: {
       value: 6,
-      message: "Password must be at least 6 characters long",
+      message: CONTENT.invalidPassword,
     },
   },
   USERNAME: {
