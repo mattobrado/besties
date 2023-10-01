@@ -1,4 +1,4 @@
-import { CONTENT } from "../constants/constants";
+import { CONTENT } from "../../constants/constants";
 import {
   Box,
   Flex,
@@ -17,8 +17,8 @@ import {
   Heading,
 } from "@chakra-ui/react";
 import { CloseIcon, HamburgerIcon } from "@chakra-ui/icons";
-import { useLogout } from "../hooks/useAuth";
-import { auth } from "../firebase";
+import { useLogout } from "../../hooks/useAuth";
+import { auth } from "../../firebase";
 
 const Links = ["Dashboard", "Projects", "Team"];
 

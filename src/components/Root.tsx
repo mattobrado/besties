@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "../firebase";
 import { Outlet } from "react-router-dom";
-import NavBar from "./NavBar";
+import NavBar from "./layout/NavBar";
 
 const Root = () => {
   useEffect(() => {
