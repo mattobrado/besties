@@ -14,6 +14,7 @@ export const CONTENT = {
   logInToYourAccount: "log in to your account",
   logo: "👯‍♂️",
   logOut: "log out",
+  logOutSuccess: "successfully logged out",
   orContinueWith: "or continue with",
   password: "password",
   pleaseEnterAnEmailAddress: "please enter an email address",

@@ -1,7 +1,4 @@
-import { Link, useNavigate } from "react-router-dom";
-import { CONTENT, ROUTES } from "../constants/constants";
-import { auth } from "../firebase";
-import { signOut } from "firebase/auth";
+import { CONTENT } from "../constants/constants";
 import {
   Box,
   Flex,
@@ -20,6 +17,7 @@ import {
   Heading,
 } from "@chakra-ui/react";
 import { CloseIcon, HamburgerIcon } from "@chakra-ui/icons";
+import { useLogout } from "../hooks/useAuth";
 
 const Links = ["Dashboard", "Projects", "Team"];
 
@@ -43,25 +41,13 @@ const NavLink = (props: { children: React.ReactNode }) => {
 };
 
 const NavBar = () => {
-  const navigate = useNavigate();
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const { logout } = useLogout();
 
-  const handleLogout = () => {
-    signOut(auth)
-      .then(() => {
-        // Sign-out successful.
-        navigate(ROUTES.ROOT);
-        console.log("Signed out successfully");
-      })
-      .catch((error) => {
-        // An error happened.
-      });
-  };
   return (
-    <Box bg={useColorModeValue("gray.100", "gray.900")} px={5}>
+    <Box bg={useColorModeValue("gray.100", "gray.900")} px={4}>
       <Flex h={16} alignItems={"center"} justifyContent={"space-between"}>
         <IconButton
-          size={"md"}
           icon={isOpen ? <CloseIcon /> : <HamburgerIcon />}
           aria-label={"open Menu"}
           display={{ md: "none" }}
@@ -93,9 +79,8 @@ const NavBar = () => {
             </MenuButton>
             <MenuList>
               <MenuItem>Link 1</MenuItem>
-              <MenuItem>Link 2</MenuItem>
               <MenuDivider />
-              <MenuItem>Link 3</MenuItem>
+              <MenuItem onClick={logout}>{CONTENT.logOut}</MenuItem>
             </MenuList>
           </Menu>
         </Flex>
