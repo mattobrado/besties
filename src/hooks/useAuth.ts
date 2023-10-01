@@ -79,10 +79,11 @@ export function useSignup() {
   const navigate = useNavigate();
 
   const signup = async ({
-    username,
     email,
+    fullName,
     password,
     redirectTo = ROUTES.HOME,
+    username,
   }: SignupType) => {
     setLoading(true);
 
@@ -104,10 +105,11 @@ export function useSignup() {
         );
 
         await setDoc(doc(db, "users", response.user.uid), {
-          id: response.user.uid,
-          username: username.toLowerCase(),
           avatar: "",
           date: Date.now(),
+          fullName: fullName,
+          id: response.user.uid,
+          username: username.toLowerCase(),
         });
 
         toast({

@@ -22,10 +22,11 @@ export default function Signup() {
   } = useForm();
   const handleSignup = async (data: any) => {
     signup({
-      username: data.username,
       email: data.email,
+      fullName: data.fullName,
       password: data.password,
       redirectTo: ROUTES.HOME,
+      username: data.username,
     });
   };
 

@@ -36,14 +36,16 @@ export const PasswordField = forwardRef<
     <FormControl isInvalid={!!props.error}>
       <FormLabel htmlFor={INPUT_TYPE.PASSWORD}>{CONTENT.password}</FormLabel>
       <InputGroup>
-        <InputRightElement>
-          <IconButton
-            variant="text"
-            aria-label={isOpen ? "Mask password" : "Reveal password"}
-            icon={isOpen ? <ViewOffIcon /> : <ViewIcon />}
-            onClick={onClickReveal}
-          />
-        </InputRightElement>
+        <div tabindex="-1">
+          <InputRightElement>
+            <IconButton
+              variant="text"
+              aria-label={isOpen ? "Mask password" : "Reveal password"}
+              icon={isOpen ? <ViewOffIcon /> : <ViewIcon />}
+              onClick={onClickReveal}
+            />
+          </InputRightElement>
+        </div>
         <Input
           id={INPUT_TYPE.PASSWORD}
           ref={mergeRef}

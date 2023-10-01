@@ -5,5 +5,6 @@ export type LoginType = {
 };
 
 export type SignupType = LoginType & {
+  fullName: string;
   username: string;
 };
