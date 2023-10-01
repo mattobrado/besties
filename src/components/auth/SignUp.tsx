@@ -45,6 +45,11 @@ export default function Signup() {
         },
       }}
       onSubmit={handleSubmit(handleSignup)}
+      buttonProps={{
+        isLoading,
+        label: CONTENT.signup,
+        loadingText: CONTENT.signingUp,
+      }}
     >
       <HStack>
         <Box>
@@ -89,19 +94,6 @@ export default function Signup() {
           </InputRightElement>
         </InputGroup>
       </FormControl>
-      <Stack spacing={10} pt={2}>
-        <Button
-          _hover={{ bg: "blue.500" }}
-          bg={"blue.400"}
-          color={"white"}
-          isLoading={isLoading}
-          loadingText={CONTENT.signingUp}
-          size="lg"
-          type="submit"
-        >
-          {CONTENT.signup}
-        </Button>
-      </Stack>
     </AuthFormContainer>
   );
 }
