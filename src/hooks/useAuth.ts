@@ -78,12 +78,12 @@ export function useSignup() {
   const toast = useToast();
   const navigate = useNavigate();
 
-  async function signup({
+  const signup = async ({
     username,
     email,
     password,
     redirectTo = ROUTES.HOME,
-  }: SignupType) {
+  }: SignupType) => {
     setLoading(true);
 
     const usernameExists = await isUsernameDuplicated(username);
@@ -129,7 +129,7 @@ export function useSignup() {
         setLoading(false);
       }
     }
-  }
+  };
 
   return { signup, isLoading };
 }

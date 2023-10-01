@@ -23,11 +23,14 @@ export const CONTENT = {
   pleaseEnterAnEmailAddress: "please enter an email address",
   pleaseEnterPassword: "please enter password",
   rememberMe: "remember me",
+  signingUp: "signing up",
   signInToYourAccount: "sign in to your account",
   signup: "sign up",
   signupFailed: "signing Up failed",
   signupSuccess: "account created",
+  signupSubtitle: "to enjoy all of our cool features ✌️",
   usernameTaken: "username already exists",
+  username: "username",
 };
 
 export const PROTECTED = "/protected";

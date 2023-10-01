@@ -10,12 +10,8 @@ import {
   Checkbox,
   Container,
   Divider,
-  FormControl,
-  FormErrorMessage,
-  FormLabel,
   Heading,
   HStack,
-  Input,
   Link,
   Stack,
   Text,
@@ -24,6 +20,7 @@ import { OAuthButtonGroup } from "./OAuthButtonGroup";
 import { PasswordField } from "./PasswordField";
 import { useLogin } from "../../hooks/useAuth";
 import { useForm } from "react-hook-form";
+import AuthFormField from "./AuthFormField";
 
 const Login = () => {
   const { login, isLoading } = useLogin();
@@ -74,20 +71,13 @@ const Login = () => {
           <Stack spacing="6">
             <form onSubmit={handleSubmit(handleLogin)}>
               <Stack spacing="5">
-                <FormControl isInvalid={!!errors.email}>
-                  <FormLabel htmlFor={INPUT_TYPE.EMAIL}>
-                    {CONTENT.emailAddress}
-                  </FormLabel>
-                  <Input
-                    id={INPUT_TYPE.EMAIL}
-                    type={INPUT_TYPE.EMAIL}
-                    {...register(INPUT_TYPE.EMAIL, VALIDATE.EMAIL)}
-                  />
-                  <FormErrorMessage>
-                    {typeof errors.email?.message === "string" &&
-                      errors.email.message}
-                  </FormErrorMessage>{" "}
-                </FormControl>
+                <AuthFormField
+                  error={errors.email}
+                  inputType={INPUT_TYPE.EMAIL}
+                  label={CONTENT.emailAddress}
+                  register={register}
+                  validate={VALIDATE.EMAIL}
+                />
                 <PasswordField
                   errors={errors}
                   {...register(INPUT_TYPE.PASSWORD, VALIDATE.PASSWORD)}
