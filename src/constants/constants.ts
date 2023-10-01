@@ -2,17 +2,18 @@ import { ToastPosition } from "@chakra-ui/react";
 
 export const CONTENT = {
   appName: "besties 👯‍♂️",
+  createAnAccount: "create an account",
   dontHaveAnAccount: "don't have an account?",
   emailAddress: "email",
   error: "error",
   forgotPassword: "forgot password?",
-  goToLoginMessage: "Already have an account?",
+  goToLoginMessage: "already a user?",
   goToSignupMessage: "No account yet?",
   heartEmoji: "🩷",
   invalidEmailAddress: "email address is not valid",
   invalidPassword: "password must be at least 8 characters long",
   loggingIn: "signing In",
-  logIn: "sign in",
+  login: "sign in",
   loginSuccess: "You are logged in",
   logInToYourAccount: "log in to your account",
   logo: "👯‍♂️",
@@ -27,10 +28,10 @@ export const CONTENT = {
   signInToYourAccount: "sign in to your account",
   signup: "sign up",
   signupFailed: "signing Up failed",
-  signupSuccess: "account created",
   signupSubtitle: "to enjoy all of our cool features ✌️",
-  usernameTaken: "username already exists",
+  signupSuccess: "account created",
   username: "username",
+  usernameTaken: "username already exists",
 };
 
 export const PROTECTED = "/protected";

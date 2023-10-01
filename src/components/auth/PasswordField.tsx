@@ -13,6 +13,7 @@ import {
 import { CONTENT, INPUT_TYPE } from "../../constants/constants";
 import { forwardRef, useRef } from "react";
 import { FieldErrors, FieldValues } from "react-hook-form";
+import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
 
 export const PasswordField = forwardRef<
   HTMLInputElement,
@@ -37,7 +38,7 @@ export const PasswordField = forwardRef<
           <IconButton
             variant="text"
             aria-label={isOpen ? "Mask password" : "Reveal password"}
-            // icon={isOpen ? <HiEyeOff /> : <HiEye />}
+            icon={isOpen ? <ViewOffIcon /> : <ViewIcon />}
             onClick={onClickReveal}
           />
         </InputRightElement>

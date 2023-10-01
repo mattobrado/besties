@@ -1,7 +1,4 @@
-"use client";
-
 import {
-  Flex,
   Box,
   FormControl,
   FormLabel,
@@ -11,17 +8,16 @@ import {
   InputRightElement,
   Stack,
   Button,
-  Heading,
-  Text,
   useColorModeValue,
-  Link,
   FormErrorMessage,
+  Container,
 } from "@chakra-ui/react";
 import { useState } from "react";
 import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
 import { CONTENT, ROUTES, VALIDATE } from "../../constants/constants";
 import { useSignup } from "../../hooks/useAuth";
 import { useForm } from "react-hook-form";
+import { AuthHeading } from "./AuthHeading";
 
 export default function Signup() {
   const [showPassword, setShowPassword] = useState(false);
@@ -31,7 +27,6 @@ export default function Signup() {
     handleSubmit,
     formState: { errors },
   } = useForm();
-
   const handleSignup = async (data: any) => {
     signup({
       username: data.username,
@@ -42,21 +37,20 @@ export default function Signup() {
   };
 
   return (
-    <Flex
-      minH={"100vh"}
-      align={"center"}
-      justify={"center"}
-      bg={useColorModeValue("gray.50", "gray.800")}
+    <Container
+      maxW="lg"
+      py={{ base: "12", md: "24" }}
+      px={{ base: "0", sm: "8" }}
     >
-      <Stack spacing={8} mx={"auto"} maxW={"lg"} py={12} px={6}>
-        <Stack align={"center"}>
-          <Heading fontSize={"4xl"} textAlign={"center"}>
-            {CONTENT.signup}
-          </Heading>
-          <Text fontSize={"lg"} color={"gray.600"}>
-            {CONTENT.signupSubtitle}
-          </Text>
-        </Stack>
+      <Stack spacing="8">
+        <AuthHeading
+          title={CONTENT.createAnAccount}
+          callToAction={CONTENT.goToLoginMessage}
+          link={{
+            href: ROUTES.LOGIN,
+            label: CONTENT.login,
+          }}
+        />
         <Box
           rounded={"lg"}
           bg={useColorModeValue("white", "gray.700")}
@@ -124,14 +118,9 @@ export default function Signup() {
                 </Button>
               </Stack>
             </form>
-            <Stack pt={6}>
-              <Text align={"center"}>
-                Already a user? <Link color={"blue.400"}>Login</Link>
-              </Text>
-            </Stack>
           </Stack>
         </Box>
       </Stack>
-    </Flex>
+    </Container>
   );
 }
