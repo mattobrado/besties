@@ -8,7 +8,7 @@ export const CONTENT = {
   error: "error",
   forgotPassword: "forgot password?",
   goToLoginMessage: "already a user?",
-  goToSignupMessage: "No account yet?",
+  goToSignupMessage: "no account yet?",
   heartEmoji: "🩷",
   invalidEmailAddress: "email address is not valid",
   invalidPassword: "password must be at least 8 characters long",
