@@ -38,7 +38,7 @@ const links = [
   },
 ];
 
-const NavBar = () => {
+const TopNavBar = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const { logout } = useLogout();
 
@@ -124,4 +124,4 @@ const NavLink = (props: { children: React.ReactNode; to: string }) => {
   );
 };
 
-export default NavBar;
+export default TopNavBar;

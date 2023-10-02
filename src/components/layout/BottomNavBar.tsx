@@ -5,6 +5,7 @@ import {
 } from "chakra-ui-bottom-navigation";
 import { useState } from "react";
 import { CONTENT } from "../../lib/content";
+import { Box, Flex } from "@chakra-ui/react";
 
 export const BottomNavBar = () => {
   const [value, setValue] = useState(0);
