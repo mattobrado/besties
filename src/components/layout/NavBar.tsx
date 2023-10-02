@@ -18,7 +18,7 @@ import {
 } from "@chakra-ui/react";
 import { CloseIcon, HamburgerIcon } from "@chakra-ui/icons";
 import { useLogout } from "../../hooks/useAuth";
-import { auth } from "../../firebase";
+import { auth } from "../../lib/firebase";
 
 const Links = ["Dashboard", "Projects", "Team"];
 

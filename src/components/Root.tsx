@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { onAuthStateChanged } from "firebase/auth";
-import { auth } from "../firebase";
+import { auth } from "../lib/firebase";
 import { Outlet } from "react-router-dom";
 import NavBar from "./layout/NavBar";
 
