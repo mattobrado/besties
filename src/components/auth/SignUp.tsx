@@ -1,5 +1,3 @@
-import { Box, HStack } from "@chakra-ui/react";
-import { useState } from "react";
 import { CONTENT, INPUT_TYPE, ROUTES, VALIDATE } from "../../lib/constants";
 import { useSignup } from "../../hooks/useAuth";
 import { useForm } from "react-hook-form";
@@ -8,7 +6,6 @@ import AuthFormField from "./AuthFormField";
 import { PasswordField } from "./PasswordField";
 
 export default function Signup() {
-  const [showPassword, setShowPassword] = useState(false);
   const { signup, isLoading } = useSignup();
   const {
     register,
@@ -28,37 +25,37 @@ export default function Signup() {
   return (
     <AuthFormContainer
       authHeadingProps={{
-        title: CONTENT.createAnAccount,
-        callToAction: CONTENT.goToLoginMessage,
+        title: CONTENT.AUTH.createAnAccount,
+        callToAction: CONTENT.AUTH.goToLoginMessage,
         link: {
           href: ROUTES.LOGIN,
-          label: CONTENT.login,
+          label: CONTENT.AUTH.login,
         },
       }}
       onSubmit={handleSubmit(handleSignup)}
       buttonProps={{
         isLoading,
-        label: CONTENT.signup,
-        loadingText: CONTENT.signingUp,
+        label: CONTENT.AUTH.signup,
+        loadingText: CONTENT.AUTH.signingUp,
       }}
     >
       <AuthFormField
         error={errors?.email}
         inputType={INPUT_TYPE.EMAIL}
-        label={CONTENT.emailAddress}
+        label={CONTENT.AUTH.emailAddress}
         register={register}
         validate={VALIDATE.EMAIL}
       />
       <AuthFormField
         error={errors?.fullName}
         inputType={INPUT_TYPE.FULL_NAME}
-        label={CONTENT.fullName}
+        label={CONTENT.AUTH.fullName}
         register={register}
       />
       <AuthFormField
         error={errors?.username}
         inputType={INPUT_TYPE.USERNAME}
-        label={CONTENT.username}
+        label={CONTENT.AUTH.username}
         register={register}
         validate={VALIDATE.USERNAME}
       />

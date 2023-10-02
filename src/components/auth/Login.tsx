@@ -28,25 +28,25 @@ const Login = () => {
     <>
       <AuthFormContainer
         authHeadingProps={{
-          title: CONTENT.logInToYourAccount,
-          callToAction: CONTENT.dontHaveAnAccount,
+          title: CONTENT.AUTH.logInToYourAccount,
+          callToAction: CONTENT.AUTH.dontHaveAnAccount,
           link: {
             href: ROUTES.SIGNUP,
-            label: CONTENT.signup,
+            label: CONTENT.AUTH.signup,
           },
         }}
         onSubmit={handleSubmit(handleLogin)}
         buttonProps={{
           isLoading,
-          label: CONTENT.login,
-          loadingText: CONTENT.loggingIn,
+          label: CONTENT.AUTH.login,
+          loadingText: CONTENT.AUTH.loggingIn,
         }}
       >
         <Stack spacing="5">
           <AuthFormField
             error={errors?.email}
             inputType={INPUT_TYPE.EMAIL}
-            label={CONTENT.emailAddress}
+            label={CONTENT.AUTH.emailAddress}
             register={register}
             validate={VALIDATE.EMAIL}
           />
@@ -56,9 +56,9 @@ const Login = () => {
           />
         </Stack>
         <HStack justify="space-between">
-          <Checkbox defaultChecked>{CONTENT.rememberMe}</Checkbox>
+          <Checkbox defaultChecked>{CONTENT.AUTH.rememberMe}</Checkbox>
           <Button variant="text" size="sm">
-            {CONTENT.forgotPassword}
+            {CONTENT.AUTH.forgotPassword}
           </Button>
         </HStack>
       </AuthFormContainer>

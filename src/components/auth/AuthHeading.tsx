@@ -8,7 +8,7 @@ export const AuthHeading = ({
 }: AuthHeadingPropsType) => (
   <Stack spacing="6">
     <Stack spacing={{ base: "2", md: "3" }} textAlign="center">
-      <Heading>{CONTENT.heartEmoji}</Heading>
+      <Heading>{CONTENT.AUTH.heartEmoji}</Heading>
       <Heading size={{ base: "xs", md: "sm" }}>{title}</Heading>
       <Text color="fg.muted">
         {callToAction} <Link href={link.href}>{link.label}</Link>

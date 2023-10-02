@@ -34,7 +34,9 @@ export const PasswordField = forwardRef<
 
   return (
     <FormControl isInvalid={!!props.error}>
-      <FormLabel htmlFor={INPUT_TYPE.PASSWORD}>{CONTENT.password}</FormLabel>
+      <FormLabel htmlFor={INPUT_TYPE.PASSWORD}>
+        {CONTENT.AUTH.password}
+      </FormLabel>
       <InputGroup>
         <InputRightElement>
           <IconButton

@@ -48,11 +48,6 @@ export const useLogin = () => {
     setLoading(true);
     try {
       await signInWithEmailAndPassword(auth, email, password);
-      toast({
-        title: "you are signed in",
-        status: "success",
-        ...TOAST_PROPS,
-      });
       navigate(redirectTo);
     } catch (error: any) {
       toast({
@@ -76,7 +71,7 @@ export function useLogout() {
   async function logout() {
     if (await signOut()) {
       toast({
-        title: CONTENT.logOutSuccess,
+        title: CONTENT.AUTH.logOutSuccess,
         status: "success",
         ...TOAST_PROPS,
       });
@@ -105,7 +100,7 @@ export function useSignup() {
 
     if (usernameExists) {
       toast({
-        title: CONTENT.usernameTaken,
+        title: CONTENT.AUTH.usernameTaken,
         status: "error",
         ...TOAST_PROPS,
       });
@@ -127,8 +122,8 @@ export function useSignup() {
         });
 
         toast({
-          title: CONTENT.signupSuccess,
-          description: CONTENT.loginSuccess,
+          title: CONTENT.AUTH.signupSuccess,
+          description: CONTENT.AUTH.loginSuccess,
           status: "success",
           ...TOAST_PROPS,
         });
@@ -136,7 +131,7 @@ export function useSignup() {
         navigate(redirectTo);
       } catch (error: any) {
         toast({
-          title: CONTENT.signupFailed,
+          title: CONTENT.AUTH.signupFailed,
           description: error?.message,
           status: "error",
           ...TOAST_PROPS,

@@ -2,7 +2,7 @@ import { createBrowserRouter } from "react-router-dom";
 import Login from "../components/auth/Login";
 import Layout from "../components/layout/Layout";
 import { ROUTES } from "./constants";
-import Signup from "../components/auth/SignUp";
+import Signup from "../components/auth/Signup";
 import Home from "../components/home/Home";
 
 export const router = createBrowserRouter([
@@ -17,10 +17,10 @@ export const router = createBrowserRouter([
         path: ROUTES.HOME,
         element: <Home />,
       },
-      // {
-      //   path: USERS,
-      //   element: <Users />,
-      // },
+      {
+        path: ROUTES.USERS,
+        element: "users", // <Users />,
+      },
       // {
       //   path: PROFILE,
       //   element: <Profile />,

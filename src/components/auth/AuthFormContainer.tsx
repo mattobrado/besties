@@ -54,7 +54,7 @@ const AuthFormContainer = ({
                 <HStack>
                   <Divider />
                   <Text textStyle="sm" whiteSpace="nowrap" color="fg.muted">
-                    {CONTENT.orContinueWith}
+                    {CONTENT.AUTH.orContinueWith}
                   </Text>
                   <Divider />
                 </HStack>

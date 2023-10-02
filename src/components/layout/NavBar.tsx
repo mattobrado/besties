@@ -20,7 +20,11 @@ import { CloseIcon, HamburgerIcon } from "@chakra-ui/icons";
 import { useLogout } from "../../hooks/useAuth";
 import { auth } from "../../lib/firebase";
 
-const Links = ["Dashboard", "Projects", "Team"];
+const Links = [
+  CONTENT.NAVBAR.seeAllUsers,
+  CONTENT.NAVBAR.mostPopular,
+  CONTENT.NAVBAR.highestRated,
+];
 
 const NavLink = (props: { children: React.ReactNode }) => {
   const { children } = props;
@@ -55,7 +59,7 @@ const NavBar = () => {
           onClick={isOpen ? onClose : onOpen}
         />
         <HStack spacing={8} alignItems={"center"}>
-          <Heading>{CONTENT.logo}</Heading>
+          <Heading>{CONTENT.AUTH.logo}</Heading>
           <HStack as={"nav"} spacing={4} display={{ base: "none", md: "flex" }}>
             {Links.map((link) => (
               <NavLink key={link}>{link}</NavLink>
@@ -80,9 +84,9 @@ const NavBar = () => {
                 />
               </MenuButton>
               <MenuList>
-                <MenuItem>Link 1</MenuItem>
+                <MenuItem>{CONTENT.NAVBAR.myProfile}</MenuItem>
                 <MenuDivider />
-                <MenuItem onClick={logout}>{CONTENT.logOut}</MenuItem>
+                <MenuItem onClick={logout}>{CONTENT.NAVBAR.logOut}</MenuItem>
               </MenuList>
             </Menu>
           )}

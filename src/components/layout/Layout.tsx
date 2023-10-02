@@ -5,6 +5,7 @@ import { ROUTES } from "../../lib/constants";
 import NavBar from "./NavBar";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "../../lib/firebase";
+import LoadingScreen from "../LoadingScreen";
 
 const Layout = () => {
   const { pathname } = useLocation();
@@ -28,7 +29,7 @@ const Layout = () => {
     }
   }, [pathname, user, isLoading]);
 
-  if (isLoading) return "loading auth user...";
+  if (isLoading) return <LoadingScreen />;
   return (
     <>
       <NavBar />
