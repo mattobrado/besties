@@ -70,11 +70,6 @@ export function useLogout() {
 
   async function logout() {
     if (await signOut()) {
-      toast({
-        title: CONTENT.AUTH.logOutSuccess,
-        status: "success",
-        ...TOAST_PROPS,
-      });
       navigate(ROUTES.LOGIN);
     } // else: show error [signOut() returns false if failed]
   }

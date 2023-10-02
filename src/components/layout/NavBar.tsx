@@ -26,25 +26,6 @@ const Links = [
   CONTENT.NAVBAR.highestRated,
 ];
 
-const NavLink = (props: { children: React.ReactNode }) => {
-  const { children } = props;
-  return (
-    <Box
-      as="a"
-      px={2}
-      py={1}
-      rounded={"md"}
-      _hover={{
-        textDecoration: "none",
-        bg: useColorModeValue("gray.200", "gray.700"),
-      }}
-      href={"#"}
-    >
-      {children}
-    </Box>
-  );
-};
-
 const NavBar = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const { logout } = useLogout();
@@ -105,4 +86,24 @@ const NavBar = () => {
     </Box>
   );
 };
+
+const NavLink = (props: { children: React.ReactNode }) => {
+  const { children } = props;
+  return (
+    <Box
+      as="a"
+      px={2}
+      py={1}
+      rounded={"md"}
+      _hover={{
+        textDecoration: "none",
+        bg: useColorModeValue("gray.200", "gray.700"),
+      }}
+      href={"#"}
+    >
+      {children}
+    </Box>
+  );
+};
+
 export default NavBar;
