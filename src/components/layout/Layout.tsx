@@ -9,14 +9,12 @@ const Layout = () => {
   const { user, isLoading } = useAuth();
 
   useEffect(() => {
-    if (pathname.startsWith(ROUTES.PROTECTED) && !user) {
+    if (!isLoading && pathname.startsWith(ROUTES.PROTECTED) && !user) {
       navigate(ROUTES.LOGIN);
     }
-  }, [pathname, user]);
+  }, [pathname, user, isLoading]);
 
-  if (isLoading) {
-    return "loading...";
-  }
+  if (isLoading) return "loading auth user...";
   return <Outlet />;
 };
 

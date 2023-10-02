@@ -1,26 +1,40 @@
 import { useAuthState, useSignOut } from "react-firebase-hooks/auth";
 import { auth, db } from "../firebase";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { CONTENT, ROUTES, TOAST_PROPS } from "../constants/constants";
 import {
+  User,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
 } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import { useToast } from "@chakra-ui/react";
-import { setDoc, doc } from "firebase/firestore";
+import { setDoc, doc, getDoc, DocumentData } from "firebase/firestore";
 import { LoginType, SignupType as SignupType } from "../types/types";
 import isUsernameDuplicated from "./utils/isUserNameDuplicated";
 
-export const useAuth = () => {
-  const [user, isLoading, isError] = useAuthState(auth);
-  return {
-    user,
-    isLoading,
-    isError,
-  };
-};
+export function useAuth() {
+  const [authUser, authLoading, error] = useAuthState(auth);
+  const [isLoading, setLoading] = useState(true);
+  const [user, setUser] = useState<DocumentData | undefined>(undefined);
 
+  useEffect(() => {
+    const fetchData = async (authUser_: User) => {
+      setLoading(true);
+      const ref = doc(db, "users", authUser_.uid);
+      const docSnap = await getDoc(ref);
+      setUser(docSnap.data());
+      setLoading(false);
+    };
+
+    if (!authLoading) {
+      if (authUser) fetchData(authUser);
+      else setLoading(false); // Not signed in
+    }
+  }, [authLoading]);
+
+  return { user, isLoading, error };
+}
 export const useLogin = () => {
   const [isLoading, setLoading] = useState(false);
   const navigate = useNavigate();
