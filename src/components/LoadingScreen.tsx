@@ -1,10 +1,10 @@
-import { Center, Container, Spinner } from "@chakra-ui/react";
+import { AbsoluteCenter, Container, Spinner } from "@chakra-ui/react";
 
 const LoadingScreen = () => (
   <Container py={{ base: "48" }}>
-    <Center h="100px">
+    <AbsoluteCenter>
       <Spinner size="lg" />
-    </Center>
+    </AbsoluteCenter>
   </Container>
 );
 

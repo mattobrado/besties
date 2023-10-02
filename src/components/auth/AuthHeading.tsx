@@ -1,5 +1,6 @@
 import { Stack, Heading, Text, Link } from "@chakra-ui/react";
 import { CONTENT } from "../../lib/constants";
+import { Link as ReactRouterLink } from "react-router-dom";
 
 export const AuthHeading = ({
   title,
@@ -11,7 +12,10 @@ export const AuthHeading = ({
       <Heading>{CONTENT.AUTH.heartEmoji}</Heading>
       <Heading size={{ base: "xs", md: "sm" }}>{title}</Heading>
       <Text color="fg.muted">
-        {callToAction} <Link href={link.href}>{link.label}</Link>
+        {callToAction}{" "}
+        <Link as={ReactRouterLink} to={link.to}>
+          {link.label}
+        </Link>
       </Text>
     </Stack>
   </Stack>
@@ -21,7 +25,7 @@ export type AuthHeadingPropsType = {
   title: string;
   callToAction: string;
   link: {
-    href: string;
+    to: string;
     label: string;
   };
 };

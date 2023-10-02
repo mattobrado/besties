@@ -20,19 +20,20 @@ import {
 import { CloseIcon, HamburgerIcon } from "@chakra-ui/icons";
 import { useLogout } from "../../hooks/useAuth";
 import { auth } from "../../lib/firebase";
+import { Link as ReactRouterLink } from "react-router-dom";
 
 const links = [
   {
     label: CONTENT.NAVBAR.seeAllUsers,
-    href: ROUTES.USERS,
+    to: ROUTES.USERS,
   },
   {
     label: CONTENT.NAVBAR.mostPopular,
-    href: ROUTES.HOME,
+    to: ROUTES.HOME,
   },
   {
     label: CONTENT.NAVBAR.highestRated,
-    href: ROUTES.HOME,
+    to: ROUTES.HOME,
   },
 ];
 
@@ -50,12 +51,12 @@ const NavBar = () => {
           onClick={isOpen ? onClose : onOpen}
         />
         <HStack spacing={8} alignItems={"center"}>
-          <Link href={ROUTES.HOME}>
+          <Link as={ReactRouterLink} to={ROUTES.HOME}>
             <Heading>{CONTENT.AUTH.logo}</Heading>
           </Link>
           <HStack as={"nav"} spacing={4} display={{ base: "none", md: "flex" }}>
             {links.map((link) => (
-              <NavLink key={link.label} href={link.href}>
+              <NavLink key={link.label} to={link.to}>
                 {link.label}
               </NavLink>
             ))}
@@ -92,7 +93,7 @@ const NavBar = () => {
         <Box pb={4} display={{ md: "none" }}>
           <Stack as={"nav"} spacing={4}>
             {links.map((link) => (
-              <NavLink key={link.label} href={link.href}>
+              <NavLink key={link.label} to={link.to}>
                 {link.label}
               </NavLink>
             ))}
@@ -103,11 +104,10 @@ const NavBar = () => {
   );
 };
 
-const NavLink = (props: { children: React.ReactNode; href: string }) => {
+const NavLink = (props: { children: React.ReactNode; to: string }) => {
   const { children } = props;
   return (
     <Box
-      as="a"
       px={2}
       py={1}
       rounded={"md"}
@@ -115,9 +115,10 @@ const NavLink = (props: { children: React.ReactNode; href: string }) => {
         textDecoration: "none",
         bg: useColorModeValue("gray.200", "gray.700"),
       }}
-      href={props.href}
     >
-      {children}
+      <Link as={ReactRouterLink} to={props.to}>
+        {children}
+      </Link>
     </Box>
   );
 };

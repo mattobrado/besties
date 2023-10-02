@@ -28,7 +28,7 @@ export default function Signup() {
         title: CONTENT.AUTH.createAnAccount,
         callToAction: CONTENT.AUTH.goToLoginMessage,
         link: {
-          href: ROUTES.LOGIN,
+          to: ROUTES.LOGIN,
           label: CONTENT.AUTH.login,
         },
       }}
