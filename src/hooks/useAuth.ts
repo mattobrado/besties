@@ -10,7 +10,7 @@ import {
 import { useNavigate } from "react-router-dom";
 import { useToast } from "@chakra-ui/react";
 import { setDoc, doc, getDoc, DocumentData } from "firebase/firestore";
-import { LoginType, SignupType as SignupType } from "../types/types";
+import { LoginType, SignupType as SignupType } from "../lib/types";
 import isUsernameDuplicated from "./utils/isUserNameDuplicated";
 
 export function useAuth() {
