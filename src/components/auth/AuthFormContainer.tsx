@@ -19,7 +19,7 @@ const AuthFormContainer = ({
 }: {
   authHeadingProps: AuthHeadingPropsType;
   buttonProps: { isLoading: boolean; label: string; loadingText: string };
-  children: JSX.Element | JSX.Element[];
+  children: React.ReactNode;
   onSubmit: React.FormEventHandler<HTMLFormElement>;
 }) => (
   <Container

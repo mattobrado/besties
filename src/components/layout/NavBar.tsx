@@ -1,4 +1,4 @@
-import { CONTENT } from "../../lib/constants";
+import { CONTENT, ROUTES } from "../../lib/constants";
 import {
   Box,
   Flex,
@@ -15,15 +15,25 @@ import {
   useColorModeValue,
   Stack,
   Heading,
+  Link,
 } from "@chakra-ui/react";
 import { CloseIcon, HamburgerIcon } from "@chakra-ui/icons";
 import { useLogout } from "../../hooks/useAuth";
 import { auth } from "../../lib/firebase";
 
-const Links = [
-  CONTENT.NAVBAR.seeAllUsers,
-  CONTENT.NAVBAR.mostPopular,
-  CONTENT.NAVBAR.highestRated,
+const links = [
+  {
+    label: CONTENT.NAVBAR.seeAllUsers,
+    href: ROUTES.USERS,
+  },
+  {
+    label: CONTENT.NAVBAR.mostPopular,
+    href: ROUTES.HOME,
+  },
+  {
+    label: CONTENT.NAVBAR.highestRated,
+    href: ROUTES.HOME,
+  },
 ];
 
 const NavBar = () => {
@@ -40,10 +50,12 @@ const NavBar = () => {
           onClick={isOpen ? onClose : onOpen}
         />
         <HStack spacing={8} alignItems={"center"}>
-          <Heading>{CONTENT.AUTH.logo}</Heading>
+          <Link href={ROUTES.HOME}>
+            <Heading>{CONTENT.AUTH.logo}</Heading>
+          </Link>
           <HStack as={"nav"} spacing={4} display={{ base: "none", md: "flex" }}>
-            {Links.map((link) => (
-              <NavLink key={link}>{link}</NavLink>
+            {links.map((link) => (
+              <NavLink href={link.href}>{link.label}</NavLink>
             ))}
           </HStack>
         </HStack>
@@ -77,8 +89,10 @@ const NavBar = () => {
       {isOpen ? (
         <Box pb={4} display={{ md: "none" }}>
           <Stack as={"nav"} spacing={4}>
-            {Links.map((link) => (
-              <NavLink key={link}>{link}</NavLink>
+            {links.map((link) => (
+              <NavLink key={link.label} href={link.href}>
+                {link.label}
+              </NavLink>
             ))}
           </Stack>
         </Box>
@@ -87,7 +101,7 @@ const NavBar = () => {
   );
 };
 
-const NavLink = (props: { children: React.ReactNode }) => {
+const NavLink = (props: { children: React.ReactNode; href: string }) => {
   const { children } = props;
   return (
     <Box
@@ -99,7 +113,7 @@ const NavLink = (props: { children: React.ReactNode }) => {
         textDecoration: "none",
         bg: useColorModeValue("gray.200", "gray.700"),
       }}
-      href={"#"}
+      href={props.href}
     >
       {children}
     </Box>
