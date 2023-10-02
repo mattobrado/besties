@@ -36,7 +36,7 @@ const Login = () => {
           title: CONTENT.logInToYourAccount,
           callToAction: CONTENT.dontHaveAnAccount,
           link: {
-            href: ROUTES.SIGN_UP,
+            href: ROUTES.SIGNUP,
             label: CONTENT.signup,
           },
         }}

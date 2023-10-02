@@ -35,7 +35,7 @@ export const CONTENT = {
   fullName: "full name",
 };
 
-export const PROTECTED = "/protected";
+const PROTECTED = "/protected";
 
 export const ROUTES = {
   COMMENTS: PROTECTED + "/comments/:id",
@@ -44,7 +44,7 @@ export const ROUTES = {
   PROFILE: PROTECTED + "/profile/:id",
   PROTECTED,
   ROOT: "/",
-  SIGN_UP: "/signup",
+  SIGNUP: "/signup",
   USERS: PROTECTED + "/users",
 };
 

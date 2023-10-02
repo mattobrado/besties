@@ -24,9 +24,7 @@ const Root = () => {
   return (
     <>
       <NavBar />
-      <div className="container" id="detail">
-        <Outlet />
-      </div>
+      <Outlet />
     </>
   );
 };
