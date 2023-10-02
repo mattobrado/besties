@@ -1,7 +1,7 @@
 import { useAuthState, useSignOut } from "react-firebase-hooks/auth";
 import { auth, db } from "../lib/firebase";
 import { useEffect, useState } from "react";
-import { CONTENT, ROUTES, TOAST_PROPS } from "../constants/constants";
+import { CONTENT, ROUTES, TOAST_PROPS } from "../lib/constants";
 import {
   User,
   createUserWithEmailAndPassword,

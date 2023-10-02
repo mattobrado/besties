@@ -1,5 +1,5 @@
 import { Stack, Heading, Text, Link } from "@chakra-ui/react";
-import { CONTENT } from "../../constants/constants";
+import { CONTENT } from "../../lib/constants";
 
 export const AuthHeading = ({
   title,

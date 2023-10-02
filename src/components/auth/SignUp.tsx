@@ -1,11 +1,6 @@
 import { Box, HStack } from "@chakra-ui/react";
 import { useState } from "react";
-import {
-  CONTENT,
-  INPUT_TYPE,
-  ROUTES,
-  VALIDATE,
-} from "../../constants/constants";
+import { CONTENT, INPUT_TYPE, ROUTES, VALIDATE } from "../../lib/constants";
 import { useSignup } from "../../hooks/useAuth";
 import { useForm } from "react-hook-form";
 import AuthFormContainer from "./AuthFormContainer";

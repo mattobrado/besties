@@ -10,7 +10,7 @@ import {
   useDisclosure,
   useMergeRefs,
 } from "@chakra-ui/react";
-import { CONTENT, INPUT_TYPE } from "../../constants/constants";
+import { CONTENT, INPUT_TYPE } from "../../lib/constants";
 import { forwardRef, useRef } from "react";
 import { FieldError, FieldErrorsImpl, Merge } from "react-hook-form";
 import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";

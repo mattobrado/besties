@@ -1,4 +1,4 @@
-import { CONTENT } from "../../constants/constants";
+import { CONTENT } from "../../lib/constants";
 import {
   Box,
   Flex,

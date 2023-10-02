@@ -1,9 +1,4 @@
-import {
-  CONTENT,
-  INPUT_TYPE,
-  ROUTES,
-  VALIDATE,
-} from "../../constants/constants";
+import { CONTENT, INPUT_TYPE, ROUTES, VALIDATE } from "../../lib/constants";
 import { Button, Checkbox, HStack, Stack } from "@chakra-ui/react";
 import { PasswordField } from "./PasswordField";
 import { useLogin } from "../../hooks/useAuth";

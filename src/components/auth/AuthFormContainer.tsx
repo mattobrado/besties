@@ -9,7 +9,7 @@ import {
 } from "@chakra-ui/react";
 import { AuthHeading, AuthHeadingPropsType } from "./AuthHeading";
 import { OAuthButtonGroup } from "./OAuthButtonGroup";
-import { CONTENT } from "../../constants/constants";
+import { CONTENT } from "../../lib/constants";
 
 const AuthFormContainer = ({
   authHeadingProps,

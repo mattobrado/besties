@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { Outlet, useLocation, useNavigate } from "react-router-dom";
 import { useAuth } from "../../hooks/useAuth";
-import { ROUTES } from "../../constants/constants";
+import { ROUTES } from "../../lib/constants";
 import NavBar from "./NavBar";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "../../lib/firebase";
