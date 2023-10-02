@@ -1,10 +1,11 @@
-import { CONTENT, INPUT_TYPE, ROUTES, VALIDATE } from "../../lib/constants";
+import { INPUT_TYPE, ROUTES, VALIDATE } from "../../lib/constants";
 import { Button, Checkbox, HStack, Stack } from "@chakra-ui/react";
 import { PasswordField } from "./PasswordField";
 import { useLogin } from "../../hooks/useAuth";
 import { useForm } from "react-hook-form";
 import AuthFormField from "./AuthFormField";
 import AuthFormContainer from "./AuthFormContainer";
+import { CONTENT } from "../../lib/content";
 
 const Login = () => {
   const { login, isLoading } = useLogin();

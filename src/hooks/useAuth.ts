@@ -1,7 +1,7 @@
 import { useAuthState, useSignOut } from "react-firebase-hooks/auth";
 import { auth, db } from "../lib/firebase";
 import { useEffect, useState } from "react";
-import { CONTENT, ROUTES, TOAST_PROPS } from "../lib/constants";
+import { ROUTES, TOAST_PROPS } from "../lib/constants";
 import {
   User,
   createUserWithEmailAndPassword,
@@ -12,6 +12,7 @@ import { useToast } from "@chakra-ui/react";
 import { setDoc, doc, getDoc, DocumentData } from "firebase/firestore";
 import { LoginType, SignupType as SignupType } from "../lib/types";
 import isUsernameDuplicated from "./utils/isUserNameDuplicated";
+import { CONTENT } from "../lib/content";
 
 export function useAuth() {
   const [authUser, authLoading, error] = useAuthState(auth);

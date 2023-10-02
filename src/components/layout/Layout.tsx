@@ -6,6 +6,7 @@ import NavBar from "./NavBar";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "../../lib/firebase";
 import LoadingScreen from "../LoadingScreen";
+import { BottomNavBar } from "./BottomNavBar";
 
 const Layout = () => {
   const { pathname } = useLocation();
@@ -32,7 +33,8 @@ const Layout = () => {
   return (
     <>
       <NavBar />
-      {isLoading && <Outlet />}
+      {isLoading ? <Outlet /> : LoadingScreen}
+      <BottomNavBar />
     </>
   );
 };

@@ -1,4 +1,4 @@
-import { CONTENT, ROUTES } from "../../lib/constants";
+import { ROUTES } from "../../lib/constants";
 import {
   Box,
   Flex,
@@ -21,6 +21,7 @@ import { CloseIcon, HamburgerIcon } from "@chakra-ui/icons";
 import { useLogout } from "../../hooks/useAuth";
 import { auth } from "../../lib/firebase";
 import { Link as ReactRouterLink } from "react-router-dom";
+import { CONTENT } from "../../lib/content";
 
 const links = [
   {
@@ -52,7 +53,7 @@ const NavBar = () => {
         />
         <HStack spacing={8} alignItems={"center"}>
           <Link as={ReactRouterLink} to={ROUTES.HOME}>
-            <Heading>{CONTENT.AUTH.logo}</Heading>
+            <Heading>{CONTENT.NAVBAR.logo}</Heading>
           </Link>
           <HStack as={"nav"} spacing={4} display={{ base: "none", md: "flex" }}>
             {links.map((link) => (
