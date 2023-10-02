@@ -4,6 +4,7 @@ import Layout from "../components/layout/Layout";
 import { ROUTES } from "./constants";
 import Signup from "../components/auth/Signup";
 import Home from "../components/home/Home";
+import LoadingScreen from "../components/LoadingScreen";
 
 export const router = createBrowserRouter([
   { path: ROUTES.ROOT, element: "Public Root" },
@@ -19,16 +20,12 @@ export const router = createBrowserRouter([
       },
       {
         path: ROUTES.USERS,
-        element: "users", // <Users />,
+        element: <LoadingScreen />, // <Users />,
       },
-      // {
-      //   path: PROFILE,
-      //   element: <Profile />,
-      // },
-      // {
-      //   path: COMMENTS,
-      //   element: <Comments />,
-      // },
+      {
+        path: ROUTES.PROFILE,
+        element: <LoadingScreen />,
+      },
     ],
   },
 ]);

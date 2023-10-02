@@ -29,11 +29,10 @@ const Layout = () => {
     }
   }, [pathname, user, isLoading]);
 
-  if (isLoading) return <LoadingScreen />;
   return (
     <>
       <NavBar />
-      <Outlet />
+      {isLoading && <Outlet />}
     </>
   );
 };
