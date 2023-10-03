@@ -6,7 +6,6 @@ import { useForm } from "react-hook-form";
 import AuthFormField from "./AuthFormField";
 import AuthFormContainer from "./AuthFormContainer";
 import { CONTENT } from "../../lib/content";
-import { COLORS } from "../../lib/theme";
 
 const Login = () => {
   const { login, isLoading } = useLogin();
@@ -58,10 +57,8 @@ const Login = () => {
           />
         </Stack>
         <HStack justify="space-between">
-          <Checkbox color={COLORS.text} defaultChecked>
-            {CONTENT.AUTH.rememberMe}
-          </Checkbox>
-          <Button color={COLORS.text} variant="text" size="sm">
+          <Checkbox defaultChecked>{CONTENT.AUTH.rememberMe}</Checkbox>
+          <Button variant="text" size="sm">
             {CONTENT.AUTH.forgotPassword}
           </Button>
         </HStack>

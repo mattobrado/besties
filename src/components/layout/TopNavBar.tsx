@@ -22,7 +22,6 @@ import { useLogout } from "../../hooks/useAuth";
 import { auth } from "../../lib/firebase";
 import { Link as ReactRouterLink } from "react-router-dom";
 import { CONTENT } from "../../lib/content";
-import { COLORS } from "../../lib/theme";
 
 const links = [
   {
@@ -44,7 +43,7 @@ const TopNavBar = () => {
   const { logout } = useLogout();
 
   return (
-    <Box bg={COLORS.nav} px={4}>
+    <Box px={4}>
       <Flex h={24} alignItems={"center"} justifyContent={"space-between"}>
         <IconButton
           icon={isOpen ? <CloseIcon /> : <HamburgerIcon />}
@@ -61,35 +60,34 @@ const TopNavBar = () => {
           <HStack as={"nav"} spacing={4} display={{ base: "none", md: "flex" }}>
             {links.map((link) => (
               <NavLink key={link.label} to={link.to}>
-                {link.label}
+                <Text>{link.label}</Text>
               </NavLink>
             ))}
           </HStack>
         </HStack>
         <Flex alignItems={"center"}>
-          {auth.currentUser && (
-            <Menu>
-              <MenuButton
-                as={Button}
-                rounded={"full"}
-                variant={"link"}
-                cursor={"pointer"}
-                minW={0}
-              >
-                <Avatar
-                  size={"lg"}
-                  src={
-                    "https://images.unsplash.com/photo-1493666438817-866a91353ca9?ixlib=rb-0.3.5&q=80&fm=jpg&crop=faces&fit=crop&h=200&w=200&s=b616b2c5b373a80ffc9636ba24f7a4a9"
-                  }
-                />
-              </MenuButton>
-              <MenuList>
-                <MenuItem>{CONTENT.NAVBAR.goToProfile}</MenuItem>
-                <MenuDivider />
-                <MenuItem onClick={logout}>{CONTENT.NAVBAR.logOut}</MenuItem>
-              </MenuList>
-            </Menu>
-          )}
+          <Menu>
+            <MenuButton
+              as={Button}
+              rounded={"full"}
+              variant={"link"}
+              cursor={"pointer"}
+              minW={0}
+              transition="all 0.2s"
+            >
+              <Avatar
+                size={"lg"}
+                src={
+                  "https://images.unsplash.com/photo-1493666438817-866a91353ca9?ixlib=rb-0.3.5&q=80&fm=jpg&crop=faces&fit=crop&h=200&w=200&s=b616b2c5b373a80ffc9636ba24f7a4a9"
+                }
+              />
+            </MenuButton>
+            <MenuList>
+              <MenuItem>{CONTENT.NAVBAR.goToProfile}</MenuItem>
+              <MenuDivider />
+              <MenuItem onClick={logout}>{CONTENT.NAVBAR.logOut}</MenuItem>
+            </MenuList>
+          </Menu>
         </Flex>
       </Flex>
 
@@ -98,7 +96,7 @@ const TopNavBar = () => {
           <Stack as={"nav"} spacing={4}>
             {links.map((link) => (
               <NavLink key={link.label} to={link.to}>
-                {link.label}
+                <Text>{link.label}</Text>
               </NavLink>
             ))}
           </Stack>

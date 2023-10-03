@@ -11,10 +11,8 @@ export const AuthHeading = ({
   <Stack spacing="6">
     <Stack spacing={{ base: "2", md: "3" }} textAlign="center">
       <Heading>{CONTENT.heartEmoji}</Heading>
-      <Heading color={COLORS.text} size={{ base: "xs", md: "sm" }}>
-        {title}
-      </Heading>
-      <Text color={COLORS.text}>
+      <Heading size={{ base: "xs", md: "sm" }}>{title}</Heading>
+      <Text>
         {callToAction}{" "}
         <Link as={ReactRouterLink} to={link.to}>
           {link.label}

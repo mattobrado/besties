@@ -15,7 +15,6 @@ import { forwardRef, useRef } from "react";
 import { FieldError, FieldErrorsImpl, Merge } from "react-hook-form";
 import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
 import { CONTENT } from "../../lib/content";
-import { COLORS } from "../../lib/theme";
 
 export const PasswordField = forwardRef<
   HTMLInputElement,
@@ -36,7 +35,7 @@ export const PasswordField = forwardRef<
 
   return (
     <FormControl isInvalid={!!props.error}>
-      <FormLabel color={COLORS.text} htmlFor={INPUT_TYPE.PASSWORD}>
+      <FormLabel htmlFor={INPUT_TYPE.PASSWORD}>
         {CONTENT.AUTH.password}
       </FormLabel>
       <InputGroup>
@@ -46,7 +45,6 @@ export const PasswordField = forwardRef<
             aria-label={isOpen ? "Mask password" : "Reveal password"}
             icon={isOpen ? <ViewOffIcon /> : <ViewIcon />}
             onClick={onClickReveal}
-            color={COLORS.text}
           />
         </InputRightElement>
         <Input
@@ -56,7 +54,6 @@ export const PasswordField = forwardRef<
           type={isOpen ? "text" : "password"}
           autoComplete="current-password"
           required
-          color={COLORS.text}
           {...props}
         />
       </InputGroup>
