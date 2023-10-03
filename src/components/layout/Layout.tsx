@@ -6,7 +6,6 @@ import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "../../lib/firebase";
 import LoadingScreen from "../LoadingScreen";
 import { BottomNavBar } from "./BottomNavBar";
-import { Box } from "@chakra-ui/react";
 import TopNavBar from "./TopNavBar";
 
 const Layout = () => {

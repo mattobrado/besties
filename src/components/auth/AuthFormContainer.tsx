@@ -10,6 +10,7 @@ import {
 import { AuthHeading, AuthHeadingPropsType } from "./AuthHeading";
 import { OAuthButtonGroup } from "./OAuthButtonGroup";
 import { CONTENT } from "../../lib/content";
+import { COLORS } from "../../lib/theme";
 
 const AuthFormContainer = ({
   authHeadingProps,
@@ -51,14 +52,14 @@ const AuthFormContainer = ({
                 >
                   {buttonProps.label}
                 </Button>
-                <HStack>
+                {/* <HStack>
                   <Divider />
-                  <Text textStyle="sm" whiteSpace="nowrap" color="fg.muted">
+                  <Text color={COLORS.text} textStyle="sm" whiteSpace="nowrap">
                     {CONTENT.AUTH.orContinueWith}
                   </Text>
                   <Divider />
                 </HStack>
-                <OAuthButtonGroup />
+                <OAuthButtonGroup /> */}
               </Stack>
             </>
           </form>

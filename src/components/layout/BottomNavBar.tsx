@@ -2,7 +2,7 @@ import { BottomNavigation } from "chakra-ui-bottom-navigation";
 import { useState } from "react";
 import { CONTENT } from "../../lib/content";
 import MyNavigationItem from "./MyNavigationItem";
-import COLORS from "../../lib/colors";
+import { COLORS } from "../../lib/theme";
 
 export const BottomNavBar = () => {
   const [value, setValue] = useState(0);

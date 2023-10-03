@@ -11,6 +11,7 @@ import {
   FieldErrorsImpl,
   Merge,
 } from "react-hook-form";
+import { COLORS } from "../../lib/theme";
 
 const AuthFormField = ({
   error,
@@ -26,8 +27,15 @@ const AuthFormField = ({
   validate?: any;
 }) => (
   <FormControl isInvalid={!!error}>
-    <FormLabel htmlFor={inputType}>{label}</FormLabel>
-    <Input id={inputType} type={inputType} {...register(inputType, validate)} />
+    <FormLabel color={COLORS.text} htmlFor={inputType}>
+      {label}
+    </FormLabel>
+    <Input
+      color={COLORS.text}
+      id={inputType}
+      type={inputType}
+      {...register(inputType, validate)}
+    />
     <FormErrorMessage>
       {typeof error?.message === "string" && error.message}
     </FormErrorMessage>{" "}

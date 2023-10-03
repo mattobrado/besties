@@ -22,7 +22,7 @@ import { useLogout } from "../../hooks/useAuth";
 import { auth } from "../../lib/firebase";
 import { Link as ReactRouterLink } from "react-router-dom";
 import { CONTENT } from "../../lib/content";
-import COLORS from "../../lib/colors";
+import { COLORS } from "../../lib/theme";
 
 const links = [
   {
