@@ -37,10 +37,10 @@ export const CONTENT = {
     usernameTaken: "username already exists",
   },
   NAVBAR: {
-    highestRated: "highest rated",
+    highestRated: "⭐️ highest rated",
     home: "home",
     logOut: "🚪🚶log out",
-    mostPopular: "most popular",
+    mostPopular: "🩷 most popular",
     seeAllUsers: "👥 make friends",
     goToProfile: "👤 my profile",
     search: "search",

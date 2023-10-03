@@ -1,7 +1,7 @@
 import { BottomNavigation } from "chakra-ui-bottom-navigation";
 import { CONTENT } from "../../lib/content";
 import MyNavigationItem from "./MyNavigationItem";
-import { colors } from "../../theme/customTheme";
+import { colors } from "../../theme/colors";
 
 export const BottomNavBar = () => {
   return (

@@ -3,7 +3,7 @@ import { AbsoluteCenter, Container, Spinner } from "@chakra-ui/react";
 const LoadingScreen = () => (
   <Container py={{ base: "48" }}>
     <AbsoluteCenter>
-      <Spinner size="xl" />
+      <Spinner variant={"custom"} size="xl" />
     </AbsoluteCenter>
   </Container>
 );
