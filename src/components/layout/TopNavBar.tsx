@@ -12,8 +12,6 @@ import {
   MenuItem,
   MenuDivider,
   useDisclosure,
-  useColorModeValue,
-  Stack,
   Text,
   Link,
 } from "@chakra-ui/react";
@@ -67,7 +65,6 @@ const TopNavBar = () => {
               rounded={"full"}
               variant={"link"}
               cursor={"pointer"}
-              minW={0}
               transition="all 0.2s"
             >
               <Avatar
