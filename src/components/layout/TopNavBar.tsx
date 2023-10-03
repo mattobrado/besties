@@ -14,7 +14,7 @@ import {
   useDisclosure,
   useColorModeValue,
   Stack,
-  Heading,
+  Text,
   Link,
 } from "@chakra-ui/react";
 import { CloseIcon, HamburgerIcon } from "@chakra-ui/icons";
@@ -22,6 +22,7 @@ import { useLogout } from "../../hooks/useAuth";
 import { auth } from "../../lib/firebase";
 import { Link as ReactRouterLink } from "react-router-dom";
 import { CONTENT } from "../../lib/content";
+import COLORS from "../../lib/colors";
 
 const links = [
   {
@@ -43,17 +44,19 @@ const TopNavBar = () => {
   const { logout } = useLogout();
 
   return (
-    <Box bg={useColorModeValue("gray.100", "gray.900")} px={4}>
-      <Flex h={16} alignItems={"center"} justifyContent={"space-between"}>
+    <Box bg={COLORS.nav} px={4}>
+      <Flex h={24} alignItems={"center"} justifyContent={"space-between"}>
         <IconButton
           icon={isOpen ? <CloseIcon /> : <HamburgerIcon />}
           aria-label={"open Menu"}
           display={{ md: "none" }}
           onClick={isOpen ? onClose : onOpen}
+          variant="ghost"
+          size={"lg"}
         />
         <HStack spacing={8} alignItems={"center"}>
           <Link as={ReactRouterLink} to={ROUTES.HOME}>
-            <Heading>{CONTENT.NAVBAR.logo}</Heading>
+            <Text fontSize="5xl">{CONTENT.logo}</Text>
           </Link>
           <HStack as={"nav"} spacing={4} display={{ base: "none", md: "flex" }}>
             {links.map((link) => (
@@ -74,14 +77,14 @@ const TopNavBar = () => {
                 minW={0}
               >
                 <Avatar
-                  size={"sm"}
+                  size={"lg"}
                   src={
                     "https://images.unsplash.com/photo-1493666438817-866a91353ca9?ixlib=rb-0.3.5&q=80&fm=jpg&crop=faces&fit=crop&h=200&w=200&s=b616b2c5b373a80ffc9636ba24f7a4a9"
                   }
                 />
               </MenuButton>
               <MenuList>
-                <MenuItem>{CONTENT.NAVBAR.myProfile}</MenuItem>
+                <MenuItem>{CONTENT.NAVBAR.goToProfile}</MenuItem>
                 <MenuDivider />
                 <MenuItem onClick={logout}>{CONTENT.NAVBAR.logOut}</MenuItem>
               </MenuList>

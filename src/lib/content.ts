@@ -1,7 +1,10 @@
 export const CONTENT = {
   logo: "👯‍♂️",
   heartEmoji: "🩷",
+  searchEmoji: "🔎",
   starEmoji: "⭐️",
+  addEmoji: "📝",
+  homeEmoji: "🏠",
   AUTH: {
     appName: "besties 👯‍♂️",
     createAnAccount: "create an account",
@@ -39,6 +42,8 @@ export const CONTENT = {
     logOut: "log out",
     mostPopular: "most popular",
     seeAllUsers: "👤 make friends",
-    myProfile: "my profile",
+    goToProfile: "my profile",
+    search: "search",
+    newReview: "review",
   },
 };

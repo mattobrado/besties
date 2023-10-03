@@ -2,11 +2,12 @@ import { useEffect } from "react";
 import { Outlet, useLocation, useNavigate } from "react-router-dom";
 import { useAuth } from "../../hooks/useAuth";
 import { ROUTES } from "../../lib/constants";
-import TopNavBar from "./TopNavBar";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "../../lib/firebase";
 import LoadingScreen from "../LoadingScreen";
 import { BottomNavBar } from "./BottomNavBar";
+import { Box } from "@chakra-ui/react";
+import TopNavBar from "./TopNavBar";
 
 const Layout = () => {
   const { pathname } = useLocation();
@@ -33,7 +34,7 @@ const Layout = () => {
   return (
     <>
       <TopNavBar />
-      {isLoading ? <Outlet /> : LoadingScreen}
+      {isLoading ? <LoadingScreen /> : <Outlet />}
       <BottomNavBar />
     </>
   );
