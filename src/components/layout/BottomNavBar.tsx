@@ -8,7 +8,7 @@ export const BottomNavBar = () => {
   const [value, setValue] = useState(0);
 
   return (
-    <BottomNavigation bg={COLORS.nav} value={value} onChange={() => {}}>
+    <BottomNavigation bg={COLORS.bg} value={value} onChange={() => {}}>
       <MyNavigationItem>{CONTENT.homeEmoji}</MyNavigationItem>
       <MyNavigationItem>{CONTENT.addEmoji}</MyNavigationItem>
       <MyNavigationItem>{CONTENT.searchEmoji}</MyNavigationItem>
