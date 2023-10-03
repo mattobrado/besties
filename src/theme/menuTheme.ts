@@ -27,6 +27,7 @@ const menuStyle = definePartsStyle({
     borderWidth: "2px",
     borderColor: colors.brand,
   },
+  button: { transition: "all 0.2s" },
 });
 const menuTheme = defineMultiStyleConfig({ baseStyle: menuStyle });
 

@@ -6,6 +6,8 @@ import { useForm } from "react-hook-form";
 import AuthFormField from "./AuthFormField";
 import AuthFormContainer from "./AuthFormContainer";
 import { CONTENT } from "../../lib/content";
+import { colors } from "../../theme/colors";
+import { CheckIcon } from "@chakra-ui/icons";
 
 const Login = () => {
   const { login, isLoading } = useLogin();
@@ -57,7 +59,9 @@ const Login = () => {
           />
         </Stack>
         <HStack justify="space-between">
-          <Checkbox defaultChecked>{CONTENT.AUTH.rememberMe}</Checkbox>
+          <Checkbox colorScheme="pink" defaultChecked>
+            {CONTENT.AUTH.rememberMe}
+          </Checkbox>
           <Button variant="text" size="sm">
             {CONTENT.AUTH.forgotPassword}
           </Button>
