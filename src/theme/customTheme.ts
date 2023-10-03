@@ -4,8 +4,8 @@ import { withDefaultStyles } from "chakra-ui-bottom-navigation";
 import { menuAnatomy } from "@chakra-ui/anatomy";
 
 export const colors = {
-  primaryFontColor: "white",
-  backgroundColor: "black",
+  primaryFont: "white",
+  bg: "black",
   brand: "pink.500",
 };
 
@@ -16,7 +16,7 @@ const MyBottomNavigation = withDefaultStyles({
       position: "fixed",
       display: "flex",
       justifyContent: "space-between",
-      bg: colors.backgroundColor,
+      bg: colors.bg,
     },
     item: {
       flex: 1,
@@ -39,10 +39,12 @@ const menuStyle = definePartsStyle({
     borderRadius: "xl",
     border: true,
     borderColor: colors.brand,
+    bg: colors.bg,
   },
   item: {
     // this will style the MenuItem and MenuItemOption components
-    color: colors.primaryFontColor,
+    color: colors.primaryFont,
+    bg: colors.bg,
   },
   divider: {
     // this will style the MenuDivider component
@@ -62,12 +64,12 @@ export const customTheme = extendTheme({
   components: {
     Text: {
       baseStyle: (props: any) => ({
-        color: colors.primaryFontColor,
+        color: colors.primaryFont,
       }),
       variants: {
         // used as <Text variant="secondary">
         secondary: (props: any) => ({
-          color: colors.primaryFontColor,
+          color: colors.primaryFont,
         }),
       },
     },
@@ -79,8 +81,8 @@ export const customTheme = extendTheme({
     global: (props: any) => ({
       // Optionally set global CSS styles
       body: {
-        color: colors.primaryFontColor,
-        bg: colors.backgroundColor,
+        color: colors.primaryFont,
+        bg: colors.bg,
       },
     }),
   },

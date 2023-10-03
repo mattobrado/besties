@@ -2,7 +2,7 @@ import { RouterProvider } from "react-router-dom";
 import { router } from "./lib/routes";
 import { ChakraProvider } from "@chakra-ui/react";
 import { theme } from "./lib/theme";
-import { customTheme } from "./lib/customTheme";
+import { customTheme } from "./theme/customTheme";
 
 const App = () => {
   return (
