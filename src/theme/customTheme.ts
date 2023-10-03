@@ -3,6 +3,7 @@ import { spinnerTheme } from "./spinnerTheme";
 import menuTheme from "./menuTheme";
 import { colors } from "./colors";
 import bottomNavigationTheme from "./bottomNavigationTheme";
+import { buttonTheme } from "./buttonTheme";
 
 export const customTheme = extendTheme({
   colors: colors,
@@ -20,6 +21,7 @@ export const customTheme = extendTheme({
       },
     },
     BottomNavigation: bottomNavigationTheme,
+    Button: buttonTheme,
     Menu: menuTheme,
     Spinner: spinnerTheme,
   },

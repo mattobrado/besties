@@ -19,7 +19,6 @@ import {
 } from "@chakra-ui/react";
 import { CloseIcon, HamburgerIcon } from "@chakra-ui/icons";
 import { useLogout } from "../../hooks/useAuth";
-import { auth } from "../../lib/firebase";
 import { Link as ReactRouterLink } from "react-router-dom";
 import { CONTENT } from "../../lib/content";
 
@@ -46,11 +45,11 @@ const TopNavBar = () => {
     <Box px={4}>
       <Flex h={24} alignItems={"center"} justifyContent={"space-between"}>
         <IconButton
-          icon={isOpen ? <CloseIcon /> : <HamburgerIcon />}
+          icon={isOpen ? <CloseIcon /> : <HamburgerIcon boxSize={9} />}
           aria-label={"open Menu"}
           display={{ md: "none" }}
           onClick={isOpen ? onClose : onOpen}
-          variant="ghost"
+          variant="customGhost"
           size={"lg"}
         />
         <HStack spacing={8} alignItems={"center"}>
