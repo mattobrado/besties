@@ -10,7 +10,7 @@ const menuStyle = definePartsStyle({
   // define the part you're going to style
   list: {
     // this will style the MenuList component
-    py: "4",
+    py: "3",
     borderRadius: "xl",
     border: true,
     borderColor: colors.brand,
@@ -23,7 +23,7 @@ const menuStyle = definePartsStyle({
   },
   divider: {
     // this will style the MenuDivider component
-    my: "4",
+    my: "3",
     borderWidth: "2px",
     borderColor: colors.brand,
   },

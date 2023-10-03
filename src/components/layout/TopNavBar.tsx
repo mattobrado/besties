@@ -22,21 +22,6 @@ import { useLogout } from "../../hooks/useAuth";
 import { Link as ReactRouterLink } from "react-router-dom";
 import { CONTENT } from "../../lib/content";
 
-const links = [
-  {
-    label: CONTENT.NAVBAR.seeAllUsers,
-    to: ROUTES.USERS,
-  },
-  {
-    label: CONTENT.NAVBAR.mostPopular,
-    to: ROUTES.HOME,
-  },
-  {
-    label: CONTENT.NAVBAR.highestRated,
-    to: ROUTES.HOME,
-  },
-];
-
 const TopNavBar = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const { logout } = useLogout();
@@ -44,25 +29,36 @@ const TopNavBar = () => {
   return (
     <Box px={4}>
       <Flex h={24} alignItems={"center"} justifyContent={"space-between"}>
-        <IconButton
-          icon={isOpen ? <CloseIcon /> : <HamburgerIcon boxSize={9} />}
-          aria-label={"open Menu"}
-          display={{ md: "none" }}
-          onClick={isOpen ? onClose : onOpen}
-          variant="customGhost"
-          size={"lg"}
-        />
+        <Menu>
+          <MenuButton as={Button} variant={"link"} transition="all 0.2s">
+            <IconButton
+              icon={isOpen ? <CloseIcon /> : <HamburgerIcon boxSize={9} />}
+              aria-label={"open Menu"}
+              display={{ md: "none" }}
+              onClick={isOpen ? onClose : onOpen}
+              variant="customGhost"
+              size={"lg"}
+            />
+          </MenuButton>
+          <MenuList>
+            <MenuItem>
+              <NavLink to={ROUTES.USERS}>{CONTENT.NAVBAR.seeAllUsers}</NavLink>
+            </MenuItem>
+            <MenuDivider />
+            <MenuItem>
+              <NavLink to={ROUTES.HOME}>{CONTENT.NAVBAR.mostPopular}</NavLink>
+            </MenuItem>
+            <MenuDivider />
+            <MenuItem>
+              <NavLink to={ROUTES.HOME}>{CONTENT.NAVBAR.highestRated}</NavLink>
+            </MenuItem>
+          </MenuList>
+        </Menu>
+
         <HStack spacing={8} alignItems={"center"}>
           <Link as={ReactRouterLink} to={ROUTES.HOME}>
             <Text fontSize="5xl">{CONTENT.logo}</Text>
           </Link>
-          <HStack as={"nav"} spacing={4} display={{ base: "none", md: "flex" }}>
-            {links.map((link) => (
-              <NavLink key={link.label} to={link.to}>
-                <Text>{link.label}</Text>
-              </NavLink>
-            ))}
-          </HStack>
         </HStack>
         <Flex alignItems={"center"}>
           <Menu>
@@ -89,18 +85,6 @@ const TopNavBar = () => {
           </Menu>
         </Flex>
       </Flex>
-
-      {isOpen ? (
-        <Box pb={4} display={{ md: "none" }}>
-          <Stack as={"nav"} spacing={4}>
-            {links.map((link) => (
-              <NavLink key={link.label} to={link.to}>
-                <Text>{link.label}</Text>
-              </NavLink>
-            ))}
-          </Stack>
-        </Box>
-      ) : null}
     </Box>
   );
 };
@@ -108,15 +92,7 @@ const TopNavBar = () => {
 const NavLink = (props: { children: React.ReactNode; to: string }) => {
   const { children } = props;
   return (
-    <Box
-      px={2}
-      py={1}
-      rounded={"md"}
-      _hover={{
-        textDecoration: "none",
-        bg: useColorModeValue("gray.200", "gray.700"),
-      }}
-    >
+    <Box px={2} py={1} rounded={"md"}>
       <Link as={ReactRouterLink} to={props.to}>
         {children}
       </Link>
