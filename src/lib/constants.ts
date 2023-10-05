@@ -1,19 +1,6 @@
 import { ToastPosition } from "@chakra-ui/react";
 import { CONTENT } from "./content";
 
-const PROTECTED = "/protected";
-
-export const ROUTES = {
-  COMMENTS: PROTECTED + "/comments/:id",
-  HOME: PROTECTED + "/home",
-  LOGIN: "/login",
-  PROFILE: PROTECTED + "/profile/:id",
-  PROTECTED,
-  ROOT: "/",
-  SIGNUP: "/signup",
-  USERS: PROTECTED + "/users",
-};
-
 export const INPUT_TYPE = {
   EMAIL: "email",
   PASSWORD: "password",

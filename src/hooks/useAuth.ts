@@ -1,7 +1,7 @@
 import { useAuthState, useSignOut } from "react-firebase-hooks/auth";
 import { auth, db } from "../lib/firebase";
 import { useEffect, useState } from "react";
-import { ROUTES, TOAST_PROPS } from "../lib/constants";
+import { TOAST_PROPS } from "../lib/constants";
 import {
   User,
   createUserWithEmailAndPassword,
@@ -13,6 +13,7 @@ import { setDoc, doc, getDoc, DocumentData } from "firebase/firestore";
 import { LoginType, SignupType as SignupType } from "../lib/types";
 import isUsernameDuplicated from "./utils/isUserNameDuplicated";
 import { CONTENT } from "../lib/content";
+import { ROUTES } from "../lib/routes";
 
 export function useAuth() {
   const [authUser, authLoading, error] = useAuthState(auth);

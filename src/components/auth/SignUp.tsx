@@ -1,10 +1,11 @@
-import { INPUT_TYPE, ROUTES, VALIDATE } from "../../lib/constants";
+import { INPUT_TYPE, VALIDATE } from "../../lib/constants";
 import { useSignup } from "../../hooks/useAuth";
 import { useForm } from "react-hook-form";
 import AuthFormContainer from "./AuthFormContainer";
 import AuthFormField from "./AuthFormField";
 import { PasswordField } from "./PasswordField";
 import { CONTENT } from "../../lib/content";
+import { ROUTES } from "../../lib/routes";
 
 export default function Signup() {
   const { signup, isLoading } = useSignup();

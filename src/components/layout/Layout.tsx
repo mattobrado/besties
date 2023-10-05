@@ -1,12 +1,12 @@
 import { useEffect } from "react";
 import { Outlet, useLocation, useNavigate } from "react-router-dom";
 import { useAuth } from "../../hooks/useAuth";
-import { ROUTES } from "../../lib/constants";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "../../lib/firebase";
 import LoadingScreen from "../LoadingScreen";
 import { BottomNavBar } from "./BottomNavBar";
 import TopNavBar from "./TopNavBar";
+import { ROUTES } from "../../lib/routes";
 
 const Layout = () => {
   const { pathname } = useLocation();

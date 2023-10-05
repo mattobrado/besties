@@ -1,4 +1,3 @@
-import { INPUT_TYPE, ROUTES, VALIDATE } from "../../lib/constants";
 import { Button, Checkbox, HStack, Stack } from "@chakra-ui/react";
 import { PasswordField } from "./PasswordField";
 import { useLogin } from "../../hooks/useAuth";
@@ -7,7 +6,7 @@ import AuthFormField from "./AuthFormField";
 import AuthFormContainer from "./AuthFormContainer";
 import { CONTENT } from "../../lib/content";
 import { colors } from "../../theme/colors";
-import { CheckIcon } from "@chakra-ui/icons";
+import { ROUTES } from "../../lib/routes";
 
 const Login = () => {
   const { login, isLoading } = useLogin();
@@ -59,7 +58,7 @@ const Login = () => {
           />
         </Stack>
         <HStack justify="space-between">
-          <Checkbox colorScheme="pink" defaultChecked>
+          <Checkbox colorScheme={colors.colorScheme} defaultChecked>
             {CONTENT.AUTH.rememberMe}
           </Checkbox>
           <Button variant="text" size="sm">
