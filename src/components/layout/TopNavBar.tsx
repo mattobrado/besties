@@ -24,7 +24,7 @@ import { ROUTES } from "../../lib/routes";
 const TopNavBar = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const { logout } = useLogout();
-  const { user, isLoading } = useAuth();
+  const { user } = useAuth();
 
   return (
     <Box px={4}>
