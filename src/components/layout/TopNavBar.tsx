@@ -30,32 +30,25 @@ const TopNavBar = () => {
     <Box px={4}>
       <Flex h={24} alignItems={"center"} justifyContent={"space-between"}>
         <Menu>
-          <MenuButton as={Button} variant={"link"}>
-            <IconButton
-              icon={isOpen ? <CloseIcon /> : <HamburgerIcon boxSize={9} />}
-              aria-label={"open menu"}
-              onClick={isOpen ? onClose : onOpen}
-              variant="customGhost"
-              size={"lg"}
-            />
-          </MenuButton>
+          <MenuButton
+            as={IconButton}
+            icon={isOpen ? <CloseIcon /> : <HamburgerIcon boxSize={9} />}
+            aria-label={"open menu"}
+            onClick={isOpen ? onClose : onOpen}
+            variant="customGhost"
+            size={"lg"}
+          ></MenuButton>
           <MenuList>
-            <MenuItem>
-              <Link as={ReactRouterLink} to={ROUTES.USERS}>
-                {CONTENT.NAVBAR.seeAllUsers}
-              </Link>
+            <MenuItem as={ReactRouterLink} to={ROUTES.USERS}>
+              {CONTENT.NAVBAR.seeAllUsers}
             </MenuItem>
             <MenuDivider />
-            <MenuItem>
-              <Link as={ReactRouterLink} to={ROUTES.HOME}>
-                {CONTENT.NAVBAR.mostPopular}
-              </Link>
+            <MenuItem as={ReactRouterLink} to={ROUTES.HOME}>
+              {CONTENT.NAVBAR.mostPopular}
             </MenuItem>
             <MenuDivider />
-            <MenuItem>
-              <Link as={ReactRouterLink} to={ROUTES.HOME}>
-                {CONTENT.NAVBAR.highestRated}
-              </Link>
+            <MenuItem as={ReactRouterLink} to={ROUTES.HOME}>
+              {CONTENT.NAVBAR.highestRated}
             </MenuItem>
           </MenuList>
         </Menu>
@@ -75,13 +68,11 @@ const TopNavBar = () => {
               />
             </MenuButton>
             <MenuList>
-              <MenuItem>
-                <Link
-                  as={ReactRouterLink}
-                  to={`${ROUTES.PROTECTED}/${user.id}`}
-                >
-                  {CONTENT.NAVBAR.goToProfile}
-                </Link>
+              <MenuItem
+                as={ReactRouterLink}
+                to={`${ROUTES.PROTECTED}/${user.id}`}
+              >
+                {CONTENT.NAVBAR.goToProfile}
               </MenuItem>
               <MenuDivider />
               <MenuItem onClick={logout}>{CONTENT.NAVBAR.logOut}</MenuItem>
