@@ -2,6 +2,7 @@ import { Avatar as ChakraAvatar } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 import { ROUTES } from "../../lib/routes";
 import { DocumentData } from "firebase/firestore";
+import { colors } from "../../theme/colors";
 
 const Avatar = ({
   overrideAvatar,
@@ -20,6 +21,7 @@ const Avatar = ({
       size={size}
       src={overrideAvatar || user.avatar}
       _hover={{ cursor: "pointer", opacity: "0.8" }}
+      bg={colors.brand}
     />
   );
 };
