@@ -9,6 +9,7 @@ export const BottomNavBar = () => {
       <MyNavigationItem
         icon={CONTENT.homeEmoji}
         to={ROUTES.HOME}
+        onClick={() => window.scrollTo(0, 0)}
       ></MyNavigationItem>
       <MyNavigationItem
         icon={CONTENT.addEmoji}
