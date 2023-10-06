@@ -12,8 +12,8 @@ import RatingInput from "./RatingInput";
 import { CONTENT } from "../../lib/content";
 import TextareaAutosize from "react-textarea-autosize";
 import { useForm } from "react-hook-form";
-import { useAuth } from "../../hooks/auth";
-import { useAddReview } from "../../hooks/reviews";
+import { useAuth } from "../../hooks/authHooks";
+import { useAddReview } from "../../hooks/reviewHooks";
 import { useState } from "react";
 
 const NewReview = () => {

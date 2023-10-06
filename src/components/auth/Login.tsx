@@ -1,6 +1,6 @@
 import { Button, Checkbox, HStack, Stack } from "@chakra-ui/react";
 import { PasswordField } from "./PasswordField";
-import { useLogin } from "../../hooks/auth";
+import { useLogin } from "../../hooks/authHooks";
 import { useForm } from "react-hook-form";
 import AuthFormField from "./AuthFormField";
 import AuthFormContainer from "./AuthFormContainer";

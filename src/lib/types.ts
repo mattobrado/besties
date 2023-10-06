@@ -14,4 +14,5 @@ export type ReviewType = {
   revieweeId: string;
   reviewerId: string;
   text: string;
+  id: string;
 };

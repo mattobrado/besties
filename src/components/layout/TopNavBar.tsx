@@ -15,7 +15,7 @@ import {
   SkeletonCircle,
 } from "@chakra-ui/react";
 import { CloseIcon, HamburgerIcon } from "@chakra-ui/icons";
-import { useAuth, useLogout } from "../../hooks/auth";
+import { useAuth, useLogout } from "../../hooks/authHooks";
 import { Link as ReactRouterLink } from "react-router-dom";
 import { CONTENT } from "../../lib/content";
 import { ROUTES } from "../../lib/routes";

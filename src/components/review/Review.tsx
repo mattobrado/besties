@@ -1,9 +1,10 @@
 import { Box, Text } from "@chakra-ui/react";
+import { ReviewType } from "../../lib/types";
 
-const Review = () => (
+const Review = ({ text }: ReviewType) => (
   <Box p="2" maxW="600px" textAlign="left">
     <Box border="2px solid" borderColor="gray.100" borderRadius="md">
-      <Header post={post} />
+      {/* <Header review={review} /> */}
 
       <Box p="2" minH="100px">
         <Text wordBreak="break-word" fontSize="md">
@@ -11,7 +12,7 @@ const Review = () => (
         </Text>
       </Box>
 
-      <Actions post={post} />
+      {/* <Actions review={review} /> */}
     </Box>
   </Box>
 );
