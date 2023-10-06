@@ -4,7 +4,7 @@ import Layout from "../components/layout/Layout";
 import Signup from "../components/auth/Signup";
 import Home from "../components/home/Home";
 import LoadingScreen from "../components/LoadingScreen";
-import NewReview from "../components/newReview/NewReview";
+import NewReview from "../components/newReviewForm/NewReview";
 
 const PROTECTED = "/protected";
 
