@@ -4,6 +4,7 @@ import menuTheme from "./menuTheme";
 import { colors } from "./colors";
 import bottomNavigationTheme from "./bottomNavigationTheme";
 import { buttonTheme } from "./buttonTheme";
+import { skeletonTheme } from "./skeletonTheme";
 
 export const customTheme = extendTheme({
   colors: colors,
@@ -24,6 +25,7 @@ export const customTheme = extendTheme({
     Button: buttonTheme,
     Menu: menuTheme,
     Spinner: spinnerTheme,
+    Skeleton: skeletonTheme,
   },
 
   styles: {

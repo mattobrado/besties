@@ -3,7 +3,6 @@ import {
   Flex,
   HStack,
   IconButton,
-  Button,
   Menu,
   MenuButton,
   MenuList,
@@ -13,6 +12,7 @@ import {
   Text,
   Link,
   Spinner,
+  SkeletonCircle,
 } from "@chakra-ui/react";
 import { CloseIcon, HamburgerIcon } from "@chakra-ui/icons";
 import { useAuth, useLogout } from "../../hooks/useAuth";
@@ -62,7 +62,7 @@ const TopNavBar = () => {
         {user ? (
           <Avatar user={user} />
         ) : (
-          <Spinner variant={"custom"} size={"lg"} />
+          <SkeletonCircle variant="brand" size="16" />
         )}
       </Flex>
     </Box>
