@@ -40,7 +40,7 @@ const NewReview = () => {
 
   return (
     <form onSubmit={handleSubmit(handleAddReview)}>
-      <Stack spacing={3} pb={32}>
+      <Stack spacing={3}>
         <FormControl isInvalid={!!errors.revieweeId}>
           <InputGroup size={"lg"}>
             <InputRightElement>{CONTENT.searchEmoji}</InputRightElement>
