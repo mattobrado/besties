@@ -1,5 +1,4 @@
 import { Box, HStack, Text } from "@chakra-ui/react";
-// import UsernameButton from "components/profile/UsernameButton";
 import { UserType } from "../../lib/types";
 import { CONTENT } from "../../lib/content";
 import AvatarAndFullNameLink from "./AvatarAndFullNameLink";
