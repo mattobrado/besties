@@ -8,11 +8,12 @@ import {
   Stack,
   Textarea,
 } from "@chakra-ui/react";
-import RatingInput from "../rating/RatingInput";
+import RatingInput from "./RatingInput";
 import { CONTENT } from "../../lib/content";
 import TextareaAutosize from "react-textarea-autosize";
 import { useForm } from "react-hook-form";
 import { useAuth } from "../../hooks/auth";
+import { useAddReview } from "../../hooks/reviews";
 
 const NewReview = () => {
   const {
@@ -20,25 +21,29 @@ const NewReview = () => {
     handleSubmit,
     formState: { errors },
   } = useForm();
+  const { addReview, isLoading: addingReview } = useAddReview();
   const { user } = useAuth();
 
-  const handleAddPost = (data: any) => {
-    console.log(data);
-    // addPost({
-    //   uid: user.id,
-    //   text: data.text,
+  const handleAddReview = (review: any) => {
+    console.log(review);
+    // if (!user) return;
+    // addReview({
+    //   reviewerId: user.id,
+    //   text: review.text,
+    //   revieweeId: review.revieweeId,
+    //   rating: review.rating,
     // });
   };
 
   return (
-    <form onSubmit={handleSubmit(handleAddPost)}>
+    <form onSubmit={handleSubmit(handleAddReview)}>
       <Stack spacing={5}>
-        <FormControl isInvalid={!!errors.reviewee}>
+        <FormControl isInvalid={!!errors.revieweeId}>
           <InputGroup size={"lg"}>
             <InputRightElement>{CONTENT.searchEmoji}</InputRightElement>
             <Input
               placeholder={CONTENT.NEW_REVIEW.revieweeField}
-              {...register("reviewee", {
+              {...register("revieweeId", {
                 required: {
                   value: true,
                   message: CONTENT.NEW_REVIEW.fieldRequired,
@@ -47,8 +52,8 @@ const NewReview = () => {
             />
           </InputGroup>
           <FormErrorMessage>
-            {typeof errors.reviewee?.message === "string" &&
-              errors.reviewee?.message}
+            {typeof errors.revieweeId?.message === "string" &&
+              errors.revieweeId?.message}
           </FormErrorMessage>
         </FormControl>
         <Input
@@ -58,7 +63,7 @@ const NewReview = () => {
             required: true,
           })}
         />
-        <FormControl isInvalid={!!errors.reviewee}>
+        <FormControl isInvalid={!!errors.text}>
           <Textarea
             as={TextareaAutosize}
             resize="none"
@@ -80,7 +85,7 @@ const NewReview = () => {
           type="submit"
           size="md"
           w="full"
-          isLoading={false}
+          isLoading={addingReview}
           loadingText={CONTENT.NEW_REVIEW.submitButtonLoadingText}
           variant={"custom"}
         >

@@ -6,9 +6,7 @@ const RatingInput = React.forwardRef(
     {
       iconSize: iconSize,
     }: {
-      rating: number;
       iconSize: string;
-      setRating: React.Dispatch<React.SetStateAction<number>>;
     },
     ref
   ) => {

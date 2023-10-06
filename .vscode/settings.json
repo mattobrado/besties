@@ -5,6 +5,7 @@
     "Chakra",
     "firestore",
     "reviewee",
-    "Signup"
+    "Signup",
+    "uuidv"
   ]
 }
