@@ -71,7 +71,7 @@ const NewReview = () => {
             resize="none"
             size={"lg"}
             placeholder={CONTENT.NEW_REVIEW.reviewField}
-            minRows={6}
+            minRows={5}
             {...register("text", VALIDATE.REVIEW)}
           />
           <FormErrorMessage>

@@ -70,10 +70,6 @@ export const VALIDATE = {
       value: 280,
       message: "review must be less than 280 characters",
     },
-    pattern: {
-      value: /^[a-zA-Z0-9]+$/,
-      message: "name must be alphanumeric",
-    },
   },
 };
 
