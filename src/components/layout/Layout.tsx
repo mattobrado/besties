@@ -34,7 +34,7 @@ const Layout = () => {
   return (
     <>
       <TopNavBar />
-      <Container p={6}>{isLoading ? <LoadingScreen /> : <Outlet />}</Container>
+      <Container p={4}>{isLoading ? <LoadingScreen /> : <Outlet />}</Container>
       <BottomNavBar />
     </>
   );
