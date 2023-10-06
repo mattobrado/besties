@@ -10,7 +10,6 @@ import {
 } from "@chakra-ui/react";
 import { SearchIcon } from "@chakra-ui/icons";
 import RatingInput from "../rating/RatingInput";
-import { useState } from "react";
 import { CONTENT } from "../../lib/content";
 import TextareaAutosize from "react-textarea-autosize";
 import { useForm } from "react-hook-form";
@@ -23,7 +22,6 @@ const NewReview = () => {
     formState: { errors },
   } = useForm();
   const { user } = useAuth();
-  const [rating, setRating] = useState(3);
 
   const handleAddPost = (data: any) => {
     console.log(data);
@@ -35,28 +33,52 @@ const NewReview = () => {
 
   return (
     <form onSubmit={handleSubmit(handleAddPost)}>
-      <Stack spacing={6}>
-        <FormControl isInvalid={false}>
+      <Stack spacing={5}>
+        <FormControl isInvalid={!!errors.reviewee}>
           <InputGroup size={"lg"}>
             <InputRightElement>
               <SearchIcon />
             </InputRightElement>
             <Input
               placeholder={CONTENT.NEW_REVIEW.revieweeField}
-              {...register("reviewee", { required: true })}
+              {...register("reviewee", {
+                required: {
+                  value: true,
+                  message: CONTENT.NEW_REVIEW.fieldRequired,
+                },
+              })}
             />
           </InputGroup>
-          <FormErrorMessage>required</FormErrorMessage>
+          <FormErrorMessage>
+            {typeof errors.reviewee?.message === "string" &&
+              errors.reviewee?.message}
+          </FormErrorMessage>
         </FormControl>
-        <RatingInput rating={rating} size={"5xl"} setRating={setRating} />
-        <Textarea
-          as={TextareaAutosize}
-          resize="none"
-          size={"lg"}
-          placeholder={CONTENT.NEW_REVIEW.reviewField}
-          minRows={7}
-          {...register("text", { required: true })}
-        />{" "}
+        <Input
+          as={RatingInput}
+          iconSize={"5xl"}
+          {...register("rating", {
+            required: true,
+          })}
+        />
+        <FormControl isInvalid={!!errors.reviewee}>
+          <Textarea
+            as={TextareaAutosize}
+            resize="none"
+            size={"lg"}
+            placeholder={CONTENT.NEW_REVIEW.reviewField}
+            minRows={7}
+            {...register("text", {
+              required: {
+                value: true,
+                message: CONTENT.NEW_REVIEW.fieldRequired,
+              },
+            })}
+          />
+          <FormErrorMessage>
+            {typeof errors.text?.message === "string" && errors.text?.message}
+          </FormErrorMessage>
+        </FormControl>
         <Button
           type="submit"
           size="md"

@@ -51,5 +51,6 @@ export const CONTENT = {
     submitButtonText: "post",
     submitButtonLoadingText: "posting...",
     reviewField: "what do we need to know?",
+    fieldRequired: "required",
   },
 };
