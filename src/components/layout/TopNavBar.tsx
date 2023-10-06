@@ -27,41 +27,39 @@ const TopNavBar = () => {
   const size = "md";
 
   return (
-    <Box px={4}>
-      <Flex h={24} alignItems={"center"} justifyContent={"space-between"}>
-        <Menu>
-          <MenuButton
-            as={IconButton}
-            icon={isOpen ? <CloseIcon /> : <HamburgerIcon boxSize={10} />}
-            aria-label={"open menu"}
-            onClick={isOpen ? onClose : onOpen}
-            variant="customGhost"
-            size={size}
-          ></MenuButton>
-          <MenuList>
-            <MenuItem as={ReactRouterLink} to={ROUTES.USERS}>
-              {CONTENT.NAVBAR.seeAllUsers}
-            </MenuItem>
-            <MenuDivider />
-            <MenuItem as={ReactRouterLink} to={ROUTES.HOME}>
-              {CONTENT.NAVBAR.mostPopular}
-            </MenuItem>
-            <MenuDivider />
-            <MenuItem as={ReactRouterLink} to={ROUTES.HOME}>
-              {CONTENT.NAVBAR.highestRated}
-            </MenuItem>
-            <MenuDivider />
-            <MenuItem onClick={logout}>{CONTENT.NAVBAR.logOut}</MenuItem>
-          </MenuList>
-        </Menu>
-        <HStack spacing={8} alignItems={"center"}>
-          <Link as={ReactRouterLink} to={ROUTES.HOME}>
-            <Text fontSize="5xl">{CONTENT.logo}</Text>
-          </Link>
-        </HStack>
-        <Avatar user={user} size={size} />
-      </Flex>
-    </Box>
+    <Flex pb={4} h={24} alignItems={"center"} justifyContent={"space-between"}>
+      <Menu>
+        <MenuButton
+          as={IconButton}
+          icon={isOpen ? <CloseIcon /> : <HamburgerIcon boxSize={10} />}
+          aria-label={"open menu"}
+          onClick={isOpen ? onClose : onOpen}
+          variant="customGhost"
+          size={size}
+        ></MenuButton>
+        <MenuList>
+          <MenuItem as={ReactRouterLink} to={ROUTES.USERS}>
+            {CONTENT.NAVBAR.seeAllUsers}
+          </MenuItem>
+          <MenuDivider />
+          <MenuItem as={ReactRouterLink} to={ROUTES.HOME}>
+            {CONTENT.NAVBAR.mostPopular}
+          </MenuItem>
+          <MenuDivider />
+          <MenuItem as={ReactRouterLink} to={ROUTES.HOME}>
+            {CONTENT.NAVBAR.highestRated}
+          </MenuItem>
+          <MenuDivider />
+          <MenuItem onClick={logout}>{CONTENT.NAVBAR.logOut}</MenuItem>
+        </MenuList>
+      </Menu>
+      <HStack spacing={8} alignItems={"center"}>
+        <Link as={ReactRouterLink} to={ROUTES.HOME}>
+          <Text fontSize="5xl">{CONTENT.logo}</Text>
+        </Link>
+      </HStack>
+      <Avatar user={user} size={size} />
+    </Flex>
   );
 };
 

@@ -14,8 +14,8 @@ const AuthFormContainer = ({
 }) => (
   <Container
     maxW="lg"
-    py={{ base: "16", md: "24" }}
-    px={{ base: "0", sm: "8" }}
+    py={{ base: "4", md: "16" }}
+    px={{ base: "0", sm: "16" }}
   >
     <Stack spacing="8">
       <AuthHeading {...authHeadingProps} />

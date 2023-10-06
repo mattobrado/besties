@@ -33,9 +33,11 @@ const Layout = () => {
 
   return (
     <>
-      <TopNavBar />
-      <Container p={5}>{isLoading ? <LoadingScreen /> : <Outlet />}</Container>
-      <BottomNavBar />
+      <Container px={5}>
+        <TopNavBar />
+        {isLoading ? <LoadingScreen /> : <Outlet />}
+        <BottomNavBar />
+      </Container>
     </>
   );
 };
