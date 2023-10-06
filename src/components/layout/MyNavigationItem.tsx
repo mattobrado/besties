@@ -1,9 +1,12 @@
 import { BottomNavigationItem } from "chakra-ui-bottom-navigation";
 import { Text } from "@chakra-ui/react";
+import { Link } from "react-router-dom";
 
-const MyNavigationItem = (props: { children: React.ReactNode }) => (
+const MyNavigationItem = ({ icon, to }: { icon: string; to: string }) => (
   <Text fontSize="5xl">
-    <BottomNavigationItem>{props.children}</BottomNavigationItem>
+    <BottomNavigationItem as={Link} to={to}>
+      {icon}
+    </BottomNavigationItem>
   </Text>
 );
 

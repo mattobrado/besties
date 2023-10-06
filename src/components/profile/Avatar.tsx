@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { ROUTES } from "../../lib/routes";
 import { DocumentData } from "firebase/firestore";
 
-export default function Avatar({
+const Avatar = ({
   overrideAvatar,
   size = "lg",
   user,
@@ -11,7 +11,7 @@ export default function Avatar({
   overrideAvatar?: string;
   size?: string;
   user: DocumentData;
-}) {
+}) => {
   return (
     <ChakraAvatar
       as={Link}
@@ -22,4 +22,6 @@ export default function Avatar({
       _hover={{ cursor: "pointer", opacity: "0.8" }}
     />
   );
-}
+};
+
+export default Avatar;

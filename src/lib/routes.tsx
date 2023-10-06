@@ -4,6 +4,7 @@ import Layout from "../components/layout/Layout";
 import Signup from "../components/auth/Signup";
 import Home from "../components/home/Home";
 import LoadingScreen from "../components/LoadingScreen";
+import NewReview from "../components/newReview/NewReview";
 
 const PROTECTED = "/protected";
 
@@ -16,6 +17,7 @@ export const ROUTES = {
   ROOT: "/",
   SIGNUP: "/signup",
   USERS: PROTECTED + "/users",
+  NEW_REVIEW: PROTECTED + "/review",
 };
 
 export const router = createBrowserRouter([
@@ -29,6 +31,10 @@ export const router = createBrowserRouter([
       {
         path: ROUTES.HOME,
         element: <Home />,
+      },
+      {
+        path: ROUTES.NEW_REVIEW,
+        element: <NewReview />,
       },
       {
         path: ROUTES.USERS,
