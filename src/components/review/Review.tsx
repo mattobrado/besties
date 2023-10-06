@@ -27,7 +27,7 @@ const Review = ({ review }: { review: ReviewType }) => {
               <Text color="gray.500">{formatDistanceToNow(date)} ago</Text>
             </HStack>
           </Stack>
-          <Box py="4" px={bodyPx}>
+          <Box py="2" px={bodyPx}>
             <Text wordBreak="break-word" fontSize="md">
               {text}
             </Text>
