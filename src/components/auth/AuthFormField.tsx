@@ -30,7 +30,7 @@ const AuthFormField = ({
     <Input id={inputType} type={inputType} {...register(inputType, validate)} />
     <FormErrorMessage>
       {typeof error?.message === "string" && error.message}
-    </FormErrorMessage>{" "}
+    </FormErrorMessage>
   </FormControl>
 );
 

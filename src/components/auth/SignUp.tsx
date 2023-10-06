@@ -53,6 +53,7 @@ export default function Signup() {
         inputType={INPUT_TYPE.FULL_NAME}
         label={CONTENT.AUTH.fullName}
         register={register}
+        validate={VALIDATE.FULL_NAME}
       />
       <AuthFormField
         error={errors?.username}

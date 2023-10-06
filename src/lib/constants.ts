@@ -32,15 +32,29 @@ export const VALIDATE = {
   USERNAME: {
     required: {
       value: true,
-      message: "Please enter username",
+      message: "please enter username",
     },
     minLength: {
       value: 6,
-      message: "Username must be at least 6 characters long",
+      message: "username must be at least 6 characters long",
     },
     pattern: {
       value: /^[a-zA-Z0-9]+$/,
-      message: "Username must be alphanumeric",
+      message: "username must be alphanumeric",
+    },
+  },
+  FULL_NAME: {
+    required: {
+      value: true,
+      message: "please enter your name",
+    },
+    minLength: {
+      value: 1,
+      message: "name must be at least 1 character long",
+    },
+    pattern: {
+      value: /^[a-zA-Z0-9]+$/,
+      message: "name must be alphanumeric",
     },
   },
 };

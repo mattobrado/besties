@@ -46,4 +46,10 @@ export const CONTENT = {
     search: "search",
     newReview: "review",
   },
+  NEW_REVIEW: {
+    revieweeField: "who are you reviewing?",
+    submitButtonText: "post",
+    submitButtonLoadingText: "posting...",
+    reviewField: "what do we need to know?",
+  },
 };

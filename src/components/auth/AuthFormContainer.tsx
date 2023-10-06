@@ -1,16 +1,5 @@
-import {
-  Stack,
-  Container,
-  Box,
-  Text,
-  Divider,
-  HStack,
-  Button,
-} from "@chakra-ui/react";
+import { Stack, Container, Box, Button } from "@chakra-ui/react";
 import { AuthHeading, AuthHeadingPropsType } from "./AuthHeading";
-import { OAuthButtonGroup } from "./OAuthButtonGroup";
-import { CONTENT } from "../../lib/content";
-import { COLORS } from "../../lib/theme";
 
 const AuthFormContainer = ({
   authHeadingProps,

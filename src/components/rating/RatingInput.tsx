@@ -50,7 +50,7 @@ const RatingInput = ({
   }
 
   return (
-    <HStack mt={8} justify="center">
+    <HStack justify="center">
       <input name="rating" type="hidden" value={rating} />
       {Buttons}
     </HStack>
