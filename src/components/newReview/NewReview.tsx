@@ -8,12 +8,11 @@ import {
   Stack,
   Textarea,
 } from "@chakra-ui/react";
-import { SearchIcon } from "@chakra-ui/icons";
 import RatingInput from "../rating/RatingInput";
 import { CONTENT } from "../../lib/content";
 import TextareaAutosize from "react-textarea-autosize";
 import { useForm } from "react-hook-form";
-import { useAuth } from "../../hooks/useAuth";
+import { useAuth } from "../../hooks/auth";
 
 const NewReview = () => {
   const {
@@ -36,9 +35,7 @@ const NewReview = () => {
       <Stack spacing={5}>
         <FormControl isInvalid={!!errors.reviewee}>
           <InputGroup size={"lg"}>
-            <InputRightElement>
-              <SearchIcon />
-            </InputRightElement>
+            <InputRightElement>{CONTENT.searchEmoji}</InputRightElement>
             <Input
               placeholder={CONTENT.NEW_REVIEW.revieweeField}
               {...register("reviewee", {

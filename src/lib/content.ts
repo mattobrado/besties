@@ -35,6 +35,8 @@ export const CONTENT = {
     signupSuccess: "account created",
     username: "username",
     usernameTaken: "username already exists",
+    showEmoji: "👁️",
+    hideEmoji: "🙈",
   },
   NAVBAR: {
     highestRated: "⭐️ highest rated",

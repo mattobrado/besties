@@ -39,13 +39,8 @@ export const PasswordField = forwardRef<
         {CONTENT.AUTH.password}
       </FormLabel>
       <InputGroup>
-        <InputRightElement>
-          <IconButton
-            variant="text"
-            aria-label={isOpen ? "Mask password" : "Reveal password"}
-            icon={isOpen ? <ViewOffIcon /> : <ViewIcon />}
-            onClick={onClickReveal}
-          />
+        <InputRightElement onClick={onClickReveal}>
+          {isOpen ? CONTENT.AUTH.hideEmoji : CONTENT.AUTH.showEmoji}
         </InputRightElement>
         <Input
           id={INPUT_TYPE.PASSWORD}
