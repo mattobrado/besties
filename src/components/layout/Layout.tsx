@@ -35,7 +35,7 @@ const Layout = () => {
     <>
       <Container px={5}>
         <TopNavBar />
-        <Box pb={32}>{isLoading ? <LoadingScreen /> : <Outlet />}</Box>
+        <Box pb={24}>{isLoading ? <LoadingScreen /> : <Outlet />}</Box>
         <BottomNavBar />
       </Container>
     </>
