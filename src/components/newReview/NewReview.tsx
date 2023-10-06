@@ -14,6 +14,7 @@ import TextareaAutosize from "react-textarea-autosize";
 import { useForm } from "react-hook-form";
 import { useAuth } from "../../hooks/auth";
 import { useAddReview } from "../../hooks/reviews";
+import { useState } from "react";
 
 const NewReview = () => {
   const {
@@ -23,16 +24,17 @@ const NewReview = () => {
   } = useForm();
   const { addReview, isLoading: addingReview } = useAddReview();
   const { user } = useAuth();
+  const [rating, setRating] = useState(3);
 
   const handleAddReview = (review: any) => {
-    console.log(review);
-    // if (!user) return;
-    // addReview({
-    //   reviewerId: user.id,
-    //   text: review.text,
-    //   revieweeId: review.revieweeId,
-    //   rating: review.rating,
-    // });
+    console.log(review, rating);
+    if (!user) return;
+    addReview({
+      reviewerId: user.id,
+      text: review.text,
+      revieweeId: review.revieweeId,
+      rating: rating,
+    });
   };
 
   return (
@@ -59,9 +61,8 @@ const NewReview = () => {
         <Input
           as={RatingInput}
           iconSize={"5xl"}
-          {...register("rating", {
-            required: true,
-          })}
+          rating={rating}
+          setRating={setRating}
         />
         <FormControl isInvalid={!!errors.text}>
           <Textarea
