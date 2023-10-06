@@ -56,6 +56,6 @@ export const CONTENT = {
     fieldRequired: "required",
   },
   REVIEW: {
-    directionEmoji: "👉",
+    reviewed: "reviewed",
   },
 };

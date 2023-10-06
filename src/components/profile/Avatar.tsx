@@ -17,10 +17,9 @@ const Avatar = ({
     <ChakraAvatar
       as={Link}
       to={`${ROUTES.PROTECTED}/${user.id}`}
-      name={user.username}
+      name={user.fullName}
       size={size}
       src={overrideAvatar || user.avatar}
-      _hover={{ cursor: "pointer", opacity: "0.8" }}
       bg={colors.brand}
     />
   ) : (
