@@ -15,6 +15,7 @@ import { useForm } from "react-hook-form";
 import { useAuth } from "../../hooks/authHooks";
 import { useAddReview } from "../../hooks/reviewHooks";
 import { useState } from "react";
+import { VALIDATE } from "../../lib/constants";
 
 const NewReview = () => {
   const {
@@ -39,7 +40,7 @@ const NewReview = () => {
 
   return (
     <form onSubmit={handleSubmit(handleAddReview)}>
-      <Stack spacing={3}>
+      <Stack spacing={3} pb={32}>
         <FormControl isInvalid={!!errors.revieweeId}>
           <InputGroup size={"lg"}>
             <InputRightElement>{CONTENT.searchEmoji}</InputRightElement>
@@ -71,12 +72,7 @@ const NewReview = () => {
             size={"lg"}
             placeholder={CONTENT.NEW_REVIEW.reviewField}
             minRows={6}
-            {...register("text", {
-              required: {
-                value: true,
-                message: CONTENT.NEW_REVIEW.fieldRequired,
-              },
-            })}
+            {...register("text", VALIDATE.REVIEW)}
           />
           <FormErrorMessage>
             {typeof errors.text?.message === "string" && errors.text?.message}

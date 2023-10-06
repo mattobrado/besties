@@ -57,6 +57,24 @@ export const VALIDATE = {
       message: "name must be alphanumeric",
     },
   },
+  REVIEW: {
+    required: {
+      value: true,
+      message: "required",
+    },
+    minLength: {
+      value: 1,
+      message: "name must be at least 1 character long",
+    },
+    maxLength: {
+      value: 280,
+      message: "review must be less than 280 characters",
+    },
+    pattern: {
+      value: /^[a-zA-Z0-9]+$/,
+      message: "name must be alphanumeric",
+    },
+  },
 };
 
 export const TOAST_PROPS: {
