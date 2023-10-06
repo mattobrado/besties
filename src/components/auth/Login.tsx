@@ -7,6 +7,7 @@ import AuthFormContainer from "./AuthFormContainer";
 import { CONTENT } from "../../lib/content";
 import { colors } from "../../theme/colors";
 import { ROUTES } from "../../lib/routes";
+import { INPUT_TYPE, VALIDATE } from "../../lib/constants";
 
 const Login = () => {
   const { login, isLoading } = useLogin();
