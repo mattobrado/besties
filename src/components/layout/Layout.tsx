@@ -7,6 +7,7 @@ import LoadingScreen from "../LoadingScreen";
 import { BottomNavBar } from "./BottomNavBar";
 import TopNavBar from "./TopNavBar";
 import { ROUTES } from "../../lib/routes";
+import { Container } from "@chakra-ui/react";
 
 const Layout = () => {
   const { pathname } = useLocation();
@@ -33,7 +34,7 @@ const Layout = () => {
   return (
     <>
       <TopNavBar />
-      {isLoading ? <LoadingScreen /> : <Outlet />}
+      <Container p={6}>{isLoading ? <LoadingScreen /> : <Outlet />}</Container>
       <BottomNavBar />
     </>
   );

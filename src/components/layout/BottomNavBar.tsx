@@ -6,7 +6,10 @@ import { ROUTES } from "../../lib/routes";
 export const BottomNavBar = () => {
   return (
     <BottomNavigation bg={"transparent"} value={0} onChange={() => {}}>
-      <MyNavigationItem icon={CONTENT.homeEmoji} to={""}></MyNavigationItem>
+      <MyNavigationItem
+        icon={CONTENT.homeEmoji}
+        to={ROUTES.HOME}
+      ></MyNavigationItem>
       <MyNavigationItem
         icon={CONTENT.addEmoji}
         to={ROUTES.NEW_REVIEW}
