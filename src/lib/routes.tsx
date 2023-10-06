@@ -21,7 +21,7 @@ export const ROUTES = {
 };
 
 export const router = createBrowserRouter([
-  { path: ROUTES.ROOT, element: "Public Root" },
+  { path: ROUTES.ROOT, element: <Login /> },
   { path: ROUTES.LOGIN, element: <Login /> },
   { path: ROUTES.SIGNUP, element: <Signup /> },
   {
