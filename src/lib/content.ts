@@ -55,4 +55,7 @@ export const CONTENT = {
     reviewField: "what do we need to know?",
     fieldRequired: "required",
   },
+  REVIEW: {
+    directionEmoji: "👉",
+  },
 };

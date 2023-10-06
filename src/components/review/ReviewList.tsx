@@ -10,7 +10,7 @@ export default function ReviewList({ reviews }: { reviews: ReviewType[] }) {
           no reviews yet... feeling a little lonely here
         </Text>
       ) : (
-        reviews?.map((review) => <Review key={review.id} {...review} />)
+        reviews?.map((review) => <Review key={review.id} review={review} />)
       )}
     </Box>
   );

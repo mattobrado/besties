@@ -10,9 +10,10 @@ export type SignupType = LoginType & {
 };
 
 export type ReviewType = {
+  date: number;
+  id: string;
   rating: number;
   revieweeId: string;
   reviewerId: string;
   text: string;
-  id: string;
 };

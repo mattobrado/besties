@@ -1,4 +1,4 @@
-import { Avatar as ChakraAvatar } from "@chakra-ui/react";
+import { Avatar as ChakraAvatar, SkeletonCircle } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 import { ROUTES } from "../../lib/routes";
 import { DocumentData } from "firebase/firestore";
@@ -11,9 +11,9 @@ const Avatar = ({
 }: {
   overrideAvatar?: string;
   size?: string;
-  user: DocumentData;
+  user?: DocumentData;
 }) => {
-  return (
+  return user ? (
     <ChakraAvatar
       as={Link}
       to={`${ROUTES.PROTECTED}/${user.id}`}
@@ -23,6 +23,8 @@ const Avatar = ({
       _hover={{ cursor: "pointer", opacity: "0.8" }}
       bg={colors.brand}
     />
+  ) : (
+    <SkeletonCircle variant="brand" size={size === "lg" ? "16" : size} />
   );
 };
 

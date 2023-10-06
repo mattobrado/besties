@@ -11,7 +11,6 @@ import {
   useDisclosure,
   Text,
   Link,
-  Spinner,
   SkeletonCircle,
 } from "@chakra-ui/react";
 import { CloseIcon, HamburgerIcon } from "@chakra-ui/icons";
@@ -59,11 +58,7 @@ const TopNavBar = () => {
             <Text fontSize="5xl">{CONTENT.logo}</Text>
           </Link>
         </HStack>
-        {user ? (
-          <Avatar user={user} />
-        ) : (
-          <SkeletonCircle variant="brand" size="16" />
-        )}
+        <Avatar user={user} />
       </Flex>
     </Box>
   );
