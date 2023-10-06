@@ -10,12 +10,16 @@ import {
 import { useNavigate } from "react-router-dom";
 import { useToast } from "@chakra-ui/react";
 import { setDoc, doc, getDoc, DocumentData } from "firebase/firestore";
-import { LoginType, SignupType as SignupType } from "../lib/types";
+import { LoginType, SignupType as SignupType, UserType } from "../lib/types";
 import isUsernameDuplicated from "./utils/isUserNameDuplicated";
 import { CONTENT } from "../lib/content";
 import { ROUTES } from "../lib/routes";
 
-export function useAuth() {
+export const useAuth = (): {
+  user?: UserType;
+  isLoading: boolean;
+  error?: Error;
+} => {
   const [authUser, authLoading, error] = useAuthState(auth);
   const [isLoading, setLoading] = useState(true);
   const [user, setUser] = useState<DocumentData | undefined>(undefined);
@@ -35,8 +39,10 @@ export function useAuth() {
     }
   }, [authLoading]);
 
-  return { user, isLoading, error };
-}
+  const _user = user as UserType;
+
+  return { user: _user, isLoading, error };
+};
 export const useLogin = () => {
   const [isLoading, setLoading] = useState(false);
   const navigate = useNavigate();

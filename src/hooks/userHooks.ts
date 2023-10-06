@@ -5,7 +5,7 @@ import { UserType } from "../lib/types";
 
 export const useUser = (
   id: string
-): { user?: UserType; isLoading?: boolean } => {
+): { user?: UserType; isLoading: boolean } => {
   const q = query(doc(db, "users", id) as any);
   const [user, isLoading] = useDocumentData(q as any);
   const _user = user as UserType;

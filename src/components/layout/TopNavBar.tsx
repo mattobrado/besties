@@ -11,7 +11,6 @@ import {
   useDisclosure,
   Text,
   Link,
-  SkeletonCircle,
 } from "@chakra-ui/react";
 import { CloseIcon, HamburgerIcon } from "@chakra-ui/icons";
 import { useAuth, useLogout } from "../../hooks/authHooks";
@@ -25,17 +24,19 @@ const TopNavBar = () => {
   const { logout } = useLogout();
   const { user } = useAuth();
 
+  const size = "md";
+
   return (
     <Box px={4}>
       <Flex h={24} alignItems={"center"} justifyContent={"space-between"}>
         <Menu>
           <MenuButton
             as={IconButton}
-            icon={isOpen ? <CloseIcon /> : <HamburgerIcon boxSize={12} />}
+            icon={isOpen ? <CloseIcon /> : <HamburgerIcon boxSize={10} />}
             aria-label={"open menu"}
             onClick={isOpen ? onClose : onOpen}
             variant="customGhost"
-            size={"lg"}
+            size={size}
           ></MenuButton>
           <MenuList>
             <MenuItem as={ReactRouterLink} to={ROUTES.USERS}>
@@ -58,7 +59,7 @@ const TopNavBar = () => {
             <Text fontSize="5xl">{CONTENT.logo}</Text>
           </Link>
         </HStack>
-        <Avatar user={user} />
+        <Avatar user={user} size={size} />
       </Flex>
     </Box>
   );

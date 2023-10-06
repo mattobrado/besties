@@ -39,7 +39,7 @@ const NewReview = () => {
 
   return (
     <form onSubmit={handleSubmit(handleAddReview)}>
-      <Stack spacing={5}>
+      <Stack spacing={3}>
         <FormControl isInvalid={!!errors.revieweeId}>
           <InputGroup size={"lg"}>
             <InputRightElement>{CONTENT.searchEmoji}</InputRightElement>
@@ -70,7 +70,7 @@ const NewReview = () => {
             resize="none"
             size={"lg"}
             placeholder={CONTENT.NEW_REVIEW.reviewField}
-            minRows={7}
+            minRows={6}
             {...register("text", {
               required: {
                 value: true,

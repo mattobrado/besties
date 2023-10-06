@@ -23,7 +23,7 @@ const Avatar = ({
       bg={colors.brand}
     />
   ) : (
-    <SkeletonCircle variant="brand" size={size === "lg" ? "16" : size} />
+    <SkeletonCircle variant="brand" size={"12"} />
   );
 };
 
