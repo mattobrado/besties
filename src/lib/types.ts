@@ -17,3 +17,11 @@ export type ReviewType = {
   reviewerId: string;
   text: string;
 };
+
+export type UserType = {
+  avatar: string;
+  date: number;
+  fullName: string;
+  id: string;
+  username: string;
+};

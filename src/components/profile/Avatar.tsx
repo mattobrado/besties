@@ -1,8 +1,8 @@
 import { Avatar as ChakraAvatar, SkeletonCircle } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 import { ROUTES } from "../../lib/routes";
-import { DocumentData } from "firebase/firestore";
 import { colors } from "../../theme/colors";
+import { UserType } from "../../lib/types";
 
 const Avatar = ({
   overrideAvatar,
@@ -11,7 +11,7 @@ const Avatar = ({
 }: {
   overrideAvatar?: string;
   size?: string;
-  user?: DocumentData;
+  user?: UserType;
 }) => {
   return user ? (
     <ChakraAvatar
