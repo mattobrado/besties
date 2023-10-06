@@ -6,13 +6,13 @@ const AvatarAndFullNameLink = ({
   user,
   size,
 }: {
-  user: UserType;
+  user?: UserType;
   size: string;
 }) => (
   <>
     <Avatar user={user} size={size} />
     <Text fontSize={size}>
-      <b>{user.fullName}</b>
+      <b>{user?.fullName}</b>
     </Text>
   </>
 );
