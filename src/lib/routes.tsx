@@ -38,7 +38,7 @@ export const router = createBrowserRouter([
       },
       {
         path: ROUTES.USERS,
-        element: <LoadingScreen />, // <Users />,
+        element: <LoadingScreen />,
       },
       {
         path: ROUTES.PROFILE + "/:id",
