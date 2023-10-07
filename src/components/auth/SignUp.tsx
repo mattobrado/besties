@@ -1,4 +1,4 @@
-import { INPUT_TYPE, VALIDATE } from "../../lib/constants";
+import { INPUT_TYPE, VALIDATE } from "../../lib/formValidation";
 import { useSignup } from "../../hooks/authHooks";
 import { useForm } from "react-hook-form";
 import AuthFormContainer from "./AuthFormContainer";

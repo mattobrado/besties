@@ -4,7 +4,7 @@ import Layout from "../components/layout/Layout";
 import Signup from "../components/auth/Signup";
 import Home from "../components/home/Home";
 import LoadingScreen from "../components/LoadingScreen";
-import NewReview from "../components/newReviewForm/NewReview";
+import NewReviewForm from "../components/newReviewForm/NewReviewForm";
 
 const PROTECTED = "/protected";
 
@@ -34,7 +34,7 @@ export const router = createBrowserRouter([
       },
       {
         path: ROUTES.NEW_REVIEW,
-        element: <NewReview />,
+        element: <NewReviewForm />,
       },
       {
         path: ROUTES.USERS,

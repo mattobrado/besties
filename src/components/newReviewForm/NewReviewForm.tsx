@@ -15,9 +15,9 @@ import { useForm } from "react-hook-form";
 import { useAuth } from "../../hooks/authHooks";
 import { useAddReview } from "../../hooks/reviewHooks";
 import { useState } from "react";
-import { VALIDATE } from "../../lib/constants";
+import { VALIDATE } from "../../lib/formValidation";
 
-const NewReview = () => {
+const NewReviewForm = () => {
   const {
     register,
     handleSubmit,
@@ -93,4 +93,4 @@ const NewReview = () => {
   );
 };
 
-export default NewReview;
+export default NewReviewForm;

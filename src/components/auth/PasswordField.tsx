@@ -9,7 +9,8 @@ import {
   useDisclosure,
   useMergeRefs,
 } from "@chakra-ui/react";
-import { INPUT_TYPE } from "../../lib/constants";
+import { INPUT_TYPE } from "../../lib/formValidation";
+
 import { forwardRef, useRef } from "react";
 import { FieldError, FieldErrorsImpl, Merge } from "react-hook-form";
 import { content } from "../../lib/content";

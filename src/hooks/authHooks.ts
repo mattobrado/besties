@@ -14,7 +14,6 @@ import { LoginType, SignupType as SignupType, UserType } from "../lib/types";
 import isUsernameDuplicated from "../utils/isUserNameDuplicated";
 import { content } from "../lib/content";
 import { ROUTES } from "../lib/routes";
-import { COLORS } from "../theme/colors";
 
 export const useAuth = (): {
   user?: UserType;
