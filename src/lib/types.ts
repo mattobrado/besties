@@ -12,11 +12,14 @@ export type SignupType = LoginType & {
 export type PostType = {
   date: number;
   id: string;
-  rating: number;
-  revieweeId: string;
-  reviewerId: string;
-  text: string;
+  isReview?: boolean;
+  isComment?: boolean;
   likes: string[];
+  rating: number;
+  targetUid?: string;
+  uid: string;
+  text: string;
+  parentPostId?: string;
 };
 
 export type UserType = {
@@ -31,8 +34,4 @@ export type ToggleLikeType = {
   id: string;
   isLiked: boolean;
   uid: string;
-};
-
-export type CommentType = {
-  text: string;
 };

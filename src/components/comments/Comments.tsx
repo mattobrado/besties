@@ -2,20 +2,28 @@ import { useParams } from "react-router-dom";
 import { usePost } from "../../hooks/postHooks";
 import Review from "../posts/Review";
 import { useAuth } from "../../hooks/authHooks";
-import LoadingScreen from "../LoadingScreen";
 import NewCommentForm from "./NewCommentForm";
+import PostList from "../posts/PostList";
+import { useComments } from "../../hooks/commentHooks";
+import { Container } from "@chakra-ui/react";
 
 const Comments = () => {
   const { id } = useParams();
   const { post } = usePost(id);
   const { user } = useAuth();
-  return user && post ? (
-    <>
-      <Review review={post} user={user}></Review>
-      <NewCommentForm user={user} post={post} />
-    </>
-  ) : (
-    <LoadingScreen />
+  const { comments } = useComments(id);
+  const isLoaded = !!user && !!post; //&& !!comments;
+  return (
+    isLoaded && (
+      <>
+        <Review review={post} user={user} hideCommentButton={true}>
+          <NewCommentForm user={user} post={post} />
+          <Container>
+            <PostList posts={comments} user={user} />
+          </Container>
+        </Review>
+      </>
+    )
   );
 };
 

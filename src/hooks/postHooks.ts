@@ -27,11 +27,11 @@ export const useAddPost = () => {
   const [isLoading, setLoading] = useState(false);
   const navigate = useNavigate();
 
-  const addPost = async (review: Partial<PostType>) => {
+  const addPost = async (post: Partial<PostType>) => {
     setLoading(true);
     const id = uuidv4();
     await setDoc(doc(db, COLLECTIONS.POSTS, id), {
-      ...review,
+      ...post,
       id,
       date: Date.now(),
       likes: [],
@@ -48,8 +48,7 @@ export const usePost = (id?: string) => {
   const q = doc(db, COLLECTIONS.POSTS, id);
   const [post, isLoading] = useDocumentData(q);
 
-  const _post = post as PostType | undefined;
-  return { post: _post, isLoading };
+  return { post: <PostType | undefined>post, isLoading };
 };
 
 export const usePosts = (uid = null) => {
@@ -62,8 +61,7 @@ export const usePosts = (uid = null) => {
     : query(collection(db, COLLECTIONS.POSTS), orderBy("date", "desc"));
   const [posts, isLoading, error] = useCollectionData(q);
   if (error) throw error;
-  const _posts = posts as PostType[];
-  return { posts: _posts, isLoading };
+  return { posts: <PostType[]>posts, isLoading };
 };
 
 export const useToggleLike = ({ id, isLiked, uid }: ToggleLikeType) => {

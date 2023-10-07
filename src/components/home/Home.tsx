@@ -6,8 +6,9 @@ import PostList from "../posts/PostList";
 const Home = () => {
   const { posts } = usePosts();
   const { user } = useAuth();
+
   return user && posts ? (
-    <PostList posts={posts} user={user} />
+    <PostList posts={posts.filter((post) => post.isReview)} user={user} />
   ) : (
     <LoadingScreen />
   );

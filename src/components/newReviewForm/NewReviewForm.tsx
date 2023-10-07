@@ -31,10 +31,11 @@ const NewReviewForm = () => {
   const handleAddReview = (review: Partial<PostType>) => {
     if (!user) return;
     addPost({
-      reviewerId: user.id,
-      text: review.text,
-      revieweeId: review.revieweeId,
+      isReview: true,
       rating: rating,
+      targetUid: review.targetUid,
+      uid: user.id,
+      text: review.text,
     });
   };
 
@@ -46,7 +47,7 @@ const NewReviewForm = () => {
             <InputRightElement>{content.searchEmoji}</InputRightElement>
             <Input
               placeholder={content.reviewForm.revieweeField}
-              {...register("revieweeId", {
+              {...register("targetUid", {
                 required: {
                   value: true,
                   message: content.reviewForm.fieldRequired,
