@@ -24,7 +24,7 @@ export const useAddComment = ({
   const [isLoading, setLoading] = useState(false);
   const toast = useToast();
 
-  const addComment = async (text: string) => {
+  const addComment = async (text?: string) => {
     setLoading(true);
     const id = uuidv4();
     const date = Date.now();

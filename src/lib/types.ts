@@ -32,3 +32,7 @@ export type ToggleLikeType = {
   isLiked: boolean;
   uid: string;
 };
+
+export type CommentType = {
+  text: string;
+};

@@ -72,7 +72,7 @@ const NewReviewForm = () => {
             size={"lg"}
             placeholder={content.reviewForm.reviewField}
             minRows={5}
-            {...register("text", VALIDATE.REVIEW)}
+            {...register("text", VALIDATE.TEXT)}
           />
           <FormErrorMessage>
             {typeof errors.text?.message === "string" && errors.text?.message}
@@ -83,10 +83,10 @@ const NewReviewForm = () => {
           size="md"
           w="full"
           isLoading={addingReview}
-          loadingText={content.reviewForm.submitButtonLoadingText}
+          loadingText={content.submitButtonLoadingText}
           variant={"custom"}
         >
-          {content.reviewForm.submitButtonText}
+          {content.submitButtonText}
         </Button>
       </Stack>
     </form>

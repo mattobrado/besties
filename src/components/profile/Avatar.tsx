@@ -21,6 +21,7 @@ const Avatar = ({
       size={size}
       src={overrideAvatar || user.avatar}
       bg={COLORS.BRAND}
+      color={COLORS.BACKGROUND}
     />
   );
 };

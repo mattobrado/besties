@@ -55,7 +55,7 @@ const Actions = ({ post, user }: { post: PostType; user: UserType }) => {
       {user.id === reviewerId && (
         <>
           <Spacer />
-          <Button onClick={deletePost} size="sm" variant="link">
+          <Button onClick={onOpen} size="sm" variant="link">
             {content.trashEmoji}
           </Button>
           <AlertDialog

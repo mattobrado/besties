@@ -4,8 +4,8 @@ import LoadingScreen from "../LoadingScreen";
 import PostList from "../posts/PostList";
 
 const Home = () => {
-  const { posts, isLoading: postsLoading } = usePosts();
-  const { user, isLoading: userLoading } = useAuth();
+  const { posts } = usePosts();
+  const { user } = useAuth();
   return user && posts ? (
     <PostList posts={posts} user={user} />
   ) : (

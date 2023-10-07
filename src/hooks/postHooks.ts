@@ -43,11 +43,13 @@ export const useAddPost = () => {
   return { addPost, isLoading };
 };
 
-export const usePost = (id: string) => {
+export const usePost = (id?: string) => {
+  if (!id) return { post: undefined, isLoading: true };
   const q = doc(db, COLLECTIONS.POSTS, id);
-  const [review, isLoading] = useDocumentData(q);
+  const [post, isLoading] = useDocumentData(q);
 
-  return { review, isLoading };
+  const _post = post as PostType | undefined;
+  return { post: _post, isLoading };
 };
 
 export const usePosts = (uid = null) => {
