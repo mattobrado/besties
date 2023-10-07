@@ -6,21 +6,19 @@ import {
   AlertDialogHeader,
   AlertDialogOverlay,
   Button,
-  Container,
   Flex,
   HStack,
   Spacer,
   useDisclosure,
 } from "@chakra-ui/react";
-import { Link } from "react-router-dom";
 import { PostType, UserType } from "../../lib/types";
 import { content } from "../../lib/content";
 import { useDeletePost, useToggleLike } from "../../hooks/postHooks";
-import { useComments } from "../../hooks/commentHooks";
 import { ROUTES } from "../../lib/routes";
 import ActionButton from "./ActionButton";
 import React from "react";
 import { COLORS } from "../../theme/colors";
+import { useComments } from "../../hooks/commentHooks";
 
 const Actions = ({
   post,
@@ -44,7 +42,7 @@ const Actions = ({
 
   const { toggleLike } = useToggleLike(config);
   const { deletePost } = useDeletePost(id);
-  // const { comments, isLoading: commentsLoading } = useComments(id);
+  const { comments } = useComments(id);
 
   return (
     <Flex>
@@ -57,7 +55,7 @@ const Actions = ({
         {!hideCommentButton && (
           <ActionButton
             icon={content.commentEmoji}
-            number={0}
+            number={comments?.length ?? 0}
             to={`${ROUTES.COMMENTS}/${id}`}
           />
         )}
