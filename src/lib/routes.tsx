@@ -1,10 +1,10 @@
 import { createBrowserRouter } from "react-router-dom";
 import Login from "../components/auth/Login";
 import Layout from "../components/layout/Layout";
-import Signup from "../components/auth/Signup";
 import Home from "../components/home/Home";
 import LoadingScreen from "../components/LoadingScreen";
 import NewReviewForm from "../components/newReviewForm/NewReviewForm";
+import Signup from "../components/auth/SignUp";
 
 const PROTECTED = "/protected";
 
@@ -17,7 +17,7 @@ export const ROUTES = {
   ROOT: "/",
   SIGNUP: "/signup",
   USERS: PROTECTED + "/users",
-  NEW_REVIEW: PROTECTED + "/review",
+  ADD_REVIEW: PROTECTED + "/review",
 };
 
 export const router = createBrowserRouter([
@@ -33,7 +33,7 @@ export const router = createBrowserRouter([
         element: <Home />,
       },
       {
-        path: ROUTES.NEW_REVIEW,
+        path: ROUTES.ADD_REVIEW,
         element: <NewReviewForm />,
       },
       {
