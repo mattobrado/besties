@@ -70,20 +70,20 @@ export const useLogin = () => {
   return { login, isLoading };
 };
 
-export function useLogout() {
+export const useLogout = () => {
   const [signOut, isLoading] = useSignOut(auth);
   const navigate = useNavigate();
 
-  async function logout() {
+  const logout = async () => {
     if (await signOut()) {
       navigate(ROUTES.LOGIN);
     } // else: show error [signOut() returns false if failed]
-  }
+  };
 
   return { logout, isLoading };
-}
+};
 
-export function useSignup() {
+export const useSignup = () => {
   const [isLoading, setLoading] = useState(false);
   const toast = useToast();
   const navigate = useNavigate();
@@ -137,4 +137,4 @@ export function useSignup() {
   };
 
   return { signup, isLoading };
-}
+};

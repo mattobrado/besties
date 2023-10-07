@@ -7,7 +7,7 @@ import { PasswordField } from "./PasswordField";
 import { content } from "../../lib/content";
 import { ROUTES } from "../../lib/routes";
 
-export default function Signup() {
+const Signup = () => {
   const { signup, isLoading } = useSignup();
   const {
     register,
@@ -68,4 +68,6 @@ export default function Signup() {
       />
     </AuthFormContainer>
   );
-}
+};
+
+export default Signup;

@@ -15,5 +15,6 @@ export const TOAST_PROPS: {
 
 export const COLLECTIONS = {
   USERS: "users",
-  POSTS: "reviews",
+  POSTS: "posts",
+  COMMENTS: "comments",
 };

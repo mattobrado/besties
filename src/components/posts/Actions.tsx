@@ -1,11 +1,12 @@
-import { Flex, IconButton } from "@chakra-ui/react";
+import { Button, Box, HStack, Text } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 import { PostType, UserType } from "../../lib/types";
 import { content } from "../../lib/content";
-import { useToggleLike } from "../../hooks/postHooks";
+import { useDeletePost, useToggleLike } from "../../hooks/postHooks";
+import { useComments } from "../../hooks/commentHooks";
 
 const Actions = ({ post, user }: { post: PostType; user: UserType }) => {
-  const { id, likes, uid } = post;
+  const { id, likes } = post;
 
   const isLiked = likes.includes(user.id);
   const config = {
@@ -15,24 +16,23 @@ const Actions = ({ post, user }: { post: PostType; user: UserType }) => {
   };
 
   const { toggleLike, isLoading: likeLoading } = useToggleLike(config);
-  const { deletePost, isLoading: deleteLoading } = useDeletePost(id);
-  const { comments, isLoading: commentsLoading } = useComments(id);
+  // const { deletePost, isLoading: deleteLoading } = useDeletePost(id);
+  // const { comments, isLoading: commentsLoading } = useComments(id);
 
   return (
-    <Flex p="2">
-      <Flex alignItems="center">
-        <IconButton
+    <Box>
+      <HStack spacing={0}>
+        <Button
           onClick={toggleLike}
-          isLoading={likeLoading || userLoading}
-          size="md"
-          colorScheme="red"
-          variant="ghost"
-          icon={isLiked ? content.heartEmoji : <FaRegHeart />}
-          isRound
-        />
-        {likes.length}
-      </Flex>
-      <Flex alignItems="center" ml="2">
+          // isLoading={likeLoading}
+          size="sm"
+          variant="link"
+        >
+          {isLiked ? content.heartEmoji : content.emptyHeartEmoji}
+        </Button>
+        <Text fontSize="sm">{likes.length}</Text>
+      </HStack>
+      {/* <Flex alignItems="center" ml="2">
         <IconButton
           as={Link}
           to={`${PROTECTED}/comments/${id}`}
@@ -44,9 +44,9 @@ const Actions = ({ post, user }: { post: PostType; user: UserType }) => {
           isRound
         />
         {comments?.length}
-      </Flex>
+      </Flex> */}
 
-      {!userLoading && user.id === uid && (
+      {/* {!userLoading && user.id === uid && (
         <IconButton
           ml="auto"
           onClick={deletePost}
@@ -57,8 +57,8 @@ const Actions = ({ post, user }: { post: PostType; user: UserType }) => {
           icon={<FaTrash />}
           isRound
         />
-      )}
-    </Flex>
+      )} */}
+    </Box>
   );
 };
 
