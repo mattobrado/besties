@@ -2,6 +2,7 @@ export const content = {
   logo: "👯‍♂️",
   heartEmoji: "🩷",
   emptyHeartEmoji: "🩶",
+  commentEmoji: "💬",
   searchEmoji: "🔎",
   starEmoji: "⭐️",
   addEmoji: "📝",

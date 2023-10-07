@@ -24,15 +24,17 @@ const Review = ({ review, user }: { review: PostType; user: UserType }) => {
       <Box py="2" textAlign="left">
         <Box>
           {isLoaded && <ReviewHeader reviewer={reviewer} reviewee={reviewee} />}
-          <Stack py="" px={bodyPx}>
-            <HStack fontSize="sm">
+          <Stack spacing={2}>
+            <HStack px={bodyPx} fontSize="sm">
               <Text>{getStars(rating)}</Text>
               <Text color="gray.500">{formatDistanceToNow(date)} ago</Text>
             </HStack>
-            <Text wordBreak="break-word" fontSize="md" pb={1}>
+            <Text px={bodyPx} pb={2} wordBreak="break-word" fontSize="md">
               {text}
             </Text>
-            <Actions user={user} post={review} />
+            <Box px={bodyPx - 2} pb={1}>
+              <Actions user={user} post={review} />
+            </Box>
           </Stack>
         </Box>
       </Box>

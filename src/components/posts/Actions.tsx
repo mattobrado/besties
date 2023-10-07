@@ -4,6 +4,7 @@ import { PostType, UserType } from "../../lib/types";
 import { content } from "../../lib/content";
 import { useDeletePost, useToggleLike } from "../../hooks/postHooks";
 import { useComments } from "../../hooks/commentHooks";
+import { ROUTES } from "../../lib/routes";
 
 const Actions = ({ post, user }: { post: PostType; user: UserType }) => {
   const { id, likes } = post;
@@ -15,36 +16,37 @@ const Actions = ({ post, user }: { post: PostType; user: UserType }) => {
     uid: user.id,
   };
 
-  const { toggleLike, isLoading: likeLoading } = useToggleLike(config);
+  const { toggleLike } = useToggleLike(config);
   // const { deletePost, isLoading: deleteLoading } = useDeletePost(id);
   // const { comments, isLoading: commentsLoading } = useComments(id);
 
   return (
     <Box>
-      <HStack spacing={0}>
-        <Button
-          onClick={toggleLike}
-          // isLoading={likeLoading}
-          size="sm"
-          variant="link"
-        >
-          {isLiked ? content.heartEmoji : content.emptyHeartEmoji}
+      <HStack>
+        <Box w={12}>
+          <HStack spacing={0}>
+            <Button onClick={toggleLike} size="sm" variant="link">
+              {isLiked ? content.heartEmoji : content.emptyHeartEmoji}
+            </Button>
+            <Text fontSize="sm">{likes.length}</Text>
+          </HStack>
+        </Box>
+        <Button onClick={toggleLike} size="sm" variant="link">
+          {content.commentEmoji}
         </Button>
-        <Text fontSize="sm">{likes.length}</Text>
       </HStack>
-      {/* <Flex alignItems="center" ml="2">
-        <IconButton
+      {/* <HStack>
+        <Button
           as={Link}
-          to={`${PROTECTED}/comments/${id}`}
+          to={`${ROUTES.PROTECTED}/comments/${id}`}
           isLoading={commentsLoading}
           size="md"
-          colorScheme="teal"
-          variant="ghost"
-          icon={comments?.length === 0 ? <FaRegComment /> : <FaComment />}
-          isRound
-        />
+          variant="link"
+        >
+          {comments?.length === 0 ? "💬" : "💬"}
+        </Button>
         {comments?.length}
-      </Flex> */}
+      </HStack> */}
 
       {/* {!userLoading && user.id === uid && (
         <IconButton
