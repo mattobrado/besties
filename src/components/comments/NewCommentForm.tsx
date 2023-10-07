@@ -40,14 +40,12 @@ const NewCommentForm = ({ user, post }: { user: UserType; post: PostType }) => {
             as={TextareaAutosize}
             resize="none"
             size={"lg"}
-            minRows={0}
             pb={1}
             placeholder={content.commentForm.commentField}
             {...register("text", VALIDATE.TEXT)}
           />
         </FormControl>
       </Box>
-
       <Box mt="auto" mb="2">
         <FormControl isInvalid={!!errors.text}>
           <Button
