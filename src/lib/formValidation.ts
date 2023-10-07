@@ -31,29 +31,29 @@ export const VALIDATE = {
   USERNAME: {
     required: {
       value: true,
-      message: "please enter username",
+      message: content.auth.pleaseEnterUsername,
     },
     minLength: {
-      value: 6,
-      message: "username must be at least 6 characters long",
+      value: 1,
+      message: content.auth.usernameMinLength,
     },
     pattern: {
       value: /^[a-zA-Z0-9]+$/,
-      message: "username must be alphanumeric",
+      message: content.auth.usernameAlphaNumeric,
     },
   },
   FULL_NAME: {
     required: {
       value: true,
-      message: "please enter your name",
+      message: content.auth.pleaseEnterName,
     },
     minLength: {
       value: 1,
-      message: "name must be at least 1 character long",
+      message: content.auth.fullNameMinLength,
     },
     pattern: {
       value: /^[a-zA-Z0-9]+$/,
-      message: "name must be alphanumeric",
+      message: content.auth.fullNameAlphaNumeric,
     },
   },
   REVIEW: {
@@ -63,11 +63,11 @@ export const VALIDATE = {
     },
     minLength: {
       value: 1,
-      message: "name must be at least 1 character long",
+      message: content.reviewForm.reviewMinLength,
     },
     maxLength: {
       value: 280,
-      message: "review must be less than 280 characters",
+      message: content.reviewForm.reviewMaxLength,
     },
   },
 };
