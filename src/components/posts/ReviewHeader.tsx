@@ -16,7 +16,6 @@ const ReviewHeader = ({
       <AvatarAndFullName user={reviewer} size={size} />
       <Text fontSize={size}>{content.review.reviewed}</Text>
       <AvatarAndFullName user={reviewee} size={size} />
-      <Box bg={"blue"} alignItems={"right"}></Box>
     </HStack>
   );
 };

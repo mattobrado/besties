@@ -9,7 +9,7 @@ const ActionButton = ({
 }: {
   onClick?: () => void;
   icon: string;
-  number: number;
+  number?: number;
   to?: string;
 }) => (
   <Box w={12}>

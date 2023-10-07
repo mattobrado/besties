@@ -5,6 +5,7 @@ import { useAuth } from "../../hooks/authHooks";
 import NewCommentForm from "./NewCommentForm";
 import PostList from "../posts/PostList";
 import { useComments } from "../../hooks/commentHooks";
+import { Container } from "@chakra-ui/react";
 
 const Comments = () => {
   const { id } = useParams();
@@ -17,7 +18,9 @@ const Comments = () => {
       <>
         <Review review={post} user={user} hideCommentButton={true}>
           <NewCommentForm user={user} post={post} />
-          {/* <PostList posts={comments} user={user} /> */}
+          <Container>
+            <PostList posts={comments} user={user} />
+          </Container>
         </Review>
       </>
     )
