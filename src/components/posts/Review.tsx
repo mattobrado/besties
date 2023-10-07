@@ -6,7 +6,15 @@ import { useUser } from "../../hooks/userHooks";
 import getStars from "../../utils/getStars";
 import Actions from "./Actions";
 
-const Review = ({ review, user }: { review: PostType; user: UserType }) => {
+const Review = ({
+  review,
+  user,
+  children,
+}: {
+  review: PostType;
+  user: UserType;
+  children: React.ReactNode;
+}) => {
   const { text, date, reviewerId, rating } = review;
   const { user: reviewer } = useUser(reviewerId);
   const { user: reviewee } = useUser(reviewerId);
@@ -39,6 +47,7 @@ const Review = ({ review, user }: { review: PostType; user: UserType }) => {
         </Box>
       </Box>
       <Divider />
+      {children}
     </Skeleton>
   );
 };
