@@ -12,16 +12,18 @@ const Review = ({ review }: { review: ReviewType }) => {
 
   const bodyPx = 8;
 
+  const isLoaded = !!reviewer && !!reviewee;
+
   return (
     <Skeleton
       startColor="transparent"
       endColor="transparent"
-      isLoaded={!!reviewer && !!reviewee}
+      isLoaded={isLoaded}
     >
       <Box py="2" textAlign="left">
         <Box>
           <Stack>
-            <Header reviewer={reviewer} reviewee={reviewee} />
+            {isLoaded && <Header reviewer={reviewer} reviewee={reviewee} />}
             <HStack px={bodyPx} fontSize="sm">
               <Text>{getStars(rating)}</Text>
               <Text color="gray.500">{formatDistanceToNow(date)} ago</Text>

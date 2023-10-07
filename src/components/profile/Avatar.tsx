@@ -6,14 +6,14 @@ import { UserType } from "../../lib/types";
 
 const Avatar = ({
   overrideAvatar,
-  size = "lg",
+  size,
   user,
 }: {
   overrideAvatar?: string;
-  size?: string;
-  user?: UserType;
+  size: string;
+  user: UserType;
 }) => {
-  return user ? (
+  return (
     <ChakraAvatar
       as={Link}
       to={`${ROUTES.PROTECTED}/${user.id}`}
@@ -22,8 +22,6 @@ const Avatar = ({
       src={overrideAvatar || user.avatar}
       bg={COLORS.BRAND}
     />
-  ) : (
-    <SkeletonCircle variant="brand" size={"12"} />
   );
 };
 

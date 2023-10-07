@@ -10,6 +10,7 @@ import {
   useDisclosure,
   Text,
   Link,
+  SkeletonCircle,
 } from "@chakra-ui/react";
 import { CloseIcon, HamburgerIcon } from "@chakra-ui/icons";
 import { useAuth, useLogout } from "../../hooks/authHooks";
@@ -52,12 +53,14 @@ const TopNavBar = () => {
           <MenuItem onClick={logout}>{content.navBar.logOut}</MenuItem>
         </MenuList>
       </Menu>
-      <HStack spacing={8} alignItems={"center"}>
-        <Link as={ReactRouterLink} to={ROUTES.HOME}>
-          <Text fontSize="5xl">{content.logo}</Text>
-        </Link>
-      </HStack>
-      <Avatar user={user} size={size} />
+      <Link as={ReactRouterLink} to={ROUTES.HOME}>
+        <Text fontSize="5xl">{content.logo}</Text>
+      </Link>
+      {user ? (
+        <Avatar user={user} size={size} />
+      ) : (
+        <SkeletonCircle variant="brand" size={"12"} />
+      )}
     </Flex>
   );
 };

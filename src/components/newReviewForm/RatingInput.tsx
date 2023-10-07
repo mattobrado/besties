@@ -56,6 +56,5 @@ const RatingInput = ({
     </HStack>
   );
 };
-RatingInput.displayName = "Rating";
 
 export default RatingInput;
