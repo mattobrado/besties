@@ -32,9 +32,9 @@ const Actions = ({ post, user }: { post: PostType; user: UserType }) => {
           />
         </Box>
         <ActionButton
-          onClick={toggleLike}
           icon={content.commentEmoji}
           number={0}
+          to={`${ROUTES.PROTECTED}/comments/${id}`}
         />
       </HStack>
       {/* <HStack>
