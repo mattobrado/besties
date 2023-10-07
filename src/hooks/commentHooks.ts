@@ -13,12 +13,13 @@ import { useState } from "react";
 import { useCollectionData } from "react-firebase-hooks/firestore";
 import { db } from "../lib/firebase";
 import { COLLECTIONS } from "../lib/constants";
+import { PostType } from "../lib/types";
 
 export const useAddComment = ({
-  postID,
+  postId,
   uid,
 }: {
-  postID: string;
+  postId: string;
   uid: string;
 }) => {
   const [isLoading, setLoading] = useState(false);
@@ -29,7 +30,14 @@ export const useAddComment = ({
     const id = uuidv4();
     const date = Date.now();
     const docRef = doc(db, COLLECTIONS.COMMENTS, id);
-    await setDoc(docRef, { text, id, postID, date, uid, isComment: true });
+    await setDoc(docRef, {
+      text,
+      id,
+      parentPostId: postId,
+      date,
+      uid,
+      isComment: true,
+    });
 
     toast({
       title: "Comment added!",
@@ -45,7 +53,7 @@ export const useAddComment = ({
   return { addComment, isLoading };
 };
 
-export const useComments = (postID: string) => {
+export const useComments = (postID?: string) => {
   const q = query(
     collection(db, COLLECTIONS.COMMENTS),
     where("postID", "==", postID),
@@ -54,7 +62,7 @@ export const useComments = (postID: string) => {
   const [comments, isLoading, error] = useCollectionData(q);
   if (error) throw error;
 
-  return { comments, isLoading };
+  return { comments: <PostType[]>comments, isLoading };
 };
 
 export const useDeleteComment = (id: string) => {

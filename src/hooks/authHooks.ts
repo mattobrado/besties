@@ -39,9 +39,7 @@ export const useAuth = (): {
     }
   }, [authLoading]);
 
-  const _user = user as UserType;
-
-  return { user: _user, isLoading, error };
+  return { user: <UserType>user, isLoading, error };
 };
 export const useLogin = () => {
   const [isLoading, setLoading] = useState(false);

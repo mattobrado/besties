@@ -31,7 +31,7 @@ const Actions = ({
   user: UserType;
   hideCommentButton?: boolean;
 }) => {
-  const { id, likes, reviewerId } = post;
+  const { id, likes, uid: reviewerId } = post;
   const { isOpen, onOpen, onClose } = useDisclosure();
   const cancelRef = React.useRef();
 

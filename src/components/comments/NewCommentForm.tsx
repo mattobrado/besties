@@ -1,34 +1,30 @@
-import {
-  Box,
-  Button,
-  Flex,
-  FormControl,
-  HStack,
-  Input,
-  Spacer,
-} from "@chakra-ui/react";
+import { Box, Button, Flex, FormControl, Input } from "@chakra-ui/react";
 import { content } from "../../lib/content";
 import TextareaAutosize from "react-textarea-autosize";
 import { useForm } from "react-hook-form";
 import { VALIDATE } from "../../lib/formValidation";
-import { CommentType, PostType, UserType } from "../../lib/types";
-import { useAddComment } from "../../hooks/commentHooks";
+import { PostType, UserType } from "../../lib/types";
+import { useAddPost } from "../../hooks/postHooks";
 
 const NewCommentForm = ({ user, post }: { user: UserType; post: PostType }) => {
-  const { id: postID } = post;
+  const { id: postId } = post;
   const {
     register,
     handleSubmit,
     reset,
     formState: { errors },
   } = useForm();
-  const { addComment, isLoading: commentLoading } = useAddComment({
-    postID,
-    uid: user?.id,
-  });
+  const { addPost, isLoading } = useAddPost();
 
-  const handleAddComment = (data: Partial<CommentType>) => {
-    addComment(data.text);
+  const handleAddComment = (comment: Partial<PostType>) => {
+    if (!user) return;
+    addPost({
+      isComment: true,
+      parentPostId: postId,
+      targetUid: comment.targetUid,
+      uid: user.id,
+      text: comment.text,
+    });
     reset();
   };
 
@@ -51,7 +47,7 @@ const NewCommentForm = ({ user, post }: { user: UserType; post: PostType }) => {
           <Button
             type="submit"
             size="sm"
-            isLoading={commentLoading}
+            isLoading={isLoading}
             loadingText={content.submitButtonLoadingText}
             variant={"custom"}
           >

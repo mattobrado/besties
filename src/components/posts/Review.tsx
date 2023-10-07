@@ -13,7 +13,7 @@ const Review = ({
   children?: React.ReactNode;
   hideCommentButton?: boolean;
 }) => {
-  const { text, date, reviewerId, rating } = review;
+  const { text, date, uid: reviewerId, rating } = review;
   return (
     <PostView
       children={children}

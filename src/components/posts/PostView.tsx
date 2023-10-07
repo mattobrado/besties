@@ -11,8 +11,8 @@ const PostView = ({
   date,
   hideCommentButton,
   post,
-  revieweeId,
-  reviewerId,
+  revieweeId: targetUid,
+  reviewerId: uid,
   subjectLineText,
   text,
 }: {
@@ -26,8 +26,8 @@ const PostView = ({
   subjectLineText: string;
   text: string;
 }) => {
-  const { user: reviewer } = useUser(reviewerId);
-  const { user: reviewee } = useUser(revieweeId);
+  const { user: reviewer } = useUser(uid);
+  const { user: reviewee } = useUser(targetUid);
 
   const bodyPx = 8;
   const isLoaded = !!reviewer && !!reviewee;

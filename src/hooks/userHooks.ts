@@ -9,6 +9,5 @@ export const useUser = (
 ): { user?: UserType; isLoading: boolean } => {
   const q = query(doc(db, COLLECTIONS.USERS, id) as any);
   const [user, isLoading] = useDocumentData(q as any);
-  const _user = user as UserType;
-  return { user: _user, isLoading };
+  return { user: <UserType>user, isLoading };
 };
