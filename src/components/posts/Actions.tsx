@@ -5,6 +5,7 @@ import { content } from "../../lib/content";
 import { useDeletePost, useToggleLike } from "../../hooks/postHooks";
 import { useComments } from "../../hooks/commentHooks";
 import { ROUTES } from "../../lib/routes";
+import ActionButton from "./ActionButton";
 
 const Actions = ({ post, user }: { post: PostType; user: UserType }) => {
   const { id, likes } = post;
@@ -24,16 +25,17 @@ const Actions = ({ post, user }: { post: PostType; user: UserType }) => {
     <Box>
       <HStack>
         <Box w={12}>
-          <HStack spacing={0}>
-            <Button onClick={toggleLike} size="sm" variant="link">
-              {isLiked ? content.heartEmoji : content.emptyHeartEmoji}
-            </Button>
-            <Text fontSize="sm">{likes.length}</Text>
-          </HStack>
+          <ActionButton
+            onClick={toggleLike}
+            icon={isLiked ? content.heartEmoji : content.emptyHeartEmoji}
+            number={likes.length}
+          />
         </Box>
-        <Button onClick={toggleLike} size="sm" variant="link">
-          {content.commentEmoji}
-        </Button>
+        <ActionButton
+          onClick={toggleLike}
+          icon={content.commentEmoji}
+          number={0}
+        />
       </HStack>
       {/* <HStack>
         <Button
