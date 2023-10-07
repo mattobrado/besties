@@ -22,7 +22,15 @@ import ActionButton from "./ActionButton";
 import React from "react";
 import { COLORS } from "../../theme/colors";
 
-const Actions = ({ post, user }: { post: PostType; user: UserType }) => {
+const Actions = ({
+  post,
+  user,
+  hideCommentButton,
+}: {
+  post: PostType;
+  user: UserType;
+  hideCommentButton?: boolean;
+}) => {
   const { id, likes, reviewerId } = post;
   const { isOpen, onOpen, onClose } = useDisclosure();
   const cancelRef = React.useRef();
@@ -46,11 +54,13 @@ const Actions = ({ post, user }: { post: PostType; user: UserType }) => {
           icon={isLiked ? content.heartEmoji : content.emptyHeartEmoji}
           number={likes.length}
         />
-        <ActionButton
-          icon={content.commentEmoji}
-          number={0}
-          to={`${ROUTES.COMMENTS}/${id}`}
-        />
+        {!hideCommentButton && (
+          <ActionButton
+            icon={content.commentEmoji}
+            number={0}
+            to={`${ROUTES.COMMENTS}/${id}`}
+          />
+        )}
       </HStack>
       {user.id === reviewerId && (
         <>

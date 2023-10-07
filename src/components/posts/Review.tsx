@@ -10,10 +10,12 @@ const Review = ({
   review,
   user,
   children,
+  hideCommentButton,
 }: {
   review: PostType;
   user: UserType;
   children: React.ReactNode;
+  hideCommentButton?: boolean;
 }) => {
   const { text, date, reviewerId, rating } = review;
   const { user: reviewer } = useUser(reviewerId);
@@ -41,7 +43,11 @@ const Review = ({
               {text}
             </Text>
             <Box px={bodyPx - 2} pb={1}>
-              <Actions user={user} post={review} />
+              <Actions
+                user={user}
+                post={review}
+                hideCommentButton={hideCommentButton}
+              />
             </Box>
           </Stack>
         </Box>

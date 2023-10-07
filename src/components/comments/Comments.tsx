@@ -12,7 +12,7 @@ const Comments = () => {
   return (
     isLoaded && (
       <>
-        <Review review={post} user={user}>
+        <Review review={post} user={user} hideCommentButton={true}>
           <NewCommentForm user={user} post={post} />
         </Review>
       </>
