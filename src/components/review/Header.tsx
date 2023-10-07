@@ -1,6 +1,6 @@
 import { Box, HStack, Text } from "@chakra-ui/react";
 import { UserType } from "../../lib/types";
-import { CONTENT } from "../../lib/content";
+import { content } from "../../lib/content";
 import AvatarAndFullNameLink from "./AvatarAndFullNameLink";
 
 const Header = ({
@@ -14,7 +14,7 @@ const Header = ({
   return (
     <HStack>
       <AvatarAndFullNameLink user={reviewer} size={size} />
-      <Text fontSize={size}>{CONTENT.REVIEW.reviewed}</Text>
+      <Text fontSize={size}>{content.review.reviewed}</Text>
       <AvatarAndFullNameLink user={reviewee} size={size} />
       <Box bg={"blue"} alignItems={"right"}></Box>
     </HStack>

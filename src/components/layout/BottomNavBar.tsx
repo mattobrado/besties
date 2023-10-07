@@ -1,5 +1,5 @@
 import { BottomNavigation } from "chakra-ui-bottom-navigation";
-import { CONTENT } from "../../lib/content";
+import { content } from "../../lib/content";
 import MyNavigationItem from "./MyNavigationItem";
 import { ROUTES } from "../../lib/routes";
 
@@ -7,7 +7,7 @@ export const BottomNavBar = () => {
   return (
     <BottomNavigation bg={"transparent"} value={0} onChange={() => {}}>
       <MyNavigationItem
-        icon={CONTENT.homeEmoji}
+        icon={content.homeEmoji}
         to={ROUTES.HOME}
         onClick={() =>
           window.scrollTo({
@@ -18,10 +18,10 @@ export const BottomNavBar = () => {
         }
       ></MyNavigationItem>
       <MyNavigationItem
-        icon={CONTENT.addEmoji}
+        icon={content.addEmoji}
         to={ROUTES.NEW_REVIEW}
       ></MyNavigationItem>
-      <MyNavigationItem icon={CONTENT.searchEmoji} to={""}></MyNavigationItem>
+      <MyNavigationItem icon={content.searchEmoji} to={""}></MyNavigationItem>
     </BottomNavigation>
   );
 };

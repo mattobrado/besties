@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 import AuthFormContainer from "./AuthFormContainer";
 import AuthFormField from "./AuthFormField";
 import { PasswordField } from "./PasswordField";
-import { CONTENT } from "../../lib/content";
+import { content } from "../../lib/content";
 import { ROUTES } from "../../lib/routes";
 
 export default function Signup() {
@@ -27,38 +27,38 @@ export default function Signup() {
   return (
     <AuthFormContainer
       authHeadingProps={{
-        title: CONTENT.AUTH.createAnAccount,
-        callToAction: CONTENT.AUTH.goToLoginMessage,
+        title: content.auth.createAnAccount,
+        callToAction: content.auth.goToLoginMessage,
         link: {
           to: ROUTES.LOGIN,
-          label: CONTENT.AUTH.login,
+          label: content.auth.login,
         },
       }}
       onSubmit={handleSubmit(handleSignup)}
       buttonProps={{
         isLoading,
-        label: CONTENT.AUTH.signup,
-        loadingText: CONTENT.AUTH.signingUp,
+        label: content.auth.signup,
+        loadingText: content.auth.signingUp,
       }}
     >
       <AuthFormField
         error={errors?.email}
         inputType={INPUT_TYPE.EMAIL}
-        label={CONTENT.AUTH.emailAddress}
+        label={content.auth.emailAddress}
         register={register}
         validate={VALIDATE.EMAIL}
       />
       <AuthFormField
         error={errors?.fullName}
         inputType={INPUT_TYPE.FULL_NAME}
-        label={CONTENT.AUTH.fullName}
+        label={content.auth.fullName}
         register={register}
         validate={VALIDATE.FULL_NAME}
       />
       <AuthFormField
         error={errors?.username}
         inputType={INPUT_TYPE.USERNAME}
-        label={CONTENT.AUTH.username}
+        label={content.auth.username}
         register={register}
         validate={VALIDATE.USERNAME}
       />

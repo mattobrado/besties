@@ -4,7 +4,7 @@ import { useLogin } from "../../hooks/authHooks";
 import { useForm } from "react-hook-form";
 import AuthFormField from "./AuthFormField";
 import AuthFormContainer from "./AuthFormContainer";
-import { CONTENT } from "../../lib/content";
+import { content } from "../../lib/content";
 import { COLORS } from "../../theme/colors";
 import { ROUTES } from "../../lib/routes";
 import { INPUT_TYPE, VALIDATE } from "../../lib/constants";
@@ -31,25 +31,25 @@ const Login = () => {
     <>
       <AuthFormContainer
         authHeadingProps={{
-          title: CONTENT.AUTH.logInToYourAccount,
-          callToAction: CONTENT.AUTH.dontHaveAnAccount,
+          title: content.auth.logInToYourAccount,
+          callToAction: content.auth.dontHaveAnAccount,
           link: {
             to: ROUTES.SIGNUP,
-            label: CONTENT.AUTH.signup,
+            label: content.auth.signup,
           },
         }}
         onSubmit={handleSubmit(handleLogin)}
         buttonProps={{
           isLoading,
-          label: CONTENT.AUTH.login,
-          loadingText: CONTENT.AUTH.loggingIn,
+          label: content.auth.login,
+          loadingText: content.auth.loggingIn,
         }}
       >
         <Stack spacing="5">
           <AuthFormField
             error={errors?.email}
             inputType={INPUT_TYPE.EMAIL}
-            label={CONTENT.AUTH.emailAddress}
+            label={content.auth.emailAddress}
             register={register}
             validate={VALIDATE.EMAIL}
           />
@@ -60,10 +60,10 @@ const Login = () => {
         </Stack>
         <HStack justify="space-between">
           <Checkbox colorScheme={COLORS.COLOR_SCHEME} defaultChecked>
-            {CONTENT.AUTH.rememberMe}
+            {content.auth.rememberMe}
           </Checkbox>
           <Button variant="text" size="sm">
-            {CONTENT.AUTH.forgotPassword}
+            {content.auth.forgotPassword}
           </Button>
         </HStack>
       </AuthFormContainer>

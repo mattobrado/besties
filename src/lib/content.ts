@@ -1,11 +1,11 @@
-export const CONTENT = {
+export const content = {
   logo: "👯‍♂️",
   heartEmoji: "🩷",
   searchEmoji: "🔎",
   starEmoji: "⭐️",
   addEmoji: "📝",
   homeEmoji: "🏠",
-  AUTH: {
+  auth: {
     appName: "besties 👯‍♂️",
     createAnAccount: "create an account",
     dontHaveAnAccount: "don't have an account?",
@@ -38,7 +38,7 @@ export const CONTENT = {
     showEmoji: "👀",
     hideEmoji: "🙈",
   },
-  NAVBAR: {
+  navBar: {
     highestRated: "⭐️ highest rated",
     home: "home",
     logOut: "🚪🚶log out",
@@ -48,14 +48,14 @@ export const CONTENT = {
     search: "search",
     newReview: "review",
   },
-  NEW_REVIEW: {
+  reviewForm: {
     revieweeField: "who are you reviewing?",
     submitButtonText: "post",
     submitButtonLoadingText: "posting...",
     reviewField: "what do we need to know?",
     fieldRequired: "required",
   },
-  REVIEW: {
+  review: {
     reviewed: "👉",
   },
 };

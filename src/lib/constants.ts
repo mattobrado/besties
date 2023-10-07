@@ -1,5 +1,5 @@
 import { ToastPosition } from "@chakra-ui/react";
-import { CONTENT } from "./content";
+import { content } from "./content";
 
 export const INPUT_TYPE = {
   EMAIL: "email",
@@ -12,21 +12,21 @@ export const VALIDATE = {
   EMAIL: {
     required: {
       value: true,
-      message: CONTENT.AUTH.pleaseEnterAnEmailAddress,
+      message: content.auth.pleaseEnterAnEmailAddress,
     },
     pattern: {
       value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-      message: CONTENT.AUTH.invalidEmailAddress,
+      message: content.auth.invalidEmailAddress,
     },
   },
   PASSWORD: {
     required: {
       value: true,
-      message: CONTENT.AUTH.pleaseEnterPassword,
+      message: content.auth.pleaseEnterPassword,
     },
     minLength: {
       value: 6,
-      message: CONTENT.AUTH.invalidPassword,
+      message: content.auth.invalidPassword,
     },
   },
   USERNAME: {

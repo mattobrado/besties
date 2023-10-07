@@ -14,7 +14,7 @@ import {
 import { CloseIcon, HamburgerIcon } from "@chakra-ui/icons";
 import { useAuth, useLogout } from "../../hooks/authHooks";
 import { Link as ReactRouterLink } from "react-router-dom";
-import { CONTENT } from "../../lib/content";
+import { content } from "../../lib/content";
 import { ROUTES } from "../../lib/routes";
 import Avatar from "../profile/Avatar";
 
@@ -38,23 +38,23 @@ const TopNavBar = () => {
         ></MenuButton>
         <MenuList>
           <MenuItem as={ReactRouterLink} to={ROUTES.USERS}>
-            {CONTENT.NAVBAR.seeAllUsers}
+            {content.navBar.seeAllUsers}
           </MenuItem>
           <MenuDivider />
           <MenuItem as={ReactRouterLink} to={ROUTES.HOME}>
-            {CONTENT.NAVBAR.mostPopular}
+            {content.navBar.mostPopular}
           </MenuItem>
           <MenuDivider />
           <MenuItem as={ReactRouterLink} to={ROUTES.HOME}>
-            {CONTENT.NAVBAR.highestRated}
+            {content.navBar.highestRated}
           </MenuItem>
           <MenuDivider />
-          <MenuItem onClick={logout}>{CONTENT.NAVBAR.logOut}</MenuItem>
+          <MenuItem onClick={logout}>{content.navBar.logOut}</MenuItem>
         </MenuList>
       </Menu>
       <HStack spacing={8} alignItems={"center"}>
         <Link as={ReactRouterLink} to={ROUTES.HOME}>
-          <Text fontSize="5xl">{CONTENT.logo}</Text>
+          <Text fontSize="5xl">{content.logo}</Text>
         </Link>
       </HStack>
       <Avatar user={user} size={size} />

@@ -9,7 +9,7 @@ import {
   Textarea,
 } from "@chakra-ui/react";
 import RatingInput from "./RatingInput";
-import { CONTENT } from "../../lib/content";
+import { content } from "../../lib/content";
 import TextareaAutosize from "react-textarea-autosize";
 import { useForm } from "react-hook-form";
 import { useAuth } from "../../hooks/authHooks";
@@ -43,13 +43,13 @@ const NewReview = () => {
       <Stack spacing={3}>
         <FormControl isInvalid={!!errors.revieweeId}>
           <InputGroup size={"lg"}>
-            <InputRightElement>{CONTENT.searchEmoji}</InputRightElement>
+            <InputRightElement>{content.searchEmoji}</InputRightElement>
             <Input
-              placeholder={CONTENT.NEW_REVIEW.revieweeField}
+              placeholder={content.reviewForm.revieweeField}
               {...register("revieweeId", {
                 required: {
                   value: true,
-                  message: CONTENT.NEW_REVIEW.fieldRequired,
+                  message: content.reviewForm.fieldRequired,
                 },
               })}
             />
@@ -70,7 +70,7 @@ const NewReview = () => {
             as={TextareaAutosize}
             resize="none"
             size={"lg"}
-            placeholder={CONTENT.NEW_REVIEW.reviewField}
+            placeholder={content.reviewForm.reviewField}
             minRows={5}
             {...register("text", VALIDATE.REVIEW)}
           />
@@ -83,10 +83,10 @@ const NewReview = () => {
           size="md"
           w="full"
           isLoading={addingReview}
-          loadingText={CONTENT.NEW_REVIEW.submitButtonLoadingText}
+          loadingText={content.reviewForm.submitButtonLoadingText}
           variant={"custom"}
         >
-          {CONTENT.NEW_REVIEW.submitButtonText}
+          {content.reviewForm.submitButtonText}
         </Button>
       </Stack>
     </form>

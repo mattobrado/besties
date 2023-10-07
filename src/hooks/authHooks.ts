@@ -12,7 +12,7 @@ import { useToast } from "@chakra-ui/react";
 import { setDoc, doc, getDoc, DocumentData } from "firebase/firestore";
 import { LoginType, SignupType as SignupType, UserType } from "../lib/types";
 import isUsernameDuplicated from "./utils/isUserNameDuplicated";
-import { CONTENT } from "../lib/content";
+import { content } from "../lib/content";
 import { ROUTES } from "../lib/routes";
 
 export const useAuth = (): {
@@ -103,7 +103,7 @@ export function useSignup() {
 
     if (usernameExists) {
       toast({
-        title: CONTENT.AUTH.usernameTaken,
+        title: content.auth.usernameTaken,
         status: "error",
         ...TOAST_PROPS,
       });
@@ -125,8 +125,8 @@ export function useSignup() {
         });
 
         toast({
-          title: CONTENT.AUTH.signupSuccess,
-          description: CONTENT.AUTH.loginSuccess,
+          title: content.auth.signupSuccess,
+          description: content.auth.loginSuccess,
           status: "success",
           ...TOAST_PROPS,
         });
@@ -134,7 +134,7 @@ export function useSignup() {
         navigate(redirectTo);
       } catch (error: any) {
         toast({
-          title: CONTENT.AUTH.signupFailed,
+          title: content.auth.signupFailed,
           description: error?.message,
           status: "error",
           ...TOAST_PROPS,

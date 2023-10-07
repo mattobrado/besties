@@ -2,7 +2,6 @@ import {
   FormControl,
   FormErrorMessage,
   FormLabel,
-  IconButton,
   Input,
   InputGroup,
   InputProps,
@@ -13,8 +12,7 @@ import {
 import { INPUT_TYPE } from "../../lib/constants";
 import { forwardRef, useRef } from "react";
 import { FieldError, FieldErrorsImpl, Merge } from "react-hook-form";
-import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
-import { CONTENT } from "../../lib/content";
+import { content } from "../../lib/content";
 
 export const PasswordField = forwardRef<
   HTMLInputElement,
@@ -36,11 +34,11 @@ export const PasswordField = forwardRef<
   return (
     <FormControl isInvalid={!!props.error}>
       <FormLabel htmlFor={INPUT_TYPE.PASSWORD}>
-        {CONTENT.AUTH.password}
+        {content.auth.password}
       </FormLabel>
       <InputGroup>
         <InputRightElement onClick={onClickReveal}>
-          {isOpen ? CONTENT.AUTH.hideEmoji : CONTENT.AUTH.showEmoji}
+          {isOpen ? content.auth.hideEmoji : content.auth.showEmoji}
         </InputRightElement>
         <Input
           id={INPUT_TYPE.PASSWORD}
