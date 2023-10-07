@@ -1,6 +1,6 @@
 import { Box, Divider, HStack, Skeleton, Stack, Text } from "@chakra-ui/react";
 import { ReviewType } from "../../lib/types";
-import Header from "./Header";
+import ReviewHeader from "./ReviewHeader";
 import { formatDistanceToNow } from "date-fns";
 import { useUser } from "../../hooks/userHooks";
 import getStars from "../../utils/getStars";
@@ -23,7 +23,9 @@ const Review = ({ review }: { review: ReviewType }) => {
       <Box py="2" textAlign="left">
         <Box>
           <Stack>
-            {isLoaded && <Header reviewer={reviewer} reviewee={reviewee} />}
+            {isLoaded && (
+              <ReviewHeader reviewer={reviewer} reviewee={reviewee} />
+            )}
             <HStack px={bodyPx} fontSize="sm">
               <Text>{getStars(rating)}</Text>
               <Text color="gray.500">{formatDistanceToNow(date)} ago</Text>

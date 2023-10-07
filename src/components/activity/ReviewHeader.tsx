@@ -3,7 +3,7 @@ import { UserType } from "../../lib/types";
 import { content } from "../../lib/content";
 import AvatarAndFullName from "../profile/AvatarAndFullName";
 
-const Header = ({
+const ReviewHeader = ({
   reviewer,
   reviewee,
 }: {
@@ -21,4 +21,4 @@ const Header = ({
   );
 };
 
-export default Header;
+export default ReviewHeader;
