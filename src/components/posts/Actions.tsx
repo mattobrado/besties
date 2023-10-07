@@ -1,4 +1,17 @@
-import { Button, Box, HStack, Text } from "@chakra-ui/react";
+import {
+  AlertDialog,
+  AlertDialogBody,
+  AlertDialogContent,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogOverlay,
+  Button,
+  Container,
+  Flex,
+  HStack,
+  Spacer,
+  useDisclosure,
+} from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 import { PostType, UserType } from "../../lib/types";
 import { content } from "../../lib/content";
@@ -6,9 +19,13 @@ import { useDeletePost, useToggleLike } from "../../hooks/postHooks";
 import { useComments } from "../../hooks/commentHooks";
 import { ROUTES } from "../../lib/routes";
 import ActionButton from "./ActionButton";
+import React from "react";
+import { COLORS } from "../../theme/colors";
 
 const Actions = ({ post, user }: { post: PostType; user: UserType }) => {
-  const { id, likes } = post;
+  const { id, likes, reviewerId } = post;
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const cancelRef = React.useRef();
 
   const isLiked = likes.includes(user.id);
   const config = {
@@ -18,51 +35,60 @@ const Actions = ({ post, user }: { post: PostType; user: UserType }) => {
   };
 
   const { toggleLike } = useToggleLike(config);
-  // const { deletePost, isLoading: deleteLoading } = useDeletePost(id);
+  const { deletePost } = useDeletePost(id);
   // const { comments, isLoading: commentsLoading } = useComments(id);
 
   return (
-    <Box>
+    <Flex>
       <HStack>
-        <Box w={12}>
-          <ActionButton
-            onClick={toggleLike}
-            icon={isLiked ? content.heartEmoji : content.emptyHeartEmoji}
-            number={likes.length}
-          />
-        </Box>
+        <ActionButton
+          onClick={toggleLike}
+          icon={isLiked ? content.heartEmoji : content.emptyHeartEmoji}
+          number={likes.length}
+        />
         <ActionButton
           icon={content.commentEmoji}
           number={0}
           to={`${ROUTES.COMMENTS}/${id}`}
         />
       </HStack>
-      {/* <HStack>
-        <Button
-          as={Link}
-          to={`${ROUTES.PROTECTED}/comments/${id}`}
-          isLoading={commentsLoading}
-          size="md"
-          variant="link"
-        >
-          {comments?.length === 0 ? "💬" : "💬"}
-        </Button>
-        {comments?.length}
-      </HStack> */}
-
-      {/* {!userLoading && user.id === uid && (
-        <IconButton
-          ml="auto"
-          onClick={deletePost}
-          isLoading={deleteLoading}
-          size="md"
-          colorScheme="red"
-          variant="ghost"
-          icon={<FaTrash />}
-          isRound
-        />
-      )} */}
-    </Box>
+      {user.id === reviewerId && (
+        <>
+          <Spacer />
+          <Button onClick={deletePost} size="sm" variant="link">
+            {content.trashEmoji}
+          </Button>
+          <AlertDialog
+            isOpen={isOpen}
+            leastDestructiveRef={cancelRef as any}
+            onClose={onClose}
+          >
+            <AlertDialogOverlay>
+              <AlertDialogContent bg={COLORS.BACKGROUND}>
+                <AlertDialogHeader fontSize="lg" fontWeight="bold">
+                  {content.review.deleteReviewHeading}
+                </AlertDialogHeader>
+                <AlertDialogBody>
+                  {content.review.deleteReviewBody}
+                </AlertDialogBody>
+                <AlertDialogFooter>
+                  <Button ref={cancelRef as any} onClick={onClose}>
+                    {content.cancel}
+                  </Button>
+                  <Button
+                    colorScheme={COLORS.COLOR_SCHEME}
+                    onClick={deletePost}
+                    ml={3}
+                  >
+                    {content.delete}
+                  </Button>
+                </AlertDialogFooter>
+              </AlertDialogContent>
+            </AlertDialogOverlay>
+          </AlertDialog>
+        </>
+      )}
+    </Flex>
   );
 };
 

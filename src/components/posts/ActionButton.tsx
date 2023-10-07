@@ -1,4 +1,4 @@
-import { HStack, Button, Text } from "@chakra-ui/react";
+import { HStack, Button, Text, Box } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 
 const ActionButton = ({
@@ -7,17 +7,19 @@ const ActionButton = ({
   number,
   to,
 }: {
-  onClick?: () => Promise<void>;
+  onClick?: () => void;
   icon: string;
   number: number;
   to?: string;
 }) => (
-  <HStack spacing={0}>
-    <Button as={Link} to={to} onClick={onClick} size="sm" variant="link">
-      {icon}
-    </Button>
-    <Text fontSize="sm">{number}</Text>
-  </HStack>
+  <Box w={12}>
+    <HStack spacing={0}>
+      <Button as={Link} to={to} onClick={onClick} size="sm" variant="link">
+        {icon}
+      </Button>
+      <Text fontSize="sm">{number}</Text>
+    </HStack>
+  </Box>
 );
 
 export default ActionButton;

@@ -7,6 +7,9 @@ export const content = {
   starEmoji: "⭐️",
   addEmoji: "📝",
   homeEmoji: "🏠",
+  trashEmoji: "🗑️",
+  cancel: "cancel",
+  delete: "delete",
   auth: {
     appName: "besties 👯‍♂️",
     createAnAccount: "create an account",
@@ -68,6 +71,8 @@ export const content = {
   },
   review: {
     reviewed: "👉",
+    deleteReviewHeading: "delete review",
+    deleteReviewBody: "are you sure?",
   },
   activity: {
     noActivity: "no activity yet... feeling a little lonely here",
