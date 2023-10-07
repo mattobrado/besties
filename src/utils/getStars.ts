@@ -8,6 +8,7 @@ const getStars = (num: number) => {
   if (num >= 1.75) return "⭐️⭐️";
   if (num >= 1.25) return "⭐️½";
   if (num >= 0.75) return "⭐️";
+  if (num >= 0.25) return "½";
   return "❌";
 };
 

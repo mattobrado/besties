@@ -82,3 +82,7 @@ export const TOAST_PROPS: {
   isClosable: true,
   position: "top",
 };
+
+export const COLLECTIONS = {
+  USERS: "users",
+};

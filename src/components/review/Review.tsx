@@ -3,7 +3,7 @@ import { ReviewType } from "../../lib/types";
 import Header from "./Header";
 import { formatDistanceToNow } from "date-fns";
 import { useUser } from "../../hooks/userHooks";
-import getStars from "../../hooks/utils/getStars";
+import getStars from "../../utils/getStars";
 
 const Review = ({ review }: { review: ReviewType }) => {
   const { text, date, reviewerId, rating } = review;
