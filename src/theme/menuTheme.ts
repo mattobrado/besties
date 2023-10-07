@@ -1,6 +1,6 @@
 import { createMultiStyleConfigHelpers } from "@chakra-ui/react";
 import { menuAnatomy } from "@chakra-ui/anatomy";
-import { colors } from "./colors";
+import { COLORS } from "./colors";
 
 const { definePartsStyle, defineMultiStyleConfig } =
   createMultiStyleConfigHelpers(menuAnatomy.keys);
@@ -13,19 +13,19 @@ const menuStyle = definePartsStyle({
     py: "3",
     borderRadius: "xl",
     border: true,
-    borderColor: colors.brand,
-    bg: colors.bg,
+    borderColor: COLORS.BRAND,
+    bg: COLORS.BACKGROUND,
   },
   item: {
     // this will style the MenuItem and MenuItemOption components
-    color: colors.primaryFont,
-    bg: colors.bg,
+    color: COLORS.PRIMARY_FONT,
+    bg: COLORS.BACKGROUND,
   },
   divider: {
     // this will style the MenuDivider component
     my: "3",
     borderWidth: "2px",
-    borderColor: colors.brand,
+    borderColor: COLORS.BRAND,
   },
   button: { transition: "all 0.2s" },
 });

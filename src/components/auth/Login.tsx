@@ -5,7 +5,7 @@ import { useForm } from "react-hook-form";
 import AuthFormField from "./AuthFormField";
 import AuthFormContainer from "./AuthFormContainer";
 import { CONTENT } from "../../lib/content";
-import { colors } from "../../theme/colors";
+import { COLORS } from "../../theme/colors";
 import { ROUTES } from "../../lib/routes";
 import { INPUT_TYPE, VALIDATE } from "../../lib/constants";
 
@@ -59,7 +59,7 @@ const Login = () => {
           />
         </Stack>
         <HStack justify="space-between">
-          <Checkbox colorScheme={colors.colorScheme} defaultChecked>
+          <Checkbox colorScheme={COLORS.COLOR_SCHEME} defaultChecked>
             {CONTENT.AUTH.rememberMe}
           </Checkbox>
           <Button variant="text" size="sm">

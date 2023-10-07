@@ -1,6 +1,6 @@
 import { Button, ButtonGroup, VisuallyHidden } from "@chakra-ui/react";
 import { GitHubIcon, GoogleIcon, TwitterIcon } from "./ProviderIcons";
-import { COLORS } from "../../lib/theme";
+import { COLORS } from "../../theme/colors";
 
 const providers = [
   { name: "Google", icon: <GoogleIcon /> },
@@ -9,7 +9,7 @@ const providers = [
 ];
 
 export const OAuthButtonGroup = () => (
-  <ButtonGroup outlineColor={COLORS.text} variant="outline" spacing="4">
+  <ButtonGroup outlineColor={COLORS.PRIMARY_FONT} variant="outline" spacing="4">
     {providers.map(({ name, icon }) => (
       <Button key={name} flexGrow={1}>
         <VisuallyHidden>Sign in with {name}</VisuallyHidden>

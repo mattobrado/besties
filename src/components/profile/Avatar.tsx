@@ -1,7 +1,7 @@
 import { Avatar as ChakraAvatar, SkeletonCircle } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 import { ROUTES } from "../../lib/routes";
-import { colors } from "../../theme/colors";
+import { COLORS } from "../../theme/colors";
 import { UserType } from "../../lib/types";
 
 const Avatar = ({
@@ -20,7 +20,7 @@ const Avatar = ({
       name={user.fullName}
       size={size}
       src={overrideAvatar || user.avatar}
-      bg={colors.brand}
+      bg={COLORS.BRAND}
     />
   ) : (
     <SkeletonCircle variant="brand" size={"12"} />

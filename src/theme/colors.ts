@@ -1,6 +1,6 @@
-export const colors = {
-  primaryFont: "white",
-  bg: "black",
-  brand: "pink.500",
-  colorScheme: "pink",
+export const COLORS = {
+  PRIMARY_FONT: "white",
+  BACKGROUND: "black",
+  BRAND: "pink.500",
+  COLOR_SCHEME: "pink",
 };

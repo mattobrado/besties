@@ -1,23 +1,23 @@
 import { extendTheme } from "@chakra-ui/react";
 import { spinnerTheme } from "./spinnerTheme";
 import menuTheme from "./menuTheme";
-import { colors } from "./colors";
+import { COLORS } from "./colors";
 import bottomNavigationTheme from "./bottomNavigationTheme";
 import { buttonTheme } from "./buttonTheme";
 import { skeletonTheme } from "./skeletonTheme";
 
 export const customTheme = extendTheme({
-  colors: colors,
+  colors: COLORS,
 
   components: {
     Text: {
       baseStyle: (props: any) => ({
-        color: colors.primaryFont,
+        color: COLORS.PRIMARY_FONT,
       }),
       variants: {
         // used as <Text variant="secondary">
         secondary: (props: any) => ({
-          color: colors.primaryFont,
+          color: COLORS.PRIMARY_FONT,
         }),
       },
     },
@@ -32,8 +32,8 @@ export const customTheme = extendTheme({
     global: (props: any) => ({
       // Optionally set global CSS styles
       body: {
-        color: colors.primaryFont,
-        bg: colors.bg,
+        color: COLORS.PRIMARY_FONT,
+        bg: COLORS.BACKGROUND,
       },
     }),
   },

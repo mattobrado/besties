@@ -1,12 +1,12 @@
 import { defineStyle, defineStyleConfig } from "@chakra-ui/react";
-import { colors } from "./colors";
+import { COLORS } from "./colors";
 
 const custom = defineStyle({
-  bg: colors.brand,
+  bg: COLORS.BRAND,
 });
 
 const customGhost = defineStyle({
-  color: colors.brand,
+  color: COLORS.BRAND,
 });
 export const buttonTheme = defineStyleConfig({
   variants: { custom, customGhost },

@@ -1,7 +1,7 @@
 import { defineStyle, defineStyleConfig } from "@chakra-ui/react";
-import { colors } from "./colors";
+import { COLORS } from "./colors";
 const custom = defineStyle({
-  color: colors.brand,
+  color: COLORS.BRAND,
 });
 export const spinnerTheme = defineStyleConfig({
   variants: { custom },
