@@ -1,15 +1,10 @@
-import { useReviews } from "../../hooks/reviewHooks";
-import { ReviewType } from "../../lib/types";
+import { usePosts } from "../../hooks/postHooks";
 import LoadingScreen from "../LoadingScreen";
-import ActivityList from "../review/ActivityList";
+import PostList from "../posts/PostList";
 
 const Home = () => {
-  const { reviews, isLoading } = useReviews();
-  return isLoading ? (
-    <LoadingScreen />
-  ) : (
-    <ActivityList reviews={reviews as ReviewType[]} />
-  );
+  const { posts, isLoading } = usePosts();
+  return isLoading ? <LoadingScreen /> : <PostList posts={posts} />;
 };
 
 export default Home;

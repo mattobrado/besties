@@ -13,9 +13,10 @@ import { content } from "../../lib/content";
 import TextareaAutosize from "react-textarea-autosize";
 import { useForm } from "react-hook-form";
 import { useAuth } from "../../hooks/authHooks";
-import { useAddReview } from "../../hooks/reviewHooks";
+import { useAddPost } from "../../hooks/postHooks";
 import { useState } from "react";
 import { VALIDATE } from "../../lib/formValidation";
+import { PostType } from "../../lib/types";
 
 const NewReviewForm = () => {
   const {
@@ -23,14 +24,13 @@ const NewReviewForm = () => {
     handleSubmit,
     formState: { errors },
   } = useForm();
-  const { addReview, isLoading: addingReview } = useAddReview();
+  const { addPost, isLoading: addingReview } = useAddPost();
   const { user } = useAuth();
   const [rating, setRating] = useState(3);
 
-  const handleAddReview = (review: any) => {
-    console.log(review, rating);
+  const handleAddReview = (review: Partial<PostType>) => {
     if (!user) return;
-    addReview({
+    addPost({
       reviewerId: user.id,
       text: review.text,
       revieweeId: review.revieweeId,

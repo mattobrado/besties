@@ -1,11 +1,11 @@
 import { Box, Divider, HStack, Skeleton, Stack, Text } from "@chakra-ui/react";
-import { ReviewType } from "../../lib/types";
+import { PostType } from "../../lib/types";
 import ReviewHeader from "./ReviewHeader";
 import { formatDistanceToNow } from "date-fns";
 import { useUser } from "../../hooks/userHooks";
 import getStars from "../../utils/getStars";
 
-const Review = ({ review }: { review: ReviewType }) => {
+const Review = ({ review }: { review: PostType }) => {
   const { text, date, reviewerId, rating } = review;
   const { user: reviewer } = useUser(reviewerId);
   const { user: reviewee } = useUser(reviewerId);

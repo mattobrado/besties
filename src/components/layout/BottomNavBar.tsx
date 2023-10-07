@@ -19,7 +19,7 @@ export const BottomNavBar = () => {
       ></MyNavigationItem>
       <MyNavigationItem
         icon={content.addEmoji}
-        to={ROUTES.NEW_REVIEW}
+        to={ROUTES.ADD_REVIEW}
       ></MyNavigationItem>
       <MyNavigationItem icon={content.searchEmoji} to={""}></MyNavigationItem>
     </BottomNavigation>
