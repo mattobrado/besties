@@ -10,7 +10,7 @@ const Comments = () => {
   const { id } = useParams();
   const { post } = usePost(id);
   const { user } = useAuth();
-  // const { comments } = useComments(id);
+  const { comments } = useComments(id);
   const isLoaded = !!user && !!post; //&& !!comments;
   return (
     isLoaded && (

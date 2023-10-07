@@ -55,9 +55,9 @@ export const useAddComment = ({
 
 export const useComments = (postID?: string) => {
   const q = query(
-    collection(db, COLLECTIONS.COMMENTS),
-    where("postID", "==", postID),
-    orderBy("date", "asc")
+    collection(db, COLLECTIONS.POSTS),
+    where("parentPostId", "==", postID)
+    // orderBy("date", "asc")
   );
   const [comments, isLoading, error] = useCollectionData(q);
   if (error) throw error;
