@@ -1,6 +1,7 @@
 export const content = {
   logo: "👯‍♂️",
   heartEmoji: "🩷",
+  emptyHeartEmoji: "🩶",
   searchEmoji: "🔎",
   starEmoji: "⭐️",
   addEmoji: "📝",

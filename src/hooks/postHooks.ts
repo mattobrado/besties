@@ -80,21 +80,24 @@ export const useToggleLike = ({ id, isLiked, uid }: ToggleLikeType) => {
   return { toggleLike, isLoading };
 };
 
-export const useDeleteReview = (id: string) => {
+export const useDeletePost = (id: string) => {
   const [isLoading, setLoading] = useState(false);
   const toast = useToast();
 
-  const deletePost = async () => {
-    const res = window.confirm("Are you sure you want to delete this review?");
+  async function deletePost() {
+    const res = window.confirm("Are you sure you want to delete this post?");
 
     if (res) {
       setLoading(true);
 
-      // Delete review document
+      // Delete post document
       await deleteDoc(doc(db, COLLECTIONS.POSTS, id));
 
       // Delete comments
-      const q = query(collection(db, "comments"), where("reviewID", "==", id));
+      const q = query(
+        collection(db, COLLECTIONS.COMMENTS),
+        where("postID", "==", id)
+      );
       const querySnapshot = await getDocs(q);
       querySnapshot.forEach(async (doc) => deleteDoc(doc.ref));
 
@@ -108,7 +111,7 @@ export const useDeleteReview = (id: string) => {
 
       setLoading(false);
     }
-  };
+  }
 
   return { deletePost, isLoading };
 };

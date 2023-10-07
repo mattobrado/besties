@@ -1,9 +1,15 @@
 import { Box, Text } from "@chakra-ui/react";
-import { PostType } from "../../lib/types";
+import { PostType, UserType } from "../../lib/types";
 import Review from "./Review";
 import { content } from "../../lib/content";
 
-export const PostList = ({ posts }: { posts: PostType[] }) => {
+export const PostList = ({
+  posts,
+  user,
+}: {
+  posts: PostType[];
+  user: UserType;
+}) => {
   return (
     <Box alignContent={"center"}>
       {posts?.length === 0 ? (
@@ -11,7 +17,7 @@ export const PostList = ({ posts }: { posts: PostType[] }) => {
           {content.activity.noActivity}
         </Text>
       ) : (
-        posts?.map((post) => <Review key={post.id} review={post} />)
+        posts?.map((post) => <Review key={post.id} review={post} user={user} />)
       )}
     </Box>
   );

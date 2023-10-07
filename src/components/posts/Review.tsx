@@ -1,11 +1,12 @@
 import { Box, Divider, HStack, Skeleton, Stack, Text } from "@chakra-ui/react";
-import { PostType } from "../../lib/types";
+import { PostType, UserType } from "../../lib/types";
 import ReviewHeader from "./ReviewHeader";
 import { formatDistanceToNow } from "date-fns";
 import { useUser } from "../../hooks/userHooks";
 import getStars from "../../utils/getStars";
+import Actions from "./Actions";
 
-const Review = ({ review }: { review: PostType }) => {
+const Review = ({ review, user }: { review: PostType; user: UserType }) => {
   const { text, date, reviewerId, rating } = review;
   const { user: reviewer } = useUser(reviewerId);
   const { user: reviewee } = useUser(reviewerId);
@@ -22,22 +23,17 @@ const Review = ({ review }: { review: PostType }) => {
     >
       <Box py="2" textAlign="left">
         <Box>
-          <Stack>
-            {isLoaded && (
-              <ReviewHeader reviewer={reviewer} reviewee={reviewee} />
-            )}
-            <HStack px={bodyPx} fontSize="sm">
+          {isLoaded && <ReviewHeader reviewer={reviewer} reviewee={reviewee} />}
+          <Stack py="" px={bodyPx}>
+            <HStack fontSize="sm">
               <Text>{getStars(rating)}</Text>
               <Text color="gray.500">{formatDistanceToNow(date)} ago</Text>
             </HStack>
-          </Stack>
-          <Box py="2" px={bodyPx}>
-            <Text wordBreak="break-word" fontSize="md">
+            <Text wordBreak="break-word" fontSize="md" pb={1}>
               {text}
             </Text>
-          </Box>
-
-          {/* <Actions review={review} /> */}
+            <Actions user={user} post={review} />
+          </Stack>
         </Box>
       </Box>
       <Divider />
