@@ -34,7 +34,7 @@ const Actions = ({ post, user }: { post: PostType; user: UserType }) => {
         <ActionButton
           icon={content.commentEmoji}
           number={0}
-          to={`${ROUTES.PROTECTED}/comments/${id}`}
+          to={`${ROUTES.COMMENTS}/${id}`}
         />
       </HStack>
       {/* <HStack>

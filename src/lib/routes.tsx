@@ -9,7 +9,7 @@ import Signup from "../components/auth/SignUp";
 const PROTECTED = "/protected";
 
 export const ROUTES = {
-  COMMENTS: PROTECTED + "/comments/:id",
+  COMMENTS: PROTECTED + "/comments",
   HOME: PROTECTED + "/home",
   LOGIN: "/login",
   PROFILE: PROTECTED + "/profile",
@@ -42,6 +42,10 @@ export const router = createBrowserRouter([
       },
       {
         path: ROUTES.PROFILE + "/:id",
+        element: <LoadingScreen />,
+      },
+      {
+        path: ROUTES.COMMENTS + "/:id",
         element: <LoadingScreen />,
       },
     ],
