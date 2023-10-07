@@ -27,11 +27,11 @@ export const useAddPost = () => {
   const [isLoading, setLoading] = useState(false);
   const navigate = useNavigate();
 
-  const addPost = async (review: Partial<PostType>) => {
+  const addPost = async (post: Partial<PostType>) => {
     setLoading(true);
     const id = uuidv4();
     await setDoc(doc(db, COLLECTIONS.POSTS, id), {
-      ...review,
+      ...post,
       id,
       date: Date.now(),
       likes: [],
