@@ -41,14 +41,14 @@ const NewCommentForm = ({ user, post }: { user: UserType; post: PostType }) => {
             resize="none"
             size={"lg"}
             minRows={0}
-            h={10}
+            pb={1}
             placeholder={content.commentForm.commentField}
             {...register("text", VALIDATE.TEXT)}
           />
         </FormControl>
       </Box>
 
-      <Box>
+      <Box mt="auto" mb="2">
         <FormControl isInvalid={!!errors.text}>
           <Button
             type="submit"
