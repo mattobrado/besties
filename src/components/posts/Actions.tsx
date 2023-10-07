@@ -55,7 +55,7 @@ const Actions = ({
         {!hideCommentButton && (
           <ActionButton
             icon={content.commentEmoji}
-            number={comments?.length ?? 0}
+            number={comments?.length}
             to={`${ROUTES.COMMENTS}/${id}`}
           />
         )}

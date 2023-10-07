@@ -25,7 +25,6 @@ import { COLLECTIONS } from "../lib/constants";
 
 export const useAddPost = () => {
   const [isLoading, setLoading] = useState(false);
-  const navigate = useNavigate();
 
   const addPost = async (post: Partial<PostType>) => {
     setLoading(true);
@@ -37,7 +36,6 @@ export const useAddPost = () => {
       likes: [],
     });
     setLoading(false);
-    navigate(ROUTES.HOME);
   };
 
   return { addPost, isLoading };

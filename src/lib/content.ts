@@ -77,6 +77,6 @@ export const content = {
     deleteReviewBody: "are you sure?",
   },
   activity: {
-    noActivity: "no activity yet... feeling a little lonely here",
+    noActivity: "no activity yet...",
   },
 };
