@@ -1,7 +1,7 @@
 import { useAuthState, useSignOut } from "react-firebase-hooks/auth";
 import { auth, db } from "../lib/firebase";
 import { useEffect, useState } from "react";
-import { TOAST_PROPS } from "../lib/constants";
+import { COLLECTIONS, TOAST_PROPS } from "../lib/constants";
 import {
   User,
   createUserWithEmailAndPassword,
@@ -14,6 +14,7 @@ import { LoginType, SignupType as SignupType, UserType } from "../lib/types";
 import isUsernameDuplicated from "../utils/isUserNameDuplicated";
 import { content } from "../lib/content";
 import { ROUTES } from "../lib/routes";
+import { COLORS } from "../theme/colors";
 
 export const useAuth = (): {
   user?: UserType;
@@ -27,7 +28,7 @@ export const useAuth = (): {
   useEffect(() => {
     const fetchData = async (authUser_: User) => {
       setLoading(true);
-      const ref = doc(db, "users", authUser_.uid);
+      const ref = doc(db, COLLECTIONS.USERS, authUser_.uid);
       const docSnap = await getDoc(ref);
       setUser(docSnap.data());
       setLoading(false);
@@ -59,8 +60,7 @@ export const useLogin = () => {
       navigate(redirectTo);
     } catch (error: any) {
       toast({
-        title: "logging in failed",
-        status: "error",
+        title: content.auth.loginFailure,
         description: error?.message,
         ...TOAST_PROPS,
       });
@@ -72,8 +72,7 @@ export const useLogin = () => {
 };
 
 export function useLogout() {
-  const [signOut, isLoading, error] = useSignOut(auth);
-  const toast = useToast();
+  const [signOut, isLoading] = useSignOut(auth);
   const navigate = useNavigate();
 
   async function logout() {
@@ -116,19 +115,12 @@ export function useSignup() {
           password
         );
 
-        await setDoc(doc(db, "users", response.user.uid), {
+        await setDoc(doc(db, COLLECTIONS.USERS, response.user.uid), {
           avatar: "",
           date: Date.now(),
           fullName: fullName,
           id: response.user.uid,
           username: username.toLowerCase(),
-        });
-
-        toast({
-          title: content.auth.signupSuccess,
-          description: content.auth.loginSuccess,
-          status: "success",
-          ...TOAST_PROPS,
         });
 
         navigate(redirectTo);

@@ -1,5 +1,6 @@
 import { ToastPosition } from "@chakra-ui/react";
 import { content } from "./content";
+import { COLORS } from "../theme/colors";
 
 export const INPUT_TYPE = {
   EMAIL: "email",
@@ -77,10 +78,12 @@ export const TOAST_PROPS: {
   duration: number;
   isClosable: boolean;
   position: ToastPosition;
+  colorScheme: string;
 } = {
   duration: 3000,
   isClosable: true,
   position: "top",
+  colorScheme: COLORS.COLOR_SCHEME,
 };
 
 export const COLLECTIONS = {
