@@ -44,14 +44,14 @@ export const useAddPost = () => {
   return { addPost, isLoading };
 };
 
-export function useReview(id: string) {
+export const usePost = (id: string) => {
   const q = doc(db, COLLECTIONS.POSTS, id);
   const [review, isLoading] = useDocumentData(q);
 
   return { review, isLoading };
-}
+};
 
-export function usePosts(uid = null) {
+export const usePosts = (uid = null) => {
   const q = uid
     ? query(
         collection(db, COLLECTIONS.POSTS),
@@ -63,19 +63,19 @@ export function usePosts(uid = null) {
   if (error) throw error;
   const _posts = posts as PostType[];
   return { posts: _posts, isLoading };
-}
+};
 
 export const useToggleLike = ({ id, isLiked, uid }: ToggleLikeType) => {
   const [isLoading, setLoading] = useState(false);
 
-  async function toggleLike() {
+  const toggleLike = async () => {
     setLoading(true);
     const docRef = doc(db, COLLECTIONS.POSTS, id);
     await updateDoc(docRef, {
       likes: isLiked ? arrayRemove(uid) : arrayUnion(uid),
     });
     setLoading(false);
-  }
+  };
 
   return { toggleLike, isLoading };
 };
@@ -84,7 +84,7 @@ export const useDeleteReview = (id: string) => {
   const [isLoading, setLoading] = useState(false);
   const toast = useToast();
 
-  async function deletePost() {
+  const deletePost = async () => {
     const res = window.confirm("Are you sure you want to delete this review?");
 
     if (res) {
@@ -108,7 +108,7 @@ export const useDeleteReview = (id: string) => {
 
       setLoading(false);
     }
-  }
+  };
 
   return { deletePost, isLoading };
 };
