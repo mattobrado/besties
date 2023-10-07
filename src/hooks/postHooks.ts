@@ -32,6 +32,7 @@ export const useAddPost = () => {
     const id = uuidv4();
     await setDoc(doc(db, COLLECTIONS.POSTS, id), {
       ...review,
+      isReview: true,
       id,
       date: Date.now(),
       likes: [],

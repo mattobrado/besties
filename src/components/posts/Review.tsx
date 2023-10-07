@@ -16,15 +16,15 @@ const Review = ({
   const { text, date, reviewerId, rating } = review;
   return (
     <PostView
+      children={children}
       currentUser={user}
       date={date}
+      hideCommentButton={hideCommentButton}
       post={review}
-      subjectLineText={getStars(rating)}
-      text={text}
       revieweeId={reviewerId}
       reviewerId={reviewerId}
-      children={children}
-      hideCommentButton={hideCommentButton}
+      subjectLineText={getStars(rating)}
+      text={text}
     />
   );
 };

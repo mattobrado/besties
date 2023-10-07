@@ -28,6 +28,7 @@ const PostView = ({
 }) => {
   const { user: reviewer } = useUser(reviewerId);
   const { user: reviewee } = useUser(revieweeId);
+
   const bodyPx = 8;
   const isLoaded = !!reviewer && !!reviewee;
 

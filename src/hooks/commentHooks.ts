@@ -29,7 +29,7 @@ export const useAddComment = ({
     const id = uuidv4();
     const date = Date.now();
     const docRef = doc(db, COLLECTIONS.COMMENTS, id);
-    await setDoc(docRef, { text, id, postID, date, uid });
+    await setDoc(docRef, { text, id, postID, date, uid, isComment: true });
 
     toast({
       title: "Comment added!",

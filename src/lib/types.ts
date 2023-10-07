@@ -12,11 +12,13 @@ export type SignupType = LoginType & {
 export type PostType = {
   date: number;
   id: string;
+  isReview?: boolean;
+  isComment?: boolean;
+  likes: string[];
   rating: number;
   revieweeId: string;
   reviewerId: string;
   text: string;
-  likes: string[];
 };
 
 export type UserType = {

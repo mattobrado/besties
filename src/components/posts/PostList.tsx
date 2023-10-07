@@ -17,7 +17,13 @@ export const PostList = ({
           {content.activity.noActivity}
         </Text>
       ) : (
-        posts?.map((post) => <Review key={post.id} review={post} user={user} />)
+        posts?.map((post) =>
+          post.isReview ? (
+            <Review key={post.id} review={post} user={user} />
+          ) : (
+            <></>
+          )
+        )
       )}
     </>
   );
