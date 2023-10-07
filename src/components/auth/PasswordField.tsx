@@ -56,5 +56,3 @@ export const PasswordField = forwardRef<
     </FormControl>
   );
 });
-
-PasswordField.displayName = "PasswordField";

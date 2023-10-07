@@ -58,4 +58,7 @@ export const content = {
   review: {
     reviewed: "👉",
   },
+  activity: {
+    noActivity: "no activity yet... feeling a little lonely here",
+  },
 };
