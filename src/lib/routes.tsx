@@ -5,11 +5,12 @@ import Home from "../components/home/Home";
 import LoadingScreen from "../components/LoadingScreen";
 import NewReviewForm from "../components/newReviewForm/NewReviewForm";
 import Signup from "../components/auth/SignUp";
+import Comments from "../components/comments/Comments";
 
 const PROTECTED = "/protected";
 
 export const ROUTES = {
-  COMMENTS: PROTECTED + "/comments/:id",
+  COMMENTS: PROTECTED + "/comments",
   HOME: PROTECTED + "/home",
   LOGIN: "/login",
   PROFILE: PROTECTED + "/profile",
@@ -43,6 +44,10 @@ export const router = createBrowserRouter([
       {
         path: ROUTES.PROFILE + "/:id",
         element: <LoadingScreen />,
+      },
+      {
+        path: ROUTES.COMMENTS + "/:id",
+        element: <Comments />,
       },
     ],
   },

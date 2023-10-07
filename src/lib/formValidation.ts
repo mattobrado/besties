@@ -56,7 +56,7 @@ export const VALIDATE = {
       message: content.auth.fullNameAlphaNumeric,
     },
   },
-  REVIEW: {
+  TEXT: {
     required: {
       value: true,
       message: "required",

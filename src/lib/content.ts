@@ -2,10 +2,16 @@ export const content = {
   logo: "👯‍♂️",
   heartEmoji: "🩷",
   emptyHeartEmoji: "🩶",
+  commentEmoji: "💬",
   searchEmoji: "🔎",
   starEmoji: "⭐️",
   addEmoji: "📝",
   homeEmoji: "🏠",
+  trashEmoji: "🗑️",
+  cancel: "cancel",
+  delete: "delete",
+  submitButtonText: "post",
+  submitButtonLoadingText: "posting...",
   auth: {
     appName: "besties 👯‍♂️",
     createAnAccount: "create an account",
@@ -58,15 +64,17 @@ export const content = {
   },
   reviewForm: {
     revieweeField: "who are you reviewing?",
-    submitButtonText: "post",
-    submitButtonLoadingText: "posting...",
+
     reviewField: "what do we need to know?",
     fieldRequired: "required",
     reviewMinLength: "review must be at least 1 character long",
     reviewMaxLength: "review must be less than 280 characters",
   },
+  commentForm: { commentField: "write a comment" },
   review: {
     reviewed: "👉",
+    deleteReviewHeading: "delete review",
+    deleteReviewBody: "are you sure?",
   },
   activity: {
     noActivity: "no activity yet... feeling a little lonely here",

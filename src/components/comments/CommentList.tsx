@@ -1,9 +1,9 @@
 import { Text } from "@chakra-ui/react";
 import { PostType, UserType } from "../../lib/types";
-import Review from "./Review";
 import { content } from "../../lib/content";
+import Review from "../posts/Review";
 
-export const PostList = ({
+export const CommentList = ({
   posts,
   user,
 }: {
@@ -23,4 +23,4 @@ export const PostList = ({
   );
 };
 
-export default PostList;
+export default CommentList;

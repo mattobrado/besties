@@ -22,7 +22,6 @@ import {
   useDocumentData,
 } from "react-firebase-hooks/firestore";
 import { COLLECTIONS } from "../lib/constants";
-import { useToast } from "@chakra-ui/react";
 
 export const useAddPost = () => {
   const [isLoading, setLoading] = useState(false);
@@ -44,11 +43,13 @@ export const useAddPost = () => {
   return { addPost, isLoading };
 };
 
-export const usePost = (id: string) => {
+export const usePost = (id?: string) => {
+  if (!id) return { post: undefined, isLoading: true };
   const q = doc(db, COLLECTIONS.POSTS, id);
-  const [review, isLoading] = useDocumentData(q);
+  const [post, isLoading] = useDocumentData(q);
 
-  return { review, isLoading };
+  const _post = post as PostType | undefined;
+  return { post: _post, isLoading };
 };
 
 export const usePosts = (uid = null) => {
@@ -82,35 +83,22 @@ export const useToggleLike = ({ id, isLiked, uid }: ToggleLikeType) => {
 
 export const useDeletePost = (id: string) => {
   const [isLoading, setLoading] = useState(false);
-  const toast = useToast();
 
   async function deletePost() {
-    const res = window.confirm("Are you sure you want to delete this post?");
+    setLoading(true);
 
-    if (res) {
-      setLoading(true);
+    // Delete post document
+    await deleteDoc(doc(db, COLLECTIONS.POSTS, id));
 
-      // Delete post document
-      await deleteDoc(doc(db, COLLECTIONS.POSTS, id));
+    // Delete comments
+    const q = query(
+      collection(db, COLLECTIONS.COMMENTS),
+      where("postID", "==", id)
+    );
+    const querySnapshot = await getDocs(q);
+    querySnapshot.forEach(async (doc) => deleteDoc(doc.ref));
 
-      // Delete comments
-      const q = query(
-        collection(db, COLLECTIONS.COMMENTS),
-        where("postID", "==", id)
-      );
-      const querySnapshot = await getDocs(q);
-      querySnapshot.forEach(async (doc) => deleteDoc(doc.ref));
-
-      toast({
-        title: "Post deleted!",
-        status: "info",
-        isClosable: true,
-        position: "top",
-        duration: 5000,
-      });
-
-      setLoading(false);
-    }
+    setLoading(false);
   }
 
   return { deletePost, isLoading };
