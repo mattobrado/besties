@@ -17,7 +17,7 @@ const AuthFormContainer = ({
     py={{ base: "4", md: "16" }}
     px={{ base: "0", sm: "16" }}
   >
-    <Stack spacing="8">
+    <Stack spacing="6">
       <AuthHeading {...authHeadingProps} />
       <Box
         py={{ base: "0", sm: "8" }}

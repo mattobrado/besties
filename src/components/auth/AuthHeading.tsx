@@ -7,17 +7,15 @@ export const AuthHeading = ({
   callToAction,
   link,
 }: AuthHeadingPropsType) => (
-  <Stack spacing="6">
-    <Stack spacing={{ base: "2", md: "3" }} textAlign="center">
-      <Heading>{content.heartEmoji}</Heading>
-      <Heading size={{ base: "xs", md: "sm" }}>{title}</Heading>
-      <Text>
-        {callToAction}{" "}
-        <Link as={ReactRouterLink} to={link.to}>
-          {link.label}
-        </Link>
-      </Text>
-    </Stack>
+  <Stack spacing={{ base: "1", md: "3" }} textAlign="center">
+    <Heading fontSize={"6xl"}>{content.logo}</Heading>
+    <Heading size={{ base: "xs", md: "sm" }}>{title}</Heading>
+    <Text>
+      {callToAction}{" "}
+      <Link as={ReactRouterLink} to={link.to}>
+        {link.label}
+      </Link>
+    </Text>
   </Stack>
 );
 

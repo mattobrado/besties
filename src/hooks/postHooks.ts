@@ -15,8 +15,6 @@ import { useState } from "react";
 import { db } from "../lib/firebase";
 import { uuidv4 } from "@firebase/util";
 import { PostType, ToggleLikeType } from "../lib/types";
-import { useNavigate } from "react-router-dom";
-import { ROUTES } from "../lib/routes";
 import {
   useCollectionData,
   useDocumentData,
@@ -25,7 +23,6 @@ import { COLLECTIONS } from "../lib/constants";
 
 export const useAddPost = () => {
   const [isLoading, setLoading] = useState(false);
-  const navigate = useNavigate();
 
   const addPost = async (post: Partial<PostType>) => {
     setLoading(true);
@@ -37,7 +34,6 @@ export const useAddPost = () => {
       likes: [],
     });
     setLoading(false);
-    navigate(ROUTES.HOME);
   };
 
   return { addPost, isLoading };

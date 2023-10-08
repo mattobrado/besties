@@ -17,6 +17,8 @@ import { useAddPost } from "../../hooks/postHooks";
 import { useState } from "react";
 import { VALIDATE } from "../../lib/formValidation";
 import { PostType } from "../../lib/types";
+import { ROUTES } from "../../lib/routes";
+import { useNavigate } from "react-router-dom";
 
 const NewReviewForm = () => {
   const {
@@ -27,6 +29,7 @@ const NewReviewForm = () => {
   const { addPost, isLoading: addingReview } = useAddPost();
   const { user } = useAuth();
   const [rating, setRating] = useState(3);
+  const navigate = useNavigate();
 
   const handleAddReview = (review: Partial<PostType>) => {
     if (!user) return;
@@ -37,6 +40,7 @@ const NewReviewForm = () => {
       uid: user.id,
       text: review.text,
     });
+    navigate(ROUTES.HOME);
   };
 
   return (
