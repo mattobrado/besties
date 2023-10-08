@@ -30,7 +30,7 @@ const OneUserPost = ({
       <PostView
         header={
           isLoaded && (
-            <HStack>
+            <HStack fontSize="xs">
               <AvatarAndFullName user={poster} size={"xs"} />
               <TimeStamp date={date} />
             </HStack>
