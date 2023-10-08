@@ -1,28 +1,26 @@
+import { content } from "../../lib/content";
 import { PostType, UserType } from "../../lib/types";
 import getStars from "../../utils/getStars";
 import TwoUserPost from "./TwoUserPost";
 
 const Review = ({
-  review,
+  post,
   user,
   children,
   hideCommentButton,
 }: {
-  review: PostType;
+  post: PostType;
   user: UserType;
   children?: React.ReactNode;
   hideCommentButton?: boolean;
-}) => {
-  const { rating } = review;
-  return (
-    <TwoUserPost
-      children={children}
-      currentUser={user}
-      hideCommentButton={hideCommentButton}
-      post={review}
-      subjectLineText={getStars(rating)}
-    />
-  );
-};
-
+}) => (
+  <TwoUserPost
+    children={children}
+    currentUser={user}
+    hideCommentButton={hideCommentButton}
+    post={post}
+    subjectLineText={getStars(post.rating)}
+    verb={content.post.reviewed}
+  />
+);
 export default Review;

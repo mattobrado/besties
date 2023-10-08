@@ -8,17 +8,14 @@ const PostView = ({
   hideCommentButton,
   post,
   subjectLine,
-  text,
   header,
 }: {
   children?: React.ReactNode;
   header: React.ReactNode;
-  subjectLine: React.ReactNode;
+  subjectLine?: React.ReactNode;
   currentUser: UserType;
-  date: number;
   hideCommentButton?: boolean;
   post: PostType;
-  text: string;
 }) => {
   const bodyPx = 8;
 
@@ -26,9 +23,9 @@ const PostView = ({
     <>
       <Stack spacing={2} py="2" textAlign="left">
         {header}
-        <Box px={bodyPx}>{subjectLine}</Box>
+        {subjectLine && <Box px={bodyPx}>{subjectLine}</Box>}
         <Text px={bodyPx} pb={1} wordBreak="break-word" fontSize="md">
-          {text}
+          {post.text}
         </Text>
         <Box px={bodyPx - 2} pb={1}>
           <Actions

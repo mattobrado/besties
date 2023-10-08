@@ -1,32 +1,25 @@
-import { HStack, Skeleton, Text } from "@chakra-ui/react";
+import { HStack, Skeleton } from "@chakra-ui/react";
 import AvatarAndFullName from "../profile/AvatarAndFullName";
 import { useUser } from "../../hooks/userHooks";
 import PostView from "./PostView";
 import { PostType, UserType } from "../../lib/types";
 import TimeStamp from "./TimeStamp";
 
-const TwoUserPost = ({
+const OneUserPost = ({
   children,
   currentUser,
-  hideCommentButton,
   post,
-  subjectLineText,
-  verb,
+  hideCommentButton,
 }: {
   children?: React.ReactNode;
   currentUser: UserType;
-  hideCommentButton?: boolean;
   post: PostType;
-  subjectLineText: string;
-  verb: string;
+  hideCommentButton?: boolean;
 }) => {
-  const size = "xs";
-  const { posterUid, targetUid, date } = post;
-  if (!targetUid) return;
+  const { posterUid, date } = post;
   const { user: poster } = useUser(posterUid);
-  const { user: target } = useUser(posterUid);
 
-  const isLoaded = poster && !!target;
+  const isLoaded = !!poster;
 
   return (
     <Skeleton
@@ -38,17 +31,10 @@ const TwoUserPost = ({
         header={
           isLoaded && (
             <HStack>
-              <AvatarAndFullName user={poster} size={size} />
-              <Text fontSize={size}>{verb}</Text>
-              <AvatarAndFullName user={target} size={size} />
+              <AvatarAndFullName user={poster} size={"xs"} />
+              <TimeStamp date={date} />
             </HStack>
           )
-        }
-        subjectLine={
-          <HStack fontSize="sm">
-            <Text>{subjectLineText}</Text>
-            <TimeStamp date={date} />
-          </HStack>
         }
         currentUser={currentUser}
         post={post}
@@ -59,4 +45,4 @@ const TwoUserPost = ({
   );
 };
 
-export default TwoUserPost;
+export default OneUserPost;

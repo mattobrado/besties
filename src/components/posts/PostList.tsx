@@ -20,7 +20,7 @@ export const PostList = ({
       ) : (
         posts?.map((post) =>
           post.isReview ? (
-            <Review key={post.id} review={post} user={user} />
+            <Review key={post.id} post={post} user={user} />
           ) : post.isComment ? (
             <Comment key={post.id} post={post} user={user} />
           ) : (
