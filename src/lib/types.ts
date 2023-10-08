@@ -14,7 +14,9 @@ export type PostType = {
   id: string;
   isComment?: boolean;
   isReview?: boolean;
-  likes: number;
+  commentCount: number;
+  commentIds: string[];
+  likeCount: number;
   likeUids: string[];
   parentPostId?: string;
   posterUid: string;

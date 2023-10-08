@@ -16,7 +16,7 @@ const Avatar = ({
   return (
     <ChakraAvatar
       as={Link}
-      to={`${ROUTES.PROTECTED}/${user.id}`}
+      to={`${ROUTES.PROFILE}/${user.id}`}
       name={user.fullName}
       size={size}
       src={overrideAvatar || user.avatar}

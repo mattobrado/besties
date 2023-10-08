@@ -6,6 +6,7 @@ import LoadingScreen from "../components/LoadingScreen";
 import NewReviewForm from "../components/newReviewForm/NewReviewForm";
 import Signup from "../components/auth/SignUp";
 import Comments from "../components/comments/Comments";
+import Profile from "../components/profile/Profile";
 
 const PROTECTED = "/b";
 
@@ -43,7 +44,7 @@ export const router = createBrowserRouter([
       },
       {
         path: ROUTES.PROFILE + "/:id",
-        element: <LoadingScreen />,
+        element: <Profile />,
       },
       {
         path: ROUTES.COMMENTS + "/:id",

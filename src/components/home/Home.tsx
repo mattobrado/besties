@@ -4,7 +4,7 @@ import LoadingScreen from "../LoadingScreen";
 import PostList from "../posts/PostList";
 
 const Home = () => {
-  const { posts } = usePosts();
+  const { posts } = usePosts({});
   const { user } = useAuth();
 
   return user && posts ? (

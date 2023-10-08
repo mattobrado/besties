@@ -21,6 +21,7 @@ import {
   useDocumentData,
 } from "react-firebase-hooks/firestore";
 import { COLLECTIONS } from "../lib/constants";
+import { addComment, removeComment } from "./commentHooks";
 
 export const useAddPost = () => {
   const [isLoading, setLoading] = useState(false);
@@ -33,8 +34,13 @@ export const useAddPost = () => {
       id,
       date: Date.now(),
       likeUids: [],
-      likes: 0,
+      likeCount: 0,
+      commentIds: [],
+      commentCount: 0,
     });
+    if (post.isComment && post.parentPostId) {
+      addComment({ parentPostId: post.parentPostId, commentId: id });
+    }
     setLoading(false);
   };
 
@@ -49,7 +55,7 @@ export const usePost = (id?: string) => {
   return { post: <PostType | undefined>post, isLoading };
 };
 
-export const usePosts = (uid = null) => {
+export const usePosts = ({ uid }: { uid?: string }) => {
   const q = uid
     ? query(
         collection(db, COLLECTIONS.POSTS),
@@ -70,7 +76,7 @@ export const useToggleLike = ({ id, isLiked, uid }: ToggleLikeType) => {
     const docRef = doc(db, COLLECTIONS.POSTS, id);
     await updateDoc(docRef, {
       likeUids: isLiked ? arrayRemove(uid) : arrayUnion(uid),
-      likes: isLiked ? increment(-1) : increment(1),
+      likeCount: isLiked ? increment(-1) : increment(1),
     });
     setLoading(false);
   };
@@ -78,22 +84,23 @@ export const useToggleLike = ({ id, isLiked, uid }: ToggleLikeType) => {
   return { toggleLike, isLoading };
 };
 
-export const useDeletePost = (id: string) => {
+export const useDeletePost = (post: PostType) => {
+  const { id, isComment, parentPostId, commentIds } = post;
   const [isLoading, setLoading] = useState(false);
 
   async function deletePost() {
     setLoading(true);
+    if (isComment && parentPostId) {
+      removeComment({ parentPostId, commentId: id });
+    }
+
+    commentIds.forEach(
+      async (commentId) =>
+        await deleteDoc(doc(db, COLLECTIONS.POSTS, commentId))
+    );
 
     // Delete post document
     await deleteDoc(doc(db, COLLECTIONS.POSTS, id));
-
-    // Delete comments
-    const q = query(
-      collection(db, COLLECTIONS.COMMENTS),
-      where("postID", "==", id)
-    );
-    const querySnapshot = await getDocs(q);
-    querySnapshot.forEach(async (doc) => deleteDoc(doc.ref));
 
     setLoading(false);
   }

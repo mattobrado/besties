@@ -18,7 +18,6 @@ import { ROUTES } from "../../lib/routes";
 import ActionButton from "./ActionButton";
 import React from "react";
 import { COLORS } from "../../theme/colors";
-import { useComments } from "../../hooks/commentHooks";
 
 const Actions = ({
   post,
@@ -29,7 +28,7 @@ const Actions = ({
   user: UserType;
   hideCommentButton?: boolean;
 }) => {
-  const { id, likeUids, posterUid: reviewerId, likes } = post;
+  const { id, likeUids, posterUid: reviewerId, likeCount, commentCount } = post;
   const { isOpen, onOpen, onClose } = useDisclosure();
   const cancelRef = React.useRef();
 
@@ -41,8 +40,7 @@ const Actions = ({
   };
 
   const { toggleLike } = useToggleLike(config);
-  const { deletePost } = useDeletePost(id);
-  const { comments } = useComments(id);
+  const { deletePost } = useDeletePost(post);
 
   return (
     <Flex>
@@ -50,12 +48,12 @@ const Actions = ({
         <ActionButton
           onClick={toggleLike}
           icon={isLiked ? content.heartEmoji : content.emptyHeartEmoji}
-          number={likes}
+          number={likeCount}
         />
         {!hideCommentButton && (
           <ActionButton
             icon={content.commentEmoji}
-            number={comments?.length ?? 0}
+            number={commentCount}
             to={`${ROUTES.COMMENTS}/${id}`}
           />
         )}

@@ -5,8 +5,9 @@ import { UserType } from "../lib/types";
 import { COLLECTIONS } from "../lib/constants";
 
 export const useUser = (
-  id: string
+  id?: string
 ): { user?: UserType; isLoading: boolean } => {
+  if (!id) return { user: undefined, isLoading: false };
   const q = query(doc(db, COLLECTIONS.USERS, id) as any);
   const [user, isLoading] = useDocumentData(q as any);
   return { user: <UserType>user, isLoading };
