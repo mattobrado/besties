@@ -14,13 +14,13 @@ export const PostList = ({
   return (
     <>
       {posts?.length === 0 ? (
-        <Text textAlign="center" fontSize="xl">
+        <Text textAlign="center" fontSize="lg">
           {content.activity.noActivity}
         </Text>
       ) : (
         posts?.map((post) =>
           post.isReview ? (
-            <Review key={post.id} review={post} user={user} />
+            <Review key={post.id} post={post} user={user} />
           ) : post.isComment ? (
             <Comment key={post.id} post={post} user={user} />
           ) : (

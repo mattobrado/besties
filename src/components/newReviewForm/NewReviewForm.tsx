@@ -37,7 +37,7 @@ const NewReviewForm = () => {
       isReview: true,
       rating: rating,
       targetUid: review.targetUid,
-      uid: user.id,
+      posterUid: user.id,
       text: review.text,
     });
     navigate(ROUTES.HOME);

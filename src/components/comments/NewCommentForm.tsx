@@ -21,7 +21,7 @@ const NewCommentForm = ({ user, post }: { user: UserType; post: PostType }) => {
     addPost({
       isComment: true,
       parentPostId: postId,
-      uid: user.id,
+      posterUid: user.id,
       text: comment.text,
     });
     reset();
