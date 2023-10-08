@@ -29,11 +29,11 @@ const Actions = ({
   user: UserType;
   hideCommentButton?: boolean;
 }) => {
-  const { id, likes, posterUid: reviewerId } = post;
+  const { id, likeUids, posterUid: reviewerId, likes } = post;
   const { isOpen, onOpen, onClose } = useDisclosure();
   const cancelRef = React.useRef();
 
-  const isLiked = likes.includes(user.id);
+  const isLiked = likeUids.includes(user.id);
   const config = {
     id,
     isLiked,
@@ -50,7 +50,7 @@ const Actions = ({
         <ActionButton
           onClick={toggleLike}
           icon={isLiked ? content.heartEmoji : content.emptyHeartEmoji}
-          number={likes.length}
+          number={likes}
         />
         {!hideCommentButton && (
           <ActionButton
