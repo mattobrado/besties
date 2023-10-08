@@ -8,7 +8,7 @@ export const useComments = (postID?: string) => {
   const q = query(
     collection(db, COLLECTIONS.POSTS),
     where("parentPostId", "==", postID),
-    orderBy("date", "asc")
+    orderBy("likes", "desc")
   );
   const [comments, isLoading, error] = useCollectionData(q);
   if (error) throw error;
