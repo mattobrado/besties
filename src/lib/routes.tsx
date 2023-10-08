@@ -7,7 +7,7 @@ import NewReviewForm from "../components/newReviewForm/NewReviewForm";
 import Signup from "../components/auth/SignUp";
 import Comments from "../components/comments/Comments";
 
-const PROTECTED = "/protected";
+const PROTECTED = "/b";
 
 export const ROUTES = {
   COMMENTS: PROTECTED + "/comments",

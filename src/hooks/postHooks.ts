@@ -10,6 +10,7 @@ import {
   arrayUnion,
   deleteDoc,
   getDocs,
+  increment,
 } from "firebase/firestore";
 import { useState } from "react";
 import { db } from "../lib/firebase";
@@ -31,7 +32,8 @@ export const useAddPost = () => {
       ...post,
       id,
       date: Date.now(),
-      likes: [],
+      likeUids: [],
+      likes: 0,
     });
     setLoading(false);
   };
@@ -67,7 +69,8 @@ export const useToggleLike = ({ id, isLiked, uid }: ToggleLikeType) => {
     setLoading(true);
     const docRef = doc(db, COLLECTIONS.POSTS, id);
     await updateDoc(docRef, {
-      likes: isLiked ? arrayRemove(uid) : arrayUnion(uid),
+      likeUids: isLiked ? arrayRemove(uid) : arrayUnion(uid),
+      likes: isLiked ? increment(-1) : increment(1),
     });
     setLoading(false);
   };
