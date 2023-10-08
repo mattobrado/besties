@@ -59,7 +59,7 @@ const TopNavBar = () => {
       {user ? (
         <Avatar user={user} size={size} />
       ) : (
-        <SkeletonCircle variant="brand" size={"12"} />
+        <SkeletonCircle variant="custom" size={"12"} />
       )}
     </Flex>
   );

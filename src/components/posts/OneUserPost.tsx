@@ -22,11 +22,7 @@ const OneUserPost = ({
   const isLoaded = !!poster;
 
   return (
-    <Skeleton
-      startColor="transparent"
-      endColor="transparent"
-      isLoaded={isLoaded}
-    >
+    <Skeleton isLoaded={isLoaded} variant={"custom"}>
       <PostView
         header={
           isLoaded && (

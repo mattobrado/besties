@@ -29,11 +29,7 @@ const TwoUserPost = ({
   const isLoaded = poster && !!target;
 
   return (
-    <Skeleton
-      startColor="transparent"
-      endColor="transparent"
-      isLoaded={isLoaded}
-    >
+    <Skeleton isLoaded={isLoaded} variant={"custom"}>
       <PostView
         header={
           isLoaded && (
