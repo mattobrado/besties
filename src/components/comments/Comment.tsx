@@ -15,7 +15,7 @@ const Comment = ({
   children?: React.ReactNode;
   hideCommentButton?: boolean;
 }) => {
-  const { text, date, uid, rating } = post;
+  const { text, date, posterUid: uid, rating } = post;
   const { user: poster } = useUser(uid);
 
   const bodyPx = 8;

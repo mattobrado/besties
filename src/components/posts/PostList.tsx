@@ -14,7 +14,7 @@ export const PostList = ({
   return (
     <>
       {posts?.length === 0 ? (
-        <Text textAlign="center" fontSize="xl">
+        <Text textAlign="center" fontSize="lg">
           {content.activity.noActivity}
         </Text>
       ) : (

@@ -17,7 +17,7 @@ export type PostType = {
   likes: string[];
   rating: number;
   targetUid?: string;
-  uid: string;
+  posterUid: string;
   text: string;
   parentPostId?: string;
 };

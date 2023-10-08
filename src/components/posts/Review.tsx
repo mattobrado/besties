@@ -1,6 +1,6 @@
 import { PostType, UserType } from "../../lib/types";
 import getStars from "../../utils/getStars";
-import PostView from "./PostView";
+import TwoUserPost from "./TwoUserPost";
 
 const Review = ({
   review,
@@ -13,18 +13,14 @@ const Review = ({
   children?: React.ReactNode;
   hideCommentButton?: boolean;
 }) => {
-  const { text, date, uid: reviewerId, rating } = review;
+  const { rating } = review;
   return (
-    <PostView
+    <TwoUserPost
       children={children}
       currentUser={user}
-      date={date}
       hideCommentButton={hideCommentButton}
       post={review}
-      revieweeId={reviewerId}
-      reviewerId={reviewerId}
       subjectLineText={getStars(rating)}
-      text={text}
     />
   );
 };

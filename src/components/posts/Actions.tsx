@@ -29,7 +29,7 @@ const Actions = ({
   user: UserType;
   hideCommentButton?: boolean;
 }) => {
-  const { id, likes, uid: reviewerId } = post;
+  const { id, likes, posterUid: reviewerId } = post;
   const { isOpen, onOpen, onClose } = useDisclosure();
   const cancelRef = React.useRef();
 
@@ -55,7 +55,7 @@ const Actions = ({
         {!hideCommentButton && (
           <ActionButton
             icon={content.commentEmoji}
-            number={comments?.length}
+            number={comments?.length ?? 0}
             to={`${ROUTES.COMMENTS}/${id}`}
           />
         )}
@@ -74,10 +74,10 @@ const Actions = ({
             <AlertDialogOverlay>
               <AlertDialogContent bg={COLORS.BACKGROUND}>
                 <AlertDialogHeader fontSize="lg" fontWeight="bold">
-                  {content.review.deleteReviewHeading}
+                  {content.post.deleteReviewHeading}
                 </AlertDialogHeader>
                 <AlertDialogBody>
-                  {content.review.deleteReviewBody}
+                  {content.post.deleteReviewBody}
                 </AlertDialogBody>
                 <AlertDialogFooter>
                   <Button ref={cancelRef as any} onClick={onClose}>

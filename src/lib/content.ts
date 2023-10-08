@@ -71,10 +71,11 @@ export const content = {
     reviewMaxLength: "review must be less than 280 characters",
   },
   commentForm: { commentField: "write a comment" },
-  review: {
+  post: {
     reviewed: "👉",
     deleteReviewHeading: "delete review",
     deleteReviewBody: "are you sure?",
+    ago: "ago",
   },
   activity: {
     noActivity: "no activity yet...",
