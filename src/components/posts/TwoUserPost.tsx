@@ -4,6 +4,7 @@ import AvatarAndFullName from "../profile/AvatarAndFullName";
 import { useUser } from "../../hooks/userHooks";
 import PostView from "./PostView";
 import { PostType, UserType } from "../../lib/types";
+import TimeStamp from "./TimeStamp";
 
 const TwoUserPost = ({
   children,
@@ -42,10 +43,15 @@ const TwoUserPost = ({
             </HStack>
           )
         }
+        subjectLine={
+          <HStack fontSize="sm">
+            <Text>{subjectLineText}</Text>
+            <TimeStamp date={date} />
+          </HStack>
+        }
         currentUser={currentUser}
         date={date}
         post={post}
-        subjectLineText={subjectLineText}
         text={text}
         children={children}
         hideCommentButton={hideCommentButton}
