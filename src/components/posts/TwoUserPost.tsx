@@ -41,9 +41,9 @@ const TwoUserPost = ({
           )
         }
         subjectLine={
-          <HStack fontSize="sm">
-            <Text>{subjectLineText}</Text>
-            <TimeStamp date={date} />
+          <HStack>
+            <Text fontSize="md">{subjectLineText}</Text>
+            <TimeStamp textProps={{ fontSize: "xs" }} date={date} />
           </HStack>
         }
         currentUser={currentUser}

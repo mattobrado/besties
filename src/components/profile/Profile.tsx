@@ -1,6 +1,7 @@
 import {
   Box,
   Button,
+  Container,
   Divider,
   Flex,
   Grid,
@@ -22,81 +23,91 @@ import { content } from "../../lib/content";
 import { COLORS } from "../../theme/colors";
 import getStars from "../../utils/getStars";
 import AvatarInAvatar from "./PictureInPicture";
+import LoadingScreen from "../LoadingScreen";
 
 export default function Profile() {
   const { id } = useParams();
   // const { posts, isLoading: postsLoading } = usePosts({ uid: id });
   const { user, isLoading: userLoading } = useUser(id);
   const { user: authUser, isLoading: authLoading } = useAuth();
-  const { isOpen, onOpen, onClose } = useDisclosure();
+  const { posts } = usePosts({});
+
+  // const { isOpen, onOpen, onClose } = useDisclosure();
 
   const isLoaded = authUser && !!user;
   if (user) user.rating = 4.5;
 
   return (
     isLoaded && (
-      <>
-        <Stack spacing="2">
-          <Stack alignItems={"center"}>
-            <Stack spacing={0} alignItems={"center"}>
-              <AvatarInAvatar user={user} bestFriend={user}></AvatarInAvatar>
-              <Text fontSize={"4xl"}>
-                {user.rating ? user.rating.toPrecision(2) : "no reviews yet"}{" "}
-                {getStars(user.rating)}
-              </Text>
-              <Text fontSize="2xl">
-                <b>{user.fullName}</b>
-              </Text>
-              <Text color="gray.700">
-                joined: {format(user.date, "MMMM YYY")}
-              </Text>
-            </Stack>
+      <Stack spacing="2">
+        <Stack alignItems={"center"}>
+          <Stack spacing={0} alignItems={"center"}>
+            <AvatarInAvatar user={user} bestFriend={user}></AvatarInAvatar>
+            <Text fontSize={"4xl"}>
+              {user.rating ? user.rating.toPrecision(2) : "no reviews yet"}{" "}
+              {getStars(user.rating)}
+            </Text>
+            <Text fontSize="2xl">
+              <b>{user.fullName}</b>
+            </Text>
+            <Text color="gray.700">
+              joined: {format(user.date, "MMMM YYY")}
+            </Text>
           </Stack>
-          {!authLoading && authUser.id === user.id ? (
-            <Grid templateColumns="repeat(2, 1fr)" gap={2}>
-              <GridItem
-                w="100%"
-                as={Button}
-                size={"sm"}
-                variant={"outline"}
-                color={COLORS.PRIMARY_FONT}
-              >
-                ✏️ edit
-              </GridItem>
-              <GridItem
-                w="100%"
-                as={Button}
-                size={"sm"}
-                variant={"outline"}
-                color={COLORS.PRIMARY_FONT}
-              >
-                💌 share
-              </GridItem>
-            </Grid>
-          ) : (
-            <Grid templateColumns="repeat(2, 1fr)" gap={2}>
-              <GridItem
-                w="100%"
-                as={Button}
-                size={"sm"}
-                variant={"outline"}
-                color={COLORS.PRIMARY_FONT}
-              >
-                follow
-              </GridItem>
-              <GridItem
-                w="100%"
-                as={Button}
-                size={"sm"}
-                variant={"outline"}
-                color={COLORS.PRIMARY_FONT}
-              >
-                🩷 boost
-              </GridItem>
-            </Grid>
-          )}
         </Stack>
-      </>
+        {!authLoading && authUser.id === user.id ? (
+          <Grid templateColumns="repeat(2, 1fr)" gap={2}>
+            <GridItem
+              w="100%"
+              as={Button}
+              size={"sm"}
+              variant={"outline"}
+              color={COLORS.PRIMARY_FONT}
+            >
+              ✏️ edit
+            </GridItem>
+            <GridItem
+              w="100%"
+              as={Button}
+              size={"sm"}
+              variant={"outline"}
+              color={COLORS.PRIMARY_FONT}
+            >
+              💌 share
+            </GridItem>
+          </Grid>
+        ) : (
+          <Grid templateColumns="repeat(2, 1fr)" gap={2}>
+            <GridItem
+              w="100%"
+              as={Button}
+              size={"sm"}
+              variant={"outline"}
+              color={COLORS.PRIMARY_FONT}
+            >
+              follow
+            </GridItem>
+            <GridItem
+              w="100%"
+              as={Button}
+              size={"sm"}
+              variant={"outline"}
+              color={COLORS.PRIMARY_FONT}
+            >
+              🩷 boost
+            </GridItem>
+          </Grid>
+        )}
+        <Divider />
+        <Container>
+          {posts && (
+            <PostList
+              posts={posts.filter((post) => post.isReview)}
+              user={authUser}
+            />
+          )}
+        </Container>
+      </Stack>
     )
   );
 }

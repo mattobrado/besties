@@ -1,5 +1,4 @@
 import { UserType } from "../../lib/types";
-import { COLORS } from "../../theme/colors";
 import Avatar from "./Avatar";
 
 const AvatarInAvatar = ({

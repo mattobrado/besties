@@ -12,7 +12,7 @@ const AvatarAndFullName = ({
   size: string;
 }) => (
   <>
-    <Avatar user={user} size={size} />
+    <Avatar user={user} avatarProps={{ size }} />
     <Link to={`${ROUTES.PROTECTED}/${user.id}`}>
       <Text fontSize={size}>
         <b>{user?.fullName}</b>
