@@ -5,18 +5,18 @@ import TwoUserPost from "./TwoUserPost";
 
 const Review = ({
   post,
-  user,
+  authUser,
   children,
   hideCommentButton,
 }: {
   post: PostType;
-  user: UserType;
+  authUser: UserType;
   children?: React.ReactNode;
   hideCommentButton?: boolean;
 }) => (
   <TwoUserPost
     children={children}
-    currentUser={user}
+    currentUser={authUser}
     hideCommentButton={hideCommentButton}
     post={post}
     subjectLineText={getStars(post.rating)}

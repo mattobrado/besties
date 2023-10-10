@@ -20,10 +20,10 @@ const Comments = () => {
 
   return (
     isLoaded && (
-      <Review post={post} user={user} hideCommentButton={true}>
+      <Review post={post} authUser={user} hideCommentButton={true}>
         <NewCommentForm user={user} post={post} />
         <Container>
-          <PostList posts={comments} user={user} />
+          <PostList posts={comments} authUser={user} />
         </Container>
       </Review>
     )

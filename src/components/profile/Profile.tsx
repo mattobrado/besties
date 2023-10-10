@@ -9,25 +9,23 @@ import {
   OrderedList,
   Stack,
   Text,
+  useDisclosure,
 } from "@chakra-ui/react";
 import { useParams } from "react-router-dom";
-import { usePosts } from "../../hooks/postHooks";
 import { useAuth } from "../../hooks/authHooks";
 import { useUser } from "../../hooks/userHooks";
-import PostList from "../posts/PostList";
 import { COLORS } from "../../theme/colors";
 import getStars from "../../utils/getStars";
 import AvatarInAvatar from "./PictureInPicture";
 import ProfileHeading from "./ProfileHeading";
+import ProfilePosts from "./ProfilePosts";
+import EditProfile from "./EditProfile";
 
-export default function Profile() {
+const Profile = () => {
   const { id } = useParams();
-  // const { posts, isLoading: postsLoading } = usePosts({ uid: id });
   const { user, isLoading: userLoading } = useUser(id);
   const { user: authUser, isLoading: authLoading } = useAuth();
-  const { posts } = usePosts({});
-
-  // const { isOpen, onOpen, onClose } = useDisclosure();
+  const { isOpen, onOpen, onClose } = useDisclosure();
 
   const isLoaded = authUser && !!user;
   if (user) user.rating = 4.5;
@@ -48,6 +46,7 @@ export default function Profile() {
           </Text>
           {/* <Text color="gray.700">joined: {format(user.date, "MMMM YYY")}</Text> */}
         </Stack>
+        <EditProfile isOpen={isOpen} onClose={onClose} authUser={authUser} />
         {!authLoading && authUser.id === user.id ? (
           <Grid templateColumns="repeat(2, 1fr)" gap={2}>
             <GridItem
@@ -56,6 +55,7 @@ export default function Profile() {
               size={"sm"}
               variant={"outline"}
               color={COLORS.PRIMARY_FONT}
+              onClick={onOpen}
             >
               ✏️ edit
             </GridItem>
@@ -101,17 +101,9 @@ export default function Profile() {
             <ListItem>myself</ListItem> <Divider />
           </OrderedList>
         </Container>
-
-        <Container>
-          <ProfileHeading text={"activity"} />
-          {posts && (
-            <PostList
-              posts={posts.filter((post) => post.isReview)}
-              user={authUser}
-            />
-          )}
-        </Container>
+        <ProfilePosts authUser={authUser} uid={user.id} />
       </Stack>
     )
   );
-}
+};
+export default Profile;

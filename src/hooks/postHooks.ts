@@ -11,6 +11,8 @@ import {
   deleteDoc,
   getDocs,
   increment,
+  or,
+  and,
 } from "firebase/firestore";
 import { useState } from "react";
 import { db } from "../lib/firebase";
@@ -55,14 +57,19 @@ export const usePost = (id?: string) => {
   return { post: <PostType | undefined>post, isLoading };
 };
 
-export const usePosts = ({ uid }: { uid?: string }) => {
-  const q = uid
-    ? query(
-        collection(db, COLLECTIONS.POSTS),
-        orderBy("date", "desc"),
-        where("uid", "==", uid)
-      )
-    : query(collection(db, COLLECTIONS.POSTS), orderBy("date", "desc"));
+export const usePosts = () => {
+  const q = query(collection(db, COLLECTIONS.POSTS), orderBy("date", "desc"));
+  const [posts, isLoading, error] = useCollectionData(q);
+  if (error) throw error;
+  return { posts: <PostType[]>posts, isLoading };
+};
+
+export const usePostsForProfile = (uid: string) => {
+  const q = query(
+    collection(db, COLLECTIONS.POSTS),
+    or(where("posterUid", "==", uid), where("targetUid", "==", uid)),
+    orderBy("date", "desc")
+  );
   const [posts, isLoading, error] = useCollectionData(q);
   if (error) throw error;
   return { posts: <PostType[]>posts, isLoading };
@@ -88,7 +95,7 @@ export const useDeletePost = (post: PostType) => {
   const { id, isComment, parentPostId, commentIds } = post;
   const [isLoading, setLoading] = useState(false);
 
-  async function deletePost() {
+  const deletePost = async () => {
     setLoading(true);
     if (isComment && parentPostId) {
       removeComment({ parentPostId, commentId: id });
@@ -103,7 +110,7 @@ export const useDeletePost = (post: PostType) => {
     await deleteDoc(doc(db, COLLECTIONS.POSTS, id));
 
     setLoading(false);
-  }
+  };
 
   return { deletePost, isLoading };
 };
