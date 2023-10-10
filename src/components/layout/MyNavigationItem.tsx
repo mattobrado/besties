@@ -11,7 +11,7 @@ const MyNavigationItem = ({
   to: string;
   onClick?: () => void;
 }) => (
-  <Text fontSize="5xl">
+  <Text fontSize="4xl">
     <BottomNavigationItem as={Link} to={to} onClick={onClick}>
       {icon}
     </BottomNavigationItem>

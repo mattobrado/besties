@@ -2,7 +2,10 @@ import {
   Button,
   Divider,
   Flex,
+  Grid,
+  GridItem,
   HStack,
+  Skeleton,
   Stack,
   Text,
   useDisclosure,
@@ -14,6 +17,9 @@ import { usePosts } from "../../hooks/postHooks";
 import { useAuth } from "../../hooks/authHooks";
 import { useUser } from "../../hooks/userHooks";
 import PostList from "../posts/PostList";
+import { content } from "../../lib/content";
+import { COLORS } from "../../theme/colors";
+import getStars from "../../utils/getStars";
 
 export default function Profile() {
   const { id } = useParams();
@@ -23,51 +29,72 @@ export default function Profile() {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   const isLoaded = authUser && !!user;
+  if (user) user.rating = 4.5;
 
-  return isLoaded ? (
-    <Stack spacing="5">
-      <Flex p={["4", "6"]} pos="relative" align="center">
-        <Avatar size="2xl" user={user} />
-
-        {!authLoading && authUser.id === user.id && (
-          <Button
-            pos="absolute"
-            mb="2"
-            top="6"
-            right="6"
-            colorScheme="teal"
-            onClick={onOpen}
-          >
-            Change avatar
-          </Button>
-        )}
-
-        <Stack ml="10">
-          <Text fontSize="2xl">{user.username}</Text>
-          <HStack spacing="10">
-            {/* <Text color="gray.700" fontSize={["sm", "lg"]}>
-              Posts: {posts.length}
-            </Text> */}
-            <Text color="gray.700" fontSize={["sm", "lg"]}>
-              Likes: todo!
-            </Text>
-            <Text color="gray.700" fontSize={["sm", "lg"]}>
-              Joined: {format(user.date, "MMMM YYY")}
-            </Text>
-          </HStack>
+  return (
+    isLoaded && (
+      <>
+        <Stack spacing="2">
+          <Stack alignItems={"center"}>
+            <Avatar size="2xl" user={user} />
+            <Stack spacing={0} alignItems={"center"}>
+              <Text fontSize={"4xl"}>
+                {user.rating ? user.rating.toPrecision(2) : "no reviews yet"}{" "}
+                {getStars(user.rating)}
+              </Text>
+              <Text fontSize="2xl">
+                <b>{user.fullName}</b>
+              </Text>
+              <Text color="gray.700">
+                Joined: {format(user.date, "MMMM YYY")}
+              </Text>
+            </Stack>
+          </Stack>
+          {!authLoading && authUser.id === user.id ? (
+            <Grid templateColumns="repeat(2, 1fr)" gap={2}>
+              <GridItem
+                w="100%"
+                as={Button}
+                size={"sm"}
+                variant={"outline"}
+                color={COLORS.PRIMARY_FONT}
+              >
+                edit profile
+              </GridItem>
+              <GridItem
+                w="100%"
+                as={Button}
+                size={"sm"}
+                variant={"outline"}
+                color={COLORS.PRIMARY_FONT}
+              >
+                share profile
+              </GridItem>
+            </Grid>
+          ) : (
+            <Grid templateColumns="repeat(2, 1fr)" gap={2}>
+              <GridItem
+                w="100%"
+                as={Button}
+                size={"sm"}
+                variant={"outline"}
+                color={COLORS.PRIMARY_FONT}
+              >
+                follow
+              </GridItem>
+              <GridItem
+                w="100%"
+                as={Button}
+                size={"sm"}
+                variant={"outline"}
+                color={COLORS.PRIMARY_FONT}
+              >
+                🩷 boost
+              </GridItem>
+            </Grid>
+          )}
         </Stack>
-
-        {/* <EditProfile isOpen={isOpen} onClose={onClose} /> */}
-      </Flex>
-      <Divider />
-
-      {/* {postsLoading ? (
-        <Text>Posts are loading...</Text>
-      ) : (
-        <PostList posts={posts} user={authUser} />
-      )} */}
-    </Stack>
-  ) : (
-    false
+      </>
+    )
   );
 }
