@@ -1,27 +1,28 @@
-import { Avatar as ChakraAvatar, SkeletonCircle } from "@chakra-ui/react";
+import { AvatarProps, Avatar as ChakraAvatar } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 import { ROUTES } from "../../lib/routes";
 import { COLORS } from "../../theme/colors";
 import { UserType } from "../../lib/types";
 
 const Avatar = ({
-  overrideAvatar,
-  size,
   user,
+  avatarProps,
+  children,
 }: {
-  overrideAvatar?: string;
-  size: string;
   user: UserType;
+  avatarProps: AvatarProps;
+  children?: React.ReactNode;
 }) => {
   return (
     <ChakraAvatar
       as={Link}
       to={`${ROUTES.PROFILE}/${user.id}`}
       name={user.fullName}
-      size={size}
-      src={overrideAvatar || user.avatar}
+      src={user.avatar}
       bg={COLORS.BRAND}
       color={COLORS.BACKGROUND}
+      children={children}
+      {...avatarProps}
     />
   );
 };

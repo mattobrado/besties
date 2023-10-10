@@ -1,4 +1,5 @@
 import {
+  Box,
   Button,
   Divider,
   Flex,
@@ -20,6 +21,7 @@ import PostList from "../posts/PostList";
 import { content } from "../../lib/content";
 import { COLORS } from "../../theme/colors";
 import getStars from "../../utils/getStars";
+import AvatarInAvatar from "./PictureInPicture";
 
 export default function Profile() {
   const { id } = useParams();
@@ -36,8 +38,8 @@ export default function Profile() {
       <>
         <Stack spacing="2">
           <Stack alignItems={"center"}>
-            <Avatar size="2xl" user={user} />
             <Stack spacing={0} alignItems={"center"}>
+              <AvatarInAvatar user={user} bestFriend={user}></AvatarInAvatar>
               <Text fontSize={"4xl"}>
                 {user.rating ? user.rating.toPrecision(2) : "no reviews yet"}{" "}
                 {getStars(user.rating)}
@@ -46,7 +48,7 @@ export default function Profile() {
                 <b>{user.fullName}</b>
               </Text>
               <Text color="gray.700">
-                Joined: {format(user.date, "MMMM YYY")}
+                joined: {format(user.date, "MMMM YYY")}
               </Text>
             </Stack>
           </Stack>
@@ -59,7 +61,7 @@ export default function Profile() {
                 variant={"outline"}
                 color={COLORS.PRIMARY_FONT}
               >
-                edit profile
+                ✏️ edit
               </GridItem>
               <GridItem
                 w="100%"
@@ -68,7 +70,7 @@ export default function Profile() {
                 variant={"outline"}
                 color={COLORS.PRIMARY_FONT}
               >
-                share profile
+                💌 share
               </GridItem>
             </Grid>
           ) : (
