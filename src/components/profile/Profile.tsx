@@ -1,34 +1,23 @@
 import {
-  Box,
   Button,
   Center,
   Container,
   Divider,
-  Flex,
   Grid,
   GridItem,
-  HStack,
-  Heading,
-  List,
   ListItem,
   OrderedList,
-  Skeleton,
   Stack,
   Text,
-  useDisclosure,
 } from "@chakra-ui/react";
 import { useParams } from "react-router-dom";
-import Avatar from "./Avatar";
-import { format } from "date-fns";
 import { usePosts } from "../../hooks/postHooks";
 import { useAuth } from "../../hooks/authHooks";
 import { useUser } from "../../hooks/userHooks";
 import PostList from "../posts/PostList";
-import { content } from "../../lib/content";
 import { COLORS } from "../../theme/colors";
 import getStars from "../../utils/getStars";
 import AvatarInAvatar from "./PictureInPicture";
-import LoadingScreen from "../LoadingScreen";
 import ProfileHeading from "./ProfileHeading";
 
 export default function Profile() {
