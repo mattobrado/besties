@@ -16,7 +16,7 @@ import { useAuth } from "../../hooks/authHooks";
 import { useUser } from "../../hooks/userHooks";
 import { COLORS } from "../../theme/colors";
 import getStars from "../../utils/getStars";
-import AvatarInAvatar from "./PictureInPicture";
+import AvatarInAvatar from "./AvatarInAvatar";
 import ProfileHeading from "./ProfileHeading";
 import ProfilePosts from "./ProfilePosts";
 import EditProfile from "./EditProfile";

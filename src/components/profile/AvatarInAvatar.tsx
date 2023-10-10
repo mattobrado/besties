@@ -1,5 +1,6 @@
 import { UserType } from "../../lib/types";
 import Avatar from "./Avatar";
+import { Avatar as ChakraAvatar } from "@chakra-ui/react";
 
 const AvatarInAvatar = ({
   user,
@@ -8,7 +9,7 @@ const AvatarInAvatar = ({
   user: UserType;
   bestFriend: UserType;
 }) => (
-  <Avatar user={user} avatarProps={{ position: "relative", size: "2xl" }}>
+  <ChakraAvatar position={"relative"} size={"2xl"} src={user.avatar}>
     <Avatar
       avatarProps={{
         position: "absolute",
@@ -19,7 +20,7 @@ const AvatarInAvatar = ({
       }}
       user={bestFriend}
     />
-  </Avatar>
+  </ChakraAvatar>
 );
 
 export default AvatarInAvatar;
