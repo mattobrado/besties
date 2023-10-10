@@ -44,16 +44,9 @@ export const useUpdateAvatar = (uid: string) => {
 
     const avatarURL = await getDownloadURL(fileRef);
 
-    const docRef = doc(db, "users", uid);
+    const docRef = doc(db, COLLECTIONS.USERS, uid);
     await updateDoc(docRef, { avatar: avatarURL });
 
-    toast({
-      title: "Profile updated!",
-      status: "success",
-      isClosable: true,
-      position: "top",
-      duration: 5000,
-    });
     setLoading(false);
 
     navigate(0);

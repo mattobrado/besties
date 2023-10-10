@@ -21,9 +21,10 @@ const Avatar = ({
       to={`${ROUTES.PROFILE}/${user.id}`}
       name={user.fullName}
       src={overrideAvatar ?? user.avatar}
-      bg={COLORS.BRAND}
+      bg={user.avatar ? undefined : COLORS.BRAND}
       color={COLORS.BACKGROUND}
       children={children}
+      loading="lazy"
       {...avatarProps}
     />
   );
