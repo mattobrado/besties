@@ -45,16 +45,16 @@ export default function Profile() {
 
   return (
     isLoaded && (
-      <Stack spacing="3">
+      <Stack spacing="1">
         <Center>
           <AvatarInAvatar user={user} bestFriend={user}></AvatarInAvatar>
         </Center>
         <Stack spacing={0} alignItems={"center"}>
-          <Text fontSize={"4xl"}>
+          <Text fontSize={"3xl"}>
             {user.rating ? user.rating.toPrecision(2) : "no reviews yet"}{" "}
             {getStars(user.rating)}
           </Text>
-          <Text fontSize="2xl">
+          <Text fontSize="xl">
             <b>{user.fullName}</b>
           </Text>
           {/* <Text color="gray.700">joined: {format(user.date, "MMMM YYY")}</Text> */}
@@ -102,7 +102,6 @@ export default function Profile() {
             </GridItem>
           </Grid>
         )}
-        <Divider />
         <Container>
           <ProfileHeading text={"besties"} />
           <OrderedList spacing={1}>
