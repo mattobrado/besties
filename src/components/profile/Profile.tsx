@@ -1,12 +1,17 @@
 import {
   Box,
   Button,
+  Center,
   Container,
   Divider,
   Flex,
   Grid,
   GridItem,
   HStack,
+  Heading,
+  List,
+  ListItem,
+  OrderedList,
   Skeleton,
   Stack,
   Text,
@@ -24,6 +29,7 @@ import { COLORS } from "../../theme/colors";
 import getStars from "../../utils/getStars";
 import AvatarInAvatar from "./PictureInPicture";
 import LoadingScreen from "../LoadingScreen";
+import ProfileHeading from "./ProfileHeading";
 
 export default function Profile() {
   const { id } = useParams();
@@ -39,21 +45,19 @@ export default function Profile() {
 
   return (
     isLoaded && (
-      <Stack spacing="2">
-        <Stack alignItems={"center"}>
-          <Stack spacing={0} alignItems={"center"}>
-            <AvatarInAvatar user={user} bestFriend={user}></AvatarInAvatar>
-            <Text fontSize={"4xl"}>
-              {user.rating ? user.rating.toPrecision(2) : "no reviews yet"}{" "}
-              {getStars(user.rating)}
-            </Text>
-            <Text fontSize="2xl">
-              <b>{user.fullName}</b>
-            </Text>
-            <Text color="gray.700">
-              joined: {format(user.date, "MMMM YYY")}
-            </Text>
-          </Stack>
+      <Stack spacing="3">
+        <Center>
+          <AvatarInAvatar user={user} bestFriend={user}></AvatarInAvatar>
+        </Center>
+        <Stack spacing={0} alignItems={"center"}>
+          <Text fontSize={"4xl"}>
+            {user.rating ? user.rating.toPrecision(2) : "no reviews yet"}{" "}
+            {getStars(user.rating)}
+          </Text>
+          <Text fontSize="2xl">
+            <b>{user.fullName}</b>
+          </Text>
+          {/* <Text color="gray.700">joined: {format(user.date, "MMMM YYY")}</Text> */}
         </Stack>
         {!authLoading && authUser.id === user.id ? (
           <Grid templateColumns="repeat(2, 1fr)" gap={2}>
@@ -100,6 +104,18 @@ export default function Profile() {
         )}
         <Divider />
         <Container>
+          <ProfileHeading text={"besties"} />
+          <OrderedList spacing={1}>
+            <ListItem>Suck-o-tron</ListItem> <Divider />
+            <ListItem>Manthan</ListItem> <Divider />
+            <ListItem>Trent</ListItem> <Divider />
+            <ListItem>Marlon</ListItem> <Divider />
+            <ListItem>myself</ListItem> <Divider />
+          </OrderedList>
+        </Container>
+
+        <Container>
+          <ProfileHeading text={"activity"} />
           {posts && (
             <PostList
               posts={posts.filter((post) => post.isReview)}
