@@ -29,11 +29,7 @@ const TwoUserPost = ({
   const isLoaded = poster && !!target;
 
   return (
-    <Skeleton
-      startColor="transparent"
-      endColor="transparent"
-      isLoaded={isLoaded}
-    >
+    <Skeleton isLoaded={isLoaded} variant={"custom"}>
       <PostView
         header={
           isLoaded && (
@@ -45,9 +41,9 @@ const TwoUserPost = ({
           )
         }
         subjectLine={
-          <HStack fontSize="sm">
-            <Text>{subjectLineText}</Text>
-            <TimeStamp date={date} />
+          <HStack>
+            <Text fontSize="sm">{subjectLineText}</Text>
+            <TimeStamp textProps={{ fontSize: "xs" }} date={date} />
           </HStack>
         }
         currentUser={currentUser}

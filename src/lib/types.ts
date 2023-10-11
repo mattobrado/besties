@@ -14,7 +14,9 @@ export type PostType = {
   id: string;
   isComment?: boolean;
   isReview?: boolean;
-  likes: number;
+  commentCount: number;
+  commentIds: string[];
+  likeCount: number;
   likeUids: string[];
   parentPostId?: string;
   posterUid: string;
@@ -29,6 +31,7 @@ export type UserType = {
   fullName: string;
   id: string;
   username: string;
+  rating?: number;
 };
 
 export type ToggleLikeType = {

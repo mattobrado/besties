@@ -27,7 +27,7 @@ const TopNavBar = () => {
   const size = "md";
 
   return (
-    <Flex pb={4} h={24} alignItems={"center"} justifyContent={"space-between"}>
+    <Flex pb={4} h={20} alignItems={"center"} justifyContent={"space-between"}>
       <Menu>
         <MenuButton
           as={IconButton}
@@ -57,9 +57,9 @@ const TopNavBar = () => {
         <Text fontSize="5xl">{content.logo}</Text>
       </Link>
       {user ? (
-        <Avatar user={user} size={size} />
+        <Avatar user={user} avatarProps={{ size }} />
       ) : (
-        <SkeletonCircle variant="brand" size={"12"} />
+        <SkeletonCircle variant="custom" size={"12"} />
       )}
     </Flex>
   );

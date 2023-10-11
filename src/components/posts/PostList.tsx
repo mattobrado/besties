@@ -6,10 +6,10 @@ import Comment from "../comments/Comment";
 
 export const PostList = ({
   posts,
-  user,
+  authUser: authUser,
 }: {
   posts: PostType[];
-  user: UserType;
+  authUser: UserType;
 }) => {
   return (
     <>
@@ -20,9 +20,9 @@ export const PostList = ({
       ) : (
         posts?.map((post) =>
           post.isReview ? (
-            <Review key={post.id} post={post} user={user} />
+            <Review key={post.id} post={post} authUser={authUser} />
           ) : post.isComment ? (
-            <Comment key={post.id} post={post} user={user} />
+            <Comment key={post.id} post={post} user={authUser} />
           ) : (
             <></>
           )

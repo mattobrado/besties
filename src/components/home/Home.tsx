@@ -8,7 +8,7 @@ const Home = () => {
   const { user } = useAuth();
 
   return user && posts ? (
-    <PostList posts={posts.filter((post) => post.isReview)} user={user} />
+    <PostList posts={posts.filter((post) => post.isReview)} authUser={user} />
   ) : (
     <LoadingScreen />
   );

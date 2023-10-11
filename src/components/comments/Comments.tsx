@@ -13,20 +13,19 @@ const Comments = () => {
   const { post, isLoading } = usePost(id);
   const { user } = useAuth();
   const { comments } = useComments(id);
-  const isLoaded = !!user && !!post && !!comments;
   const navigate = useNavigate();
-  if (!isLoaded && !isLoading) navigate(ROUTES.HOME);
+
+  const isLoaded = !!user && !!post && !!comments;
+  if (!isLoaded && !isLoading) navigate(ROUTES.HOME); // post not found
 
   return (
     isLoaded && (
-      <>
-        <Review post={post} user={user} hideCommentButton={true}>
-          <NewCommentForm user={user} post={post} />
-          <Container>
-            <PostList posts={comments} user={user} />
-          </Container>
-        </Review>
-      </>
+      <Review post={post} authUser={user} hideCommentButton={true}>
+        <NewCommentForm user={user} post={post} />
+        <Container>
+          <PostList posts={comments} authUser={user} />
+        </Container>
+      </Review>
     )
   );
 };
