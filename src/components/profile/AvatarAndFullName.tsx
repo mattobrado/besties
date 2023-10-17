@@ -1,4 +1,4 @@
-import { Text } from "@chakra-ui/react";
+import { HStack, Text } from "@chakra-ui/react";
 import Avatar from "./Avatar";
 import { UserType } from "../../lib/types";
 import { Link } from "react-router-dom";
@@ -11,14 +11,14 @@ const AvatarAndFullName = ({
   user: UserType;
   size: string;
 }) => (
-  <>
+  <HStack>
     <Avatar user={user} avatarProps={{ size }} />
-    <Link to={`${ROUTES.PROTECTED}/${user.id}`}>
+    <Link to={`${ROUTES.PROFILE}/${user.id}`}>
       <Text fontSize={size}>
         <b>{user?.fullName}</b>
       </Text>
     </Link>
-  </>
+  </HStack>
 );
 
 export default AvatarAndFullName;
