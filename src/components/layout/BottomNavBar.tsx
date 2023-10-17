@@ -21,7 +21,10 @@ export const BottomNavBar = () => {
         icon={content.addEmoji}
         to={ROUTES.ADD_REVIEW}
       ></MyNavigationItem>
-      <MyNavigationItem icon={content.searchEmoji} to={""}></MyNavigationItem>
+      <MyNavigationItem
+        icon={content.searchEmoji}
+        to={ROUTES.SEARCH}
+      ></MyNavigationItem>
     </BottomNavigation>
   );
 };

@@ -26,23 +26,21 @@ const AuthFormContainer = ({
         boxShadow={{ base: "none", sm: "md" }}
         borderRadius={{ base: "none", sm: "xl" }}
       >
-        <Stack spacing="6">
-          <form onSubmit={onSubmit}>
-            <>
-              {children}
-              <Stack spacing="6">
-                <Button
-                  mt="4"
-                  type="submit"
-                  size="md"
-                  w="full"
-                  isLoading={buttonProps.isLoading}
-                  loadingText={buttonProps.loadingText}
-                  variant={"custom"}
-                >
-                  {buttonProps.label}
-                </Button>
-                {/* <HStack>
+        <Stack spacing="1" as={"form"} onSubmit={onSubmit as any}>
+          {children}
+          <Stack spacing="6">
+            <Button
+              mt="4"
+              type="submit"
+              size="md"
+              w="full"
+              isLoading={buttonProps.isLoading}
+              loadingText={buttonProps.loadingText}
+              variant={"custom"}
+            >
+              {buttonProps.label}
+            </Button>
+            {/* <HStack>
                   <Divider />
                   <Text color={COLORS.text} textStyle="sm" whiteSpace="nowrap">
                     {CONTENT.AUTH.orContinueWith}
@@ -50,9 +48,7 @@ const AuthFormContainer = ({
                   <Divider />
                 </HStack>
                 <OAuthButtonGroup /> */}
-              </Stack>
-            </>
-          </form>
+          </Stack>
         </Stack>
       </Box>
     </Stack>

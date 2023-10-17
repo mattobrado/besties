@@ -28,7 +28,7 @@ const OneUserPost = ({
           isLoaded && (
             <HStack fontSize="xs">
               <AvatarAndFullName user={poster} size={"xs"} />
-              <TimeStamp date={date} />
+              <TimeStamp textProps={{ fontSize: "xs" }} date={date} />
             </HStack>
           )
         }

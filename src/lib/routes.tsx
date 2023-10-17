@@ -2,11 +2,11 @@ import { createBrowserRouter } from "react-router-dom";
 import Login from "../components/auth/Login";
 import Layout from "../components/layout/Layout";
 import Home from "../components/home/Home";
-import LoadingScreen from "../components/LoadingScreen";
 import NewReviewForm from "../components/newReviewForm/NewReviewForm";
 import Signup from "../components/auth/SignUp";
 import Comments from "../components/comments/Comments";
 import Profile from "../components/profile/Profile";
+import Search from "../components/search/search";
 
 const PROTECTED = "/b";
 
@@ -20,6 +20,7 @@ export const ROUTES = {
   SIGNUP: "/signup",
   USERS: PROTECTED + "/users",
   ADD_REVIEW: PROTECTED + "/review",
+  SEARCH: PROTECTED + "/search",
 };
 
 export const router = createBrowserRouter([
@@ -39,8 +40,8 @@ export const router = createBrowserRouter([
         element: <NewReviewForm />,
       },
       {
-        path: ROUTES.USERS,
-        element: <LoadingScreen />,
+        path: ROUTES.SEARCH,
+        element: <Search />,
       },
       {
         path: ROUTES.PROFILE + "/:id",

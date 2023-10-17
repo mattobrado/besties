@@ -49,12 +49,7 @@ const RatingInput = ({
     Buttons.push(<RatingButton key={i} idx={i} fill={i <= rating} />);
   }
 
-  return (
-    <HStack justify="center">
-      <input type="hidden" value={rating} />
-      {Buttons}
-    </HStack>
-  );
+  return <HStack justify="center">{Buttons}</HStack>;
 };
 
 export default RatingInput;

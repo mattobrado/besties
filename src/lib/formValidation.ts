@@ -51,10 +51,6 @@ export const VALIDATE = {
       value: 1,
       message: content.auth.fullNameMinLength,
     },
-    pattern: {
-      value: /^[a-zA-Z0-9]+$/,
-      message: content.auth.fullNameAlphaNumeric,
-    },
   },
   TEXT: {
     required: {

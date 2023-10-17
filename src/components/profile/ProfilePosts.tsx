@@ -1,7 +1,7 @@
 import { Container } from "@chakra-ui/react";
 import PostList from "../posts/PostList";
 import ProfileHeading from "./ProfileHeading";
-import { PostType, UserType } from "../../lib/types";
+import { UserType } from "../../lib/types";
 import { usePostsForProfile } from "../../hooks/postHooks";
 
 const ProfilePosts = ({
