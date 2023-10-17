@@ -1,17 +1,16 @@
 import algoliasearch from "algoliasearch/lite";
-import AvatarAndFullName from "../profile/AvatarAndFullName";
 import { UserType } from "../../lib/types";
-import { Container, Stack } from "@chakra-ui/react";
+import { Stack } from "@chakra-ui/react";
 import { InstantSearch, useHits } from "react-instantsearch";
-import { COLORS } from "../../theme/colors";
 import CustomSearchBox from "./CustomSearchBox";
 import { Dispatch, SetStateAction } from "react";
+import UserCard from "../profile/UserCard";
 
 const Search = ({
-  setTargetUid,
+  setTargetUser,
   onClose,
 }: {
-  setTargetUid?: Dispatch<SetStateAction<string>>;
+  setTargetUser?: Dispatch<SetStateAction<UserType | undefined>>;
   onClose: () => void;
 }) => {
   return (
@@ -27,17 +26,17 @@ const Search = ({
     >
       <Stack>
         <CustomSearchBox />
-        <CustomHits setTargetUid={setTargetUid} onClose={onClose} />
+        <CustomHits setTargetUser={setTargetUser} onClose={onClose} />
       </Stack>
     </InstantSearch>
   );
 };
 
 function CustomHits({
-  setTargetUid,
+  setTargetUser,
   onClose,
 }: {
-  setTargetUid?: Dispatch<SetStateAction<string>>;
+  setTargetUser?: Dispatch<SetStateAction<UserType | undefined>>;
   onClose: () => void;
 }) {
   const { hits: users } = useHits();
@@ -45,23 +44,17 @@ function CustomHits({
   return (
     <Stack>
       {(users as unknown as UserType[]).map((user) => (
-        <Container
-          borderWidth={"1px"}
-          borderColor={COLORS.PRIMARY_FONT}
-          borderRadius={"md"}
-          py={2}
-          key={user.id}
+        <UserCard
           onClick={
-            setTargetUid
+            setTargetUser
               ? () => {
-                  setTargetUid(user.id);
+                  setTargetUser(user);
                   onClose();
                 }
               : undefined
           }
-        >
-          <AvatarAndFullName user={user} size={"md"} isLink={!setTargetUid} />
-        </Container>
+          user={user}
+        />
       ))}
     </Stack>
   );

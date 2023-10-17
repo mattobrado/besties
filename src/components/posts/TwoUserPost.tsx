@@ -24,7 +24,7 @@ const TwoUserPost = ({
   const { posterUid, targetUid, date } = post;
   if (!targetUid) return;
   const { user: poster } = useUser(posterUid);
-  const { user: target } = useUser(posterUid);
+  const { user: target } = useUser(targetUid);
 
   const isLoaded = poster && !!target;
 

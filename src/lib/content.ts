@@ -4,6 +4,7 @@ export const content = {
   emptyHeartEmoji: "🩶",
   commentEmoji: "💬",
   searchEmoji: "🔎",
+  editEmoji: "✏️",
   starEmoji: "⭐️",
   addEmoji: "📝",
   homeEmoji: "🏠",

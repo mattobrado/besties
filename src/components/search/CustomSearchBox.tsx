@@ -44,7 +44,7 @@ function CustomSearchBox(props: UseSearchBoxProps) {
           autoComplete="off"
           autoCorrect="off"
           autoCapitalize="off"
-          placeholder="Search for products"
+          placeholder={content.search.search}
           spellCheck={false}
           maxLength={512}
           value={inputValue}

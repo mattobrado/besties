@@ -9,15 +9,16 @@ import {
 import { COLORS } from "../../theme/colors";
 import Search from "../search/search";
 import { Dispatch, SetStateAction } from "react";
+import { UserType } from "../../lib/types";
 
 export default function SelectUser({
   isOpen,
   onClose,
-  setTargetUid,
+  setTargetUser,
 }: {
   isOpen: boolean;
   onClose: () => void;
-  setTargetUid: Dispatch<SetStateAction<string>>;
+  setTargetUser?: Dispatch<SetStateAction<UserType | undefined>>;
 }) {
   return (
     <Modal isOpen={isOpen} onClose={onClose}>
@@ -26,7 +27,7 @@ export default function SelectUser({
         <ModalHeader>select user</ModalHeader>
         <ModalCloseButton />
         <ModalBody>
-          <Search setTargetUid={setTargetUid} onClose={onClose} />
+          <Search setTargetUser={setTargetUser} onClose={onClose} />
         </ModalBody>
       </ModalContent>
     </Modal>

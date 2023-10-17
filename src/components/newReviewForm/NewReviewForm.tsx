@@ -9,6 +9,8 @@ import {
   Textarea,
   useDisclosure,
   Text,
+  Card,
+  Container,
 } from "@chakra-ui/react";
 import RatingInput from "./RatingInput";
 import { content } from "../../lib/content";
@@ -18,10 +20,12 @@ import { useAuth } from "../../hooks/authHooks";
 import { useAddPost } from "../../hooks/postHooks";
 import { useState } from "react";
 import { VALIDATE } from "../../lib/formValidation";
-import { PostType } from "../../lib/types";
+import { PostType, UserType } from "../../lib/types";
 import { ROUTES } from "../../lib/routes";
 import { useNavigate } from "react-router-dom";
 import SelectUser from "./SelectUser";
+import { COLORS } from "../../theme/colors";
+import UserCard from "../profile/UserCard";
 
 const NewReviewForm = () => {
   const {
@@ -32,7 +36,9 @@ const NewReviewForm = () => {
   const { addPost, isLoading: addingReview } = useAddPost();
   const { user: authUser } = useAuth();
   const [rating, setRating] = useState(3);
-  const [targetUid, setTargetUid] = useState("");
+  const [targetUser, setTargetUser] = useState(
+    undefined as UserType | undefined
+  );
   const navigate = useNavigate();
   const { isOpen, onOpen, onClose } = useDisclosure();
 
@@ -41,7 +47,7 @@ const NewReviewForm = () => {
     addPost({
       isReview: true,
       rating: rating,
-      targetUid: targetUid,
+      targetUid: targetUser?.id,
       posterUid: authUser.id,
       text: review.text,
     });
@@ -54,28 +60,22 @@ const NewReviewForm = () => {
         <SelectUser
           isOpen={isOpen}
           onClose={onClose}
-          setTargetUid={setTargetUid}
+          setTargetUser={setTargetUser}
         />
-        <Text>{targetUid}</Text>
-        <FormControl isInvalid={!!errors.revieweeId}>
+        {targetUser ? (
           <InputGroup size={"lg"}>
-            <InputRightElement>{content.searchEmoji}</InputRightElement>
+            <UserCard user={targetUser} onClick={onOpen} />
+            <InputRightElement m={2}>{content.editEmoji}</InputRightElement>
+          </InputGroup>
+        ) : (
+          <InputGroup size={"lg"}>
             <Input
               placeholder={content.reviewForm.revieweeField}
               onClick={onOpen}
-              {...register("targetUid", {
-                required: {
-                  value: true,
-                  message: content.reviewForm.fieldRequired,
-                },
-              })}
             />
+            <InputRightElement>{content.searchEmoji}</InputRightElement>
           </InputGroup>
-          <FormErrorMessage>
-            {typeof errors.revieweeId?.message === "string" &&
-              errors.revieweeId?.message}
-          </FormErrorMessage>
-        </FormControl>
+        )}
         <Input
           as={RatingInput}
           iconSize={"5xl"}
