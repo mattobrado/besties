@@ -3,14 +3,15 @@ import { useState, useRef } from "react";
 import { useSearchBox, UseSearchBoxProps } from "react-instantsearch";
 import { content } from "../../lib/content";
 
-function CustomSearchBox(props: UseSearchBoxProps) {
+function CustomSearchBox(
+  props: UseSearchBoxProps & { placeholderText: string }
+) {
   const { query, refine } = useSearchBox(props);
   const [inputValue, setInputValue] = useState(query);
   const inputRef = useRef<HTMLInputElement>(null);
 
   function setQuery(newQuery: string) {
     setInputValue(newQuery);
-
     refine(newQuery);
   }
 
@@ -38,13 +39,13 @@ function CustomSearchBox(props: UseSearchBoxProps) {
         }
       }}
     >
-      <InputGroup>
+      <InputGroup size={"lg"}>
         <Input
           ref={inputRef}
           autoComplete="off"
           autoCorrect="off"
           autoCapitalize="off"
-          placeholder={content.search.search}
+          placeholder={props.placeholderText}
           spellCheck={false}
           maxLength={512}
           value={inputValue}

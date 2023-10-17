@@ -1,15 +1,9 @@
-import {
-  Modal,
-  ModalBody,
-  ModalCloseButton,
-  ModalContent,
-  ModalHeader,
-  ModalOverlay,
-} from "@chakra-ui/react";
+import { Modal, ModalBody, ModalContent, ModalOverlay } from "@chakra-ui/react";
 import { COLORS } from "../../theme/colors";
-import Search from "../search/search";
 import { Dispatch, SetStateAction } from "react";
 import { UserType } from "../../lib/types";
+import Search from "../search/Search";
+import { content } from "../../lib/content";
 
 export default function SelectUser({
   isOpen,
@@ -24,10 +18,12 @@ export default function SelectUser({
     <Modal isOpen={isOpen} onClose={onClose}>
       <ModalOverlay />
       <ModalContent bg={COLORS.BACKGROUND}>
-        <ModalHeader>select user</ModalHeader>
-        <ModalCloseButton />
-        <ModalBody>
-          <Search setTargetUser={setTargetUser} onClose={onClose} />
+        <ModalBody mt={2} px={5}>
+          <Search
+            setTargetUser={setTargetUser}
+            onClose={onClose}
+            placeholderText={content.reviewForm.revieweeField}
+          />
         </ModalBody>
       </ModalContent>
     </Modal>

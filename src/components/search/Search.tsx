@@ -5,13 +5,16 @@ import { InstantSearch, useHits } from "react-instantsearch";
 import CustomSearchBox from "./CustomSearchBox";
 import { Dispatch, SetStateAction } from "react";
 import UserCard from "../profile/UserCard";
+import { content } from "../../lib/content";
 
 const Search = ({
   setTargetUser,
   onClose,
+  placeholderText = content.search.search,
 }: {
   setTargetUser?: Dispatch<SetStateAction<UserType | undefined>>;
   onClose: () => void;
+  placeholderText?: string;
 }) => {
   return (
     <InstantSearch
@@ -25,7 +28,7 @@ const Search = ({
       }}
     >
       <Stack>
-        <CustomSearchBox />
+        <CustomSearchBox placeholderText={placeholderText} />
         <CustomHits setTargetUser={setTargetUser} onClose={onClose} />
       </Stack>
     </InstantSearch>
@@ -54,6 +57,7 @@ function CustomHits({
               : undefined
           }
           user={user}
+          key={user.id}
         />
       ))}
     </Stack>

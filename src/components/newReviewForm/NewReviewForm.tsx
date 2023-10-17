@@ -8,9 +8,6 @@ import {
   Stack,
   Textarea,
   useDisclosure,
-  Text,
-  Card,
-  Container,
 } from "@chakra-ui/react";
 import RatingInput from "./RatingInput";
 import { content } from "../../lib/content";
@@ -24,7 +21,6 @@ import { PostType, UserType } from "../../lib/types";
 import { ROUTES } from "../../lib/routes";
 import { useNavigate } from "react-router-dom";
 import SelectUser from "./SelectUser";
-import { COLORS } from "../../theme/colors";
 import UserCard from "../profile/UserCard";
 
 const NewReviewForm = () => {
@@ -57,31 +53,23 @@ const NewReviewForm = () => {
   return (
     <form onSubmit={handleSubmit(handleAddReview)}>
       <Stack spacing={3}>
+        {targetUser ? (
+          <InputGroup size={"lg"} onClick={onOpen}>
+            <UserCard user={targetUser} onClick={onOpen} />,
+            <InputRightElement>{content.editEmoji}</InputRightElement>
+          </InputGroup>
+        ) : (
+          <InputGroup size={"lg"} onClick={onOpen}>
+            <Input placeholder={content.reviewForm.revieweeField} />,
+            <InputRightElement>{content.searchEmoji}</InputRightElement>,
+          </InputGroup>
+        )}
         <SelectUser
           isOpen={isOpen}
           onClose={onClose}
           setTargetUser={setTargetUser}
         />
-        {targetUser ? (
-          <InputGroup size={"lg"}>
-            <UserCard user={targetUser} onClick={onOpen} />
-            <InputRightElement m={2}>{content.editEmoji}</InputRightElement>
-          </InputGroup>
-        ) : (
-          <InputGroup size={"lg"}>
-            <Input
-              placeholder={content.reviewForm.revieweeField}
-              onClick={onOpen}
-            />
-            <InputRightElement>{content.searchEmoji}</InputRightElement>
-          </InputGroup>
-        )}
-        <Input
-          as={RatingInput}
-          iconSize={"5xl"}
-          rating={rating}
-          setRating={setRating}
-        />
+        <RatingInput iconSize={"5xl"} rating={rating} setRating={setRating} />
         <FormControl isInvalid={!!errors.text}>
           <Textarea
             as={TextareaAutosize}
