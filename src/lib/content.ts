@@ -59,7 +59,6 @@ export const content = {
     mostPopular: "🩷 most popular",
     seeAllUsers: "👥 make friends",
     goToProfile: "👤 my profile",
-    search: "search",
     newReview: "review",
   },
   reviewForm: {
@@ -79,5 +78,8 @@ export const content = {
   },
   activity: {
     noActivity: "no activity yet...",
+  },
+  search: {
+    search: "search",
   },
 };

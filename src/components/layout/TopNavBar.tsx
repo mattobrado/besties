@@ -38,10 +38,10 @@ const TopNavBar = () => {
           size={size}
         ></MenuButton>
         <MenuList>
-          <MenuItem as={ReactRouterLink} to={ROUTES.USERS}>
+          {/* <MenuItem as={ReactRouterLink} to={ROUTES.USERS}>
             {content.navBar.seeAllUsers}
-          </MenuItem>
-          <MenuDivider />
+          </MenuItem> */}
+          {/* <MenuDivider /> */}
           <MenuItem as={ReactRouterLink} to={ROUTES.HOME}>
             {content.navBar.mostPopular}
           </MenuItem>

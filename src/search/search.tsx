@@ -1,9 +1,10 @@
 import algoliasearch from "algoliasearch/lite";
 import AvatarAndFullName from "../components/profile/AvatarAndFullName";
 import { UserType } from "../lib/types";
-import { Container, Divider, Input, InputGroup, Stack } from "@chakra-ui/react";
+import { Container, Input, InputGroup, Stack } from "@chakra-ui/react";
 import { InstantSearch, SearchBox, useHits } from "react-instantsearch";
 import { COLORS } from "../theme/colors";
+import { content } from "../lib/content";
 
 const Search = () => {
   return (
@@ -18,7 +19,7 @@ const Search = () => {
       <Input hidden={true} />
       <SearchBox
         classNames={{ input: "chakra-input css-1cjy4zv" }}
-        placeholder="search"
+        placeholder={content.search.search}
       />
       <CustomHits />
     </InputGroup>
