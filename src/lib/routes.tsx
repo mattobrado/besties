@@ -6,7 +6,7 @@ import NewReviewForm from "../components/newReviewForm/NewReviewForm";
 import Signup from "../components/auth/SignUp";
 import Comments from "../components/comments/Comments";
 import Profile from "../components/profile/Profile";
-import Search from "../components/search/search";
+import Search from "../components/search/Search";
 
 const PROTECTED = "/b";
 

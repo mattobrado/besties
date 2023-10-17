@@ -23,7 +23,7 @@ import AvatarInAvatar from "./AvatarInAvatar";
 
 const Profile = () => {
   const { id } = useParams();
-  const { user, isLoading: userLoading } = useUser(id);
+  const { user } = useUser(id);
   const { user: authUser, isLoading: authLoading } = useAuth();
   const { isOpen, onOpen, onClose } = useDisclosure();
 

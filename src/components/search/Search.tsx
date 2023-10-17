@@ -13,7 +13,7 @@ const Search = ({
   placeholderText = content.search.search,
 }: {
   setTargetUser?: Dispatch<SetStateAction<UserType | undefined>>;
-  onClose: () => void;
+  onClose?: () => void;
   placeholderText?: string;
 }) => {
   return (
@@ -40,7 +40,7 @@ function CustomHits({
   onClose,
 }: {
   setTargetUser?: Dispatch<SetStateAction<UserType | undefined>>;
-  onClose: () => void;
+  onClose?: () => void;
 }) {
   const { hits: users } = useHits();
 
@@ -52,7 +52,7 @@ function CustomHits({
             setTargetUser
               ? () => {
                   setTargetUser(user);
-                  onClose();
+                  if (onClose) onClose();
                 }
               : undefined
           }
