@@ -9,15 +9,17 @@ const Avatar = ({
   avatarProps,
   children,
   overrideAvatar,
+  isLink = true,
 }: {
   user: UserType;
   avatarProps?: AvatarProps;
   children?: React.ReactNode;
   overrideAvatar?: string;
+  isLink?: boolean;
 }) => {
   return (
     <ChakraAvatar
-      as={Link}
+      as={isLink ? Link : undefined}
       to={`${ROUTES.PROFILE}/${user.id}`}
       name={user.fullName}
       src={overrideAvatar ?? user.avatar}

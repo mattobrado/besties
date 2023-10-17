@@ -7,17 +7,20 @@ import { ROUTES } from "../../lib/routes";
 const AvatarAndFullName = ({
   user,
   size,
+  isLink = true,
 }: {
   user: UserType;
   size: string;
+  isLink?: boolean;
 }) => (
-  <HStack>
-    <Avatar user={user} avatarProps={{ size }} />
-    <Link to={`${ROUTES.PROFILE}/${user.id}`}>
-      <Text fontSize={size}>
-        <b>{user?.fullName}</b>
-      </Text>
-    </Link>
+  <HStack
+    as={isLink ? Link : undefined}
+    to={isLink ? `${ROUTES.PROFILE}/${user.id}` : undefined}
+  >
+    <Avatar user={user} avatarProps={{ size }} isLink={false} />
+    <Text fontSize={size}>
+      <b>{user?.fullName}</b>
+    </Text>
   </HStack>
 );
 

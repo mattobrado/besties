@@ -6,7 +6,7 @@ import { InstantSearch, useHits } from "react-instantsearch";
 import { COLORS } from "../../theme/colors";
 import CustomSearchBox from "./CustomSearchBox";
 
-const Search = () => {
+const Search = ({ onClick }: { onClick?: () => void }) => {
   return (
     <InstantSearch
       searchClient={algoliasearch(
@@ -14,28 +14,33 @@ const Search = () => {
         "6bbefb034be1a0336fdfff567350d0b0"
       )}
       indexName="USERS"
+      future={{
+        preserveSharedStateOnUnmount: true,
+      }}
     >
       <Stack>
         <CustomSearchBox />
-        <CustomHits />
+        <CustomHits onClick={onClick} />
       </Stack>
     </InstantSearch>
   );
 };
 
-function CustomHits() {
-  const { hits } = useHits();
+function CustomHits({ onClick }: { onClick?: () => void }) {
+  const { hits: users } = useHits();
 
   return (
     <Stack>
-      {(hits as unknown as UserType[]).map((hit: UserType) => (
+      {(users as unknown as UserType[]).map((user) => (
         <Container
           borderWidth={"1px"}
           borderColor={COLORS.PRIMARY_FONT}
           borderRadius={"md"}
           py={2}
+          key={user.id}
+          onClick={onClick}
         >
-          <AvatarAndFullName user={hit} size={"md"} />
+          <AvatarAndFullName user={user} size={"md"} isLink={!onClick} />
         </Container>
       ))}
     </Stack>

@@ -23,7 +23,7 @@ export default function SelectUser({
         <ModalHeader>select user</ModalHeader>
         <ModalCloseButton />
         <ModalBody>
-          <Search />
+          <Search onClick={onClose} />
         </ModalBody>
       </ModalContent>
     </Modal>
