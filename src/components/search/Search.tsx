@@ -5,8 +5,15 @@ import { Container, Stack } from "@chakra-ui/react";
 import { InstantSearch, useHits } from "react-instantsearch";
 import { COLORS } from "../../theme/colors";
 import CustomSearchBox from "./CustomSearchBox";
+import { Dispatch, SetStateAction } from "react";
 
-const Search = ({ onClick }: { onClick?: () => void }) => {
+const Search = ({
+  setTargetUid,
+  onClose,
+}: {
+  setTargetUid?: Dispatch<SetStateAction<string>>;
+  onClose: () => void;
+}) => {
   return (
     <InstantSearch
       searchClient={algoliasearch(
@@ -20,13 +27,19 @@ const Search = ({ onClick }: { onClick?: () => void }) => {
     >
       <Stack>
         <CustomSearchBox />
-        <CustomHits onClick={onClick} />
+        <CustomHits setTargetUid={setTargetUid} onClose={onClose} />
       </Stack>
     </InstantSearch>
   );
 };
 
-function CustomHits({ onClick }: { onClick?: () => void }) {
+function CustomHits({
+  setTargetUid,
+  onClose,
+}: {
+  setTargetUid?: Dispatch<SetStateAction<string>>;
+  onClose: () => void;
+}) {
   const { hits: users } = useHits();
 
   return (
@@ -38,9 +51,16 @@ function CustomHits({ onClick }: { onClick?: () => void }) {
           borderRadius={"md"}
           py={2}
           key={user.id}
-          onClick={onClick}
+          onClick={
+            setTargetUid
+              ? () => {
+                  setTargetUid(user.id);
+                  onClose();
+                }
+              : undefined
+          }
         >
-          <AvatarAndFullName user={user} size={"md"} isLink={!onClick} />
+          <AvatarAndFullName user={user} size={"md"} isLink={!setTargetUid} />
         </Container>
       ))}
     </Stack>

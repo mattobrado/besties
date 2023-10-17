@@ -8,6 +8,7 @@ import {
   Stack,
   Textarea,
   useDisclosure,
+  Text,
 } from "@chakra-ui/react";
 import RatingInput from "./RatingInput";
 import { content } from "../../lib/content";
@@ -31,6 +32,7 @@ const NewReviewForm = () => {
   const { addPost, isLoading: addingReview } = useAddPost();
   const { user: authUser } = useAuth();
   const [rating, setRating] = useState(3);
+  const [targetUid, setTargetUid] = useState("");
   const navigate = useNavigate();
   const { isOpen, onOpen, onClose } = useDisclosure();
 
@@ -39,7 +41,7 @@ const NewReviewForm = () => {
     addPost({
       isReview: true,
       rating: rating,
-      targetUid: review.targetUid,
+      targetUid: targetUid,
       posterUid: authUser.id,
       text: review.text,
     });
@@ -49,7 +51,12 @@ const NewReviewForm = () => {
   return (
     <form onSubmit={handleSubmit(handleAddReview)}>
       <Stack spacing={3}>
-        <SelectUser isOpen={isOpen} onClose={onClose} />
+        <SelectUser
+          isOpen={isOpen}
+          onClose={onClose}
+          setTargetUid={setTargetUid}
+        />
+        <Text>{targetUid}</Text>
         <FormControl isInvalid={!!errors.revieweeId}>
           <InputGroup size={"lg"}>
             <InputRightElement>{content.searchEmoji}</InputRightElement>

@@ -8,13 +8,16 @@ import {
 } from "@chakra-ui/react";
 import { COLORS } from "../../theme/colors";
 import Search from "../search/search";
+import { Dispatch, SetStateAction } from "react";
 
 export default function SelectUser({
   isOpen,
   onClose,
+  setTargetUid,
 }: {
   isOpen: boolean;
   onClose: () => void;
+  setTargetUid: Dispatch<SetStateAction<string>>;
 }) {
   return (
     <Modal isOpen={isOpen} onClose={onClose}>
@@ -23,7 +26,7 @@ export default function SelectUser({
         <ModalHeader>select user</ModalHeader>
         <ModalCloseButton />
         <ModalBody>
-          <Search onClick={onClose} />
+          <Search setTargetUid={setTargetUid} onClose={onClose} />
         </ModalBody>
       </ModalContent>
     </Modal>
