@@ -11,12 +11,11 @@ export const customTheme = extendTheme({
 
   components: {
     Text: {
-      baseStyle: (props: any) => ({
+      baseStyle: () => ({
         color: COLORS.PRIMARY_FONT,
       }),
       variants: {
-        // used as <Text variant="secondary">
-        secondary: (props: any) => ({
+        secondary: () => ({
           color: COLORS.PRIMARY_FONT,
         }),
       },
@@ -29,7 +28,7 @@ export const customTheme = extendTheme({
   },
 
   styles: {
-    global: (props: any) => ({
+    global: () => ({
       // Optionally set global CSS styles
       body: {
         color: COLORS.PRIMARY_FONT,

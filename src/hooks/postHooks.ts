@@ -9,10 +9,8 @@ import {
   arrayRemove,
   arrayUnion,
   deleteDoc,
-  getDocs,
   increment,
   or,
-  and,
 } from "firebase/firestore";
 import { useState } from "react";
 import { db } from "../lib/firebase";
