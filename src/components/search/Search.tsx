@@ -1,9 +1,9 @@
 import algoliasearch from "algoliasearch/lite";
-import AvatarAndFullName from "../components/profile/AvatarAndFullName";
-import { UserType } from "../lib/types";
+import AvatarAndFullName from "../profile/AvatarAndFullName";
+import { UserType } from "../../lib/types";
 import { Container, Stack } from "@chakra-ui/react";
 import { InstantSearch, useHits } from "react-instantsearch";
-import { COLORS } from "../theme/colors";
+import { COLORS } from "../../theme/colors";
 import CustomSearchBox from "./CustomSearchBox";
 
 const Search = () => {

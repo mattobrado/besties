@@ -1,7 +1,4 @@
 import {
-  FormControl,
-  FormLabel,
-  HStack,
   Modal,
   ModalBody,
   ModalCloseButton,
@@ -10,7 +7,7 @@ import {
   ModalOverlay,
 } from "@chakra-ui/react";
 import { COLORS } from "../../theme/colors";
-import Search from "../../search/search";
+import Search from "../search/search";
 
 export default function SelectUser({
   isOpen,
@@ -23,7 +20,7 @@ export default function SelectUser({
     <Modal isOpen={isOpen} onClose={onClose}>
       <ModalOverlay />
       <ModalContent bg={COLORS.BACKGROUND}>
-        <ModalHeader>Edit profile</ModalHeader>
+        <ModalHeader>select user</ModalHeader>
         <ModalCloseButton />
         <ModalBody>
           <Search />

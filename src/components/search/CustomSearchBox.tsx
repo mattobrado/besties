@@ -1,7 +1,7 @@
 import { Input, InputGroup, InputRightElement } from "@chakra-ui/react";
 import { useState, useRef } from "react";
 import { useSearchBox, UseSearchBoxProps } from "react-instantsearch";
-import { content } from "../lib/content";
+import { content } from "../../lib/content";
 
 function CustomSearchBox(props: UseSearchBoxProps) {
   const { query, refine } = useSearchBox(props);
