@@ -18,7 +18,7 @@ const UserCard = ({
     py={2}
     onClick={onClick}
   >
-    <AvatarAndFullName user={user} size={"sm"} isLink={!onClick} />
+    <AvatarAndFullName user={user} size={"md"} isLink={!onClick} />
   </Container>
 );
 

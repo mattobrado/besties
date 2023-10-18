@@ -20,7 +20,7 @@ const TwoUserPost = ({
   subjectLineText: string;
   verb: string;
 }) => {
-  const size = "xs";
+  const size = "sm";
   const { posterUid, targetUid, date } = post;
   if (!targetUid) return;
   const { user: poster } = useUser(posterUid);
