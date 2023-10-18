@@ -17,14 +17,14 @@ const PostView = ({
   hideCommentButton?: boolean;
   post: PostType;
 }) => {
-  const bodyPx = 8;
+  const bodyPx = 10;
 
   return (
     <>
       <Stack spacing={2} py="2" textAlign="left">
         {header}
         {subjectLine && <Box px={bodyPx}>{subjectLine}</Box>}
-        <Text px={bodyPx} pb={1} wordBreak="break-word" fontSize="md">
+        <Text px={bodyPx} pb={1} wordBreak="break-word" fontSize="lg">
           {post.text}
         </Text>
         <Box px={bodyPx - 2} pb={1}>

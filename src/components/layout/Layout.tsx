@@ -20,7 +20,7 @@ const Layout = () => {
 
   return (
     <>
-      <Container px={5}>
+      <Container px={4}>
         <TopNavBar />
         <Box pb={24}>{isLoading ? <LoadingScreen /> : <Outlet />}</Box>
         <BottomNavBar />
