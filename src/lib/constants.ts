@@ -17,3 +17,5 @@ export const COLLECTIONS = {
   USERS: "users",
   POSTS: "posts",
 };
+
+export const GLOBAL_PX = 4;

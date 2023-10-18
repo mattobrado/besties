@@ -4,6 +4,7 @@ import { Dispatch, SetStateAction } from "react";
 import { UserType } from "../../lib/types";
 import Search from "../search/Search";
 import { content } from "../../lib/content";
+import { GLOBAL_PX } from "../../lib/constants";
 
 export default function SelectUser({
   isOpen,
@@ -18,7 +19,7 @@ export default function SelectUser({
     <Modal isOpen={isOpen} onClose={onClose}>
       <ModalOverlay />
       <ModalContent bg={COLORS.BACKGROUND}>
-        <ModalBody mt={2} px={5}>
+        <ModalBody mt={2} px={GLOBAL_PX}>
           <Search
             setTargetUser={setTargetUser}
             onClose={onClose}
