@@ -1,7 +1,7 @@
 import { HStack, Skeleton } from "@chakra-ui/react";
 import AvatarAndFullName from "../profile/AvatarAndFullName";
 import { useUser } from "../../hooks/userHooks";
-import PostView from "./PostView";
+import PostBody from "./PostBody";
 import { PostType, UserType } from "../../lib/types";
 import TimeStamp from "./TimeStamp";
 
@@ -23,7 +23,7 @@ const OneUserPost = ({
 
   return (
     <Skeleton isLoaded={isLoaded} variant={"custom"}>
-      <PostView
+      <PostBody
         header={
           isLoaded && (
             <HStack fontSize="xs">

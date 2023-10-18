@@ -2,7 +2,7 @@ import { Box, Divider, Stack, Text } from "@chakra-ui/react";
 import Actions from "./Actions";
 import { PostType, UserType } from "../../lib/types";
 
-const PostView = ({
+const PostBody = ({
   children,
   currentUser,
   hideCommentButton,
@@ -24,7 +24,7 @@ const PostView = ({
       <Stack spacing={2} py="2" textAlign="left">
         {header}
         {subjectLine && <Box px={bodyPx}>{subjectLine}</Box>}
-        <Text px={bodyPx} pb={1} wordBreak="break-word" fontSize="lg">
+        <Text px={bodyPx} pb={1} wordBreak="break-word" fontSize="xl">
           {post.text}
         </Text>
         <Box px={bodyPx - 2} pb={1}>
@@ -41,4 +41,4 @@ const PostView = ({
   );
 };
 
-export default PostView;
+export default PostBody;
