@@ -15,7 +15,7 @@ import TextareaAutosize from "react-textarea-autosize";
 import { useForm } from "react-hook-form";
 import { useAuth } from "../../hooks/authHooks";
 import { useAddPost } from "../../hooks/postHooks";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { VALIDATE } from "../../lib/formValidation";
 import { PostType, UserType } from "../../lib/types";
 import { ROUTES } from "../../lib/routes";
@@ -24,6 +24,7 @@ import SelectUser from "./SelectUser";
 import UserCard from "../profile/UserCard";
 import { COLORS } from "../../theme/colors";
 import { TfiSearch } from "react-icons/tfi";
+import BackgroundContext from "../../BackGroundContext";
 
 const NewReviewForm = () => {
   const {
@@ -39,6 +40,9 @@ const NewReviewForm = () => {
   );
   const navigate = useNavigate();
   const { isOpen, onOpen, onClose } = useDisclosure();
+
+  const setBackgroundForUser = useContext(BackgroundContext);
+  setBackgroundForUser({ user: targetUser });
 
   const handleAddReview = (review: Partial<PostType>) => {
     if (!authUser || !targetUser) return;
@@ -57,7 +61,10 @@ const NewReviewForm = () => {
       <SelectUser
         isOpen={isOpen}
         onClose={onClose}
-        setTargetUser={setTargetUser}
+        onClick={(user: UserType | undefined) => {
+          setTargetUser(user);
+          onClose();
+        }}
       />
       <Stack spacing={3} hidden={isOpen}>
         {targetUser ? (

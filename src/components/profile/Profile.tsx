@@ -20,6 +20,8 @@ import ProfileHeading from "./ProfileHeading";
 import ProfilePosts from "./ProfilePosts";
 import EditProfile from "./EditProfile";
 import AvatarInAvatar from "./AvatarInAvatar";
+import { useContext } from "react";
+import BackgroundContext from "../../BackGroundContext";
 
 const Profile = () => {
   const { id } = useParams();
@@ -28,6 +30,8 @@ const Profile = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   const isLoaded = authUser && !!user;
+  const setBackground = useContext(BackgroundContext);
+  setBackground({ user });
 
   return (
     isLoaded && (
