@@ -5,6 +5,7 @@ import { useForm } from "react-hook-form";
 import { VALIDATE } from "../../lib/formValidation";
 import { PostType, UserType } from "../../lib/types";
 import { useAddPost } from "../../hooks/postHooks";
+import { COLORS } from "../../theme/colors";
 
 const NewCommentForm = ({ user, post }: { user: UserType; post: PostType }) => {
   const { id: postId } = post;
@@ -37,6 +38,7 @@ const NewCommentForm = ({ user, post }: { user: UserType; post: PostType }) => {
             size={"lg"}
             pb={1}
             placeholder={content.commentForm.commentField}
+            _placeholder={{ color: COLORS.PLACEHOLDER }}
             {...register("text", VALIDATE.TEXT)}
           />
         </FormControl>

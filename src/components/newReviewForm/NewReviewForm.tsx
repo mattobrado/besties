@@ -22,6 +22,7 @@ import { ROUTES } from "../../lib/routes";
 import { useNavigate } from "react-router-dom";
 import SelectUser from "./SelectUser";
 import UserCard from "../profile/UserCard";
+import { COLORS } from "../../theme/colors";
 
 const NewReviewForm = () => {
   const {
@@ -65,8 +66,11 @@ const NewReviewForm = () => {
           </InputGroup>
         ) : (
           <InputGroup size={"lg"} onClick={onOpen} h={16}>
-            <Input placeholder={content.reviewForm.revieweeField} />,
-            <InputRightElement>{content.searchEmoji}</InputRightElement>,
+            <Input
+              placeholder={content.reviewForm.revieweeField}
+              _placeholder={{ color: COLORS.PLACEHOLDER }}
+            />
+            ,<InputRightElement>{content.searchEmoji}</InputRightElement>,
           </InputGroup>
         )}
         <RatingInput iconSize={"5xl"} rating={rating} setRating={setRating} />
@@ -78,6 +82,7 @@ const NewReviewForm = () => {
             placeholder={content.reviewForm.reviewField}
             minRows={5}
             {...register("text", VALIDATE.TEXT)}
+            _placeholder={{ color: COLORS.PLACEHOLDER }}
           />
           <FormErrorMessage>
             {typeof errors.text?.message === "string" && errors.text?.message}

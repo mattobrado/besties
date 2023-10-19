@@ -33,8 +33,14 @@ export type UserType = {
   username: string;
   rating?: number;
   ratingCount: number;
-  favoriteColor?: string;
   popularity: number;
+  favorites: {
+    color?: string;
+    food?: string;
+    animal?: string;
+    song?: string;
+    movie?: string;
+  };
 };
 
 export type ToggleLikeType = {
