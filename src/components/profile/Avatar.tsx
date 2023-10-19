@@ -1,7 +1,6 @@
 import { AvatarProps, Avatar as ChakraAvatar } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 import { ROUTES } from "../../lib/routes";
-import { COLORS } from "../../theme/colors";
 import { UserType } from "../../lib/types";
 
 const Avatar = ({
@@ -23,8 +22,6 @@ const Avatar = ({
       to={`${ROUTES.PROFILE}/${user.id}`}
       name={user.fullName}
       src={overrideAvatar ?? user.avatar}
-      bg={user.avatar ? undefined : COLORS.BRAND}
-      color={COLORS.BACKGROUND}
       children={children}
       loading="lazy"
       {...avatarProps}
