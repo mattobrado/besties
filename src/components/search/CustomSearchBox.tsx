@@ -1,8 +1,8 @@
 import { Input, InputGroup, InputRightElement } from "@chakra-ui/react";
 import { useState, useRef } from "react";
 import { useSearchBox, UseSearchBoxProps } from "react-instantsearch";
-import { content } from "../../lib/content";
 import { COLORS } from "../../theme/colors";
+import { TfiSearch } from "react-icons/tfi";
 
 function CustomSearchBox(
   props: UseSearchBoxProps & { placeholderText: string }
@@ -56,7 +56,9 @@ function CustomSearchBox(
           }}
           autoFocus
         />
-        <InputRightElement>{content.searchEmoji}</InputRightElement>
+        <InputRightElement>
+          <TfiSearch />
+        </InputRightElement>
       </InputGroup>
     </form>
   );

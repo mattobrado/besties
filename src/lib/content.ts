@@ -1,12 +1,8 @@
 export const content = {
   logo: "👯‍♂️",
-  emptyHeartEmoji: "🩶",
-  searchEmoji: "🔎",
   editEmoji: "✏️",
   starEmoji: "⭐️",
-  addEmoji: "📝",
   homeEmoji: "🏠",
-  trashEmoji: "🗑️",
   cancel: "cancel",
   delete: "delete",
   submitButtonText: "post",
