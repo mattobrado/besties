@@ -4,6 +4,7 @@ import { useUser } from "../../hooks/userHooks";
 import PostBody from "./PostBody";
 import { PostType, UserType } from "../../lib/types";
 import TimeStamp from "./TimeStamp";
+import { POST_HEADER_SIZE } from "../../lib/constants";
 
 const TwoUserPost = ({
   children,
@@ -20,7 +21,6 @@ const TwoUserPost = ({
   subjectLineText: string;
   verb: string;
 }) => {
-  const size = "sm";
   const { posterUid, targetUid, date } = post;
   if (!targetUid) return;
   const { user: poster } = useUser(posterUid);
@@ -34,9 +34,9 @@ const TwoUserPost = ({
         header={
           isLoaded && (
             <HStack>
-              <AvatarAndFullName user={poster} size={size} />
-              <Text fontSize={size}>{verb}</Text>
-              <AvatarAndFullName user={target} size={size} />
+              <AvatarAndFullName user={poster} size={POST_HEADER_SIZE} />
+              <Text fontSize={POST_HEADER_SIZE}>{verb}</Text>
+              <AvatarAndFullName user={target} size={POST_HEADER_SIZE} />
             </HStack>
           )
         }

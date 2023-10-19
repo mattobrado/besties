@@ -14,7 +14,7 @@ export const ROUTES = {
   COMMENTS: PROTECTED + "/comments",
   HOME: PROTECTED + "/home",
   LOGIN: "/login",
-  PROFILE: PROTECTED + "/profile",
+  PROFILE: "/profile",
   PROTECTED,
   ROOT: "/",
   SIGNUP: "/signup",
@@ -28,9 +28,13 @@ export const router = createBrowserRouter([
   { path: ROUTES.LOGIN, element: <Login /> },
   { path: ROUTES.SIGNUP, element: <Signup /> },
   {
-    path: ROUTES.PROTECTED,
+    path: ROUTES.ROOT,
     element: <Layout />,
     children: [
+      {
+        path: ROUTES.PROFILE + "/:id",
+        element: <Profile />,
+      },
       {
         path: ROUTES.HOME,
         element: <Home />,
@@ -43,10 +47,7 @@ export const router = createBrowserRouter([
         path: ROUTES.SEARCH,
         element: <Search />,
       },
-      {
-        path: ROUTES.PROFILE + "/:id",
-        element: <Profile />,
-      },
+
       {
         path: ROUTES.COMMENTS + "/:id",
         element: <Comments />,

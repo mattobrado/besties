@@ -4,6 +4,7 @@ import { useUser } from "../../hooks/userHooks";
 import PostBody from "./PostBody";
 import { PostType, UserType } from "../../lib/types";
 import TimeStamp from "./TimeStamp";
+import { POST_HEADER_SIZE } from "../../lib/constants";
 
 const OneUserPost = ({
   children,
@@ -26,9 +27,12 @@ const OneUserPost = ({
       <PostBody
         header={
           isLoaded && (
-            <HStack fontSize="xs">
-              <AvatarAndFullName user={poster} size={"xs"} />
-              <TimeStamp textProps={{ fontSize: "xs" }} date={date} />
+            <HStack fontSize={POST_HEADER_SIZE}>
+              <AvatarAndFullName user={poster} size={POST_HEADER_SIZE} />
+              <TimeStamp
+                textProps={{ fontSize: POST_HEADER_SIZE }}
+                date={date}
+              />
             </HStack>
           )
         }

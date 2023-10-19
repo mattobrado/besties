@@ -20,13 +20,11 @@ const Layout = () => {
   }, [pathname, user, isLoading]);
 
   return (
-    <>
-      <Container px={GLOBAL_PX}>
-        <TopNavBar />
-        <Box pb={24}>{isLoading ? <LoadingScreen /> : <Outlet />}</Box>
-        <BottomNavBar />
-      </Container>
-    </>
+    <Container px={GLOBAL_PX}>
+      <TopNavBar />
+      <Box pb={24}>{isLoading ? <LoadingScreen /> : <Outlet />}</Box>
+      <BottomNavBar />
+    </Container>
   );
 };
 

@@ -36,7 +36,6 @@ const AuthFormContainer = ({
               w="full"
               isLoading={buttonProps.isLoading}
               loadingText={buttonProps.loadingText}
-              variant={"custom"}
             >
               {buttonProps.label}
             </Button>

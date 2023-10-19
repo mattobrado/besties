@@ -5,7 +5,12 @@ import { ROUTES } from "../../lib/routes";
 
 export const BottomNavBar = () => {
   return (
-    <BottomNavigation bg={"transparent"} value={0} onChange={() => {}}>
+    <BottomNavigation
+      shadow={"transparent"}
+      bg={"transparent"}
+      value={0}
+      onChange={() => {}}
+    >
       <MyNavigationItem
         icon={content.homeEmoji}
         to={ROUTES.HOME}

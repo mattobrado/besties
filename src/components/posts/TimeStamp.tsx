@@ -9,7 +9,7 @@ const TimeStamp = ({
   date: number;
   textProps?: TextProps;
 }) => (
-  <Text color="gray.500" {...textProps}>
+  <Text {...textProps}>
     {formatDistanceToNow(date)} {content.post.ago}
   </Text>
 );
