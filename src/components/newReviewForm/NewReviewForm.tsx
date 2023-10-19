@@ -23,6 +23,7 @@ import { useNavigate } from "react-router-dom";
 import SelectUser from "./SelectUser";
 import UserCard from "../profile/UserCard";
 import { COLORS } from "../../theme/colors";
+import { TfiSearch } from "react-icons/tfi";
 
 const NewReviewForm = () => {
   const {
@@ -70,7 +71,10 @@ const NewReviewForm = () => {
               placeholder={content.reviewForm.revieweeField}
               _placeholder={{ color: COLORS.PLACEHOLDER }}
             />
-            ,<InputRightElement>{content.searchEmoji}</InputRightElement>,
+            <InputRightElement>
+              <TfiSearch />
+            </InputRightElement>
+            ,
           </InputGroup>
         )}
         <RatingInput iconSize={"5xl"} rating={rating} setRating={setRating} />

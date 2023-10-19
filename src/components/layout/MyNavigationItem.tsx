@@ -7,7 +7,7 @@ const MyNavigationItem = ({
   to,
   onClick,
 }: {
-  icon: string;
+  icon: JSX.Element;
   to: string;
   onClick?: () => void;
 }) => (

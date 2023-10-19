@@ -1,7 +1,7 @@
 import { BottomNavigation } from "chakra-ui-bottom-navigation";
-import { content } from "../../lib/content";
 import MyNavigationItem from "./MyNavigationItem";
 import { ROUTES } from "../../lib/routes";
+import { TfiWrite, TfiHome, TfiSearch } from "react-icons/tfi";
 
 export const BottomNavBar = () => {
   return (
@@ -12,7 +12,7 @@ export const BottomNavBar = () => {
       onChange={() => {}}
     >
       <MyNavigationItem
-        icon={content.homeEmoji}
+        icon={<TfiHome />}
         to={ROUTES.HOME}
         onClick={() =>
           window.scrollTo({
@@ -23,11 +23,11 @@ export const BottomNavBar = () => {
         }
       ></MyNavigationItem>
       <MyNavigationItem
-        icon={content.addEmoji}
+        icon={<TfiWrite />}
         to={ROUTES.ADD_REVIEW}
       ></MyNavigationItem>
       <MyNavigationItem
-        icon={content.searchEmoji}
+        icon={<TfiSearch />}
         to={ROUTES.SEARCH}
       ></MyNavigationItem>
     </BottomNavigation>

@@ -8,11 +8,13 @@ const ActionButton = ({
   icon,
   number,
   to,
+  color = COLORS.PRIMARY_FONT,
 }: {
   onClick?: () => void;
   icon: JSX.Element;
   number?: number;
   to?: string;
+  color?: string;
 }) => (
   <Box w={12}>
     <HStack spacing={0}>
@@ -24,7 +26,7 @@ const ActionButton = ({
         size={ACTION_ICON_SIZE}
         icon={icon}
         aria-label={"delete post"}
-        color={COLORS.PRIMARY_FONT}
+        color={color}
       />
       <Text fontSize="md">{number}</Text>
     </HStack>
