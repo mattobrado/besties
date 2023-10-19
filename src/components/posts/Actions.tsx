@@ -8,6 +8,7 @@ import {
   Button,
   Flex,
   HStack,
+  IconButton,
   Spacer,
   useDisclosure,
 } from "@chakra-ui/react";
@@ -18,6 +19,9 @@ import { ROUTES } from "../../lib/routes";
 import ActionButton from "./ActionButton";
 import React from "react";
 import { COLORS } from "../../theme/colors";
+import { ChatIcon } from "@chakra-ui/icons";
+import { FaRegHeart, FaHeart, FaTrash } from "react-icons/fa";
+import { ACTION_ICON_SIZE } from "../../lib/constants";
 
 const Actions = ({
   post,
@@ -28,7 +32,7 @@ const Actions = ({
   user: UserType;
   hideCommentButton?: boolean;
 }) => {
-  const { id, likeUids, posterUid: reviewerId, likeCount, commentCount } = post;
+  const { id, likeUids, posterUid, likeCount, commentCount } = post;
   const { isOpen, onOpen, onClose } = useDisclosure();
   const cancelRef = React.useRef();
 
@@ -47,23 +51,28 @@ const Actions = ({
       <HStack>
         <ActionButton
           onClick={toggleLike}
-          icon={isLiked ? content.heartEmoji : content.emptyHeartEmoji}
+          icon={isLiked ? <FaHeart /> : <FaRegHeart />}
           number={likeCount}
         />
         {!hideCommentButton && (
           <ActionButton
-            icon={content.commentEmoji}
+            icon={<ChatIcon />}
             number={commentCount}
             to={`${ROUTES.COMMENTS}/${id}`}
           />
         )}
       </HStack>
-      {user.id === reviewerId && (
+      {user.id === posterUid && (
         <>
           <Spacer />
-          <Button onClick={onOpen} size="sm" variant="link">
-            {content.trashEmoji}
-          </Button>
+          <IconButton
+            onClick={onOpen}
+            size={"ACTION_ICON_SIZE"}
+            variant="ghost"
+            icon={<FaTrash />}
+            aria-label={"delete post"}
+            color={COLORS.PRIMARY_FONT}
+          />
           <AlertDialog
             isOpen={isOpen}
             leastDestructiveRef={cancelRef as any}
