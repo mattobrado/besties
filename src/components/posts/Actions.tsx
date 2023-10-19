@@ -67,7 +67,7 @@ const Actions = ({
           <Spacer />
           <IconButton
             onClick={onOpen}
-            size={"ACTION_ICON_SIZE"}
+            size={ACTION_ICON_SIZE}
             variant="ghost"
             icon={<FaTrash />}
             aria-label={"delete post"}
