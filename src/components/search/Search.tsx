@@ -3,17 +3,14 @@ import { UserType } from "../../lib/types";
 import { Stack } from "@chakra-ui/react";
 import { InstantSearch, useHits } from "react-instantsearch";
 import CustomSearchBox from "./CustomSearchBox";
-import { Dispatch, SetStateAction } from "react";
 import UserCard from "../profile/UserCard";
 import { content } from "../../lib/content";
 
 const Search = ({
-  setTargetUser,
-  onClose,
+  onClick: onClick,
   placeholderText = content.search.search,
 }: {
-  setTargetUser?: Dispatch<SetStateAction<UserType | undefined>>;
-  onClose?: () => void;
+  onClick?: (user: UserType | undefined) => void;
   placeholderText?: string;
 }) => {
   return (
@@ -29,18 +26,16 @@ const Search = ({
     >
       <Stack>
         <CustomSearchBox placeholderText={placeholderText} />
-        <CustomHits setTargetUser={setTargetUser} onClose={onClose} />
+        <CustomHits onClick={onClick} />
       </Stack>
     </InstantSearch>
   );
 };
 
 function CustomHits({
-  setTargetUser,
-  onClose,
+  onClick: onClick,
 }: {
-  setTargetUser?: Dispatch<SetStateAction<UserType | undefined>>;
-  onClose?: () => void;
+  onClick?: (user: UserType | undefined) => void;
 }) {
   const { hits: users } = useHits();
 
@@ -49,10 +44,9 @@ function CustomHits({
       {(users as unknown as UserType[]).map((user) => (
         <UserCard
           onClick={
-            setTargetUser
+            onClick
               ? () => {
-                  setTargetUser(user);
-                  if (onClose) onClose();
+                  onClick(user);
                 }
               : undefined
           }

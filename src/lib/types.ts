@@ -1,3 +1,5 @@
+import { BACKGROUNDS } from "../theme/colors";
+
 export type LoginType = {
   email: string;
   password: string;
@@ -35,7 +37,7 @@ export type UserType = {
   ratingCount: number;
   popularity: number;
   favorites: {
-    color?: string;
+    color?: keyof typeof BACKGROUNDS;
     food?: string;
     animal?: string;
     song?: string;
