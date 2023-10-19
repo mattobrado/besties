@@ -2,6 +2,7 @@ import { Input, InputGroup, InputRightElement } from "@chakra-ui/react";
 import { useState, useRef } from "react";
 import { useSearchBox, UseSearchBoxProps } from "react-instantsearch";
 import { content } from "../../lib/content";
+import { COLORS } from "../../theme/colors";
 
 function CustomSearchBox(
   props: UseSearchBoxProps & { placeholderText: string }
@@ -46,6 +47,7 @@ function CustomSearchBox(
           autoCorrect="off"
           autoCapitalize="off"
           placeholder={props.placeholderText}
+          _placeholder={{ color: COLORS.PLACEHOLDER }}
           spellCheck={false}
           maxLength={512}
           value={inputValue}

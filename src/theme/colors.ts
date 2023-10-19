@@ -2,7 +2,8 @@ export const COLORS = {
   PRIMARY_FONT: "white",
   BACKGROUND: "transparent",
   BRAND: "white",
-  COLOR_SCHEME: "white",
+  COLOR_SCHEME: "whiteAlpha",
+  PLACEHOLDER: "gray.100",
 };
 
 export const BACKGROUNDS = {
