@@ -31,10 +31,10 @@ const calculateRating = ({
   newRating?: number;
   ratingToRemove?: number;
 }) => {
-  if (newRating) {
+  if (newRating !== undefined) {
     return (oldRating * ratingCount + newRating) / (ratingCount + 1);
   }
-  if (ratingToRemove) {
+  if (ratingToRemove !== undefined) {
     if (ratingCount === 1) return 0; //divide by zero
     return (oldRating * ratingCount - ratingToRemove) / (ratingCount - 1) ** 2;
   }
