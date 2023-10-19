@@ -1,6 +1,17 @@
-import { doc, query, updateDoc, increment, getDoc } from "firebase/firestore";
+import {
+  doc,
+  query,
+  updateDoc,
+  increment,
+  getDoc,
+  orderBy,
+  collection,
+} from "firebase/firestore";
 import { db, storage } from "../lib/firebase";
-import { useDocumentData } from "react-firebase-hooks/firestore";
+import {
+  useCollectionData,
+  useDocumentData,
+} from "react-firebase-hooks/firestore";
 import { UserType } from "../lib/types";
 import { COLLECTIONS } from "../lib/constants";
 import { useState } from "react";
@@ -94,4 +105,12 @@ export const removeRating = async ({
     rating: getNewRating({ oldRating: rating, ratingCount, ratingToRemove }),
     ratingCount: increment(-1),
   });
+};
+
+export const useHighestRated = () => {
+  const q = query(collection(db, COLLECTIONS.USERS), orderBy("rating", "desc"));
+  const [users, isLoading, error] = useCollectionData(q);
+  if (error) throw error;
+
+  return { users: <UserType[]>users, isLoading };
 };

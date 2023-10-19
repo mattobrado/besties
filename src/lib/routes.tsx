@@ -7,6 +7,7 @@ import Signup from "../components/auth/SignUp";
 import Comments from "../components/comments/Comments";
 import Profile from "../components/profile/Profile";
 import Search from "../components/search/Search";
+import HighestRated from "../components/lists/HighestRated";
 
 const PROTECTED = "/b";
 
@@ -14,13 +15,13 @@ export const ROUTES = {
   COMMENTS: PROTECTED + "/comments",
   HOME: PROTECTED + "/home",
   LOGIN: "/login",
-  PROFILE: "/profile",
+  PROFILE: "/u",
   PROTECTED,
   ROOT: "/",
   SIGNUP: "/signup",
-  USERS: PROTECTED + "/users",
   ADD_REVIEW: PROTECTED + "/review",
   SEARCH: PROTECTED + "/search",
+  HIGHEST_RATED: "/top-users",
 };
 
 export const router = createBrowserRouter([
@@ -47,10 +48,13 @@ export const router = createBrowserRouter([
         path: ROUTES.SEARCH,
         element: <Search />,
       },
-
       {
         path: ROUTES.COMMENTS + "/:id",
         element: <Comments />,
+      },
+      {
+        path: ROUTES.HIGHEST_RATED,
+        element: <HighestRated />,
       },
     ],
   },

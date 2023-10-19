@@ -3,8 +3,8 @@ import { UserType } from "../../lib/types";
 import { Stack } from "@chakra-ui/react";
 import { InstantSearch, useHits } from "react-instantsearch";
 import CustomSearchBox from "./CustomSearchBox";
-import UserCard from "../profile/UserCard";
 import { content } from "../../lib/content";
+import UserList from "../profile/UserList";
 
 const Search = ({
   onClick: onClick,
@@ -39,22 +39,6 @@ function CustomHits({
 }) {
   const { hits: users } = useHits();
 
-  return (
-    <Stack>
-      {(users as unknown as UserType[]).map((user) => (
-        <UserCard
-          onClick={
-            onClick
-              ? () => {
-                  onClick(user);
-                }
-              : undefined
-          }
-          user={user}
-          key={user.id}
-        />
-      ))}
-    </Stack>
-  );
+  return <UserList users={users as unknown as UserType[]} onClick={onClick} />;
 }
 export default Search;

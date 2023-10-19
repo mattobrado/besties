@@ -18,7 +18,7 @@ export const COLLECTIONS = {
   POSTS: "posts",
 };
 
-export const GLOBAL_PX = 4;
+export const GLOBAL_PX = 3;
 export const POST_HEADER_SIZE = "sm";
 export const ACTION_ICON_SIZE = "lg";
 export const BOTTOM_NAV_HEIGHT = 24;
