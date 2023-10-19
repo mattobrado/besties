@@ -3,6 +3,7 @@ import { COLORS } from "./colors";
 
 const custom = defineStyle({
   bg: COLORS.BRAND,
+  color: "black",
 });
 
 const customGhost = defineStyle({

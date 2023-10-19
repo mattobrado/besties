@@ -7,7 +7,6 @@ import TopNavBar from "./TopNavBar";
 import { ROUTES } from "../../lib/routes";
 import { Box, Container } from "@chakra-ui/react";
 import { GLOBAL_PX } from "../../lib/constants";
-import { BACKGROUNDS } from "../../theme/colors";
 
 const Layout = () => {
   const { pathname } = useLocation();
@@ -21,13 +20,7 @@ const Layout = () => {
   }, [pathname, user, isLoading]);
 
   return (
-    <Container
-      px={GLOBAL_PX}
-      minHeight="100vh"
-      style={{
-        background: BACKGROUNDS.RAINBOW_MESH,
-      }}
-    >
+    <Container px={GLOBAL_PX}>
       <TopNavBar />
       <Box pb={24}>{isLoading ? <LoadingScreen /> : <Outlet />}</Box>
       <BottomNavBar />

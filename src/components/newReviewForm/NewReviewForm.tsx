@@ -52,7 +52,12 @@ const NewReviewForm = () => {
 
   return (
     <form onSubmit={handleSubmit(handleAddReview)}>
-      <Stack spacing={3}>
+      <SelectUser
+        isOpen={isOpen}
+        onClose={onClose}
+        setTargetUser={setTargetUser}
+      />
+      <Stack spacing={3} hidden={isOpen}>
         {targetUser ? (
           <InputGroup size={"lg"} onClick={onOpen}>
             <UserCard user={targetUser} onClick={onOpen} />,
@@ -64,11 +69,6 @@ const NewReviewForm = () => {
             <InputRightElement>{content.searchEmoji}</InputRightElement>,
           </InputGroup>
         )}
-        <SelectUser
-          isOpen={isOpen}
-          onClose={onClose}
-          setTargetUser={setTargetUser}
-        />
         <RatingInput iconSize={"5xl"} rating={rating} setRating={setRating} />
         <FormControl isInvalid={!!errors.text}>
           <Textarea
@@ -89,7 +89,6 @@ const NewReviewForm = () => {
           w="full"
           isLoading={addingReview}
           loadingText={content.submitButtonLoadingText}
-          variant={"custom"}
         >
           {content.submitButtonText}
         </Button>
