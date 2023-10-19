@@ -11,19 +11,18 @@ import {
   deleteDoc,
   increment,
   or,
-  getDoc,
 } from "firebase/firestore";
 import { useState } from "react";
 import { db } from "../lib/firebase";
 import { uuidv4 } from "@firebase/util";
-import { PostType, ToggleLikeType, UserType } from "../lib/types";
+import { PostType, ToggleLikeType } from "../lib/types";
 import {
   useCollectionData,
   useDocumentData,
 } from "react-firebase-hooks/firestore";
 import { COLLECTIONS } from "../lib/constants";
 import { addComment, removeComment } from "./commentHooks";
-import { addRating, removeRating, useUser } from "./userHooks";
+import { addRating, removeRating } from "./userHooks";
 
 export const useAddPost = () => {
   const [isLoading, setLoading] = useState(false);
