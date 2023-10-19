@@ -37,10 +37,9 @@ const Profile = () => {
         </Center>
         <Stack spacing={0} alignItems={"center"}>
           <Text fontSize={"3xl"}>
-            {user.rating !== undefined
-              ? user.rating.toPrecision(2)
-              : "no reviews yet"}{" "}
-            {getStars(user.rating)}
+            {user.ratingCount === 0
+              ? "no reviews yet"
+              : user.rating?.toPrecision(2) + " " + getStars(user.rating)}
           </Text>
           <Text fontSize="xl">
             <b>{user.fullName}</b>
