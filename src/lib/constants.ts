@@ -19,3 +19,4 @@ export const COLLECTIONS = {
 };
 
 export const GLOBAL_PX = 4;
+export const POST_HEADER_SIZE = "sm";
