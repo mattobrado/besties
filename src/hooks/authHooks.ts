@@ -118,6 +118,8 @@ export const useSignup = () => {
           fullName: fullName,
           id: response.user.uid,
           username: username.toLowerCase(),
+          ratingCount: 0,
+          popularity: 0,
         });
 
         navigate(redirectTo);

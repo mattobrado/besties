@@ -1,4 +1,4 @@
-import { doc, query, updateDoc } from "firebase/firestore";
+import { doc, query, updateDoc, increment, getDoc } from "firebase/firestore";
 import { db, storage } from "../lib/firebase";
 import { useDocumentData } from "react-firebase-hooks/firestore";
 import { UserType } from "../lib/types";
@@ -7,6 +7,7 @@ import { useState } from "react";
 import { useToast } from "@chakra-ui/react";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { useNavigate } from "react-router-dom";
+import getNewRating from "../utils/getNewRating";
 
 export const useUser = (
   id?: string
@@ -58,4 +59,39 @@ export const useUpdateAvatar = (uid: string) => {
     isLoading,
     fileURL: file && URL.createObjectURL(file),
   };
+};
+
+export const addRating = async ({
+  uid,
+  newRating,
+}: {
+  uid: string;
+  newRating: number;
+}) => {
+  const docRef = doc(db, COLLECTIONS.USERS, uid);
+  const docSnap = await getDoc(docRef);
+  const user = docSnap.data() as UserType;
+  const { rating, ratingCount } = user;
+  await updateDoc(docRef, {
+    rating: getNewRating({ oldRating: rating, ratingCount, newRating }),
+    ratingCount: increment(1),
+    popularity: increment(1),
+  });
+};
+
+export const removeRating = async ({
+  uid,
+  ratingToRemove,
+}: {
+  uid: string;
+  ratingToRemove: number;
+}) => {
+  const docRef = doc(db, COLLECTIONS.USERS, uid);
+  const docSnap = await getDoc(docRef);
+  const user = docSnap.data() as UserType;
+  const { rating, ratingCount } = user;
+  await updateDoc(docRef, {
+    rating: getNewRating({ oldRating: rating, ratingCount, ratingToRemove }),
+    ratingCount: increment(-1),
+  });
 };

@@ -28,7 +28,6 @@ const Profile = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   const isLoaded = authUser && !!user;
-  if (user) user.rating = 4.5;
 
   return (
     isLoaded && (
@@ -38,7 +37,9 @@ const Profile = () => {
         </Center>
         <Stack spacing={0} alignItems={"center"}>
           <Text fontSize={"3xl"}>
-            {user.rating ? user.rating.toPrecision(2) : "no reviews yet"}{" "}
+            {user.rating !== undefined
+              ? user.rating.toPrecision(2)
+              : "no reviews yet"}{" "}
             {getStars(user.rating)}
           </Text>
           <Text fontSize="xl">
@@ -100,6 +101,15 @@ const Profile = () => {
             <ListItem>Marlon</ListItem> <Divider />
             <ListItem>myself</ListItem> <Divider />
           </OrderedList>
+        </Container>
+        <Container>
+          <iframe
+            src="https://open.spotify.com/embed/track/2qCvsmE9jO1QQQQ1jpndVZ?utm"
+            width="100%"
+            height="152"
+            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+            loading="lazy"
+          ></iframe>{" "}
         </Container>
         <ProfilePosts authUser={authUser} uid={user.id} />
       </Stack>

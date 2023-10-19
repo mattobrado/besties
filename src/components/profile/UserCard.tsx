@@ -13,7 +13,7 @@ const UserCard = ({
 }) => (
   <Container
     borderWidth={"1px"}
-    borderColor={COLORS.PRIMARY_FONT}
+    borderColor={user.favoriteColor ?? COLORS.PRIMARY_FONT}
     borderRadius={"md"}
     py={2}
     onClick={onClick}

@@ -39,11 +39,11 @@ const NewReviewForm = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   const handleAddReview = (review: Partial<PostType>) => {
-    if (!authUser) return;
+    if (!authUser || !targetUser) return;
     addPost({
       isReview: true,
       rating: rating,
-      targetUid: targetUser?.id,
+      targetUid: targetUser.id,
       posterUid: authUser.id,
       text: review.text,
     });
@@ -56,10 +56,10 @@ const NewReviewForm = () => {
         {targetUser ? (
           <InputGroup size={"lg"} onClick={onOpen}>
             <UserCard user={targetUser} onClick={onOpen} />,
-            <InputRightElement>{content.editEmoji}</InputRightElement>
+            <InputRightElement mt={2}>{content.editEmoji}</InputRightElement>
           </InputGroup>
         ) : (
-          <InputGroup size={"lg"} onClick={onOpen}>
+          <InputGroup size={"lg"} onClick={onOpen} h={16}>
             <Input placeholder={content.reviewForm.revieweeField} />,
             <InputRightElement>{content.searchEmoji}</InputRightElement>,
           </InputGroup>

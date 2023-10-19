@@ -22,6 +22,7 @@ import {
 } from "react-firebase-hooks/firestore";
 import { COLLECTIONS } from "../lib/constants";
 import { addComment, removeComment } from "./commentHooks";
+import { addRating, removeRating } from "./userHooks";
 
 export const useAddPost = () => {
   const [isLoading, setLoading] = useState(false);
@@ -38,8 +39,11 @@ export const useAddPost = () => {
       commentIds: [],
       commentCount: 0,
     });
-    if (post.isComment && post.parentPostId) {
-      addComment({ parentPostId: post.parentPostId, commentId: id });
+    const { isReview, rating, isComment, targetUid, parentPostId } = post;
+    if (isReview && rating !== undefined && targetUid)
+      addRating({ uid: targetUid, newRating: rating });
+    if (isComment && parentPostId) {
+      addComment({ parentPostId: parentPostId, commentId: id });
     }
     setLoading(false);
   };
@@ -90,13 +94,24 @@ export const useToggleLike = ({ id, isLiked, uid }: ToggleLikeType) => {
 };
 
 export const useDeletePost = (post: PostType) => {
-  const { id, isComment, parentPostId, commentIds } = post;
+  const {
+    id,
+    isComment,
+    parentPostId,
+    commentIds,
+    isReview,
+    rating,
+    targetUid,
+  } = post;
   const [isLoading, setLoading] = useState(false);
 
   const deletePost = async () => {
     setLoading(true);
     if (isComment && parentPostId) {
       removeComment({ parentPostId, commentId: id });
+    }
+    if (isReview && rating !== undefined && targetUid) {
+      await removeRating({ uid: targetUid, ratingToRemove: rating });
     }
 
     commentIds.forEach(
