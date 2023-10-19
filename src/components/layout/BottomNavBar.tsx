@@ -1,7 +1,7 @@
 import { BottomNavigation } from "chakra-ui-bottom-navigation";
 import MyNavigationItem from "./MyNavigationItem";
 import { ROUTES } from "../../lib/routes";
-import { TfiWrite, TfiHome, TfiSearch } from "react-icons/tfi";
+import { TfiWrite, TfiHome, TfiSearch, TfiShoppingCart } from "react-icons/tfi";
 
 export const BottomNavBar = () => {
   return (
@@ -21,15 +21,10 @@ export const BottomNavBar = () => {
             behavior: "smooth",
           })
         }
-      ></MyNavigationItem>
-      <MyNavigationItem
-        icon={<TfiWrite />}
-        to={ROUTES.ADD_REVIEW}
-      ></MyNavigationItem>
-      <MyNavigationItem
-        icon={<TfiSearch />}
-        to={ROUTES.SEARCH}
-      ></MyNavigationItem>
+      />
+      <MyNavigationItem icon={<TfiWrite />} to={ROUTES.ADD_REVIEW} />
+      <MyNavigationItem icon={<TfiShoppingCart />} to={ROUTES.HOME} />
+      <MyNavigationItem icon={<TfiSearch />} to={ROUTES.SEARCH} />
     </BottomNavigation>
   );
 };

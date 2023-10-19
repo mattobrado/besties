@@ -41,7 +41,7 @@ const TopNavBar = () => {
             {content.navBar.mostPopular}
           </MenuItem>
           <MenuDivider />
-          <MenuItem as={ReactRouterLink} to={ROUTES.HOME}>
+          <MenuItem as={ReactRouterLink} to={ROUTES.HIGHEST_RATED}>
             {content.navBar.highestRated}
           </MenuItem>
           <MenuDivider />
