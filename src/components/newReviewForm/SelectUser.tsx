@@ -18,7 +18,7 @@ export default function SelectUser({
   return (
     <Modal isOpen={isOpen} onClose={onClose}>
       <ModalOverlay />
-      <ModalContent bg={COLORS.BACKGROUND}>
+      <ModalContent bg={COLORS.BACKGROUND} shadow={COLORS.BACKGROUND}>
         <ModalBody mt={2} px={GLOBAL_PX}>
           <Search
             setTargetUser={setTargetUser}
