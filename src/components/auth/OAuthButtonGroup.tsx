@@ -1,11 +1,10 @@
 import { Button, ButtonGroup, VisuallyHidden } from "@chakra-ui/react";
-import { GitHubIcon, GoogleIcon, TwitterIcon } from "./ProviderIcons";
+import { GoogleIcon, TwitterIcon } from "./ProviderIcons";
 import { COLORS } from "../../theme/colors";
 
 const providers = [
   { name: "Google", icon: <GoogleIcon /> },
   { name: "Twitter", icon: <TwitterIcon /> },
-  { name: "GitHub", icon: <GitHubIcon /> },
 ];
 
 export const OAuthButtonGroup = () => (
