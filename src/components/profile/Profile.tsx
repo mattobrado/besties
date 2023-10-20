@@ -30,8 +30,6 @@ const Profile = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   const isLoaded = authUser && !!user;
-  const setBackground = useContext(BackgroundContext);
-  setBackground({ user });
 
   return (
     isLoaded && (

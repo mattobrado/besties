@@ -1,5 +1,5 @@
 export const content = {
-  logo: "👯‍♂️",
+  logo: "👯‍♀️",
   editEmoji: "✏️",
   starEmoji: "⭐️",
   homeEmoji: "🏠",
@@ -8,7 +8,7 @@ export const content = {
   submitButtonText: "post",
   submitButtonLoadingText: "posting...",
   auth: {
-    appName: "besties 👯‍♂️",
+    appName: "besties 👯‍♀️",
     createAnAccount: "create an account",
     dontHaveAnAccount: "don't have an account?",
     emailAddress: "email",
@@ -76,5 +76,8 @@ export const content = {
   },
   search: {
     search: "search",
+  },
+  lists: {
+    highestRatedHeading: "best people",
   },
 };

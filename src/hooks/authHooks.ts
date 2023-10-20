@@ -75,7 +75,7 @@ export const useLogout = () => {
   const logout = async () => {
     if (await signOut()) {
       navigate(ROUTES.LOGIN);
-    } // else: show error [signOut() returns false if failed]
+    }
   };
 
   return { logout, isLoading };
@@ -120,6 +120,7 @@ export const useSignup = () => {
           username: username.toLowerCase(),
           ratingCount: 0,
           popularity: 0,
+          friendUids: [],
         });
 
         navigate(redirectTo);

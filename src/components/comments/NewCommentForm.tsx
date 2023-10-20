@@ -50,7 +50,6 @@ const NewCommentForm = ({ user, post }: { user: UserType; post: PostType }) => {
             size="sm"
             isLoading={isLoading}
             loadingText={content.submitButtonLoadingText}
-            variant={"custom"}
           >
             {content.submitButtonText}
           </Button>
