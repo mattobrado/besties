@@ -20,8 +20,6 @@ import ProfileHeading from "./ProfileHeading";
 import ProfilePosts from "./ProfilePosts";
 import EditProfile from "./EditProfile";
 import AvatarInAvatar from "./AvatarInAvatar";
-import { useContext } from "react";
-import BackgroundContext from "../../BackGroundContext";
 
 const Profile = () => {
   const { id } = useParams();
