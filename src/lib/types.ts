@@ -36,6 +36,7 @@ export type UserType = {
   rating?: number;
   ratingCount: number;
   popularity: number;
+  friendUids: [];
   favorites: {
     color?: keyof typeof BACKGROUNDS;
     food?: string;

@@ -13,7 +13,7 @@ export const AuthHeading = ({
     <Text>
       {callToAction}{" "}
       <Link as={ReactRouterLink} to={link.to}>
-        {link.label}
+        <u>{link.label}</u>
       </Link>
     </Text>
   </Stack>
