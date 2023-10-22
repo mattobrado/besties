@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { useAuth } from "../../hooks/authHooks";
 import { usePosts } from "../../hooks/postHooks";
 import LoadingScreen from "../LoadingScreen";
@@ -9,7 +9,7 @@ const Home = () => {
   const { posts } = usePosts();
   const { user } = useAuth();
   const setBackground = useContext(BackgroundContext);
-  setBackground({});
+  useEffect(() => setBackground({}), []);
 
   return user && posts ? (
     <PostList posts={posts.filter((post) => post.isReview)} authUser={user} />
