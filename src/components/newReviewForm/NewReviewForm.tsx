@@ -15,7 +15,7 @@ import TextareaAutosize from "react-textarea-autosize";
 import { useForm } from "react-hook-form";
 import { useAuth } from "../../hooks/authHooks";
 import { useAddPost } from "../../hooks/postHooks";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { VALIDATE } from "../../lib/formValidation";
 import { PostType, UserType } from "../../lib/types";
 import { ROUTES } from "../../lib/routes";
@@ -40,9 +40,9 @@ const NewReviewForm = () => {
   );
   const navigate = useNavigate();
   const { isOpen, onOpen, onClose } = useDisclosure();
-
   const setBackgroundForUser = useContext(BackgroundContext);
-  setBackgroundForUser({ user: targetUser });
+
+  useEffect(() => setBackgroundForUser({ user: targetUser }), [targetUser]);
 
   const handleAddReview = (review: Partial<PostType>) => {
     if (!authUser || !targetUser) return;

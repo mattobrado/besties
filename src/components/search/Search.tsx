@@ -5,6 +5,8 @@ import { InstantSearch, useHits } from "react-instantsearch";
 import CustomSearchBox from "./CustomSearchBox";
 import { content } from "../../lib/content";
 import UserList from "../profile/UserList";
+import { useContext } from "react";
+import BackgroundContext from "../../BackGroundContext";
 
 const Search = ({
   onClick: onClick,
@@ -13,6 +15,8 @@ const Search = ({
   onClick?: (user: UserType | undefined) => void;
   placeholderText?: string;
 }) => {
+  // const setBackground = useContext(BackgroundContext);
+  // setBackground({});
   return (
     <InstantSearch
       searchClient={algoliasearch(
