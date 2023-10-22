@@ -3,11 +3,11 @@ import Login from "../components/auth/Login";
 import Layout from "../components/layout/Layout";
 import Home from "../components/home/Home";
 import NewReviewForm from "../components/newReviewForm/NewReviewForm";
-import Signup from "../components/auth/SignUp";
 import Comments from "../components/comments/Comments";
 import Profile from "../components/profile/Profile";
 import HighestRated from "../components/lists/HighestRated";
 import SearchPage from "../components/search/SearchPage";
+import PhoneAuth from "../components/auth/PhoneAuth";
 
 const PROTECTED = "/b";
 
@@ -27,7 +27,7 @@ export const ROUTES = {
 export const router = createBrowserRouter([
   { path: ROUTES.ROOT, element: <Login /> },
   { path: ROUTES.LOGIN, element: <Login /> },
-  { path: ROUTES.SIGNUP, element: <Signup /> },
+  { path: ROUTES.SIGNUP, element: <PhoneAuth /> },
   {
     path: ROUTES.ROOT,
     element: <Layout />,

@@ -5,8 +5,6 @@ import { InstantSearch, useHits } from "react-instantsearch";
 import CustomSearchBox from "./CustomSearchBox";
 import { content } from "../../lib/content";
 import UserList from "../profile/UserList";
-import { useContext } from "react";
-import BackgroundContext from "../../BackGroundContext";
 
 const Search = ({
   onClick: onClick,
