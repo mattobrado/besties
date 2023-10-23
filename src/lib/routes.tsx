@@ -7,18 +7,20 @@ import Profile from "../components/profile/Profile";
 import HighestRated from "../components/lists/HighestRated";
 import SearchPage from "../components/search/SearchPage";
 import PhoneAuth from "../components/auth/PhoneAuth";
+import EditProfile from "../components/profile/EditProfile";
 
-const PROTECTED = "/b";
+const PROTECTED = "/p";
 
 export const ROUTES = {
-  COMMENTS: PROTECTED + "/comments",
-  HOME: PROTECTED + "/home",
-  PROFILE: "/u",
   PROTECTED,
   ROOT: "/",
+  PROFILE: PROTECTED + "/u",
+  HIGHEST_RATED: PROTECTED + "/top-users",
+  HOME: PROTECTED + "/home",
+  POST: PROTECTED + "/post",
   ADD_REVIEW: PROTECTED + "/review",
   SEARCH: PROTECTED + "/search",
-  HIGHEST_RATED: "/top-users",
+  EDIT_PROFILE: PROTECTED + "/edit-profile ",
 };
 
 export const router = createBrowserRouter([
@@ -44,12 +46,16 @@ export const router = createBrowserRouter([
         element: <SearchPage />,
       },
       {
-        path: ROUTES.COMMENTS + "/:id",
+        path: ROUTES.POST + "/:id",
         element: <Comments />,
       },
       {
         path: ROUTES.HIGHEST_RATED,
         element: <HighestRated />,
+      },
+      {
+        path: ROUTES.EDIT_PROFILE + "/:id",
+        element: <EditProfile />,
       },
     ],
   },

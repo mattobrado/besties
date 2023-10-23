@@ -58,7 +58,7 @@ const Actions = ({
           <ActionButton
             icon={<ChatIcon />}
             number={commentCount}
-            to={`${ROUTES.COMMENTS}/${id}`}
+            to={`${ROUTES.POST}/${id}`}
           />
         )}
       </HStack>

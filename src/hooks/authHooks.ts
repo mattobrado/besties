@@ -2,15 +2,20 @@ import { useAuthState, useSignOut } from "react-firebase-hooks/auth";
 import { auth, db } from "../lib/firebase";
 import { useEffect, useState } from "react";
 import { COLLECTIONS, TOAST_PROPS } from "../lib/constants";
-import {
-  User,
-  createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,
-} from "firebase/auth";
+import { User } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import { useToast } from "@chakra-ui/react";
-import { setDoc, doc, getDoc, DocumentData } from "firebase/firestore";
-import { LoginType, SignupType as SignupType, UserType } from "../lib/types";
+import {
+  setDoc,
+  doc,
+  getDoc,
+  DocumentData,
+  where,
+  collection,
+  getDocs,
+  query,
+} from "firebase/firestore";
+import { UserType } from "../lib/types";
 import { content } from "../lib/content";
 import { ROUTES } from "../lib/routes";
 
@@ -40,32 +45,6 @@ export const useAuth = (): {
 
   return { user: <UserType>user, isLoading, error };
 };
-export const useLogin = () => {
-  const [isLoading, setLoading] = useState(false);
-  const navigate = useNavigate();
-  const toast = useToast();
-
-  const login = async ({
-    email,
-    password,
-    redirectTo = ROUTES.HOME,
-  }: LoginType) => {
-    setLoading(true);
-    try {
-      await signInWithEmailAndPassword(auth, email, password);
-      navigate(redirectTo);
-    } catch (error: any) {
-      toast({
-        title: content.auth.loginFailure,
-        description: error?.message,
-        ...TOAST_PROPS,
-      });
-    } finally {
-      setLoading(false);
-    }
-  };
-  return { login, isLoading };
-};
 
 export const useLogout = () => {
   const [signOut, isLoading] = useSignOut(auth);
@@ -80,37 +59,33 @@ export const useLogout = () => {
   return { logout, isLoading };
 };
 
-export const useSignup = () => {
+export const useSignIn = () => {
   const [isLoading, setLoading] = useState(false);
   const toast = useToast();
   const navigate = useNavigate();
 
-  const signup = async ({
-    email,
-    fullName,
-    password,
-    redirectTo = ROUTES.HOME,
-  }: SignupType) => {
+  const signIn = async (oneTimePassword: string) => {
     setLoading(true);
-
     try {
-      const response = await createUserWithEmailAndPassword(
-        auth,
-        email,
-        password
+      const { user } = await (window as any).confirmationResult.confirm(
+        oneTimePassword
       );
-
-      await setDoc(doc(db, COLLECTIONS.USERS, response.user.uid), {
-        avatar: "",
-        date: Date.now(),
-        fullName: fullName,
-        id: response.user.uid,
-        ratingCount: 0,
-        popularity: 0,
-        friendUids: [],
-      });
-
-      navigate(redirectTo);
+      const uid = user.uid;
+      const q = query(collection(db, "users"), where("id", "==", uid));
+      const querySnapshot = await getDocs(q);
+      const userExists = querySnapshot.size > 0;
+      if (userExists) navigate(ROUTES.HOME);
+      else {
+        await setDoc(doc(db, COLLECTIONS.USERS, uid), {
+          avatar: "",
+          date: Date.now(),
+          id: uid,
+          ratingCount: 0,
+          popularity: 0,
+          friendUids: [],
+        });
+        navigate(`${ROUTES.EDIT_PROFILE}/${uid}`);
+      }
     } catch (error: any) {
       toast({
         title: content.auth.signupFailed,
@@ -123,5 +98,5 @@ export const useSignup = () => {
     }
   };
 
-  return { signup, isLoading };
+  return { signIn, isLoading };
 };

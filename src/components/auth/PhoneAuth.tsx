@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { RecaptchaVerifier, signInWithPhoneNumber } from "firebase/auth";
-import { auth, db } from "../../lib/firebase";
+import { auth } from "../../lib/firebase";
 import {
   FormControl,
   FormLabel,
@@ -10,26 +10,22 @@ import {
   PinInput,
   PinInputField,
   Spacer,
-  useToast,
 } from "@chakra-ui/react";
 import { useForm } from "react-hook-form";
 import AuthFormContainer from "./AuthFormContainer";
 import { content } from "../../lib/content";
-import { ROUTES } from "../../lib/routes";
 import PhoneInput from "react-phone-number-input/input";
-import { COLLECTIONS, TOAST_PROPS } from "../../lib/constants";
-import { setDoc, doc } from "firebase/firestore";
-import { useNavigate } from "react-router-dom";
+import { useSignIn } from "../../hooks/authHooks";
 
 const PhoneAuth = () => {
-  const [isLoading, setLoading] = useState(false);
   const [showOneTimePasswordInput, setShowOneTimePasswordInput] =
     useState(false);
   const [phoneNumber, setPhoneNumber] = useState("");
   const [oneTimePassword, setOtp] = useState("");
   const { handleSubmit } = useForm();
-  const toast = useToast();
-  const navigate = useNavigate();
+  const [isSendingCodeLoading, setLoading] = useState(false);
+  const { signIn, isLoading: isSignInLoading } = useSignIn();
+  const isLoading = isSendingCodeLoading || isSignInLoading;
 
   const onCaptchaVerify = () => {
     if (!(window as any).recaptchaVerifier) {
@@ -62,35 +58,6 @@ const PhoneAuth = () => {
       });
   };
 
-  const onOneTimePasswordSubmit = async () => {
-    setLoading(true);
-    try {
-      const { user } = await (window as any).confirmationResult.confirm(
-        oneTimePassword
-      );
-      console.log(user);
-      await setDoc(doc(db, COLLECTIONS.USERS, user.uid), {
-        avatar: "",
-        date: Date.now(),
-        id: user.uid,
-        ratingCount: 0,
-        popularity: 0,
-        friendUids: [],
-      });
-
-      navigate(ROUTES.HOME);
-    } catch (error: any) {
-      toast({
-        title: content.auth.signupFailed,
-        description: error?.message,
-        status: "error",
-        ...TOAST_PROPS,
-      });
-    } finally {
-      setLoading(false);
-    }
-  };
-
   return (
     <AuthFormContainer
       authHeadingProps={{
@@ -99,18 +66,20 @@ const PhoneAuth = () => {
       buttonProps={
         showOneTimePasswordInput
           ? {
-              isLoading,
-              label: "verify code",
-              loadingText: content.auth.signingUp,
+              isLoading: isLoading,
+              label: "sign in",
+              loadingText: "signing in",
             }
           : {
-              isLoading,
+              isLoading: isLoading,
               label: "next",
-              loadingText: content.auth.signingUp,
+              loadingText: "sending code",
             }
       }
       onSubmit={handleSubmit(
-        showOneTimePasswordInput ? onOneTimePasswordSubmit : onPhoneNumberSubmit
+        showOneTimePasswordInput
+          ? () => signIn(oneTimePassword)
+          : onPhoneNumberSubmit
       )}
     >
       {showOneTimePasswordInput ? (
@@ -119,7 +88,7 @@ const PhoneAuth = () => {
           <HStack w={"full"}>
             <PinInput
               otp={true}
-              placeholder="🥳"
+              placeholder="🥸"
               value={oneTimePassword}
               onChange={setOtp}
             >
@@ -150,6 +119,7 @@ const PhoneAuth = () => {
           </InputGroup>
         </FormControl>
       )}
+      <div id="recaptcha-container"></div>
     </AuthFormContainer>
   );
 };
