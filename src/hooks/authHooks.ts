@@ -11,7 +11,6 @@ import { useNavigate } from "react-router-dom";
 import { useToast } from "@chakra-ui/react";
 import { setDoc, doc, getDoc, DocumentData } from "firebase/firestore";
 import { LoginType, SignupType as SignupType, UserType } from "../lib/types";
-import isUsernameDuplicated from "../utils/isUserNameDuplicated";
 import { content } from "../lib/content";
 import { ROUTES } from "../lib/routes";
 
@@ -74,7 +73,7 @@ export const useLogout = () => {
 
   const logout = async () => {
     if (await signOut()) {
-      navigate(ROUTES.LOGIN);
+      navigate(ROUTES.ROOT);
     }
   };
 
@@ -91,49 +90,36 @@ export const useSignup = () => {
     fullName,
     password,
     redirectTo = ROUTES.HOME,
-    username,
   }: SignupType) => {
     setLoading(true);
 
-    const usernameExists = await isUsernameDuplicated(username);
+    try {
+      const response = await createUserWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
 
-    if (usernameExists) {
+      await setDoc(doc(db, COLLECTIONS.USERS, response.user.uid), {
+        avatar: "",
+        date: Date.now(),
+        fullName: fullName,
+        id: response.user.uid,
+        ratingCount: 0,
+        popularity: 0,
+        friendUids: [],
+      });
+
+      navigate(redirectTo);
+    } catch (error: any) {
       toast({
-        title: content.auth.usernameTaken,
+        title: content.auth.signupFailed,
+        description: error?.message,
         status: "error",
         ...TOAST_PROPS,
       });
+    } finally {
       setLoading(false);
-    } else {
-      try {
-        const response = await createUserWithEmailAndPassword(
-          auth,
-          email,
-          password
-        );
-
-        await setDoc(doc(db, COLLECTIONS.USERS, response.user.uid), {
-          avatar: "",
-          date: Date.now(),
-          fullName: fullName,
-          id: response.user.uid,
-          username: username.toLowerCase(),
-          ratingCount: 0,
-          popularity: 0,
-          friendUids: [],
-        });
-
-        navigate(redirectTo);
-      } catch (error: any) {
-        toast({
-          title: content.auth.signupFailed,
-          description: error?.message,
-          status: "error",
-          ...TOAST_PROPS,
-        });
-      } finally {
-        setLoading(false);
-      }
     }
   };
 

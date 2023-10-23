@@ -7,22 +7,24 @@ export const AuthHeading = ({
   callToAction,
   link,
 }: AuthHeadingPropsType) => (
-  <Stack spacing={{ base: "1", md: "3" }} textAlign="center">
+  <Stack textAlign="center">
     <Heading fontSize={"6xl"}>{content.logo}</Heading>
-    <Heading size={{ base: "xs", md: "sm" }}>{title}</Heading>
-    <Text>
-      {callToAction}{" "}
-      <Link as={ReactRouterLink} to={link.to}>
-        <u>{link.label}</u>
-      </Link>
-    </Text>
+    <Heading size={{ base: "lg", md: "sm" }}>{title}</Heading>
+    {callToAction && link && (
+      <Text>
+        {callToAction}
+        <Link as={ReactRouterLink} to={link.to}>
+          <u>{link.label}</u>
+        </Link>
+      </Text>
+    )}
   </Stack>
 );
 
 export type AuthHeadingPropsType = {
   title: string;
-  callToAction: string;
-  link: {
+  callToAction?: string;
+  link?: {
     to: string;
     label: string;
   };

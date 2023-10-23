@@ -6,6 +6,7 @@ import {
   getDoc,
   orderBy,
   collection,
+  FirestoreError,
 } from "firebase/firestore";
 import { db, storage } from "../lib/firebase";
 import {
@@ -22,11 +23,11 @@ import getNewRating from "../utils/getNewRating";
 
 export const useUser = (
   id?: string
-): { user?: UserType; isLoading: boolean } => {
+): { user?: UserType; isLoading: boolean; isError?: FirestoreError } => {
   if (!id) return { user: undefined, isLoading: false };
   const q = query(doc(db, COLLECTIONS.USERS, id) as any);
-  const [user, isLoading] = useDocumentData(q as any);
-  return { user: <UserType>user, isLoading };
+  const [user, isLoading, isError] = useDocumentData(q as any);
+  return { user: <UserType>user, isLoading, isError };
 };
 
 export const useUpdateAvatar = (uid: string) => {

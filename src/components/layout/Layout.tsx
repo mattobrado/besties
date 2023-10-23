@@ -15,7 +15,7 @@ const Layout = () => {
 
   useEffect(() => {
     if (!isLoading && pathname.startsWith(ROUTES.PROTECTED) && !user) {
-      navigate(ROUTES.LOGIN);
+      navigate(ROUTES.ROOT);
     }
   }, [pathname, user, isLoading]);
 

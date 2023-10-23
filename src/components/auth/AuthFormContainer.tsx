@@ -12,12 +12,8 @@ const AuthFormContainer = ({
   children: React.ReactNode;
   onSubmit: React.FormEventHandler<HTMLFormElement>;
 }) => (
-  <Container
-    maxW="lg"
-    py={{ base: "4", md: "16" }}
-    px={{ base: "0", sm: "16" }}
-  >
-    <Stack spacing="6">
+  <Container maxW="lg" py={16} px={{ base: "0", sm: "16" }}>
+    <Stack spacing="8">
       <AuthHeading {...authHeadingProps} />
       <Box
         py={{ base: "0", sm: "8" }}
@@ -28,26 +24,17 @@ const AuthFormContainer = ({
       >
         <Stack spacing="1" as={"form"} onSubmit={onSubmit as any}>
           {children}
-          <Stack spacing="6">
-            <Button
-              mt="4"
-              type="submit"
-              size="md"
-              w="full"
-              isLoading={buttonProps.isLoading}
-              loadingText={buttonProps.loadingText}
-            >
-              {buttonProps.label}
-            </Button>
-            {/* <HStack>
-                  <Divider />
-                  <Text color={COLORS.text} textStyle="sm" whiteSpace="nowrap">
-                    {CONTENT.AUTH.orContinueWith}
-                  </Text>
-                  <Divider />
-                </HStack>
-                <OAuthButtonGroup /> */}
-          </Stack>
+          <Button
+            mt="4"
+            type="submit"
+            size="md"
+            w="full"
+            isLoading={buttonProps.isLoading}
+            loadingText={buttonProps.loadingText}
+            bg={"white"}
+          >
+            {buttonProps.label}
+          </Button>
         </Stack>
       </Box>
     </Stack>

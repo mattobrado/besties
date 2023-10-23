@@ -34,7 +34,7 @@ const Login = () => {
           title: content.auth.logInToYourAccount,
           callToAction: content.auth.dontHaveAnAccount,
           link: {
-            to: ROUTES.SIGNUP,
+            to: ROUTES.ROOT,
             label: content.auth.signup,
           },
         }}

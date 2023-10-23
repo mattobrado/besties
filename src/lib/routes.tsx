@@ -1,5 +1,4 @@
 import { createBrowserRouter } from "react-router-dom";
-import Login from "../components/auth/Login";
 import Layout from "../components/layout/Layout";
 import Home from "../components/home/Home";
 import NewReviewForm from "../components/newReviewForm/NewReviewForm";
@@ -14,20 +13,16 @@ const PROTECTED = "/b";
 export const ROUTES = {
   COMMENTS: PROTECTED + "/comments",
   HOME: PROTECTED + "/home",
-  LOGIN: "/login",
   PROFILE: "/u",
   PROTECTED,
   ROOT: "/",
-  SIGNUP: "/signup",
   ADD_REVIEW: PROTECTED + "/review",
   SEARCH: PROTECTED + "/search",
   HIGHEST_RATED: "/top-users",
 };
 
 export const router = createBrowserRouter([
-  { path: ROUTES.ROOT, element: <Login /> },
-  { path: ROUTES.LOGIN, element: <Login /> },
-  { path: ROUTES.SIGNUP, element: <PhoneAuth /> },
+  { path: ROUTES.ROOT, element: <PhoneAuth /> },
   {
     path: ROUTES.ROOT,
     element: <Layout />,

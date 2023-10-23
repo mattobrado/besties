@@ -30,7 +30,7 @@ const Signup = () => {
         title: content.auth.createAnAccount,
         callToAction: content.auth.goToLoginMessage,
         link: {
-          to: ROUTES.LOGIN,
+          to: ROUTES.ROOT,
           label: content.auth.login,
         },
       }}

@@ -1,30 +1,35 @@
 import { useState } from "react";
 import { RecaptchaVerifier, signInWithPhoneNumber } from "firebase/auth";
-import { auth } from "../../lib/firebase";
+import { auth, db } from "../../lib/firebase";
 import {
   FormControl,
   FormLabel,
   HStack,
   Input,
   InputGroup,
-  InputLeftElement,
   PinInput,
   PinInputField,
+  Spacer,
+  useToast,
 } from "@chakra-ui/react";
 import { useForm } from "react-hook-form";
 import AuthFormContainer from "./AuthFormContainer";
 import { content } from "../../lib/content";
 import { ROUTES } from "../../lib/routes";
 import PhoneInput from "react-phone-number-input/input";
-import { PhoneIcon } from "@chakra-ui/icons";
+import { COLLECTIONS, TOAST_PROPS } from "../../lib/constants";
+import { setDoc, doc } from "firebase/firestore";
+import { useNavigate } from "react-router-dom";
 
 const PhoneAuth = () => {
   const [isLoading, setLoading] = useState(false);
   const [showOneTimePasswordInput, setShowOneTimePasswordInput] =
     useState(false);
   const [phoneNumber, setPhoneNumber] = useState("");
-  const [otp, setOtp] = useState("");
+  const [oneTimePassword, setOtp] = useState("");
   const { handleSubmit } = useForm();
+  const toast = useToast();
+  const navigate = useNavigate();
 
   const onCaptchaVerify = () => {
     if (!(window as any).recaptchaVerifier) {
@@ -34,7 +39,7 @@ const PhoneAuth = () => {
         {
           size: "invisible",
           callback: () => {
-            onSignup();
+            onPhoneNumberSubmit();
           },
           "expired-callback": () => {},
         }
@@ -42,13 +47,11 @@ const PhoneAuth = () => {
     }
   };
 
-  const onSignup = () => {
+  const onPhoneNumberSubmit = () => {
     setLoading(true);
     onCaptchaVerify();
 
-    const appVerifier = (window as any).recaptchaVerifier;
-
-    signInWithPhoneNumber(auth, phoneNumber, appVerifier)
+    signInWithPhoneNumber(auth, phoneNumber, (window as any).recaptchaVerifier)
       .then((confirmationResult) => {
         (window as any).confirmationResult = confirmationResult;
         setLoading(false);
@@ -59,33 +62,45 @@ const PhoneAuth = () => {
       });
   };
 
-  function onOTPVerify() {
+  const onOneTimePasswordSubmit = async () => {
     setLoading(true);
-    (window as any).confirmationResult
-      .confirm(otp)
-      .then(async () => {
-        setLoading(false);
-      })
-      .catch(() => {
-        setLoading(false);
+    try {
+      const { user } = await (window as any).confirmationResult.confirm(
+        oneTimePassword
+      );
+      console.log(user);
+      await setDoc(doc(db, COLLECTIONS.USERS, user.uid), {
+        avatar: "",
+        date: Date.now(),
+        id: user.uid,
+        ratingCount: 0,
+        popularity: 0,
+        friendUids: [],
       });
-  }
+
+      navigate(ROUTES.HOME);
+    } catch (error: any) {
+      toast({
+        title: content.auth.signupFailed,
+        description: error?.message,
+        status: "error",
+        ...TOAST_PROPS,
+      });
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <AuthFormContainer
       authHeadingProps={{
-        title: content.auth.createAnAccount,
-        callToAction: content.auth.goToLoginMessage,
-        link: {
-          to: ROUTES.LOGIN,
-          label: content.auth.login,
-        },
+        title: content.auth.login,
       }}
       buttonProps={
         showOneTimePasswordInput
           ? {
               isLoading,
-              label: "verify one time code",
+              label: "verify code",
               loadingText: content.auth.signingUp,
             }
           : {
@@ -94,38 +109,40 @@ const PhoneAuth = () => {
               loadingText: content.auth.signingUp,
             }
       }
-      onSubmit={handleSubmit(showOneTimePasswordInput ? onOTPVerify : onSignup)}
+      onSubmit={handleSubmit(
+        showOneTimePasswordInput ? onOneTimePasswordSubmit : onPhoneNumberSubmit
+      )}
     >
       {showOneTimePasswordInput ? (
         <FormControl>
           <FormLabel>enter your code</FormLabel>
-          <HStack>
+          <HStack w={"full"}>
             <PinInput
               otp={true}
               placeholder="🥳"
-              value={otp}
+              value={oneTimePassword}
               onChange={setOtp}
-              // {...register(INPUT_TYPE.ONE_TIME_PASS_CODE)}
             >
               <PinInputField />
+              <Spacer border={"transparent"} />
               <PinInputField />
+              <Spacer border={"transparent"} />
               <PinInputField />
+              <Spacer border={"transparent"} />
               <PinInputField />
+              <Spacer border={"transparent"} />
               <PinInputField />
+              <Spacer border={"transparent"} />
               <PinInputField />
             </PinInput>
           </HStack>
         </FormControl>
       ) : (
         <FormControl>
-          <FormLabel>verify your phone number</FormLabel>
           <InputGroup>
-            <InputLeftElement pointerEvents="none">
-              <PhoneIcon />
-            </InputLeftElement>
-            {/* <InputLeftAddon children="+1" / */}
             <Input
               as={PhoneInput}
+              country="US"
               placeholder="phone number"
               value={phoneNumber}
               onChange={setPhoneNumber as any}
