@@ -16,10 +16,10 @@ import {
 import { UserType } from "../lib/types";
 import { COLLECTIONS } from "../lib/constants";
 import { useState } from "react";
-import { useToast } from "@chakra-ui/react";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { useNavigate } from "react-router-dom";
 import getNewRating from "../utils/getNewRating";
+import { ROUTES } from "../lib/routes";
 
 export const useUser = (
   id?: string
@@ -30,44 +30,33 @@ export const useUser = (
   return { user: <UserType>user, isLoading, isError };
 };
 
-export const useUpdateAvatar = (uid: string) => {
+export const useUpdateUser = (uid: string) => {
   const [isLoading, setLoading] = useState(false);
   const [file, setFile] = useState(null);
-  const toast = useToast();
   const navigate = useNavigate();
 
-  const updateAvatar = async () => {
-    if (!file) {
-      toast({
-        title: "No file selected",
-        description: "Please select a file to upload",
-        status: "error",
-        duration: 5000,
-        isClosable: true,
-        position: "top",
-      });
-
-      return;
-    }
-
+  const updateUser = async (user: Partial<UserType>) => {
     setLoading(true);
 
-    const fileRef = ref(storage, "avatars/" + uid);
-    await uploadBytes(fileRef, file);
+    if (file) {
+      const fileRef = ref(storage, "avatars/" + uid);
+      await uploadBytes(fileRef, file);
 
-    const avatarURL = await getDownloadURL(fileRef);
+      const avatarURL = await getDownloadURL(fileRef);
+      user.avatar = avatarURL;
+    }
 
     const docRef = doc(db, COLLECTIONS.USERS, uid);
-    await updateDoc(docRef, { avatar: avatarURL });
+    await updateDoc(docRef, user);
 
     setLoading(false);
 
-    navigate(0);
+    navigate(`${ROUTES.PROFILE}/${uid}`);
   };
 
   return {
     setFile,
-    updateAvatar,
+    updateUser,
     isLoading,
     fileURL: file && URL.createObjectURL(file),
   };

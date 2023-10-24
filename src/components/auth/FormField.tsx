@@ -12,7 +12,7 @@ import {
   Merge,
 } from "react-hook-form";
 
-const AuthFormField = ({
+const FormField = ({
   error,
   inputType,
   label,
@@ -34,4 +34,4 @@ const AuthFormField = ({
   </FormControl>
 );
 
-export default AuthFormField;
+export default FormField;

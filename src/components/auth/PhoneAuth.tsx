@@ -12,7 +12,7 @@ import {
   Spacer,
 } from "@chakra-ui/react";
 import { useForm } from "react-hook-form";
-import AuthFormContainer from "./AuthFormContainer";
+import FormContainer from "./FormContainer";
 import { content } from "../../lib/content";
 import PhoneInput from "react-phone-number-input/input";
 import { useSignIn } from "../../hooks/authHooks";
@@ -59,7 +59,7 @@ const PhoneAuth = () => {
   };
 
   return (
-    <AuthFormContainer
+    <FormContainer
       authHeadingProps={{
         title: content.auth.login,
       }}
@@ -120,7 +120,7 @@ const PhoneAuth = () => {
         </FormControl>
       )}
       <div id="recaptcha-container"></div>
-    </AuthFormContainer>
+    </FormContainer>
   );
 };
 

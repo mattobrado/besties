@@ -1,20 +1,20 @@
 import { Stack, Container, Box, Button } from "@chakra-ui/react";
 import { AuthHeading, AuthHeadingPropsType } from "./AuthHeading";
 
-const AuthFormContainer = ({
+const FormContainer = ({
   authHeadingProps,
   buttonProps,
   children,
   onSubmit,
 }: {
-  authHeadingProps: AuthHeadingPropsType;
+  authHeadingProps?: AuthHeadingPropsType;
   buttonProps: { isLoading: boolean; label: string; loadingText: string };
   children: React.ReactNode;
   onSubmit: React.FormEventHandler<HTMLFormElement>;
 }) => (
   <Container maxW="lg" py={16} px={{ base: "0", sm: "16" }}>
     <Stack spacing="8">
-      <AuthHeading {...authHeadingProps} />
+      {authHeadingProps && <AuthHeading {...authHeadingProps} />}
       <Box
         py={{ base: "0", sm: "8" }}
         px={{ base: "4", sm: "10" }}
@@ -41,4 +41,4 @@ const AuthFormContainer = ({
   </Container>
 );
 
-export default AuthFormContainer;
+export default FormContainer;
