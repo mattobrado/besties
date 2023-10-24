@@ -20,7 +20,7 @@ import { content } from "../lib/content";
 import { ROUTES } from "../lib/routes";
 
 export const useAuth = (): {
-  user?: UserType;
+  authUser?: UserType;
   isLoading: boolean;
   error?: Error;
 } => {
@@ -43,7 +43,7 @@ export const useAuth = (): {
     }
   }, [authLoading]);
 
-  return { user: <UserType>user, isLoading, error };
+  return { authUser: <UserType>user, isLoading, error };
 };
 
 export const useLogout = () => {
