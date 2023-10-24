@@ -28,15 +28,15 @@ export type PostType = {
 };
 
 export type UserType = {
-  avatar: string;
+  avatar?: string;
   date: number;
-  fullName: string;
+  fullName?: string;
   id: string;
-  username: string;
   rating?: number;
   ratingCount: number;
   popularity: number;
   friendUids: [];
+  phoneNumber: string;
   favorites: {
     color?: keyof typeof BACKGROUNDS;
     food?: string;

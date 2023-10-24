@@ -1,18 +1,21 @@
-import { useContext } from "react";
-import { useAuth } from "../../hooks/authHooks";
+import { useContext, useEffect } from "react";
 import { usePosts } from "../../hooks/postHooks";
 import LoadingScreen from "../LoadingScreen";
 import PostList from "../posts/PostList";
 import BackgroundContext from "../../BackGroundContext";
+import AuthUserContext from "../layout/AuthUserContext";
 
 const Home = () => {
   const { posts } = usePosts();
-  const { user } = useAuth();
   const setBackground = useContext(BackgroundContext);
-  setBackground({});
+  const authUser = useContext(AuthUserContext);
+  useEffect(() => setBackground({}), []);
 
-  return user && posts ? (
-    <PostList posts={posts.filter((post) => post.isReview)} authUser={user} />
+  return posts ? (
+    <PostList
+      posts={posts.filter((post) => post.isReview)}
+      authUser={authUser}
+    />
   ) : (
     <LoadingScreen />
   );

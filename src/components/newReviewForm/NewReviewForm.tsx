@@ -13,9 +13,8 @@ import RatingInput from "./RatingInput";
 import { content } from "../../lib/content";
 import TextareaAutosize from "react-textarea-autosize";
 import { useForm } from "react-hook-form";
-import { useAuth } from "../../hooks/authHooks";
 import { useAddPost } from "../../hooks/postHooks";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { VALIDATE } from "../../lib/formValidation";
 import { PostType, UserType } from "../../lib/types";
 import { ROUTES } from "../../lib/routes";
@@ -25,6 +24,7 @@ import UserCard from "../profile/UserCard";
 import { COLORS } from "../../theme/colors";
 import { TfiSearch } from "react-icons/tfi";
 import BackgroundContext from "../../BackGroundContext";
+import AuthUserContext from "../layout/AuthUserContext";
 
 const NewReviewForm = () => {
   const {
@@ -33,19 +33,19 @@ const NewReviewForm = () => {
     formState: { errors },
   } = useForm();
   const { addPost, isLoading: addingReview } = useAddPost();
-  const { user: authUser } = useAuth();
+  const authUser = useContext(AuthUserContext);
   const [rating, setRating] = useState(3);
   const [targetUser, setTargetUser] = useState(
     undefined as UserType | undefined
   );
   const navigate = useNavigate();
   const { isOpen, onOpen, onClose } = useDisclosure();
-
   const setBackgroundForUser = useContext(BackgroundContext);
-  setBackgroundForUser({ user: targetUser });
+
+  useEffect(() => setBackgroundForUser({ user: targetUser }), [targetUser]);
 
   const handleAddReview = (review: Partial<PostType>) => {
-    if (!authUser || !targetUser) return;
+    if (!targetUser) return;
     addPost({
       isReview: true,
       rating: rating,

@@ -1,33 +1,30 @@
 import { createBrowserRouter } from "react-router-dom";
-import Login from "../components/auth/Login";
 import Layout from "../components/layout/Layout";
 import Home from "../components/home/Home";
 import NewReviewForm from "../components/newReviewForm/NewReviewForm";
-import Signup from "../components/auth/SignUp";
 import Comments from "../components/comments/Comments";
 import Profile from "../components/profile/Profile";
-import Search from "../components/search/Search";
 import HighestRated from "../components/lists/HighestRated";
+import SearchPage from "../components/search/SearchPage";
+import PhoneAuth from "../components/auth/PhoneAuth";
+import EditProfile from "../components/profile/EditProfile";
 
-const PROTECTED = "/b";
+const PROTECTED = "/p";
 
 export const ROUTES = {
-  COMMENTS: PROTECTED + "/comments",
-  HOME: PROTECTED + "/home",
-  LOGIN: "/login",
-  PROFILE: "/u",
   PROTECTED,
   ROOT: "/",
-  SIGNUP: "/signup",
+  PROFILE: PROTECTED + "/u",
+  HIGHEST_RATED: PROTECTED + "/top-users",
+  HOME: PROTECTED + "/home",
+  POST: PROTECTED + "/post",
   ADD_REVIEW: PROTECTED + "/review",
   SEARCH: PROTECTED + "/search",
-  HIGHEST_RATED: "/top-users",
+  EDIT_PROFILE: PROTECTED + "/edit-profile ",
 };
 
 export const router = createBrowserRouter([
-  { path: ROUTES.ROOT, element: <Login /> },
-  { path: ROUTES.LOGIN, element: <Login /> },
-  { path: ROUTES.SIGNUP, element: <Signup /> },
+  { path: ROUTES.ROOT, element: <PhoneAuth /> },
   {
     path: ROUTES.ROOT,
     element: <Layout />,
@@ -46,15 +43,19 @@ export const router = createBrowserRouter([
       },
       {
         path: ROUTES.SEARCH,
-        element: <Search />,
+        element: <SearchPage />,
       },
       {
-        path: ROUTES.COMMENTS + "/:id",
+        path: ROUTES.POST + "/:id",
         element: <Comments />,
       },
       {
         path: ROUTES.HIGHEST_RATED,
         element: <HighestRated />,
+      },
+      {
+        path: ROUTES.EDIT_PROFILE + "/:id",
+        element: <EditProfile />,
       },
     ],
   },

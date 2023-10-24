@@ -5,6 +5,8 @@ export const INPUT_TYPE = {
   PASSWORD: "password",
   USERNAME: "username",
   FULL_NAME: "fullName",
+  TEL: "tel",
+  ONE_TIME_PASS_CODE: "otp",
 };
 
 export const VALIDATE = {

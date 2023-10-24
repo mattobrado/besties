@@ -9,6 +9,7 @@
     "firestore",
     "instantsearch",
     "myplace",
+    "Recaptcha",
     "reviewee",
     "Signup",
     "Uids",

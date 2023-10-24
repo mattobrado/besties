@@ -13,6 +13,8 @@ const Search = ({
   onClick?: (user: UserType | undefined) => void;
   placeholderText?: string;
 }) => {
+  // const setBackground = useContext(BackgroundContext);
+  // setBackground({});
   return (
     <InstantSearch
       searchClient={algoliasearch(

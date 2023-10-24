@@ -9,19 +9,20 @@ import {
   useDisclosure,
   Text,
   Link,
-  SkeletonCircle,
 } from "@chakra-ui/react";
 import { CloseIcon, HamburgerIcon } from "@chakra-ui/icons";
-import { useAuth, useLogout } from "../../hooks/authHooks";
+import { useLogout } from "../../hooks/authHooks";
 import { Link as ReactRouterLink } from "react-router-dom";
 import { content } from "../../lib/content";
 import { ROUTES } from "../../lib/routes";
 import Avatar from "../profile/Avatar";
+import { useContext } from "react";
+import AuthUserContext from "./AuthUserContext";
 
 const TopNavBar = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const { logout } = useLogout();
-  const { user } = useAuth();
+  const authUser = useContext(AuthUserContext);
 
   const size = "md";
 
@@ -51,11 +52,7 @@ const TopNavBar = () => {
       <Link as={ReactRouterLink} to={ROUTES.HOME}>
         <Text fontSize="5xl">{content.logo}</Text>
       </Link>
-      {user ? (
-        <Avatar user={user} avatarProps={{ size }} />
-      ) : (
-        <SkeletonCircle variant="custom" size={"12"} />
-      )}
+      <Avatar user={authUser} avatarProps={{ size }} />
     </Flex>
   );
 };

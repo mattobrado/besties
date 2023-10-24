@@ -1,66 +1,68 @@
-import {
-  Button,
-  FormControl,
-  FormLabel,
-  HStack,
-  Modal,
-  ModalBody,
-  ModalCloseButton,
-  ModalContent,
-  ModalHeader,
-  ModalOverlay,
-} from "@chakra-ui/react";
+import { HStack, FormControl, FormLabel } from "@chakra-ui/react";
+import { useUpdateUser } from "../../hooks/userHooks";
+import { useContext } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import { ROUTES } from "../../lib/routes";
+import AuthUserContext from "../layout/AuthUserContext";
 import Avatar from "./Avatar";
-import { useUpdateAvatar } from "../../hooks/userHooks";
-import { UserType } from "../../lib/types";
-import { COLORS } from "../../theme/colors";
+import { content } from "../../lib/content";
+import { INPUT_TYPE, VALIDATE } from "../../lib/formValidation";
+import FormField from "../auth/FormField";
+import FormContainer from "../auth/FormContainer";
+import { useForm } from "react-hook-form";
 
-export default function EditProfile({
-  authUser,
-  isOpen,
-  onClose,
-}: {
-  isOpen: boolean;
-  onClose: () => void;
-  authUser: UserType;
-}) {
+export const EditProfile = () => {
+  const { id } = useParams();
+  const navigate = useNavigate();
+  const authUser = useContext(AuthUserContext);
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+
+  if (id !== authUser.id) {
+    navigate(ROUTES.HOME);
+  }
+  const handleSignup = async (data: any) => {
+    updateUser({ fullName: data.fullName });
+  };
   const {
     setFile,
-    updateAvatar,
-    isLoading: fileLoading,
+    updateUser: updateUser,
+    isLoading,
     fileURL,
-  } = useUpdateAvatar(authUser?.id);
-
-  function handleChange(e: any) {
-    setFile(e.target.files[0]);
-  }
+  } = useUpdateUser(authUser?.id);
 
   return (
-    <Modal isOpen={isOpen} onClose={onClose}>
-      <ModalOverlay />
-      <ModalContent bg={COLORS.BACKGROUND}>
-        <ModalHeader>Edit profile</ModalHeader>
-        <ModalCloseButton />
-        <ModalBody>
-          <HStack spacing="5">
-            <Avatar user={authUser} overrideAvatar={fileURL as any} />
-            <FormControl py="4">
-              <FormLabel htmlFor="picture">Change avatar</FormLabel>
-              <input type="file" accept="image/*" onChange={handleChange} />
-            </FormControl>
-          </HStack>
-          <Button
-            loadingText="Uploading"
-            w="full"
-            my="6"
-            colorScheme={COLORS.COLOR_SCHEME}
-            onClick={updateAvatar}
-            isLoading={fileLoading}
-          >
-            Save
-          </Button>
-        </ModalBody>
-      </ModalContent>
-    </Modal>
+    <FormContainer
+      onSubmit={handleSubmit(handleSignup)}
+      buttonProps={{
+        isLoading: isLoading,
+        label: "update",
+        loadingText: "updating",
+      }}
+    >
+      <HStack spacing="5">
+        <Avatar user={authUser} overrideAvatar={fileURL as any} />
+        <FormControl py="4">
+          <FormLabel htmlFor="picture">Change avatar</FormLabel>
+          <input
+            type="file"
+            accept="image/*"
+            onChange={(e: any) => setFile(e.target.files[0])}
+          />
+        </FormControl>
+      </HStack>
+      <FormField
+        error={errors?.fullName}
+        inputType={INPUT_TYPE.FULL_NAME}
+        label={content.auth.fullName}
+        register={register}
+        validate={VALIDATE.FULL_NAME}
+      />
+    </FormContainer>
   );
-}
+};
+
+export default EditProfile;

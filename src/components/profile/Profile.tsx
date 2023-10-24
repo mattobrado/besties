@@ -9,23 +9,23 @@ import {
   OrderedList,
   Stack,
   Text,
-  useDisclosure,
 } from "@chakra-ui/react";
-import { useParams } from "react-router-dom";
-import { useAuth } from "../../hooks/authHooks";
+import { useNavigate, useParams } from "react-router-dom";
 import { useUser } from "../../hooks/userHooks";
 import { COLORS } from "../../theme/colors";
 import getStars from "../../utils/getStars";
 import ProfileHeading from "./ProfileHeading";
 import ProfilePosts from "./ProfilePosts";
-import EditProfile from "./EditProfile";
 import AvatarInAvatar from "./AvatarInAvatar";
+import { ROUTES } from "../../lib/routes";
+import { useContext } from "react";
+import AuthUserContext from "../layout/AuthUserContext";
 
 const Profile = () => {
   const { id } = useParams();
   const { user } = useUser(id);
-  const { user: authUser, isLoading: authLoading } = useAuth();
-  const { isOpen, onOpen, onClose } = useDisclosure();
+  const authUser = useContext(AuthUserContext);
+  const navigate = useNavigate();
 
   const isLoaded = authUser && !!user;
 
@@ -46,8 +46,7 @@ const Profile = () => {
           </Text>
           {/* <Text color="gray.700">joined: {format(user.date, "MMMM YYY")}</Text> */}
         </Stack>
-        <EditProfile isOpen={isOpen} onClose={onClose} authUser={authUser} />
-        {!authLoading && authUser.id === user.id ? (
+        {authUser.id === user.id ? (
           <Grid templateColumns="repeat(2, 1fr)" gap={2}>
             <GridItem
               w="100%"
@@ -55,7 +54,7 @@ const Profile = () => {
               size={"sm"}
               variant={"outline"}
               color={COLORS.PRIMARY_FONT}
-              onClick={onOpen}
+              onClick={() => navigate(`${ROUTES.EDIT_PROFILE}/${authUser.id}`)}
             >
               ✏️ edit
             </GridItem>
