@@ -20,6 +20,7 @@ import AvatarInAvatar from "./AvatarInAvatar";
 import { ROUTES } from "../../lib/routes";
 import { useContext } from "react";
 import AuthUserContext from "../layout/AuthUserContext";
+import ProfileButton from "./ProfileButton";
 
 const Profile = () => {
   const { id } = useParams();
@@ -46,51 +47,24 @@ const Profile = () => {
           </Text>
           {/* <Text color="gray.700">joined: {format(user.date, "MMMM YYY")}</Text> */}
         </Stack>
-        {authUser.id === user.id ? (
-          <Grid templateColumns="repeat(2, 1fr)" gap={2}>
-            <GridItem
-              w="100%"
-              as={Button}
-              size={"sm"}
-              variant={"outline"}
-              color={COLORS.PRIMARY_FONT}
-              onClick={() => navigate(`${ROUTES.EDIT_PROFILE}/${authUser.id}`)}
-            >
-              ✏️ edit
-            </GridItem>
-            <GridItem
-              w="100%"
-              as={Button}
-              size={"sm"}
-              variant={"outline"}
-              color={COLORS.PRIMARY_FONT}
-            >
-              💌 share
-            </GridItem>
-          </Grid>
-        ) : (
-          <Grid templateColumns="repeat(2, 1fr)" gap={2}>
-            <GridItem
-              w="100%"
-              as={Button}
-              size={"sm"}
-              variant={"outline"}
-              color={COLORS.PRIMARY_FONT}
-            >
-              follow
-            </GridItem>
-            <GridItem
-              w="100%"
-              as={Button}
-              size={"sm"}
-              variant={"outline"}
-              color={COLORS.PRIMARY_FONT}
-            >
-              🩷 boost
-            </GridItem>
-          </Grid>
-        )}
-        <Container>
+        <Grid templateColumns="repeat(2, 1fr)" gap={2}>
+          {authUser.id === user.id
+            ? [
+                <ProfileButton
+                  text={"✏️ edit"}
+                  onClick={() =>
+                    navigate(`${ROUTES.EDIT_PROFILE}/${authUser.id}`)
+                  }
+                  key={"edit"}
+                />,
+                <ProfileButton text={"💌 share"} key={"share"} />,
+              ]
+            : [
+                <ProfileButton text={"+ add friend"} key={"addFriend"} />,
+                <ProfileButton text={"boost"} key={"boost"} />,
+              ]}
+        </Grid>
+        {/* <Container>
           <ProfileHeading text={"besties"} />
           <OrderedList spacing={1}>
             <ListItem>Suck-o-tron</ListItem> <Divider />
@@ -99,7 +73,7 @@ const Profile = () => {
             <ListItem>Marlon</ListItem> <Divider />
             <ListItem>myself</ListItem> <Divider />
           </OrderedList>
-        </Container>
+        </Container> */}
         <Container>
           <iframe
             src="https://open.spotify.com/embed/track/2qCvsmE9jO1QQQQ1jpndVZ?utm"
