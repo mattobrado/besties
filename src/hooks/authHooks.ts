@@ -64,7 +64,13 @@ export const useSignIn = () => {
   const toast = useToast();
   const navigate = useNavigate();
 
-  const signIn = async (oneTimePassword: string) => {
+  const signIn = async ({
+    oneTimePassword,
+    phoneNumber,
+  }: {
+    oneTimePassword: string;
+    phoneNumber: string;
+  }) => {
     setLoading(true);
     try {
       const { user } = await (window as any).confirmationResult.confirm(
@@ -83,6 +89,7 @@ export const useSignIn = () => {
           ratingCount: 0,
           popularity: 0,
           friendUids: [],
+          phoneNumber,
         });
         navigate(`${ROUTES.EDIT_PROFILE}/${uid}`);
       }

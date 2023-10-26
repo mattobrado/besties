@@ -7,6 +7,7 @@ import {
   orderBy,
   collection,
   FirestoreError,
+  arrayUnion,
 } from "firebase/firestore";
 import { db, storage } from "../lib/firebase";
 import {
@@ -122,7 +123,26 @@ export const useHighestRated = () => {
   return { users: <UserType[]>users, isLoading };
 };
 
-export const useAddFriend = () => {};
+export const useFriendRequest = () => {
+  const [isLoading, setLoading] = useState(false);
+
+  const sendFriendRequest = async ({
+    authUid,
+    targetUid,
+  }: {
+    authUid: string;
+    targetUid: string;
+  }) => {
+    setLoading(true);
+    const docRef = doc(db, COLLECTIONS.USERS, targetUid);
+    await updateDoc(docRef, {
+      friendRequestsReceivedUids: arrayUnion(authUid),
+    });
+    setLoading(false);
+  };
+
+  return { sendFriendRequest, isLoading };
+};
 
 const getSongIdFromLink = (songLink: string): string | undefined => {
   try {
