@@ -8,6 +8,7 @@ import {
   collection,
   FirestoreError,
   arrayUnion,
+  where,
 } from "firebase/firestore";
 import { db, storage } from "../lib/firebase";
 import {
@@ -142,6 +143,21 @@ export const useFriendRequest = () => {
   };
 
   return { sendFriendRequest, isLoading };
+};
+
+export const useFriendRequestUsers = (
+  friendRequestsReceivedUids?: string[]
+) => {
+  if (!friendRequestsReceivedUids || friendRequestsReceivedUids.length === 0) {
+    return { users: [], isloading: false };
+  }
+  const q = query(
+    collection(db, COLLECTIONS.USERS),
+    where("id", "in", friendRequestsReceivedUids)
+  );
+  const [users, isLoading, error] = useCollectionData(q);
+  if (error) throw error;
+  return { users: <UserType[]>users, isLoading };
 };
 
 const getSongIdFromLink = (songLink: string): string | undefined => {
