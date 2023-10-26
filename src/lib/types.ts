@@ -1,5 +1,3 @@
-import { BACKGROUNDS } from "../theme/colors";
-
 export type LoginType = {
   email: string;
   password: string;
@@ -37,13 +35,11 @@ export type UserType = {
   popularity: number;
   friendUids: [];
   phoneNumber: string;
-  favorites: {
-    color?: keyof typeof BACKGROUNDS;
-    food?: string;
-    animal?: string;
-    song?: string;
-    movie?: string;
-  };
+  favoriteColor?: string;
+  favoriteFood?: string;
+  favoriteAnimal?: string;
+  favoriteSongId?: string;
+  favoriteMovie?: string;
 };
 
 export type ToggleLikeType = {

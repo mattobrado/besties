@@ -1,8 +1,7 @@
 import { createContext } from "react";
-import { UserType } from "./lib/types";
 
 const BackgroundContext = createContext(
-  undefined as unknown as ({ user }: { user?: UserType | undefined }) => void
+  undefined as unknown as (color?: string) => void
 );
 
 export default BackgroundContext;

@@ -5,14 +5,13 @@ import { customTheme } from "./theme/customTheme";
 import { BACKGROUNDS } from "./theme/colors";
 import { useState } from "react";
 import BackgroundContext from "./BackGroundContext";
-import { UserType } from "./lib/types";
-import getBackgroundForUser from "./utils/getBackgroundForUser";
+import getBackground from "./utils/getBackground";
 
 const App = () => {
   const [background, setBackground] = useState(BACKGROUNDS.default);
 
-  const setBackgroundForUser = ({ user }: { user?: UserType }) => {
-    setBackground(getBackgroundForUser({ user }));
+  const setBackgroundForUser = (color?: string) => {
+    setBackground(getBackground(color));
   };
 
   return (

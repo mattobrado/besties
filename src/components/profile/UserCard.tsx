@@ -31,7 +31,7 @@ const UserCard = ({
         onClick
           ? onClick
           : () => {
-              setBackground({ user });
+              setBackground(user.favoriteColor);
               navigate(`${ROUTES.PROFILE}/${user.id}`);
             }
       }

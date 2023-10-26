@@ -14,7 +14,7 @@ export const content = {
     emailAddress: "email",
     error: "error",
     forgotPassword: "forgot password?",
-    fullName: "full name",
+    fullName: "name",
     goToLoginMessage: "already a user?",
     goToSignupMessage: "no account yet?",
     hideEmoji: "🙈",

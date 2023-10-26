@@ -40,9 +40,12 @@ const NewReviewForm = () => {
   );
   const navigate = useNavigate();
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const setBackgroundForUser = useContext(BackgroundContext);
+  const setBackground = useContext(BackgroundContext);
 
-  useEffect(() => setBackgroundForUser({ user: targetUser }), [targetUser]);
+  useEffect(
+    () => setBackground(targetUser?.favoriteColor),
+    [targetUser?.favoriteColor]
+  );
 
   const handleAddReview = (review: Partial<PostType>) => {
     if (!targetUser) return;

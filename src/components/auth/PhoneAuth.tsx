@@ -50,12 +50,10 @@ const PhoneAuth = () => {
     signInWithPhoneNumber(auth, phoneNumber, (window as any).recaptchaVerifier)
       .then((confirmationResult) => {
         (window as any).confirmationResult = confirmationResult;
-        setLoading(false);
         setShowOneTimePasswordInput(true);
       })
-      .catch(() => {
-        setLoading(false);
-      });
+      .catch(() => {})
+      .finally(() => setLoading(false));
   };
 
   return (
