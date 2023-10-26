@@ -7,6 +7,8 @@ export const INPUT_TYPE = {
   FULL_NAME: "fullName",
   TEL: "tel",
   ONE_TIME_PASS_CODE: "otp",
+  SONG: "url",
+  COLOR: "color",
 };
 
 export const VALIDATE = {
@@ -44,9 +46,18 @@ export const VALIDATE = {
       message: content.auth.usernameAlphaNumeric,
     },
   },
-  FULL_NAME: {
+  FULL_NAME_REQUIRED: {
     required: {
       value: true,
+      message: content.auth.pleaseEnterName,
+    },
+    minLength: {
+      value: 1,
+      message: content.auth.fullNameMinLength,
+    },
+  },
+  FULL_NAME: {
+    required: {
       message: content.auth.pleaseEnterName,
     },
     minLength: {

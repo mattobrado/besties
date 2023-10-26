@@ -35,8 +35,24 @@ export const useUpdateUser = (uid: string) => {
   const [file, setFile] = useState(null);
   const navigate = useNavigate();
 
-  const updateUser = async (user: Partial<UserType>) => {
+  const updateUser = async ({
+    fullName,
+    songLink,
+    color,
+  }: {
+    fullName?: string;
+    songLink?: string;
+    color?: string;
+  }) => {
     setLoading(true);
+
+    const user: Partial<UserType> = {};
+
+    if (fullName) user.fullName = fullName;
+
+    if (songLink) user.favoriteSongId = getSongIdFromLink(songLink);
+
+    if (color) user.favoriteColor = color;
 
     if (file) {
       const fileRef = ref(storage, "avatars/" + uid);
@@ -45,9 +61,10 @@ export const useUpdateUser = (uid: string) => {
       const avatarURL = await getDownloadURL(fileRef);
       user.avatar = avatarURL;
     }
-
-    const docRef = doc(db, COLLECTIONS.USERS, uid);
-    await updateDoc(docRef, user);
+    if (Object.keys(user).length > 0) {
+      const docRef = doc(db, COLLECTIONS.USERS, uid);
+      await updateDoc(docRef, user);
+    }
 
     setLoading(false);
 
@@ -103,4 +120,15 @@ export const useHighestRated = () => {
   if (error) throw error;
 
   return { users: <UserType[]>users, isLoading };
+};
+
+export const useAddFriend = () => {};
+
+const getSongIdFromLink = (songLink: string): string | undefined => {
+  try {
+    console.log(songLink.split("track/")[1].split("?")[0]);
+    return songLink.split("track/")[1].split("?")[0];
+  } catch {
+    return;
+  }
 };

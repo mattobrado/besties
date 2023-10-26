@@ -9,7 +9,7 @@ const Home = () => {
   const { posts } = usePosts();
   const setBackground = useContext(BackgroundContext);
   const authUser = useContext(AuthUserContext);
-  useEffect(() => setBackground({}), []);
+  useEffect(() => setBackground(), []);
 
   return posts ? (
     <PostList

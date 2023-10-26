@@ -7,13 +7,6 @@ const AuthUserContext = createContext<UserType>({
   ratingCount: 0,
   popularity: 0,
   friendUids: [],
-  favorites: {
-    color: undefined,
-    food: undefined,
-    animal: undefined,
-    song: undefined,
-    movie: undefined,
-  },
   phoneNumber: "",
 });
 
