@@ -2,6 +2,7 @@ import { useState } from "react";
 import { RecaptchaVerifier, signInWithPhoneNumber } from "firebase/auth";
 import { auth } from "../../lib/firebase";
 import {
+  Box,
   FormControl,
   FormLabel,
   HStack,
@@ -16,6 +17,7 @@ import FormContainer from "./FormContainer";
 import { content } from "../../lib/content";
 import PhoneInput from "react-phone-number-input/input";
 import { useSignIn } from "../../hooks/authHooks";
+import { BACKGROUNDS } from "../../theme/colors";
 
 const PhoneAuth = () => {
   const [showOneTimePasswordInput, setShowOneTimePasswordInput] =
@@ -56,69 +58,83 @@ const PhoneAuth = () => {
       .finally(() => setLoading(false));
   };
 
+  const pinOnChange = (otp: string) => {
+    setOtp(otp);
+    if (otp.length === 6) {
+      signIn({ oneTimePassword: otp, phoneNumber });
+    }
+  };
+
   return (
-    <FormContainer
-      authHeadingProps={{
-        title: content.auth.login,
+    <Box
+      minHeight="100vh"
+      style={{
+        background: BACKGROUNDS.default,
       }}
-      buttonProps={
-        showOneTimePasswordInput
-          ? {
-              isLoading: isLoading,
-              label: "sign in",
-              loadingText: "signing in",
-            }
-          : {
-              isLoading: isLoading,
-              label: "next",
-              loadingText: "sending code",
-            }
-      }
-      onSubmit={handleSubmit(
-        showOneTimePasswordInput
-          ? () => signIn(oneTimePassword)
-          : onPhoneNumberSubmit
-      )}
     >
-      {showOneTimePasswordInput ? (
-        <FormControl>
-          <FormLabel>enter your code</FormLabel>
-          <HStack w={"full"}>
-            <PinInput
-              otp={true}
-              placeholder="🥸"
-              value={oneTimePassword}
-              onChange={setOtp}
-            >
-              <PinInputField />
-              <Spacer border={"transparent"} />
-              <PinInputField />
-              <Spacer border={"transparent"} />
-              <PinInputField />
-              <Spacer border={"transparent"} />
-              <PinInputField />
-              <Spacer border={"transparent"} />
-              <PinInputField />
-              <Spacer border={"transparent"} />
-              <PinInputField />
-            </PinInput>
-          </HStack>
-        </FormControl>
-      ) : (
-        <FormControl>
-          <InputGroup>
-            <Input
-              as={PhoneInput}
-              country="US"
-              placeholder="phone number"
-              value={phoneNumber}
-              onChange={setPhoneNumber as any}
-            />
-          </InputGroup>
-        </FormControl>
-      )}
-      <div id="recaptcha-container"></div>
-    </FormContainer>
+      <FormContainer
+        authHeadingProps={{
+          title: content.auth.login,
+        }}
+        buttonProps={
+          showOneTimePasswordInput
+            ? {
+                isLoading: isLoading,
+                label: "sign in",
+                loadingText: "signing in",
+              }
+            : {
+                isLoading: isLoading,
+                label: "next",
+                loadingText: "sending code",
+              }
+        }
+        onSubmit={handleSubmit(
+          showOneTimePasswordInput
+            ? () => signIn({ oneTimePassword, phoneNumber })
+            : onPhoneNumberSubmit
+        )}
+      >
+        {showOneTimePasswordInput ? (
+          <FormControl>
+            <FormLabel>enter your code</FormLabel>
+            <HStack w={"full"}>
+              <PinInput
+                otp={true}
+                placeholder="🥸"
+                value={oneTimePassword}
+                onChange={pinOnChange}
+              >
+                <PinInputField />
+                <Spacer border={"transparent"} />
+                <PinInputField />
+                <Spacer border={"transparent"} />
+                <PinInputField />
+                <Spacer border={"transparent"} />
+                <PinInputField />
+                <Spacer border={"transparent"} />
+                <PinInputField />
+                <Spacer border={"transparent"} />
+                <PinInputField />
+              </PinInput>
+            </HStack>
+          </FormControl>
+        ) : (
+          <FormControl>
+            <InputGroup>
+              <Input
+                as={PhoneInput}
+                country="US"
+                placeholder="phone number"
+                value={phoneNumber}
+                onChange={setPhoneNumber as any}
+              />
+            </InputGroup>
+          </FormControl>
+        )}
+        <div id="recaptcha-container"></div>
+      </FormContainer>
+    </Box>
   );
 };
 

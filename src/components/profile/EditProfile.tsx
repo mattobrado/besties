@@ -1,4 +1,4 @@
-import { HStack, FormControl, FormLabel, Input } from "@chakra-ui/react";
+import { FormControl, FormLabel, Input } from "@chakra-ui/react";
 import { useUpdateUser } from "../../hooks/userHooks";
 import { useContext, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
@@ -52,17 +52,15 @@ export const EditProfile = () => {
         loadingText: "updating",
       }}
     >
-      <HStack spacing="5">
-        <Avatar user={authUser} overrideAvatar={fileURL as any} />
-        <FormControl py="4">
-          <FormLabel htmlFor="picture">Change avatar</FormLabel>
-          <input
-            type="file"
-            accept="image/*"
-            onChange={(e: any) => setFile(e.target.files[0])}
-          />
-        </FormControl>
-      </HStack>
+      <Avatar user={authUser} overrideAvatar={fileURL as any} />
+      <FormControl py="4">
+        <FormLabel htmlFor="picture">Change avatar</FormLabel>
+        <input
+          type="file"
+          accept="image/*"
+          onChange={(e: any) => setFile(e.target.files[0])}
+        />
+      </FormControl>
       <FormField
         error={errors?.fullName}
         inputType={INPUT_TYPE.FULL_NAME}
@@ -86,6 +84,7 @@ export const EditProfile = () => {
           type={INPUT_TYPE.COLOR}
           value={color}
           onChange={(e: any) => setColor(e.target.value)}
+          placeholder="gh"
         />
       </FormControl>
     </FormContainer>

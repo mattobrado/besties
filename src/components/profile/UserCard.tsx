@@ -46,7 +46,7 @@ const UserCard = ({
         <Spacer />
         {showRating && (
           <Center fontSize={"2xl"}>
-            {user.rating?.toPrecision(2)} {content.starEmoji}
+            {user.rating?.toPrecision(2) ?? "?"} {content.starEmoji}
           </Center>
         )}
       </Flex>

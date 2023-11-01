@@ -8,6 +8,7 @@ import HighestRated from "../components/lists/HighestRated";
 import SearchPage from "../components/search/SearchPage";
 import PhoneAuth from "../components/auth/PhoneAuth";
 import EditProfile from "../components/profile/EditProfile";
+import Notifications from "../components/notifications/Notifications";
 
 const PROTECTED = "/p";
 
@@ -20,7 +21,8 @@ export const ROUTES = {
   POST: PROTECTED + "/post",
   ADD_REVIEW: PROTECTED + "/review",
   SEARCH: PROTECTED + "/search",
-  EDIT_PROFILE: PROTECTED + "/edit-profile ",
+  EDIT_PROFILE: PROTECTED + "/edit-profile",
+  NOTIFICATIONS: PROTECTED + "/notifications",
 };
 
 export const router = createBrowserRouter([
@@ -52,6 +54,10 @@ export const router = createBrowserRouter([
       {
         path: ROUTES.HIGHEST_RATED,
         element: <HighestRated />,
+      },
+      {
+        path: ROUTES.NOTIFICATIONS,
+        element: <Notifications />,
       },
       {
         path: ROUTES.EDIT_PROFILE + "/:id",

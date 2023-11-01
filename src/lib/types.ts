@@ -33,7 +33,8 @@ export type UserType = {
   rating?: number;
   ratingCount: number;
   popularity: number;
-  friendUids: [];
+  friendUids: string[];
+  friendRequestsReceivedUids: string[];
   phoneNumber: string;
   favoriteColor?: string;
   favoriteFood?: string;

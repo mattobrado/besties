@@ -1,6 +1,6 @@
 import { Center, Grid, Stack, Text } from "@chakra-ui/react";
 import { useNavigate, useParams } from "react-router-dom";
-import { useUser } from "../../hooks/userHooks";
+import { useFriendRequest, useUser } from "../../hooks/userHooks";
 import getStars from "../../utils/getStars";
 import ProfilePosts from "./ProfilePosts";
 import AvatarInAvatar from "./AvatarInAvatar";
@@ -16,6 +16,8 @@ const Profile = () => {
   const { user } = useUser(id);
   const authUser = useContext(AuthUserContext);
   const navigate = useNavigate();
+  const { sendFriendRequest, isLoading: isFriendRequestLoading } =
+    useFriendRequest();
 
   const isLoaded = authUser && !!user;
 
@@ -52,7 +54,17 @@ const Profile = () => {
                 <ProfileButton text={"💌 share"} key={"share"} />,
               ]
             : [
-                <ProfileButton text={"+ add friend"} key={"addFriend"} />,
+                <ProfileButton
+                  text={"+ add friend"}
+                  key={"addFriend"}
+                  onClick={() =>
+                    sendFriendRequest({
+                      authUid: authUser.id,
+                      targetUid: user.id,
+                    })
+                  }
+                  isLoading={isFriendRequestLoading}
+                />,
                 <ProfileButton text={"boost"} key={"boost"} />,
               ]}
         </Grid>
