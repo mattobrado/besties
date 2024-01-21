@@ -3,12 +3,12 @@ import { UserType } from "../../lib/types";
 import { Stack } from "@chakra-ui/react";
 import { InstantSearch, useHits } from "react-instantsearch";
 import CustomSearchBox from "./CustomSearchBox";
-import { content } from "../../lib/content/bestiesContent";
+import { bestiesContent } from "../../lib/content/bestiesContent";
 import UserList from "../profile/UserList";
 
 const Search = ({
   onClick: onClick,
-  placeholderText = content.search.search,
+  placeholderText = bestiesContent.search.search,
 }: {
   onClick?: (user: UserType | undefined) => void;
   placeholderText?: string;

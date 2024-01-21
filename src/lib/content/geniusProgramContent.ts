@@ -1,4 +1,4 @@
-export const bestiesContent = {
+export const geniusProgramContent = {
   logo: "👯‍♀️",
   editEmoji: "✏️",
   starEmoji: "⭐️",

@@ -1,5 +1,5 @@
 import { Box, Button, Flex, FormControl, Input } from "@chakra-ui/react";
-import { content } from "../../lib/content/bestiesContent";
+import { bestiesContent } from "../../lib/content/bestiesContent";
 import TextareaAutosize from "react-textarea-autosize";
 import { useForm } from "react-hook-form";
 import { VALIDATE } from "../../lib/formValidation";
@@ -37,7 +37,7 @@ const NewCommentForm = ({ user, post }: { user: UserType; post: PostType }) => {
             resize="none"
             size={"lg"}
             pb={1}
-            placeholder={content.commentForm.commentField}
+            placeholder={bestiesContent.commentForm.commentField}
             _placeholder={{ color: COLORS.PLACEHOLDER }}
             {...register("text", VALIDATE.TEXT)}
           />
@@ -49,9 +49,9 @@ const NewCommentForm = ({ user, post }: { user: UserType; post: PostType }) => {
             type="submit"
             size="sm"
             isLoading={isLoading}
-            loadingText={content.submitButtonLoadingText}
+            loadingText={bestiesContent.submitButtonLoadingText}
           >
-            {content.submitButtonText}
+            {bestiesContent.submitButtonText}
           </Button>
         </FormControl>
       </Box>

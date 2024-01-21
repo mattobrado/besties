@@ -5,7 +5,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { ROUTES } from "../../lib/routes";
 import AuthUserContext from "../layout/AuthUserContext";
 import Avatar from "./Avatar";
-import { content } from "../../lib/content/bestiesContent";
+import { bestiesContent } from "../../lib/content/bestiesContent";
 import { INPUT_TYPE, VALIDATE } from "../../lib/formValidation";
 import FormField from "../auth/FormField";
 import FormContainer from "../auth/FormContainer";
@@ -64,7 +64,7 @@ export const EditProfile = () => {
       <FormField
         error={errors?.fullName}
         inputType={INPUT_TYPE.FULL_NAME}
-        label={content.auth.fullName}
+        label={bestiesContent.auth.fullName}
         register={register}
         validate={
           authUser.fullName ? VALIDATE.FULL_NAME : VALIDATE.FULL_NAME_REQUIRED

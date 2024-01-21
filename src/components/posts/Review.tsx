@@ -1,4 +1,4 @@
-import { content } from "../../lib/content/bestiesContent";
+import { bestiesContent } from "../../lib/content/bestiesContent";
 import { PostType, UserType } from "../../lib/types";
 import getStars from "../../utils/getStars";
 import TwoUserPost from "./TwoUserPost";
@@ -20,7 +20,7 @@ const Review = ({
     hideCommentButton={hideCommentButton}
     post={post}
     subjectLineText={getStars(post.rating)}
-    verb={content.post.reviewed}
+    verb={bestiesContent.post.reviewed}
   />
 );
 export default Review;

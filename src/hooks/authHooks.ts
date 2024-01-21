@@ -16,7 +16,7 @@ import {
   query,
 } from "firebase/firestore";
 import { UserType } from "../lib/types";
-import { content } from "../lib/content/bestiesContent";
+import { bestiesContent } from "../lib/content/bestiesContent";
 import { ROUTES } from "../lib/routes";
 
 export const useAuth = (): {
@@ -95,7 +95,7 @@ export const useSignIn = () => {
       }
     } catch (error: any) {
       toast({
-        title: content.auth.signupFailed,
+        title: bestiesContent.auth.signupFailed,
         description: error?.message,
         status: "error",
         ...TOAST_PROPS,

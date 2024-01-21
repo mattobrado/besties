@@ -10,7 +10,7 @@ import {
   useDisclosure,
 } from "@chakra-ui/react";
 import RatingInput from "./RatingInput";
-import { content } from "../../lib/content/bestiesContent";
+import { bestiesContent } from "../../lib/content/bestiesContent";
 import TextareaAutosize from "react-textarea-autosize";
 import { useForm } from "react-hook-form";
 import { useAddPost } from "../../hooks/postHooks";
@@ -73,12 +73,14 @@ const NewReviewForm = () => {
         {targetUser ? (
           <InputGroup size={"lg"} onClick={onOpen}>
             <UserCard user={targetUser} onClick={onOpen} />,
-            <InputRightElement mt={2}>{content.editEmoji}</InputRightElement>
+            <InputRightElement mt={2}>
+              {bestiesContent.editEmoji}
+            </InputRightElement>
           </InputGroup>
         ) : (
           <InputGroup size={"lg"} onClick={onOpen} h={16}>
             <Input
-              placeholder={content.reviewForm.revieweeField}
+              placeholder={bestiesContent.reviewForm.revieweeField}
               _placeholder={{ color: COLORS.PLACEHOLDER }}
             />
             <InputRightElement>
@@ -93,7 +95,7 @@ const NewReviewForm = () => {
             as={TextareaAutosize}
             resize="none"
             size={"lg"}
-            placeholder={content.reviewForm.reviewField}
+            placeholder={bestiesContent.reviewForm.reviewField}
             minRows={5}
             {...register("text", VALIDATE.TEXT)}
             _placeholder={{ color: COLORS.PLACEHOLDER }}
@@ -107,9 +109,9 @@ const NewReviewForm = () => {
           size="md"
           w="full"
           isLoading={addingReview}
-          loadingText={content.submitButtonLoadingText}
+          loadingText={bestiesContent.submitButtonLoadingText}
         >
-          {content.submitButtonText}
+          {bestiesContent.submitButtonText}
         </Button>
       </Stack>
     </form>

@@ -1,4 +1,4 @@
-import { content } from "./content/bestiesContent";
+import { bestiesContent } from "./content/bestiesContent";
 
 export const INPUT_TYPE = {
   EMAIL: "email",
@@ -15,54 +15,54 @@ export const VALIDATE = {
   EMAIL: {
     required: {
       value: true,
-      message: content.auth.pleaseEnterAnEmailAddress,
+      message: bestiesContent.auth.pleaseEnterAnEmailAddress,
     },
     pattern: {
       value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-      message: content.auth.invalidEmailAddress,
+      message: bestiesContent.auth.invalidEmailAddress,
     },
   },
   PASSWORD: {
     required: {
       value: true,
-      message: content.auth.pleaseEnterPassword,
+      message: bestiesContent.auth.pleaseEnterPassword,
     },
     minLength: {
       value: 6,
-      message: content.auth.invalidPassword,
+      message: bestiesContent.auth.invalidPassword,
     },
   },
   USERNAME: {
     required: {
       value: true,
-      message: content.auth.pleaseEnterUsername,
+      message: bestiesContent.auth.pleaseEnterUsername,
     },
     minLength: {
       value: 1,
-      message: content.auth.usernameMinLength,
+      message: bestiesContent.auth.usernameMinLength,
     },
     pattern: {
       value: /^[a-zA-Z0-9]+$/,
-      message: content.auth.usernameAlphaNumeric,
+      message: bestiesContent.auth.usernameAlphaNumeric,
     },
   },
   FULL_NAME_REQUIRED: {
     required: {
       value: true,
-      message: content.auth.pleaseEnterName,
+      message: bestiesContent.auth.pleaseEnterName,
     },
     minLength: {
       value: 1,
-      message: content.auth.fullNameMinLength,
+      message: bestiesContent.auth.fullNameMinLength,
     },
   },
   FULL_NAME: {
     required: {
-      message: content.auth.pleaseEnterName,
+      message: bestiesContent.auth.pleaseEnterName,
     },
     minLength: {
       value: 1,
-      message: content.auth.fullNameMinLength,
+      message: bestiesContent.auth.fullNameMinLength,
     },
   },
   TEXT: {
@@ -72,11 +72,11 @@ export const VALIDATE = {
     },
     minLength: {
       value: 1,
-      message: content.reviewForm.reviewMinLength,
+      message: bestiesContent.reviewForm.reviewMinLength,
     },
     maxLength: {
       value: 280,
-      message: content.reviewForm.reviewMaxLength,
+      message: bestiesContent.reviewForm.reviewMaxLength,
     },
   },
 };

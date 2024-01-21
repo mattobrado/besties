@@ -1,6 +1,6 @@
 import { Text, TextProps } from "@chakra-ui/react";
 import { formatDistanceToNow } from "date-fns";
-import { content } from "../../lib/content/bestiesContent";
+import { bestiesContent } from "../../lib/content/bestiesContent";
 
 const TimeStamp = ({
   date,
@@ -10,7 +10,7 @@ const TimeStamp = ({
   textProps?: TextProps;
 }) => (
   <Text {...textProps}>
-    {formatDistanceToNow(date)} {content.post.ago}
+    {formatDistanceToNow(date)} {bestiesContent.post.ago}
   </Text>
 );
 

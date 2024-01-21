@@ -1,7 +1,7 @@
 import { Center, Container, Flex, Spacer } from "@chakra-ui/react";
 import AvatarAndFullName from "./AvatarAndFullName";
 import { UserType } from "../../lib/types";
-import { content } from "../../lib/content/bestiesContent";
+import { bestiesContent } from "../../lib/content/bestiesContent";
 import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import BackgroundContext from "../../BackGroundContext";
@@ -46,7 +46,7 @@ const UserCard = ({
         <Spacer />
         {showRating && (
           <Center fontSize={"2xl"}>
-            {user.rating?.toPrecision(2) ?? "?"} {content.starEmoji}
+            {user.rating?.toPrecision(2) ?? "?"} {bestiesContent.starEmoji}
           </Center>
         )}
       </Flex>

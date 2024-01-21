@@ -13,7 +13,7 @@ import {
 import { CloseIcon, HamburgerIcon } from "@chakra-ui/icons";
 import { useLogout } from "../../hooks/authHooks";
 import { Link as ReactRouterLink } from "react-router-dom";
-import { content } from "../../lib/content/bestiesContent";
+import { bestiesContent } from "../../lib/content/bestiesContent";
 import { ROUTES } from "../../lib/routes";
 import Avatar from "../profile/Avatar";
 import { useContext } from "react";
@@ -39,18 +39,18 @@ const TopNavBar = () => {
         ></MenuButton>
         <MenuList>
           <MenuItem as={ReactRouterLink} to={ROUTES.HOME}>
-            {content.navBar.mostPopular}
+            {bestiesContent.navBar.mostPopular}
           </MenuItem>
           <MenuDivider />
           <MenuItem as={ReactRouterLink} to={ROUTES.HIGHEST_RATED}>
-            {content.navBar.highestRated}
+            {bestiesContent.navBar.highestRated}
           </MenuItem>
           <MenuDivider />
-          <MenuItem onClick={logout}>{content.navBar.logOut}</MenuItem>
+          <MenuItem onClick={logout}>{bestiesContent.navBar.logOut}</MenuItem>
         </MenuList>
       </Menu>
       <Link as={ReactRouterLink} to={ROUTES.HOME}>
-        <Text fontSize="5xl">{content.logo}</Text>
+        <Text fontSize="5xl">{bestiesContent.logo}</Text>
       </Link>
       <Avatar user={authUser} avatarProps={{ size }} />
     </Flex>
