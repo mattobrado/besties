@@ -16,7 +16,7 @@ import {
   query,
 } from "firebase/firestore";
 import { UserType } from "../lib/types";
-import { content } from "../lib/content";
+import { content } from "../lib/content/bestiesContent";
 import { ROUTES } from "../lib/routes";
 
 export const useAuth = (): {

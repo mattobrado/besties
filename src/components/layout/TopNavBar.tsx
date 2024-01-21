@@ -13,7 +13,7 @@ import {
 import { CloseIcon, HamburgerIcon } from "@chakra-ui/icons";
 import { useLogout } from "../../hooks/authHooks";
 import { Link as ReactRouterLink } from "react-router-dom";
-import { content } from "../../lib/content";
+import { content } from "../../lib/content/bestiesContent";
 import { ROUTES } from "../../lib/routes";
 import Avatar from "../profile/Avatar";
 import { useContext } from "react";

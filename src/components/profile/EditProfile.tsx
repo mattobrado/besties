@@ -5,7 +5,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { ROUTES } from "../../lib/routes";
 import AuthUserContext from "../layout/AuthUserContext";
 import Avatar from "./Avatar";
-import { content } from "../../lib/content";
+import { content } from "../../lib/content/bestiesContent";
 import { INPUT_TYPE, VALIDATE } from "../../lib/formValidation";
 import FormField from "../auth/FormField";
 import FormContainer from "../auth/FormContainer";

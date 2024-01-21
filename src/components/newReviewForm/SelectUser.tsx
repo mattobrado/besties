@@ -2,7 +2,7 @@ import { Modal, ModalBody, ModalContent, ModalOverlay } from "@chakra-ui/react";
 import { COLORS } from "../../theme/colors";
 import { UserType } from "../../lib/types";
 import Search from "../search/Search";
-import { content } from "../../lib/content";
+import { content } from "../../lib/content/bestiesContent";
 import { GLOBAL_PX } from "../../lib/constants";
 
 export default function SelectUser({

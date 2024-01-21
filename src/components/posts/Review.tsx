@@ -1,4 +1,4 @@
-import { content } from "../../lib/content";
+import { content } from "../../lib/content/bestiesContent";
 import { PostType, UserType } from "../../lib/types";
 import getStars from "../../utils/getStars";
 import TwoUserPost from "./TwoUserPost";

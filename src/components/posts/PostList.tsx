@@ -1,7 +1,7 @@
 import { Text } from "@chakra-ui/react";
 import { PostType, UserType } from "../../lib/types";
 import Review from "./Review";
-import { content } from "../../lib/content";
+import { content } from "../../lib/content/bestiesContent";
 import Comment from "../comments/Comment";
 
 export const PostList = ({

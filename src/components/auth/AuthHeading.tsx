@@ -1,5 +1,5 @@
 import { Stack, Heading, Text, Link } from "@chakra-ui/react";
-import { content } from "../../lib/content";
+import { content } from "../../lib/content/bestiesContent";
 import { Link as ReactRouterLink } from "react-router-dom";
 
 export const AuthHeading = ({

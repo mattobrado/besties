@@ -14,7 +14,7 @@ import {
 } from "@chakra-ui/react";
 import { useForm } from "react-hook-form";
 import FormContainer from "./FormContainer";
-import { content } from "../../lib/content";
+import { content } from "../../lib/content/bestiesContent";
 import PhoneInput from "react-phone-number-input/input";
 import { useSignIn } from "../../hooks/authHooks";
 import { BACKGROUNDS } from "../../theme/colors";

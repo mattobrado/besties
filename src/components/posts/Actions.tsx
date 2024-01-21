@@ -13,7 +13,7 @@ import {
   useDisclosure,
 } from "@chakra-ui/react";
 import { PostType, UserType } from "../../lib/types";
-import { content } from "../../lib/content";
+import { content } from "../../lib/content/bestiesContent";
 import { useDeletePost, useToggleLike } from "../../hooks/postHooks";
 import { ROUTES } from "../../lib/routes";
 import ActionButton from "./ActionButton";

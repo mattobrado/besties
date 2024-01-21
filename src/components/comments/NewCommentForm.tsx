@@ -1,5 +1,5 @@
 import { Box, Button, Flex, FormControl, Input } from "@chakra-ui/react";
-import { content } from "../../lib/content";
+import { content } from "../../lib/content/bestiesContent";
 import TextareaAutosize from "react-textarea-autosize";
 import { useForm } from "react-hook-form";
 import { VALIDATE } from "../../lib/formValidation";

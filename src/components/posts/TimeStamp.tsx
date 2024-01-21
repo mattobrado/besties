@@ -1,6 +1,6 @@
 import { Text, TextProps } from "@chakra-ui/react";
 import { formatDistanceToNow } from "date-fns";
-import { content } from "../../lib/content";
+import { content } from "../../lib/content/bestiesContent";
 
 const TimeStamp = ({
   date,
