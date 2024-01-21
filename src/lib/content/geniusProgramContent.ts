@@ -1,5 +1,5 @@
 export const geniusProgramContent = {
-  logo: "👯‍♀️",
+  logo: "",
   editEmoji: "✏️",
   starEmoji: "⭐️",
   homeEmoji: "🏠",
@@ -8,7 +8,7 @@ export const geniusProgramContent = {
   submitButtonText: "post",
   submitButtonLoadingText: "posting...",
   auth: {
-    appName: "besties 👯‍♀️",
+    appName: "The Genius Program",
     createAnAccount: "create an account",
     dontHaveAnAccount: "don't have an account?",
     emailAddress: "email",

@@ -5,7 +5,7 @@ import LoadingScreen from "../LoadingScreen";
 import { BottomNavBar } from "./BottomNavBar";
 import TopNavBar from "./TopNavBar";
 import { ROUTES } from "../../lib/routes";
-import { Box, Container } from "@chakra-ui/react";
+import { Box, Container, Image } from "@chakra-ui/react";
 import { BOTTOM_NAV_HEIGHT, GLOBAL_PX } from "../../lib/constants";
 import AuthUserContext from "./AuthUserContext";
 import { BACKGROUNDS } from "../../theme/colors";
@@ -43,6 +43,7 @@ const Layout = () => {
           <ContentContext.Provider value={geniusProgramContent}>
             <AuthUserContext.Provider value={authUser}>
               <Container px={GLOBAL_PX}>
+                <Image src="src/lib/content/the-genius-program-high-resolution-logo.png" />
                 <TopNavBar />
                 <Box pb={BOTTOM_NAV_HEIGHT}>
                   {isLoading ? <LoadingScreen /> : <Outlet />}
