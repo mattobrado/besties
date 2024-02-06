@@ -27,7 +27,7 @@ const Home = () => {
   return (
     <>
       <Image src={content.home.homeScreenImage} />
-      <Stack p={4}>
+      <Stack p={4} spacing={2}>
         <Heading
           style={{
             color: `${HEX_COLORS.THE_GENIUS_PROGRAM_PRIMARY}`,
@@ -39,17 +39,14 @@ const Home = () => {
           The Genius Program is a highly selective society which provides its
           members with exciting opportunities for intellectual stimulation.
         </Text>
-        <Text>
-          Activities include:
-          <UnorderedList pl={7}>
-            <ListItem>The lively exchange of ideas through lectures;</ListItem>
-            <ListItem>Stimulating discussions and debates;</ListItem>
-            <ListItem>
-              Thought-provoking investigations of members' opinions and
-              attitudes.
-            </ListItem>
-          </UnorderedList>
-        </Text>
+        <Text>Activities include:</Text>
+        <UnorderedList pl={7}>
+          <ListItem>The lively exchange of ideas through lectures;</ListItem>
+          <ListItem>Stimulating discussions and debates;</ListItem>
+          <ListItem>
+            Thought-provoking investigations of members' opinions and attitudes.
+          </ListItem>
+        </UnorderedList>
         {config.showPostsOnHomeScreen &&
           (posts ? (
             <PostList
