@@ -42,17 +42,11 @@ const Home = () => {
         <Text>
           Activities include:
           <UnorderedList pl={7}>
+            <ListItem>The lively exchange of ideas through lectures;</ListItem>
+            <ListItem>Stimulating discussions and debates;</ListItem>
             <ListItem>
-              The lively exchange of ideas through lectures, journals, and
-              special-interest groups;
-            </ListItem>
-            <ListItem>
-              Stimulating discussions and debates at local, regional, national,
-              and international gatherings;
-            </ListItem>
-            <ListItem>
-              Valuable assistance to researchers, inside and outside Mensa, in
-              projects dealing with intelligence and Mensa.
+              Thought-provoking investigations of members' opinions and
+              attitudes.
             </ListItem>
           </UnorderedList>
         </Text>
