@@ -4,55 +4,73 @@ import {
   Menu,
   MenuButton,
   MenuList,
-  MenuItem,
   MenuDivider,
-  useDisclosure,
-  Text,
-  Link,
+  Button,
+  HStack,
+  Box,
 } from "@chakra-ui/react";
 import { CloseIcon, HamburgerIcon } from "@chakra-ui/icons";
-import { useLogout } from "../../hooks/authHooks";
-import { Link as ReactRouterLink } from "react-router-dom";
-import { content } from "../../lib/content";
-import { ROUTES } from "../../lib/routes";
-import Avatar from "../profile/Avatar";
 import { useContext } from "react";
-import AuthUserContext from "./AuthUserContext";
+import { COLORS, HEX_COLORS } from "../../theme/colors";
+import GenericNavBarItem from "./navBarItems/GenericNavBarItem";
+import ConfigContext from "./ConfigProvider";
+import { NUM_ITEMS_OUT_OF_HAMBURGER } from "../../lib/constants";
 
 const TopNavBar = () => {
-  const { isOpen, onOpen, onClose } = useDisclosure();
-  const { logout } = useLogout();
-  const authUser = useContext(AuthUserContext);
+  const config = useContext(ConfigContext);
 
-  const size = "md";
+  const { navBarItems } = config;
+
+  const itemsOutOfHamburger = navBarItems.slice(0, NUM_ITEMS_OUT_OF_HAMBURGER);
+  const itemsInHamburger = navBarItems.slice(NUM_ITEMS_OUT_OF_HAMBURGER);
 
   return (
-    <Flex pb={4} h={20} alignItems={"center"} justifyContent={"space-between"}>
-      <Menu>
-        <MenuButton
-          as={IconButton}
-          icon={isOpen ? <CloseIcon /> : <HamburgerIcon boxSize={10} />}
-          aria-label={"open menu"}
-          onClick={isOpen ? onClose : onOpen}
-          variant="customGhost"
-          size={size}
-        ></MenuButton>
-        <MenuList>
-          <MenuItem as={ReactRouterLink} to={ROUTES.HOME}>
-            {content.navBar.mostPopular}
-          </MenuItem>
-          <MenuDivider />
-          <MenuItem as={ReactRouterLink} to={ROUTES.HIGHEST_RATED}>
-            {content.navBar.highestRated}
-          </MenuItem>
-          <MenuDivider />
-          <MenuItem onClick={logout}>{content.navBar.logOut}</MenuItem>
-        </MenuList>
-      </Menu>
-      <Link as={ReactRouterLink} to={ROUTES.HOME}>
-        <Text fontSize="5xl">{content.logo}</Text>
-      </Link>
-      <Avatar user={authUser} avatarProps={{ size }} />
+    <Flex
+      style={{ backgroundColor: `${HEX_COLORS.THE_GENIUS_PROGRAM_PRIMARY}` }}
+      h={12}
+      alignItems={"center"}
+      justifyContent={"space-between"}
+    >
+      <HStack>
+        {itemsOutOfHamburger.map((item) => (
+          <GenericNavBarItem
+            label={item.label}
+            to={item.to}
+            isLogout={item.isLogout}
+          />
+        ))}
+        <Button as={Menu}></Button>
+        <Box>
+          <Menu>
+            {({ isOpen }) => (
+              <>
+                <MenuButton
+                  isActive={isOpen}
+                  as={IconButton}
+                  aria-label={"open menu"}
+                  variant="ghost"
+                >
+                  {isOpen ? <CloseIcon /> : <HamburgerIcon boxSize={7} />}
+                </MenuButton>
+                <MenuList bg={COLORS.BACKGROUND}>
+                  {itemsInHamburger?.map((item, index) => (
+                    <>
+                      <GenericNavBarItem
+                        label={item.label}
+                        to={item.to}
+                        isLogout={item.isLogout}
+                      />
+                      {index === itemsInHamburger.length - 1 ? undefined : (
+                        <MenuDivider />
+                      )}
+                    </>
+                  ))}
+                </MenuList>
+              </>
+            )}
+          </Menu>
+        </Box>
+      </HStack>
     </Flex>
   );
 };

@@ -21,7 +21,7 @@ import { useState } from "react";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { useNavigate } from "react-router-dom";
 import getNewRating from "../utils/getNewRating";
-import { ROUTES } from "../lib/routes";
+import { ROUTES } from "../lib/constants";
 
 export const useUser = (
   id?: string
@@ -148,14 +148,14 @@ export const useFriendRequest = () => {
 export const useFriendRequestUsers = (
   friendRequestsReceivedUids?: string[]
 ) => {
-  if (!friendRequestsReceivedUids || friendRequestsReceivedUids.length === 0) {
-    return { users: [], isloading: false };
-  }
   const q = query(
     collection(db, COLLECTIONS.USERS),
     where("id", "in", friendRequestsReceivedUids)
   );
   const [users, isLoading, error] = useCollectionData(q);
+  if (!friendRequestsReceivedUids || friendRequestsReceivedUids.length === 0) {
+    return { users: [], isloading: false };
+  }
   if (error) throw error;
   return { users: <UserType[]>users, isLoading };
 };

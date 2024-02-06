@@ -4,7 +4,7 @@ import Search from "./Search";
 
 const SearchPage = () => {
   const setBackground = useContext(BackgroundContext);
-  useEffect(() => setBackground(), []);
+  useEffect(() => setBackground(), [setBackground]);
 
   return <Search />;
 };

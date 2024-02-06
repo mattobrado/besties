@@ -2,10 +2,10 @@ import { FormControl, FormLabel, Input } from "@chakra-ui/react";
 import { useUpdateUser } from "../../hooks/userHooks";
 import { useContext, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { ROUTES } from "../../lib/routes";
+import { ROUTES } from "../../lib/constants";
 import AuthUserContext from "../layout/AuthUserContext";
 import Avatar from "./Avatar";
-import { content } from "../../lib/content";
+import { bestiesContent } from "../../lib/content/bestiesContent";
 import { INPUT_TYPE, VALIDATE } from "../../lib/formValidation";
 import FormField from "../auth/FormField";
 import FormContainer from "../auth/FormContainer";
@@ -52,7 +52,7 @@ export const EditProfile = () => {
         loadingText: "updating",
       }}
     >
-      <Avatar user={authUser} overrideAvatar={fileURL as any} />
+      <Avatar user={authUser} overrideAvatar={fileURL ?? undefined} />
       <FormControl py="4">
         <FormLabel htmlFor="picture">Change avatar</FormLabel>
         <input
@@ -64,7 +64,7 @@ export const EditProfile = () => {
       <FormField
         error={errors?.fullName}
         inputType={INPUT_TYPE.FULL_NAME}
-        label={content.auth.fullName}
+        label={bestiesContent.auth.fullName}
         register={register}
         validate={
           authUser.fullName ? VALIDATE.FULL_NAME : VALIDATE.FULL_NAME_REQUIRED

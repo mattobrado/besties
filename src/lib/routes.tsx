@@ -9,21 +9,10 @@ import SearchPage from "../components/search/SearchPage";
 import PhoneAuth from "../components/auth/PhoneAuth";
 import EditProfile from "../components/profile/EditProfile";
 import Notifications from "../components/notifications/Notifications";
+import GeniusProgram from "../components/geniusProgram/GeniusProgram";
+import { ROUTES } from "./constants";
 
-const PROTECTED = "/p";
-
-export const ROUTES = {
-  PROTECTED,
-  ROOT: "/",
-  PROFILE: PROTECTED + "/u",
-  HIGHEST_RATED: PROTECTED + "/top-users",
-  HOME: PROTECTED + "/home",
-  POST: PROTECTED + "/post",
-  ADD_REVIEW: PROTECTED + "/review",
-  SEARCH: PROTECTED + "/search",
-  EDIT_PROFILE: PROTECTED + "/edit-profile",
-  NOTIFICATIONS: PROTECTED + "/notifications",
-};
+const idString = "/:id";
 
 export const router = createBrowserRouter([
   { path: ROUTES.ROOT, element: <PhoneAuth /> },
@@ -32,7 +21,7 @@ export const router = createBrowserRouter([
     element: <Layout />,
     children: [
       {
-        path: ROUTES.PROFILE + "/:id",
+        path: ROUTES.PROFILE + idString,
         element: <Profile />,
       },
       {
@@ -48,7 +37,7 @@ export const router = createBrowserRouter([
         element: <SearchPage />,
       },
       {
-        path: ROUTES.POST + "/:id",
+        path: ROUTES.POST + idString,
         element: <Comments />,
       },
       {
@@ -60,8 +49,12 @@ export const router = createBrowserRouter([
         element: <Notifications />,
       },
       {
-        path: ROUTES.EDIT_PROFILE + "/:id",
+        path: ROUTES.EDIT_PROFILE + idString,
         element: <EditProfile />,
+      },
+      {
+        path: ROUTES.GENIUS_PROGRAM_HOME,
+        element: <GeniusProgram />,
       },
     ],
   },
