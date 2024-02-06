@@ -80,4 +80,5 @@ export const bestiesContent = {
   lists: {
     highestRatedHeading: "best people",
   },
+  home: { homeScreenImage: "", heading: "" },
 };
