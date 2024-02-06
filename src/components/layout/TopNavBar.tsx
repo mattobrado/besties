@@ -31,7 +31,7 @@ const TopNavBar = () => {
       alignItems={"center"}
       justifyContent={"space-between"}
     >
-      <HStack>
+      <HStack px={1}>
         {itemsOutOfHamburger.map((item) => (
           <GenericNavBarItem
             label={item.label}
@@ -39,37 +39,34 @@ const TopNavBar = () => {
             // isLogout={item.isLogout}
           />
         ))}
-        <Button as={Menu}></Button>
-        <Box>
-          <Menu>
-            {({ isOpen }) => (
-              <>
-                <MenuButton
-                  isActive={isOpen}
-                  as={IconButton}
-                  aria-label={"open menu"}
-                  variant="ghost"
-                >
-                  {isOpen ? <CloseIcon /> : <HamburgerIcon boxSize={7} />}
-                </MenuButton>
-                <MenuList bg={COLORS.BACKGROUND}>
-                  {itemsInHamburger?.map((item, index) => (
-                    <>
-                      <GenericNavBarItem
-                        label={item.label}
-                        to={item.to}
-                        // isLogout={item.isLogout}
-                      />
-                      {index === itemsInHamburger.length - 1 ? undefined : (
-                        <MenuDivider />
-                      )}
-                    </>
-                  ))}
-                </MenuList>
-              </>
-            )}
-          </Menu>
-        </Box>
+        <Menu>
+          {({ isOpen }) => (
+            <>
+              <MenuButton
+                isActive={isOpen}
+                as={IconButton}
+                aria-label={"open menu"}
+                variant="ghost"
+              >
+                {isOpen ? <CloseIcon /> : <HamburgerIcon boxSize={6} />}
+              </MenuButton>
+              <MenuList bg={COLORS.BACKGROUND}>
+                {itemsInHamburger?.map((item, index) => (
+                  <>
+                    <GenericNavBarItem
+                      label={item.label}
+                      to={item.to}
+                      // isLogout={item.isLogout}
+                    />
+                    {index === itemsInHamburger.length - 1 ? undefined : (
+                      <MenuDivider />
+                    )}
+                  </>
+                ))}
+              </MenuList>
+            </>
+          )}
+        </Menu>
       </HStack>
     </Flex>
   );
