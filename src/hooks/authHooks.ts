@@ -1,7 +1,7 @@
 import { useAuthState, useSignOut } from "react-firebase-hooks/auth";
 import { auth, db } from "../lib/firebase";
 import { useEffect, useState } from "react";
-import { COLLECTIONS, TOAST_PROPS } from "../lib/constants";
+import { COLLECTIONS, ROUTES, TOAST_PROPS } from "../lib/constants";
 import { User } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import { useToast } from "@chakra-ui/react";
@@ -17,7 +17,6 @@ import {
 } from "firebase/firestore";
 import { UserType } from "../lib/types";
 import { bestiesContent } from "../lib/content/bestiesContent";
-import { ROUTES } from "../lib/routes";
 
 export const useAuth = (): {
   authUser?: UserType;

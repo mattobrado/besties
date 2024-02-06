@@ -2,7 +2,7 @@ import { FormControl, FormLabel, Input } from "@chakra-ui/react";
 import { useUpdateUser } from "../../hooks/userHooks";
 import { useContext, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { ROUTES } from "../../lib/routes";
+import { ROUTES } from "../../lib/constants";
 import AuthUserContext from "../layout/AuthUserContext";
 import Avatar from "./Avatar";
 import { bestiesContent } from "../../lib/content/bestiesContent";

@@ -5,9 +5,9 @@ import NewCommentForm from "./NewCommentForm";
 import PostList from "../posts/PostList";
 import { useComments } from "../../hooks/commentHooks";
 import { Container } from "@chakra-ui/react";
-import { ROUTES } from "../../lib/routes";
 import { useContext } from "react";
 import AuthUserContext from "../layout/AuthUserContext";
+import { ROUTES } from "../../lib/constants";
 
 const Comments = () => {
   const { id } = useParams();

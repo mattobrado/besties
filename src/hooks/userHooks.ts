@@ -21,7 +21,7 @@ import { useState } from "react";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { useNavigate } from "react-router-dom";
 import getNewRating from "../utils/getNewRating";
-import { ROUTES } from "../lib/routes";
+import { ROUTES } from "../lib/constants";
 
 export const useUser = (
   id?: string

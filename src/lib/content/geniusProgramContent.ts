@@ -1,4 +1,4 @@
-export const geniusProgramContent = {
+export const THE_GENIUS_PROGRAM_CONTENT = {
   logo: "",
   editEmoji: "✏️",
   starEmoji: "⭐️",
@@ -55,6 +55,8 @@ export const geniusProgramContent = {
     seeAllUsers: "👥 make friends",
     goToProfile: "👤 my profile",
     newReview: "review",
+    logoSrcURL:
+      "src/lib/content/the-genius-program-high-resolution-logo-transparent.png",
   },
   reviewForm: {
     revieweeField: "who are you reviewing?",

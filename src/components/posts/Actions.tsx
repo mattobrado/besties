@@ -15,7 +15,7 @@ import {
 import { PostType, UserType } from "../../lib/types";
 import { bestiesContent } from "../../lib/content/bestiesContent";
 import { useDeletePost, useToggleLike } from "../../hooks/postHooks";
-import { ROUTES } from "../../lib/routes";
+import { ROUTES } from "../../lib/constants";
 import ActionButton from "./ActionButton";
 import React from "react";
 import { COLORS } from "../../theme/colors";

@@ -17,7 +17,6 @@ import { useAddPost } from "../../hooks/postHooks";
 import { useContext, useEffect, useState } from "react";
 import { VALIDATE } from "../../lib/formValidation";
 import { PostType, UserType } from "../../lib/types";
-import { ROUTES } from "../../lib/routes";
 import { useNavigate } from "react-router-dom";
 import SelectUser from "./SelectUser";
 import UserCard from "../profile/UserCard";
@@ -25,6 +24,7 @@ import { COLORS } from "../../theme/colors";
 import { TfiSearch } from "react-icons/tfi";
 import BackgroundContext from "../../BackGroundContext";
 import AuthUserContext from "../layout/AuthUserContext";
+import { ROUTES } from "../../lib/constants";
 
 const NewReviewForm = () => {
   const {

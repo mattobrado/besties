@@ -5,7 +5,7 @@ import { bestiesContent } from "../../lib/content/bestiesContent";
 import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import BackgroundContext from "../../BackGroundContext";
-import { ROUTES } from "../../lib/routes";
+import { ROUTES } from "../../lib/constants";
 
 const UserCard = ({
   user,

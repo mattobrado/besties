@@ -10,22 +10,7 @@ import PhoneAuth from "../components/auth/PhoneAuth";
 import EditProfile from "../components/profile/EditProfile";
 import Notifications from "../components/notifications/Notifications";
 import GeniusProgram from "../components/geniusProgram/GeniusProgram";
-
-const PROTECTED = "/p";
-
-export const ROUTES = {
-  PROTECTED,
-  ROOT: "/",
-  GENIUS_PROGRAM_HOME: "/genius",
-  PROFILE: PROTECTED + "/u",
-  HIGHEST_RATED: PROTECTED + "/top-users",
-  HOME: PROTECTED + "/home",
-  POST: PROTECTED + "/post",
-  ADD_REVIEW: PROTECTED + "/review",
-  SEARCH: PROTECTED + "/search",
-  EDIT_PROFILE: PROTECTED + "/edit-profile",
-  NOTIFICATIONS: PROTECTED + "/notifications",
-};
+import { ROUTES } from "./constants";
 
 const idString = "/:id";
 

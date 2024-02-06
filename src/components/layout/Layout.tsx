@@ -1,18 +1,25 @@
 import { useEffect, useState } from "react";
 import { Outlet, useLocation, useNavigate } from "react-router-dom";
-import { useAuth } from "../../hooks/authHooks";
+import { useAuth, useLogout } from "../../hooks/authHooks";
 import LoadingScreen from "../LoadingScreen";
 import { BottomNavBar } from "./BottomNavBar";
 import TopNavBar from "./TopNavBar";
-import { ROUTES } from "../../lib/routes";
-import { Box, Container, Image } from "@chakra-ui/react";
-import { BOTTOM_NAV_HEIGHT, GLOBAL_PX } from "../../lib/constants";
+import { Box, Container, Image, MenuItem } from "@chakra-ui/react";
+import {
+  BOTTOM_NAV_HEIGHT,
+  GLOBAL_PX,
+  LOGO_HEIGHT,
+  ROUTES,
+} from "../../lib/constants";
 import AuthUserContext from "./AuthUserContext";
 import { BACKGROUNDS } from "../../theme/colors";
 import getBackground from "../../utils/getBackground";
 import BackgroundContext from "../../BackGroundContext";
 import ContentContext from "./ContentProvider";
-import { geniusProgramContent } from "../../lib/content/geniusProgramContent";
+import { THE_GENIUS_PROGRAM_CONTENT } from "../../lib/content/geniusProgramContent";
+import { Link as ReactRouterLink } from "react-router-dom";
+import THE_GENIUS_PROGRAM_CONFIG from "../../lib/content/theGeniusProgramConfig";
+import ConfigContext from "./ConfigProvider";
 
 const Layout = () => {
   const { pathname } = useLocation();
@@ -31,6 +38,9 @@ const Layout = () => {
     setBackground(getBackground(color));
   };
 
+  const content = THE_GENIUS_PROGRAM_CONTENT;
+  const config = THE_GENIUS_PROGRAM_CONFIG;
+
   return (
     authUser && (
       <Box
@@ -40,18 +50,22 @@ const Layout = () => {
         }}
       >
         <BackgroundContext.Provider value={setBackgroundForUser}>
-          <ContentContext.Provider value={geniusProgramContent}>
-            <AuthUserContext.Provider value={authUser}>
-              <Container px={GLOBAL_PX}>
-                <Image src="src/lib/content/the-genius-program-high-resolution-logo.png" />
-                <TopNavBar />
-                <Box pb={BOTTOM_NAV_HEIGHT}>
-                  {isLoading ? <LoadingScreen /> : <Outlet />}
-                </Box>
-                <BottomNavBar />
-              </Container>
-            </AuthUserContext.Provider>
-          </ContentContext.Provider>
+          <ConfigContext.Provider value={THE_GENIUS_PROGRAM_CONFIG}>
+            <ContentContext.Provider value={content}>
+              <AuthUserContext.Provider value={authUser}>
+                <Container px={GLOBAL_PX}>
+                  <Box p={4}>
+                    <Image src={content.navBar.logoSrcURL} h={LOGO_HEIGHT} />
+                  </Box>
+                  <TopNavBar />
+                  <Box pb={BOTTOM_NAV_HEIGHT}>
+                    {isLoading ? <LoadingScreen /> : <Outlet />}
+                  </Box>
+                  {config.showBottomNavBar && <BottomNavBar />}
+                </Container>
+              </AuthUserContext.Provider>
+            </ContentContext.Provider>
+          </ConfigContext.Provider>
         </BackgroundContext.Provider>
       </Box>
     )

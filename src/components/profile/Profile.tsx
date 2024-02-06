@@ -4,7 +4,7 @@ import { useFriendRequest, useUser } from "../../hooks/userHooks";
 import getStars from "../../utils/getStars";
 import ProfilePosts from "./ProfilePosts";
 import AvatarInAvatar from "./AvatarInAvatar";
-import { ROUTES } from "../../lib/routes";
+import { ROUTES } from "../../lib/constants";
 import { useContext, useEffect } from "react";
 import AuthUserContext from "../layout/AuthUserContext";
 import ProfileButton from "./ProfileButton";
