@@ -9,17 +9,18 @@ import SearchPage from "../components/search/SearchPage";
 import PhoneAuth from "../components/auth/PhoneAuth";
 import EditProfile from "../components/profile/EditProfile";
 import Notifications from "../components/notifications/Notifications";
-import GeniusProgram from "../components/geniusProgram/GeniusProgram";
+import TheGeniusProgram from "../components/geniusProgram/GeniusProgram";
 import { ROUTES } from "./constants";
 
 const idString = "/:id";
 
 export const router = createBrowserRouter([
-  { path: ROUTES.ROOT, element: <PhoneAuth /> },
+  { path: ROUTES.LOGIN, element: <PhoneAuth /> },
   {
     path: ROUTES.ROOT,
     element: <Layout />,
     children: [
+      { path: ROUTES.ROOT, element: <TheGeniusProgram /> },
       {
         path: ROUTES.PROFILE + idString,
         element: <Profile />,
@@ -51,10 +52,6 @@ export const router = createBrowserRouter([
       {
         path: ROUTES.EDIT_PROFILE + idString,
         element: <EditProfile />,
-      },
-      {
-        path: ROUTES.GENIUS_PROGRAM_HOME,
-        element: <GeniusProgram />,
       },
     ],
   },

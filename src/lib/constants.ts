@@ -6,7 +6,7 @@ const PROTECTED = "/p";
 export const ROUTES = {
   PROTECTED,
   ROOT: "/",
-  GENIUS_PROGRAM_HOME: "/genius",
+  LOGIN: "/login",
   PROFILE: PROTECTED + "/u",
   HIGHEST_RATED: PROTECTED + "/top-users",
   HOME: PROTECTED + "/home",
