@@ -16,7 +16,7 @@ import { BACKGROUNDS } from "../../theme/colors";
 import getBackground from "../../utils/getBackground";
 import BackgroundContext from "../../BackGroundContext";
 import ContentContext from "./ContentProvider";
-import { THE_GENIUS_PROGRAM_CONTENT } from "../../lib/content/geniusProgramContent";
+import { THE_GENIUS_PROGRAM_CONTENT } from "../../lib/content/theGeniusProgramContent";
 import THE_GENIUS_PROGRAM_CONFIG from "../../lib/content/theGeniusProgramConfig";
 import ConfigContext from "./ConfigProvider";
 
@@ -50,7 +50,7 @@ const Layout = () => {
       >
         <BackgroundContext.Provider value={setBackgroundForUser}>
           <ConfigContext.Provider value={THE_GENIUS_PROGRAM_CONFIG}>
-            <ContentContext.Provider value={content}>
+            <ContentContext.Provider value={content as any}>
               <AuthUserContext.Provider value={authUser}>
                 <Container px={GLOBAL_PX}>
                   <Box p={4}>

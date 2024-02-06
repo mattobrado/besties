@@ -9,7 +9,6 @@ import SearchPage from "../components/search/SearchPage";
 import PhoneAuth from "../components/auth/PhoneAuth";
 import EditProfile from "../components/profile/EditProfile";
 import Notifications from "../components/notifications/Notifications";
-import TheGeniusProgram from "../components/geniusProgram/GeniusProgram";
 import { ROUTES } from "./constants";
 
 const idString = "/:id";
@@ -20,7 +19,7 @@ export const router = createBrowserRouter([
     path: ROUTES.ROOT,
     element: <Layout />,
     children: [
-      { path: ROUTES.ROOT, element: <TheGeniusProgram /> },
+      { path: ROUTES.ROOT, element: <Home /> },
       {
         path: ROUTES.PROFILE + idString,
         element: <Profile />,

@@ -3,6 +3,7 @@ import { bestiesContent } from "./bestiesContent";
 
 const THE_GENIUS_PROGRAM_CONFIG = {
   showBottomNavBar: false,
+  showPostsOnHomeScreen: false,
   navBarItems: [
     { label: "ABOUT US", to: "" },
     { label: "GENIUS IQ TEST", to: "" },
