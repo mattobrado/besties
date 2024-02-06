@@ -47,7 +47,7 @@ function CustomSearchBox(
           autoCorrect="off"
           autoCapitalize="off"
           placeholder={props.placeholderText}
-          _placeholder={{ color: COLORS.PLACEHOLDER }}
+          _placeholder={{ color: COLORS.BACKGROUND }}
           spellCheck={false}
           maxLength={512}
           value={inputValue}
