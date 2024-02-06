@@ -40,7 +40,7 @@ export const useAuth = (): {
       if (authUser) fetchData(authUser);
       else setLoading(false); // Not signed in
     }
-  }, [authLoading]);
+  }, [authLoading, authUser]);
 
   return { authUser: <UserType>user, isLoading, error };
 };

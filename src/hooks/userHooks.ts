@@ -26,7 +26,7 @@ import { ROUTES } from "../lib/constants";
 export const useUser = (
   id: string
 ): { user?: UserType; isLoading: boolean; isError?: FirestoreError } => {
-  const q = query(doc(db, COLLECTIONS.USERS, id) as any);
+  const q = query(doc(db, COLLECTIONS.USERS, id));
   const [user, isLoading, isError] = useDocumentData(q);
   return { user: <UserType>user, isLoading, isError };
 };
