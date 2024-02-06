@@ -131,7 +131,7 @@ const PhoneAuth = () => {
                 <Input
                   as={PhoneInput}
                   country="US"
-                  placeholder="phone number"
+                  placeholder={content.auth.phoneNumberPlaceHolder}
                   value={phoneNumber}
                   onChange={setPhoneNumber as any}
                 />

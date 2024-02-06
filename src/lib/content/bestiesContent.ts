@@ -46,6 +46,7 @@ export const bestiesContent = {
     usernameAlphaNumeric: "username must be alphanumeric",
     fullNameAlphaNumeric: "name must be alphanumeric",
     usernameTaken: "username already exists",
+    phoneNumberPlaceHolder: "phone number",
   },
   navBar: {
     highestRated: "⭐️ highest rated",
