@@ -1,7 +1,7 @@
 import { useAuthState, useSignOut } from "react-firebase-hooks/auth";
 import { auth, db } from "../lib/firebase";
 import { useEffect, useState } from "react";
-import { COLLECTIONS, TOAST_PROPS } from "../lib/constants";
+import { COLLECTIONS, ROUTES, TOAST_PROPS } from "../lib/constants";
 import { User } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import { useToast } from "@chakra-ui/react";
@@ -16,8 +16,7 @@ import {
   query,
 } from "firebase/firestore";
 import { UserType } from "../lib/types";
-import { content } from "../lib/content";
-import { ROUTES } from "../lib/routes";
+import { bestiesContent } from "../lib/content/bestiesContent";
 
 export const useAuth = (): {
   authUser?: UserType;
@@ -41,7 +40,7 @@ export const useAuth = (): {
       if (authUser) fetchData(authUser);
       else setLoading(false); // Not signed in
     }
-  }, [authLoading]);
+  }, [authLoading, authUser]);
 
   return { authUser: <UserType>user, isLoading, error };
 };
@@ -95,7 +94,7 @@ export const useSignIn = () => {
       }
     } catch (error: any) {
       toast({
-        title: content.auth.signupFailed,
+        title: bestiesContent.auth.signupFailed,
         description: error?.message,
         status: "error",
         ...TOAST_PROPS,

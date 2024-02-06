@@ -4,13 +4,21 @@ import { useAuth } from "../../hooks/authHooks";
 import LoadingScreen from "../LoadingScreen";
 import { BottomNavBar } from "./BottomNavBar";
 import TopNavBar from "./TopNavBar";
-import { ROUTES } from "../../lib/routes";
-import { Box, Container } from "@chakra-ui/react";
-import { BOTTOM_NAV_HEIGHT, GLOBAL_PX } from "../../lib/constants";
+import { Box, Container, Image } from "@chakra-ui/react";
+import {
+  BOTTOM_NAV_HEIGHT,
+  GLOBAL_PX,
+  LOGO_HEIGHT,
+  ROUTES,
+} from "../../lib/constants";
 import AuthUserContext from "./AuthUserContext";
 import { BACKGROUNDS } from "../../theme/colors";
 import getBackground from "../../utils/getBackground";
 import BackgroundContext from "../../BackGroundContext";
+import ContentContext from "./ContentProvider";
+import { THE_GENIUS_PROGRAM_CONTENT } from "../../lib/content/geniusProgramContent";
+import THE_GENIUS_PROGRAM_CONFIG from "../../lib/content/theGeniusProgramConfig";
+import ConfigContext from "./ConfigProvider";
 
 const Layout = () => {
   const { pathname } = useLocation();
@@ -29,6 +37,9 @@ const Layout = () => {
     setBackground(getBackground(color));
   };
 
+  const content = THE_GENIUS_PROGRAM_CONTENT;
+  const config = THE_GENIUS_PROGRAM_CONFIG;
+
   return (
     authUser && (
       <Box
@@ -38,15 +49,22 @@ const Layout = () => {
         }}
       >
         <BackgroundContext.Provider value={setBackgroundForUser}>
-          <AuthUserContext.Provider value={authUser}>
-            <Container px={GLOBAL_PX}>
-              <TopNavBar />
-              <Box pb={BOTTOM_NAV_HEIGHT}>
-                {isLoading ? <LoadingScreen /> : <Outlet />}
-              </Box>
-              <BottomNavBar />
-            </Container>
-          </AuthUserContext.Provider>
+          <ConfigContext.Provider value={THE_GENIUS_PROGRAM_CONFIG}>
+            <ContentContext.Provider value={content}>
+              <AuthUserContext.Provider value={authUser}>
+                <Container px={GLOBAL_PX}>
+                  <Box p={4}>
+                    <Image src={content.navBar.logoSrcURL} h={LOGO_HEIGHT} />
+                  </Box>
+                  <TopNavBar />
+                  <Box pb={BOTTOM_NAV_HEIGHT}>
+                    {isLoading ? <LoadingScreen /> : <Outlet />}
+                  </Box>
+                  {config.showBottomNavBar && <BottomNavBar />}
+                </Container>
+              </AuthUserContext.Provider>
+            </ContentContext.Provider>
+          </ConfigContext.Provider>
         </BackgroundContext.Provider>
       </Box>
     )

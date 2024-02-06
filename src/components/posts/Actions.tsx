@@ -13,9 +13,9 @@ import {
   useDisclosure,
 } from "@chakra-ui/react";
 import { PostType, UserType } from "../../lib/types";
-import { content } from "../../lib/content";
+import { bestiesContent } from "../../lib/content/bestiesContent";
 import { useDeletePost, useToggleLike } from "../../hooks/postHooks";
-import { ROUTES } from "../../lib/routes";
+import { ROUTES } from "../../lib/constants";
 import ActionButton from "./ActionButton";
 import React from "react";
 import { COLORS } from "../../theme/colors";
@@ -81,21 +81,21 @@ const Actions = ({
             <AlertDialogOverlay>
               <AlertDialogContent bg={COLORS.BACKGROUND}>
                 <AlertDialogHeader fontSize="lg" fontWeight="bold">
-                  {content.post.deleteReviewHeading}
+                  {bestiesContent.post.deleteReviewHeading}
                 </AlertDialogHeader>
                 <AlertDialogBody>
-                  {content.post.deleteReviewBody}
+                  {bestiesContent.post.deleteReviewBody}
                 </AlertDialogBody>
                 <AlertDialogFooter>
                   <Button ref={cancelRef as any} onClick={onClose}>
-                    {content.cancel}
+                    {bestiesContent.cancel}
                   </Button>
                   <Button
                     colorScheme={COLORS.COLOR_SCHEME}
                     onClick={deletePost}
                     ml={3}
                   >
-                    {content.delete}
+                    {bestiesContent.delete}
                   </Button>
                 </AlertDialogFooter>
               </AlertDialogContent>

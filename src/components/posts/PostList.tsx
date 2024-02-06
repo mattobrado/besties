@@ -1,7 +1,7 @@
 import { Text } from "@chakra-ui/react";
 import { PostType, UserType } from "../../lib/types";
 import Review from "./Review";
-import { content } from "../../lib/content";
+import { bestiesContent } from "../../lib/content/bestiesContent";
 import Comment from "../comments/Comment";
 
 export const PostList = ({
@@ -15,7 +15,7 @@ export const PostList = ({
     <>
       {posts?.length === 0 ? (
         <Text textAlign="center" fontSize="lg">
-          {content.activity.noActivity}
+          {bestiesContent.activity.noActivity}
         </Text>
       ) : (
         posts?.map((post) =>

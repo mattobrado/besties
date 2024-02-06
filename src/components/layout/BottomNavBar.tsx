@@ -1,7 +1,7 @@
 import { BottomNavigation } from "chakra-ui-bottom-navigation";
 import MyNavigationItem from "./MyNavigationItem";
-import { ROUTES } from "../../lib/routes";
 import { TfiWrite, TfiHome, TfiSearch, TfiBell } from "react-icons/tfi";
+import { ROUTES } from "../../lib/constants";
 
 export const BottomNavBar = () => {
   return (

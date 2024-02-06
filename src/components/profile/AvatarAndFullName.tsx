@@ -2,7 +2,7 @@ import { HStack, Text } from "@chakra-ui/react";
 import Avatar from "./Avatar";
 import { UserType } from "../../lib/types";
 import { Link } from "react-router-dom";
-import { ROUTES } from "../../lib/routes";
+import { ROUTES } from "../../lib/constants";
 
 const AvatarAndFullName = ({
   user,
