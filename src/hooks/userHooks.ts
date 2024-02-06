@@ -24,10 +24,11 @@ import getNewRating from "../utils/getNewRating";
 import { ROUTES } from "../lib/constants";
 
 export const useUser = (
-  id: string
+  id?: string
 ): { user?: UserType; isLoading: boolean; isError?: FirestoreError } => {
-  const q = query(doc(db, COLLECTIONS.USERS, id));
-  const [user, isLoading, isError] = useDocumentData(q);
+  if (!id) return { user: undefined, isLoading: false };
+  const q = query(doc(db, COLLECTIONS.USERS, id) as any);
+  const [user, isLoading, isError] = useDocumentData(q as any);
   return { user: <UserType>user, isLoading, isError };
 };
 
