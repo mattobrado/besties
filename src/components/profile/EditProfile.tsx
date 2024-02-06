@@ -52,7 +52,7 @@ export const EditProfile = () => {
         loadingText: "updating",
       }}
     >
-      <Avatar user={authUser} overrideAvatar={fileURL as any} />
+      <Avatar user={authUser} overrideAvatar={fileURL ?? undefined} />
       <FormControl py="4">
         <FormLabel htmlFor="picture">Change avatar</FormLabel>
         <input

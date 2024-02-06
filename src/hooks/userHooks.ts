@@ -24,11 +24,10 @@ import getNewRating from "../utils/getNewRating";
 import { ROUTES } from "../lib/constants";
 
 export const useUser = (
-  id?: string
+  id: string
 ): { user?: UserType; isLoading: boolean; isError?: FirestoreError } => {
-  if (!id) return { user: undefined, isLoading: false };
   const q = query(doc(db, COLLECTIONS.USERS, id) as any);
-  const [user, isLoading, isError] = useDocumentData(q as any);
+  const [user, isLoading, isError] = useDocumentData(q);
   return { user: <UserType>user, isLoading, isError };
 };
 
@@ -148,14 +147,14 @@ export const useFriendRequest = () => {
 export const useFriendRequestUsers = (
   friendRequestsReceivedUids?: string[]
 ) => {
-  if (!friendRequestsReceivedUids || friendRequestsReceivedUids.length === 0) {
-    return { users: [], isloading: false };
-  }
   const q = query(
     collection(db, COLLECTIONS.USERS),
     where("id", "in", friendRequestsReceivedUids)
   );
   const [users, isLoading, error] = useCollectionData(q);
+  if (!friendRequestsReceivedUids || friendRequestsReceivedUids.length === 0) {
+    return { users: [], isloading: false };
+  }
   if (error) throw error;
   return { users: <UserType[]>users, isLoading };
 };

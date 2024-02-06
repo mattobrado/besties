@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 import { Outlet, useLocation, useNavigate } from "react-router-dom";
-import { useAuth, useLogout } from "../../hooks/authHooks";
+import { useAuth } from "../../hooks/authHooks";
 import LoadingScreen from "../LoadingScreen";
 import { BottomNavBar } from "./BottomNavBar";
 import TopNavBar from "./TopNavBar";
-import { Box, Container, Image, MenuItem } from "@chakra-ui/react";
+import { Box, Container, Image } from "@chakra-ui/react";
 import {
   BOTTOM_NAV_HEIGHT,
   GLOBAL_PX,
@@ -17,7 +17,6 @@ import getBackground from "../../utils/getBackground";
 import BackgroundContext from "../../BackGroundContext";
 import ContentContext from "./ContentProvider";
 import { THE_GENIUS_PROGRAM_CONTENT } from "../../lib/content/geniusProgramContent";
-import { Link as ReactRouterLink } from "react-router-dom";
 import THE_GENIUS_PROGRAM_CONFIG from "../../lib/content/theGeniusProgramConfig";
 import ConfigContext from "./ConfigProvider";
 
