@@ -5,9 +5,7 @@ import {
   MenuButton,
   MenuList,
   MenuDivider,
-  Button,
   HStack,
-  Box,
 } from "@chakra-ui/react";
 import { CloseIcon, HamburgerIcon } from "@chakra-ui/icons";
 import { useContext } from "react";
