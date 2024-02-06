@@ -7,7 +7,6 @@ import AuthUserContext from "../layout/AuthUserContext";
 import ConfigContext from "../layout/ConfigProvider";
 import {
   Heading,
-  Image,
   ListItem,
   Stack,
   Text,
@@ -15,6 +14,7 @@ import {
 } from "@chakra-ui/react";
 import ContentContext from "../layout/ContentProvider";
 import { HEX_COLORS } from "../../theme/colors";
+import MainImage from "./MainImage";
 
 const Home = () => {
   const { posts } = usePosts();
@@ -26,7 +26,7 @@ const Home = () => {
 
   return (
     <>
-      <Image src={content.home.homeScreenImage} />
+      <MainImage />
       <Stack p={4} spacing={2}>
         <Heading
           style={{

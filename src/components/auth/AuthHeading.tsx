@@ -1,25 +1,31 @@
 import { Stack, Heading, Text, Link } from "@chakra-ui/react";
-import { bestiesContent } from "../../lib/content/bestiesContent";
+import { useContext } from "react";
 import { Link as ReactRouterLink } from "react-router-dom";
+import ContentContext from "../layout/ContentProvider";
 
 export const AuthHeading = ({
   title,
   callToAction,
   link,
-}: AuthHeadingPropsType) => (
-  <Stack textAlign="center">
-    <Heading fontSize={"6xl"}>{bestiesContent.logo}</Heading>
-    <Heading size={{ base: "lg", md: "sm" }}>{title}</Heading>
-    {callToAction && link && (
-      <Text>
-        {callToAction}
-        <Link as={ReactRouterLink} to={link.to}>
-          <u>{link.label}</u>
-        </Link>
-      </Text>
-    )}
-  </Stack>
-);
+}: AuthHeadingPropsType) => {
+  const content = useContext(ContentContext);
+  return (
+    <Stack>
+      {content.loginLogo && (
+        <Heading fontSize={"6xl"}>{content.loginLogo}</Heading>
+      )}
+      <Heading size={{ base: "2xl", md: "md" }}>{title}</Heading>
+      {callToAction && link && (
+        <Text>
+          {callToAction}
+          <Link as={ReactRouterLink} to={link.to}>
+            <u>{link.label}</u>
+          </Link>
+        </Text>
+      )}
+    </Stack>
+  );
+};
 
 export type AuthHeadingPropsType = {
   title: string;
