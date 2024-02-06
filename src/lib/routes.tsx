@@ -14,12 +14,12 @@ import { ROUTES } from "./constants";
 const idString = "/:id";
 
 export const router = createBrowserRouter([
-  { path: ROUTES.LOGIN, element: <PhoneAuth /> },
   {
     path: ROUTES.ROOT,
     element: <Layout />,
     children: [
       { path: ROUTES.ROOT, element: <Home /> },
+      { path: ROUTES.LOGIN, element: <PhoneAuth /> },
       {
         path: ROUTES.PROFILE + idString,
         element: <Profile />,

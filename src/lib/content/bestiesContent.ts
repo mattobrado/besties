@@ -1,5 +1,5 @@
 export const bestiesContent = {
-  logo: "👯‍♀️",
+  loginLogo: "👯‍♀️",
   editEmoji: "✏️",
   starEmoji: "⭐️",
   homeEmoji: "🏠",

@@ -2,8 +2,10 @@ import { bestiesContent } from "./bestiesContent";
 
 export const THE_GENIUS_PROGRAM_CONTENT = {
   ...bestiesContent,
+  loginLogo: undefined,
   auth: {
     appName: "The Genius Program",
+    login: "Log in",
   },
   navBar: {
     logoSrcURL:
