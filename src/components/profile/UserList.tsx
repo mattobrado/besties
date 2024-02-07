@@ -1,4 +1,4 @@
-import { Grid, GridItem, Stack } from "@chakra-ui/react";
+import { Grid } from "@chakra-ui/react";
 import { UserType } from "../../lib/types";
 import UserCard from "./UserCard";
 

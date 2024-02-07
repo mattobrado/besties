@@ -1,5 +1,4 @@
-import { Center, Container, Flex, Text, Spacer, Stack } from "@chakra-ui/react";
-import AvatarAndFullName from "./AvatarAndFullName";
+import { Center, Container, Text, Spacer, Stack } from "@chakra-ui/react";
 import { UserType } from "../../lib/types";
 import { bestiesContent } from "../../lib/content/bestiesContent";
 import { useNavigate } from "react-router-dom";
