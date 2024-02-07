@@ -79,7 +79,7 @@ export const useSignIn = () => {
       const q = query(collection(db, "users"), where("id", "==", uid));
       const querySnapshot = await getDocs(q);
       const userExists = querySnapshot.size > 0;
-      if (userExists) navigate(ROUTES.HOME);
+      if (userExists) navigate(ROUTES.MEMBERS);
       else {
         await setDoc(doc(db, COLLECTIONS.USERS, uid), {
           avatar: "",
