@@ -1,9 +1,10 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { RecaptchaVerifier, signInWithPhoneNumber } from "firebase/auth";
 import { auth } from "../../lib/firebase";
 import {
   Box,
   FormControl,
+  FormErrorMessage,
   FormLabel,
   HStack,
   Input,
@@ -14,14 +15,15 @@ import {
 } from "@chakra-ui/react";
 import { useForm } from "react-hook-form";
 import FormContainer from "./FormContainer";
-import { bestiesContent } from "../../lib/content/bestiesContent";
 import PhoneInput from "react-phone-number-input/input";
 import { useSignIn } from "../../hooks/authHooks";
-import { BACKGROUNDS } from "../../theme/colors";
+import ContentContext from "../layout/ContentProvider";
+import MainImage from "../home/MainImage";
 
 const PhoneAuth = () => {
   const [showOneTimePasswordInput, setShowOneTimePasswordInput] =
     useState(false);
+  const [signInError, setSignInError] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [oneTimePassword, setOtp] = useState("");
   const { handleSubmit } = useForm();
@@ -54,7 +56,10 @@ const PhoneAuth = () => {
         (window as any).confirmationResult = confirmationResult;
         setShowOneTimePasswordInput(true);
       })
-      .catch(() => {})
+      .catch((e) => {
+        console.log("got an error", e);
+        setSignInError(e.message);
+      })
       .finally(() => setLoading(false));
   };
 
@@ -65,76 +70,82 @@ const PhoneAuth = () => {
     }
   };
 
+  const content = useContext(ContentContext);
+
   return (
-    <Box
-      minHeight="100vh"
-      style={{
-        background: BACKGROUNDS.default,
-      }}
-    >
-      <FormContainer
-        authHeadingProps={{
-          title: bestiesContent.auth.login,
-        }}
-        buttonProps={
-          showOneTimePasswordInput
-            ? {
-                isLoading: isLoading,
-                label: "sign in",
-                loadingText: "signing in",
-              }
-            : {
-                isLoading: isLoading,
-                label: "next",
-                loadingText: "sending code",
-              }
-        }
-        onSubmit={handleSubmit(
-          showOneTimePasswordInput
-            ? () => signIn({ oneTimePassword, phoneNumber })
-            : onPhoneNumberSubmit
-        )}
-      >
-        {showOneTimePasswordInput ? (
-          <FormControl>
-            <FormLabel>enter your code</FormLabel>
-            <HStack w={"full"}>
-              <PinInput
-                otp={true}
-                placeholder="🥸"
-                value={oneTimePassword}
-                onChange={pinOnChange}
-              >
-                <PinInputField />
-                <Spacer border={"transparent"} />
-                <PinInputField />
-                <Spacer border={"transparent"} />
-                <PinInputField />
-                <Spacer border={"transparent"} />
-                <PinInputField />
-                <Spacer border={"transparent"} />
-                <PinInputField />
-                <Spacer border={"transparent"} />
-                <PinInputField />
-              </PinInput>
-            </HStack>
-          </FormControl>
-        ) : (
-          <FormControl>
-            <InputGroup>
-              <Input
-                as={PhoneInput}
-                country="US"
-                placeholder="phone number"
-                value={phoneNumber}
-                onChange={setPhoneNumber as any}
-              />
-            </InputGroup>
-          </FormControl>
-        )}
-        <div id="recaptcha-container"></div>
-      </FormContainer>
-    </Box>
+    <>
+      <MainImage />
+      <Box minHeight="100vh" p={4}>
+        <FormContainer
+          authHeadingProps={{
+            title: content.auth.login,
+            // callToAction: "Take the ",
+            // link: {
+            //   label: "Genius IQ Test",
+            //   to: ROUTES.MEMBERS,
+            // },
+          }}
+          buttonProps={
+            showOneTimePasswordInput
+              ? {
+                  isLoading: isLoading,
+                  label: content.auth.login,
+                  loadingText: content.auth.loggingIn,
+                }
+              : {
+                  isLoading: isLoading,
+                  label: "Next",
+                  loadingText: "Sending code",
+                }
+          }
+          onSubmit={handleSubmit(
+            showOneTimePasswordInput
+              ? () => signIn({ oneTimePassword, phoneNumber })
+              : onPhoneNumberSubmit
+          )}
+        >
+          {showOneTimePasswordInput ? (
+            <FormControl>
+              <FormLabel>Enter your code</FormLabel>
+              <HStack w={"full"}>
+                <PinInput
+                  otp={true}
+                  placeholder="🥸"
+                  value={oneTimePassword}
+                  onChange={pinOnChange}
+                >
+                  <PinInputField />
+                  <Spacer border={"transparent"} />
+                  <PinInputField />
+                  <Spacer border={"transparent"} />
+                  <PinInputField />
+                  <Spacer border={"transparent"} />
+                  <PinInputField />
+                  <Spacer border={"transparent"} />
+                  <PinInputField />
+                  <Spacer border={"transparent"} />
+                  <PinInputField />
+                </PinInput>
+              </HStack>
+            </FormControl>
+          ) : (
+            <FormControl isInvalid={!!signInError}>
+              <InputGroup>
+                <Input
+                  as={PhoneInput}
+                  country="US"
+                  placeholder={content.auth.phoneNumberPlaceHolder}
+                  value={phoneNumber}
+                  onChange={setPhoneNumber as any}
+                />
+              </InputGroup>
+              <FormErrorMessage>{signInError}</FormErrorMessage>
+            </FormControl>
+          )}
+          <div id="recaptcha-container"></div>
+        </FormContainer>
+      </Box>
+    </>
   );
 };
 

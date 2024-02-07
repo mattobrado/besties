@@ -47,17 +47,18 @@ function CustomSearchBox(
           autoCorrect="off"
           autoCapitalize="off"
           placeholder={props.placeholderText}
-          _placeholder={{ color: COLORS.PLACEHOLDER }}
+          _placeholder={{ color: COLORS.BACKGROUND }}
           spellCheck={false}
           maxLength={512}
           value={inputValue}
+          color={COLORS.BACKGROUND}
           onChange={(event) => {
             setQuery(event.currentTarget.value);
           }}
           autoFocus
         />
         <InputRightElement>
-          <TfiSearch />
+          <TfiSearch color={COLORS.BACKGROUND} />
         </InputRightElement>
       </InputGroup>
     </form>

@@ -26,6 +26,7 @@ export type PostType = {
 };
 
 export type UserType = {
+  bio: string;
   avatar?: string;
   date: number;
   fullName?: string;
@@ -41,6 +42,7 @@ export type UserType = {
   favoriteAnimal?: string;
   favoriteSongId?: string;
   favoriteMovie?: string;
+  isGenius?: boolean;
 };
 
 export type ToggleLikeType = {
