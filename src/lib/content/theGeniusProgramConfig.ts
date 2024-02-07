@@ -16,7 +16,7 @@ const THE_GENIUS_PROGRAM_CONFIG = {
     },
     {
       label: "MEMBERS",
-      to: ROUTES.MEMBERS,
+      to: ROUTES.SEARCH,
       state: {
         toastTitle: "You must be logged in to access the members-only area",
       },

@@ -1,6 +1,6 @@
 import { ToastPosition } from "@chakra-ui/react";
 
-const PROTECTED = "/p";
+const PROTECTED = "/members-only";
 
 export const ROUTES = {
   PROTECTED,
@@ -14,7 +14,7 @@ export const ROUTES = {
   SEARCH: PROTECTED + "/search",
   EDIT_PROFILE: PROTECTED + "/edit-profile",
   NOTIFICATIONS: PROTECTED + "/notifications",
-  MEMBERS: PROTECTED + "/members",
+  // MEMBERS: PROTECTED + "/search-members",
   IQ_TEST: PROTECTED + "/iq-test",
 };
 
