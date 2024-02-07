@@ -5,16 +5,16 @@ const PROTECTED = "/p";
 
 export const ROUTES = {
   PROTECTED,
-  ROOT: "/",
-  GENIUS_PROGRAM_HOME: "/genius",
+  HOME: "/",
+  LOGIN: "/login",
   PROFILE: PROTECTED + "/u",
   HIGHEST_RATED: PROTECTED + "/top-users",
-  HOME: PROTECTED + "/home",
   POST: PROTECTED + "/post",
   ADD_REVIEW: PROTECTED + "/review",
   SEARCH: PROTECTED + "/search",
   EDIT_PROFILE: PROTECTED + "/edit-profile",
   NOTIFICATIONS: PROTECTED + "/notifications",
+  MEMBERS: PROTECTED + "/members",
 };
 
 export const TOAST_PROPS: {

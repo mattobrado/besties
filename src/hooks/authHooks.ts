@@ -51,7 +51,7 @@ export const useLogout = () => {
 
   const logout = async () => {
     if (await signOut()) {
-      navigate(ROUTES.ROOT);
+      navigate(ROUTES.HOME);
     }
   };
 

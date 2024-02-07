@@ -9,6 +9,7 @@ const AuthUserContext = createContext<UserType>({
   friendUids: [],
   phoneNumber: "",
   friendRequestsReceivedUids: [],
+  bio: "",
 });
 
 export default AuthUserContext;
