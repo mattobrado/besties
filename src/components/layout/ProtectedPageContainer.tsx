@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { Outlet, useLocation, useNavigate } from "react-router-dom";
 import { useAuth } from "../../hooks/authHooks";
-import { ROUTES } from "../../lib/constants";
+import { ROUTES, TOAST_PROPS } from "../../lib/constants";
 import AuthUserContext from "./AuthUserContext";
 import LoadingScreen from "../LoadingScreen";
 import { useToast } from "@chakra-ui/react";
@@ -11,12 +11,15 @@ const ProtectedPageContainer = () => {
   const navigate = useNavigate();
   const { authUser, isLoading } = useAuth();
   const toast = useToast();
+  const { state } = useLocation();
 
   useEffect(() => {
     if (!isLoading && pathname.startsWith(ROUTES.PROTECTED) && !authUser) {
+      // toast.closeAll();
       toast({
-        title: "You must log in to access the members-only area",
+        title: state.toastTitle,
         status: "error",
+        ...TOAST_PROPS,
       });
       navigate(ROUTES.LOGIN);
     }

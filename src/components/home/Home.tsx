@@ -11,6 +11,7 @@ import {
   Stack,
   Text,
   UnorderedList,
+  useToast,
 } from "@chakra-ui/react";
 import ContentContext from "../layout/ContentProvider";
 import { HEX_COLORS } from "../../theme/colors";
@@ -23,6 +24,8 @@ const Home = () => {
   const config = useContext(ConfigContext);
   const content = useContext(ContentContext);
   // useEffect(() => setBackground(), []);
+  const toast = useToast();
+  toast.closeAll();
 
   return (
     <>

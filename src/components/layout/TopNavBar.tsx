@@ -33,7 +33,8 @@ const TopNavBar = () => {
           label={item.label}
           to={item.to}
           key={item.label}
-          // isLogout={item.isLogout}
+          isLogout={item.isLogout}
+          state={item.state}
         />
       ))}
       {/* <GridItem> */}
@@ -55,6 +56,7 @@ const TopNavBar = () => {
                     label={item.label}
                     to={item.to}
                     isLogout={item.isLogout}
+                    state={item.state}
                   />
                   {index === itemsInHamburger.length - 1 ? undefined : (
                     <MenuDivider />

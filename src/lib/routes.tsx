@@ -27,9 +27,10 @@ export const router = createBrowserRouter([
         element: <ProtectedPageContainer />,
         children: [
           {
-            path: ROUTES.MEMBERS,
+            path: ROUTES.SEARCH,
             element: <Members />,
           },
+          { path: ROUTES.IQ_TEST, element: <PhoneAuth /> },
         ],
       },
     ],
