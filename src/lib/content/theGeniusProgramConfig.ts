@@ -1,7 +1,4 @@
-// import { ROUTES } from "../constants";
 import { ROUTES } from "../constants";
-import { bestiesContent } from "./bestiesContent";
-import { THE_GENIUS_PROGRAM_CONTENT } from "./theGeniusProgramContent";
 
 const THE_GENIUS_PROGRAM_CONFIG = {
   showBottomNavBar: false,
