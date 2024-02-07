@@ -14,14 +14,23 @@ const ProtectedPageContainer = () => {
   const { state } = useLocation();
 
   useEffect(() => {
-    if (!isLoading && pathname.startsWith(ROUTES.PROTECTED) && !authUser) {
-      // toast.closeAll();
-      toast({
-        title: state.toastTitle,
-        status: "error",
-        ...TOAST_PROPS,
-      });
-      navigate(ROUTES.LOGIN);
+    if (!isLoading && pathname.startsWith(ROUTES.PROTECTED)) {
+      if (!authUser) {
+        toast({
+          title: state?.toastTitle,
+          status: "error",
+          ...TOAST_PROPS,
+        });
+        navigate(ROUTES.LOGIN);
+      } else if (!authUser.isGenius && !pathname.startsWith(ROUTES.IQ_TEST)) {
+        toast({
+          title:
+            "You must take the Genius IQ Test before you can access members-only content",
+          status: "error",
+          ...TOAST_PROPS,
+        });
+        navigate(ROUTES.IQ_TEST);
+      }
     }
   }, [pathname, authUser, isLoading]);
   return (
