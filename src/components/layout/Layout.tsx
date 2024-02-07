@@ -11,7 +11,7 @@ import {
   LOGO_HEIGHT,
   ROUTES,
 } from "../../lib/constants";
-import AuthUserContext from "./AuthUserContext";
+// import AuthUserContext from "./AuthUserContext";
 // import { BACKGROUNDS } from "../../theme/colors";
 // import getBackground from "../../utils/getBackground";
 // import BackgroundContext from "../../BackGroundContext";
@@ -41,33 +41,31 @@ const Layout = () => {
   const config = THE_GENIUS_PROGRAM_CONFIG;
 
   return (
-    authUser && (
-      <Box
-        minHeight="100vh"
-        // style={{
-        //   background: background,
-        // }}
-      >
-        {/* <BackgroundContext.Provider value={setBackgroundForUser}> */}
-        <ConfigContext.Provider value={THE_GENIUS_PROGRAM_CONFIG}>
-          <ContentContext.Provider value={content as any}>
-            <AuthUserContext.Provider value={authUser}>
-              <Container px={GLOBAL_PX}>
-                <Box p={4}>
-                  <Image src={content.navBar.logoSrcURL} h={LOGO_HEIGHT} />
-                </Box>
-                <TopNavBar />
-                <Box pb={BOTTOM_NAV_HEIGHT}>
-                  {isLoading ? <LoadingScreen /> : <Outlet />}
-                </Box>
-                {config.showBottomNavBar && <BottomNavBar />}
-              </Container>
-            </AuthUserContext.Provider>
-          </ContentContext.Provider>
-        </ConfigContext.Provider>
-        {/* </BackgroundContext.Provider> */}
-      </Box>
-    )
+    <Box
+      minHeight="100vh"
+      // style={{
+      //   background: background,
+      // }}
+    >
+      {/* <BackgroundContext.Provider value={setBackgroundForUser}> */}
+      <ConfigContext.Provider value={THE_GENIUS_PROGRAM_CONFIG}>
+        <ContentContext.Provider value={content as any}>
+          {/* <AuthUserContext.Provider value={authUser}> */}
+          <Container px={GLOBAL_PX}>
+            <Box p={4}>
+              <Image src={content.navBar.logoSrcURL} h={LOGO_HEIGHT} />
+            </Box>
+            <TopNavBar />
+            <Box pb={BOTTOM_NAV_HEIGHT}>
+              {isLoading ? <LoadingScreen /> : <Outlet />}
+            </Box>
+            {config.showBottomNavBar && <BottomNavBar />}
+          </Container>
+          {/* </AuthUserContext.Provider> */}
+        </ContentContext.Provider>
+      </ConfigContext.Provider>
+      {/* </BackgroundContext.Provider> */}
+    </Box>
   );
 };
 
