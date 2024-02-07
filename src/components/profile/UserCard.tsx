@@ -47,10 +47,14 @@ const UserCard = ({
           <Avatar user={user} avatarProps={{ size: "xl" }} isLink={false} />
         </Center>
 
-        <Text fontSize={"sm"} color={"black"}>
-          <b>{user?.fullName}</b>
-          <p>{user.bio}</p>
-        </Text>
+        <Stack spacing={0}>
+          <Text fontSize={"sm"} color={"black"}>
+            <b>{user?.fullName}</b>
+          </Text>
+          <Text fontSize={"sm"} color={"black"}>
+            {user.bio}
+          </Text>
+        </Stack>
 
         <Spacer />
         {showRating && (
