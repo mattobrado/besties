@@ -92,8 +92,8 @@ const PhoneAuth = () => {
             showOneTimePasswordInput
               ? {
                   isLoading: isLoading,
-                  label: "sign in",
-                  loadingText: "signing in",
+                  label: content.auth.login,
+                  loadingText: content.auth.loggingIn,
                 }
               : {
                   isLoading: isLoading,
@@ -109,7 +109,7 @@ const PhoneAuth = () => {
         >
           {showOneTimePasswordInput ? (
             <FormControl>
-              <FormLabel>enter your code</FormLabel>
+              <FormLabel>Enter your code</FormLabel>
               <HStack w={"full"}>
                 <PinInput
                   otp={true}

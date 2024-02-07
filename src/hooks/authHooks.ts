@@ -52,6 +52,9 @@ export const useLogout = () => {
   const logout = async () => {
     if (await signOut()) {
       navigate(ROUTES.HOME);
+      setTimeout(() => {
+        location.reload();
+      }, 1000);
     }
   };
 

@@ -7,6 +7,7 @@ export const THE_GENIUS_PROGRAM_CONTENT = {
     appName: "The Genius Program",
     login: "Log in",
     phoneNumberPlaceHolder: "Phone number",
+    loggingIn: "Logging in",
   },
   navBar: {
     logoSrcURL:

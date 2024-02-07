@@ -7,6 +7,8 @@ const GenericNavBarItem = ({
   to,
   isLogout,
   state,
+  color,
+  onClick,
 }: {
   label: string;
   to?: string;
@@ -14,24 +16,31 @@ const GenericNavBarItem = ({
   state?: {
     [key: string]: string;
   };
+  color?: string;
+  onClick?: () => void;
 }) => {
   const { logout } = useLogout();
-  // const navigation = useNavigation();
-
-  // const toComponentB = () => {
-  //   navigate(to ?? "", { state: { id: 1, name: "sabaoon" } });
-  // };
 
   return (
     <Button
       as={ReactRouterLink}
-      to={to}
+      to={to ?? ""}
       state={state}
-      onClick={isLogout ? logout : () => {}}
+      onClick={
+        onClick
+          ? isLogout
+            ? () => {
+                onClick();
+                logout();
+              }
+            : onClick
+          : () => {}
+      }
       variant="ghost"
       size={"sm"}
+      color={color}
     >
-      {label}
+      {label.toUpperCase()}
     </Button>
   );
 };
