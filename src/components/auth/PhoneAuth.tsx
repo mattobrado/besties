@@ -74,9 +74,9 @@ const PhoneAuth = () => {
       <MainImage />
       <Box
         minHeight="100vh"
-        style={{
-          background: BACKGROUNDS.default,
-        }}
+        // style={{
+        //   background: BACKGROUNDS.default,
+        // }}
         p={4}
       >
         <FormContainer
