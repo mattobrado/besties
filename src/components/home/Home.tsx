@@ -1,9 +1,5 @@
 import { useContext } from "react";
-import { usePosts } from "../../hooks/postHooks";
-import LoadingScreen from "../LoadingScreen";
-import PostList from "../posts/PostList";
 // import BackgroundContext from "../../BackGroundContext";
-import AuthUserContext from "../layout/AuthUserContext";
 import ConfigContext from "../layout/ConfigProvider";
 import {
   Heading,
@@ -16,11 +12,10 @@ import {
 import ContentContext from "../layout/ContentProvider";
 import { HEX_COLORS } from "../../theme/colors";
 import MainImage from "./MainImage";
+import PostFeed from "../posts/PostFeed";
 
 const Home = () => {
-  const { posts } = usePosts();
   // const setBackground = useContext(BackgroundContext);
-  const authUser = useContext(AuthUserContext);
   const config = useContext(ConfigContext);
   const content = useContext(ContentContext);
   // useEffect(() => setBackground(), []);
@@ -50,15 +45,7 @@ const Home = () => {
             Thought-provoking investigations of members' opinions and attitudes.
           </ListItem>
         </UnorderedList>
-        {config.showPostsOnHomeScreen &&
-          (posts ? (
-            <PostList
-              posts={posts.filter((post) => post.isReview)}
-              authUser={authUser}
-            />
-          ) : (
-            <LoadingScreen />
-          ))}
+        {config.showPostsOnHomeScreen && <PostFeed />}
       </Stack>
     </>
   );

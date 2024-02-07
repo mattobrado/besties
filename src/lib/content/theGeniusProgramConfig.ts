@@ -1,6 +1,4 @@
-// import { ROUTES } from "../constants";
 import { ROUTES } from "../constants";
-import { bestiesContent } from "./bestiesContent";
 
 const THE_GENIUS_PROGRAM_CONFIG = {
   showBottomNavBar: false,
@@ -23,7 +21,7 @@ const THE_GENIUS_PROGRAM_CONFIG = {
     },
     // { label: bestiesContent.navBar.mostPopular, to: ROUTES.HOME },
     // { label: bestiesContent.navBar.highestRated, to: ROUTES.HIGHEST_RATED },
-    { label: bestiesContent.navBar.logOut, isLogout: true },
+    { label: "Log out", isLogout: true },
   ],
 };
 

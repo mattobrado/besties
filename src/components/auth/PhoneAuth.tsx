@@ -97,8 +97,8 @@ const PhoneAuth = () => {
                 }
               : {
                   isLoading: isLoading,
-                  label: "next",
-                  loadingText: "sending code",
+                  label: "Next",
+                  loadingText: "Sending code",
                 }
           }
           onSubmit={handleSubmit(
