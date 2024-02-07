@@ -4,6 +4,7 @@ import { auth } from "../../lib/firebase";
 import {
   Box,
   FormControl,
+  FormErrorMessage,
   FormLabel,
   HStack,
   Input,
@@ -18,11 +19,11 @@ import PhoneInput from "react-phone-number-input/input";
 import { useSignIn } from "../../hooks/authHooks";
 import ContentContext from "../layout/ContentProvider";
 import MainImage from "../home/MainImage";
-//  import { ROUTES } from "../../lib/constants";
 
 const PhoneAuth = () => {
   const [showOneTimePasswordInput, setShowOneTimePasswordInput] =
     useState(false);
+  const [signInError, setSignInError] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [oneTimePassword, setOtp] = useState("");
   const { handleSubmit } = useForm();
@@ -55,7 +56,10 @@ const PhoneAuth = () => {
         (window as any).confirmationResult = confirmationResult;
         setShowOneTimePasswordInput(true);
       })
-      .catch(() => {})
+      .catch((e) => {
+        console.log("got an error", e);
+        setSignInError(e.message);
+      })
       .finally(() => setLoading(false));
   };
 
@@ -71,13 +75,7 @@ const PhoneAuth = () => {
   return (
     <>
       <MainImage />
-      <Box
-        minHeight="100vh"
-        // style={{
-        //   background: BACKGROUNDS.default,
-        // }}
-        p={4}
-      >
+      <Box minHeight="100vh" p={4}>
         <FormContainer
           authHeadingProps={{
             title: content.auth.login,
@@ -131,7 +129,7 @@ const PhoneAuth = () => {
               </HStack>
             </FormControl>
           ) : (
-            <FormControl>
+            <FormControl isInvalid={!!signInError}>
               <InputGroup>
                 <Input
                   as={PhoneInput}
@@ -141,6 +139,7 @@ const PhoneAuth = () => {
                   onChange={setPhoneNumber as any}
                 />
               </InputGroup>
+              <FormErrorMessage>{signInError}</FormErrorMessage>
             </FormControl>
           )}
           <div id="recaptcha-container"></div>
