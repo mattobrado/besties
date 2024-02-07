@@ -5,11 +5,10 @@ const PROTECTED = "/p";
 
 export const ROUTES = {
   PROTECTED,
-  ROOT: "/",
+  HOME: "/",
   LOGIN: "/login",
   PROFILE: PROTECTED + "/u",
   HIGHEST_RATED: PROTECTED + "/top-users",
-  HOME: PROTECTED + "/home",
   POST: PROTECTED + "/post",
   ADD_REVIEW: PROTECTED + "/review",
   SEARCH: PROTECTED + "/search",

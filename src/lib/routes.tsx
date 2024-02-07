@@ -16,18 +16,14 @@ const idString = "/:id";
 
 export const router = createBrowserRouter([
   {
-    path: ROUTES.ROOT,
+    path: ROUTES.HOME,
     element: <Layout />,
     children: [
-      { path: ROUTES.ROOT, element: <Home /> },
+      { path: ROUTES.HOME, element: <Home /> },
       { path: ROUTES.LOGIN, element: <PhoneAuth /> },
       {
         path: ROUTES.PROFILE + idString,
         element: <Profile />,
-      },
-      {
-        path: ROUTES.HOME,
-        element: <Home />,
       },
       {
         path: ROUTES.ADD_REVIEW,

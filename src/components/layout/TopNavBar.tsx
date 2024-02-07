@@ -32,6 +32,7 @@ const TopNavBar = () => {
         <GenericNavBarItem
           label={item.label}
           to={item.to}
+          key={item.label}
           // isLogout={item.isLogout}
         />
       ))}
