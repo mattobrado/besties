@@ -15,6 +15,7 @@ export const ROUTES = {
   SEARCH: PROTECTED + "/search",
   EDIT_PROFILE: PROTECTED + "/edit-profile",
   NOTIFICATIONS: PROTECTED + "/notifications",
+  MEMBERS: PROTECTED + "/members",
 };
 
 export const TOAST_PROPS: {

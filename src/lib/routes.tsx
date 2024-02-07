@@ -10,6 +10,7 @@ import PhoneAuth from "../components/auth/PhoneAuth";
 import EditProfile from "../components/profile/EditProfile";
 import Notifications from "../components/notifications/Notifications";
 import { ROUTES } from "./constants";
+import Members from "../components/lists/Members";
 
 const idString = "/:id";
 
@@ -51,6 +52,10 @@ export const router = createBrowserRouter([
       {
         path: ROUTES.EDIT_PROFILE + idString,
         element: <EditProfile />,
+      },
+      {
+        path: ROUTES.MEMBERS,
+        element: <Members />,
       },
     ],
   },

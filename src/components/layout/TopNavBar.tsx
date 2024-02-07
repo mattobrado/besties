@@ -5,7 +5,6 @@ import {
   MenuButton,
   MenuList,
   MenuDivider,
-  HStack,
 } from "@chakra-ui/react";
 import { CloseIcon, HamburgerIcon } from "@chakra-ui/icons";
 import { useContext } from "react";
@@ -29,43 +28,42 @@ const TopNavBar = () => {
       alignItems={"center"}
       justifyContent={"space-between"}
     >
-      <HStack px={1}>
-        {itemsOutOfHamburger.map((item) => (
-          <GenericNavBarItem
-            label={item.label}
-            to={item.to}
-            // isLogout={item.isLogout}
-          />
-        ))}
-        <Menu>
-          {({ isOpen }) => (
-            <>
-              <MenuButton
-                isActive={isOpen}
-                as={IconButton}
-                aria-label={"open menu"}
-                variant="ghost"
-              >
-                {isOpen ? <CloseIcon /> : <HamburgerIcon boxSize={6} />}
-              </MenuButton>
-              <MenuList bg={COLORS.BACKGROUND}>
-                {itemsInHamburger?.map((item, index) => (
-                  <>
-                    <GenericNavBarItem
-                      label={item.label}
-                      to={item.to}
-                      // isLogout={item.isLogout}
-                    />
-                    {index === itemsInHamburger.length - 1 ? undefined : (
-                      <MenuDivider />
-                    )}
-                  </>
-                ))}
-              </MenuList>
-            </>
-          )}
-        </Menu>
-      </HStack>
+      {itemsOutOfHamburger.map((item) => (
+        <GenericNavBarItem
+          label={item.label}
+          to={item.to}
+          // isLogout={item.isLogout}
+        />
+      ))}
+      {/* <GridItem> */}
+      <Menu>
+        {({ isOpen }) => (
+          <>
+            <MenuButton
+              isActive={isOpen}
+              as={IconButton}
+              aria-label={"open menu"}
+              variant="ghost"
+            >
+              {isOpen ? <CloseIcon /> : <HamburgerIcon boxSize={6} />}
+            </MenuButton>
+            <MenuList bg={COLORS.BACKGROUND}>
+              {itemsInHamburger?.map((item, index) => (
+                <>
+                  <GenericNavBarItem
+                    label={item.label}
+                    to={item.to}
+                    // isLogout={item.isLogout}
+                  />
+                  {index === itemsInHamburger.length - 1 ? undefined : (
+                    <MenuDivider />
+                  )}
+                </>
+              ))}
+            </MenuList>
+          </>
+        )}
+      </Menu>
     </Flex>
   );
 };

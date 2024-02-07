@@ -1,11 +1,11 @@
-import { Center, Container, Flex, Spacer } from "@chakra-ui/react";
-import AvatarAndFullName from "./AvatarAndFullName";
+import { Center, Container, Text, Spacer, Stack } from "@chakra-ui/react";
 import { UserType } from "../../lib/types";
 import { bestiesContent } from "../../lib/content/bestiesContent";
 import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import BackgroundContext from "../../BackGroundContext";
 import { ROUTES } from "../../lib/constants";
+import Avatar from "./Avatar";
 
 const UserCard = ({
   user,
@@ -36,20 +36,29 @@ const UserCard = ({
             }
       }
     >
-      <Flex>
+      <Stack>
         {ranking && (
           <Center fontSize={"2xl"} mr={3}>
             #{ranking}
           </Center>
         )}
-        <AvatarAndFullName user={user} size={"md"} isLink={false} />
+        {/* <AvatarAndFullName user={user} size={"md"} isLink={false} /> */}
+        <Center>
+          <Avatar user={user} avatarProps={{ size: "xl" }} isLink={false} />
+        </Center>
+
+        <Text fontSize={"sm"} color={"black"}>
+          <b>{user?.fullName}</b>
+          <p>{user.bio}</p>
+        </Text>
+
         <Spacer />
         {showRating && (
           <Center fontSize={"2xl"}>
             {user.rating?.toPrecision(2) ?? "?"} {bestiesContent.starEmoji}
           </Center>
         )}
-      </Flex>
+      </Stack>
     </Container>
   );
 };

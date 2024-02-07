@@ -26,6 +26,7 @@ export type PostType = {
 };
 
 export type UserType = {
+  bio: string;
   avatar?: string;
   date: number;
   fullName?: string;
