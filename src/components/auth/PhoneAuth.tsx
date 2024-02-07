@@ -16,7 +16,6 @@ import { useForm } from "react-hook-form";
 import FormContainer from "./FormContainer";
 import PhoneInput from "react-phone-number-input/input";
 import { useSignIn } from "../../hooks/authHooks";
-import { BACKGROUNDS } from "../../theme/colors";
 import ContentContext from "../layout/ContentProvider";
 import MainImage from "../home/MainImage";
 //  import { ROUTES } from "../../lib/constants";
@@ -74,9 +73,9 @@ const PhoneAuth = () => {
       <MainImage />
       <Box
         minHeight="100vh"
-        style={{
-          background: BACKGROUNDS.default,
-        }}
+        // style={{
+        //   background: BACKGROUNDS.default,
+        // }}
         p={4}
       >
         <FormContainer
