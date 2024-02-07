@@ -12,6 +12,7 @@ import PhoneAuth from "../components/auth/PhoneAuth";
 import { ROUTES } from "./constants";
 import Members from "../components/lists/Members";
 import ProtectedPageContainer from "../components/layout/ProtectedPageContainer";
+import PostFeed from "../components/posts/PostFeed";
 
 // const idString = "/:id";
 
@@ -31,6 +32,7 @@ export const router = createBrowserRouter([
             element: <Members />,
           },
           { path: ROUTES.IQ_TEST, element: <PhoneAuth /> },
+          { path: ROUTES.POSTS, element: <PostFeed /> },
         ],
       },
     ],

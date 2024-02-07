@@ -16,6 +16,7 @@ export const ROUTES = {
   NOTIFICATIONS: PROTECTED + "/notifications",
   // MEMBERS: PROTECTED + "/search-members",
   IQ_TEST: PROTECTED + "/iq-test",
+  POSTS: PROTECTED + "/ideas",
 };
 
 export const TOAST_PROPS: {
