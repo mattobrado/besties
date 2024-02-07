@@ -1,4 +1,17 @@
-import { Button, Center, Heading, Stack, Text } from "@chakra-ui/react";
+import {
+  Button,
+  Center,
+  Heading,
+  Popover,
+  PopoverArrow,
+  PopoverBody,
+  PopoverCloseButton,
+  PopoverContent,
+  PopoverHeader,
+  PopoverTrigger,
+  Stack,
+  Text,
+} from "@chakra-ui/react";
 
 const IQTest = () => {
   return (
@@ -10,7 +23,18 @@ const IQTest = () => {
         <Heading size={"2xl"}>Are you a Genius?</Heading>
       </Center>
       <Center>
-        <Button>Take the Test</Button>
+        <Popover>
+          <PopoverTrigger>
+            <Button>Coming soon</Button>
+          </PopoverTrigger>
+          <PopoverContent bg={"black"}>
+            <PopoverArrow />
+            <PopoverCloseButton />
+            <PopoverHeader>
+              The Genius IQ Test will be available shortly!
+            </PopoverHeader>
+          </PopoverContent>
+        </Popover>
       </Center>
       <Center p={5}>
         <iframe
