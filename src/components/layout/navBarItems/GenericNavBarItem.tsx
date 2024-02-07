@@ -1,12 +1,15 @@
 import { Button } from "@chakra-ui/react";
 import { Link as ReactRouterLink } from "react-router-dom";
-import { useLogout } from "../../../hooks/authHooks";
+import { useAuth, useLogout } from "../../../hooks/authHooks";
+import { ROUTES } from "../../../lib/constants";
 
 const GenericNavBarItem = ({
   label,
   to,
   isLogout,
   state,
+  color,
+  onClick,
 }: {
   label: string;
   to?: string;
@@ -14,24 +17,31 @@ const GenericNavBarItem = ({
   state?: {
     [key: string]: string;
   };
+  color?: string;
+  onClick?: () => void;
 }) => {
   const { logout } = useLogout();
-  // const navigation = useNavigation();
-
-  // const toComponentB = () => {
-  //   navigate(to ?? "", { state: { id: 1, name: "sabaoon" } });
-  // };
 
   return (
     <Button
       as={ReactRouterLink}
-      to={to}
+      to={to ?? ""}
       state={state}
-      onClick={isLogout ? logout : () => {}}
+      onClick={
+        onClick
+          ? isLogout
+            ? () => {
+                onClick();
+                logout();
+              }
+            : onClick
+          : () => {}
+      }
       variant="ghost"
       size={"sm"}
+      color={color}
     >
-      {label}
+      {label.toUpperCase()}
     </Button>
   );
 };
