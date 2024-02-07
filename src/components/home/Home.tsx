@@ -39,10 +39,10 @@ const Home = () => {
         </Text>
         <Text>Activities include:</Text>
         <UnorderedList pl={7}>
-          <ListItem>The lively exchange of ideas through lectures;</ListItem>
-          <ListItem>Stimulating discussions and debates;</ListItem>
+          <ListItem>The lively exchange of ideas through lectures</ListItem>
+          <ListItem>Stimulating discussions and debates</ListItem>
           <ListItem>
-            Thought-provoking investigations of members' opinions and attitudes.
+            Thought-provoking investigations of members' opinions and attitudes
           </ListItem>
         </UnorderedList>
         {config.showPostsOnHomeScreen && <PostFeed />}
