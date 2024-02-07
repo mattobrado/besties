@@ -54,7 +54,7 @@ const TopNavBar = () => {
                   <GenericNavBarItem
                     label={item.label}
                     to={item.to}
-                    // isLogout={item.isLogout}
+                    isLogout={item.isLogout}
                   />
                   {index === itemsInHamburger.length - 1 ? undefined : (
                     <MenuDivider />
