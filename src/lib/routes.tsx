@@ -7,7 +7,7 @@ import Home from "../components/home/Home";
 // import HighestRated from "../components/lists/HighestRated";
 // import SearchPage from "../components/search/SearchPage";
 import PhoneAuth from "../components/auth/PhoneAuth";
-// import EditProfile from "../components/profile/EditProfile";
+import EditProfile from "../components/profile/EditProfile";
 // import Notifications from "../components/notifications/Notifications";
 import { ROUTES } from "./constants";
 import Members from "../components/lists/Members";
@@ -15,7 +15,7 @@ import ProtectedPageContainer from "../components/layout/ProtectedPageContainer"
 import PostFeed from "../components/posts/PostFeed";
 import IQTest from "../components/IQTest/IQTest";
 
-// const idString = "/:id";
+const idString = "/:id";
 
 export const router = createBrowserRouter([
   {
@@ -34,6 +34,10 @@ export const router = createBrowserRouter([
           },
           { path: ROUTES.IQ_TEST, element: <IQTest /> },
           { path: ROUTES.POSTS, element: <PostFeed /> },
+          {
+            path: ROUTES.EDIT_PROFILE + idString,
+            element: <EditProfile />,
+          },
         ],
       },
     ],
@@ -62,9 +66,5 @@ export const router = createBrowserRouter([
   // {
   //   path: ROUTES.NOTIFICATIONS,
   //   element: <Notifications />,
-  // },
-  // {
-  //   path: ROUTES.EDIT_PROFILE + idString,
-  //   element: <EditProfile />,
   // },
 ]);
