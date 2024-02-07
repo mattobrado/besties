@@ -1,5 +1,4 @@
 import { ToastPosition } from "@chakra-ui/react";
-import { COLORS } from "../theme/colors";
 
 const PROTECTED = "/p";
 
@@ -16,18 +15,17 @@ export const ROUTES = {
   EDIT_PROFILE: PROTECTED + "/edit-profile",
   NOTIFICATIONS: PROTECTED + "/notifications",
   MEMBERS: PROTECTED + "/members",
+  IQ_TEST: PROTECTED + "/iq-test",
 };
 
 export const TOAST_PROPS: {
   duration: number;
   isClosable: boolean;
-  position: ToastPosition;
-  colorScheme: string;
+  position?: ToastPosition;
+  colorScheme?: string;
 } = {
-  duration: 3000,
+  duration: 2000,
   isClosable: true,
-  position: "top",
-  colorScheme: COLORS.COLOR_SCHEME,
 };
 
 export enum COLLECTIONS {

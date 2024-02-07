@@ -30,6 +30,7 @@ export const router = createBrowserRouter([
             path: ROUTES.MEMBERS,
             element: <Members />,
           },
+          { path: ROUTES.IQ_TEST, element: <PhoneAuth /> },
         ],
       },
     ],
