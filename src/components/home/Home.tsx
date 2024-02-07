@@ -1,8 +1,8 @@
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import { usePosts } from "../../hooks/postHooks";
 import LoadingScreen from "../LoadingScreen";
 import PostList from "../posts/PostList";
-import BackgroundContext from "../../BackGroundContext";
+// import BackgroundContext from "../../BackGroundContext";
 import AuthUserContext from "../layout/AuthUserContext";
 import ConfigContext from "../layout/ConfigProvider";
 import {
@@ -18,11 +18,11 @@ import MainImage from "./MainImage";
 
 const Home = () => {
   const { posts } = usePosts();
-  const setBackground = useContext(BackgroundContext);
+  // const setBackground = useContext(BackgroundContext);
   const authUser = useContext(AuthUserContext);
   const config = useContext(ConfigContext);
   const content = useContext(ContentContext);
-  useEffect(() => setBackground(), []);
+  // useEffect(() => setBackground(), []);
 
   return (
     <>

@@ -2,8 +2,8 @@ import { Center, Container, Text, Spacer, Stack } from "@chakra-ui/react";
 import { UserType } from "../../lib/types";
 import { bestiesContent } from "../../lib/content/bestiesContent";
 import { useNavigate } from "react-router-dom";
-import { useContext } from "react";
-import BackgroundContext from "../../BackGroundContext";
+// import { useContext } from "react";
+// import BackgroundContext from "../../BackGroundContext";
 import { ROUTES } from "../../lib/constants";
 import Avatar from "./Avatar";
 
@@ -20,7 +20,8 @@ const UserCard = ({
   ranking?: number;
 }) => {
   const navigate = useNavigate();
-  const setBackground = useContext(BackgroundContext);
+
+  // const setBackground = useContext(BackgroundContext);
   return (
     <Container
       borderWidth={"1px"}
@@ -31,7 +32,7 @@ const UserCard = ({
         onClick
           ? onClick
           : () => {
-              setBackground(user.favoriteColor);
+              // setBackground(user.favoriteColor);
               navigate(`${ROUTES.PROFILE}/${user.id}`);
             }
       }
