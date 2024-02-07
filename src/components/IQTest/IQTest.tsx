@@ -4,7 +4,6 @@ import {
   Heading,
   Popover,
   PopoverArrow,
-  PopoverBody,
   PopoverCloseButton,
   PopoverContent,
   PopoverHeader,
