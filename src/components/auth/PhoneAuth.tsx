@@ -19,6 +19,7 @@ import { useSignIn } from "../../hooks/authHooks";
 import { BACKGROUNDS } from "../../theme/colors";
 import ContentContext from "../layout/ContentProvider";
 import MainImage from "../home/MainImage";
+//  import { ROUTES } from "../../lib/constants";
 
 const PhoneAuth = () => {
   const [showOneTimePasswordInput, setShowOneTimePasswordInput] =
@@ -81,6 +82,11 @@ const PhoneAuth = () => {
         <FormContainer
           authHeadingProps={{
             title: content.auth.login,
+            // callToAction: "Take the ",
+            // link: {
+            //   label: "Genius IQ Test",
+            //   to: ROUTES.MEMBERS,
+            // },
           }}
           buttonProps={
             showOneTimePasswordInput
