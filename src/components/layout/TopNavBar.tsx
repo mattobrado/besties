@@ -50,16 +50,16 @@ const TopNavBar = () => {
             </MenuButton>
             <MenuList bg={COLORS.BACKGROUND}>
               {itemsInHamburger?.map((item, index) => (
-                <>
+                <div key={item.label}>
                   <GenericNavBarItem
                     label={item.label}
                     to={item.to}
-                    // isLogout={item.isLogout}
+                    isLogout={item.isLogout}
                   />
                   {index === itemsInHamburger.length - 1 ? undefined : (
                     <MenuDivider />
                   )}
-                </>
+                </div>
               ))}
             </MenuList>
           </>

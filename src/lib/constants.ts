@@ -5,6 +5,7 @@ const PROTECTED = "/p";
 
 export const ROUTES = {
   PROTECTED,
+  ROOT: "/",
   HOME: "/",
   LOGIN: "/login",
   PROFILE: PROTECTED + "/u",
