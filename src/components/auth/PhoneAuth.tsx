@@ -4,6 +4,7 @@ import { auth } from "../../lib/firebase";
 import {
   Box,
   FormControl,
+  FormErrorMessage,
   FormLabel,
   HStack,
   Input,
@@ -16,13 +17,13 @@ import { useForm } from "react-hook-form";
 import FormContainer from "./FormContainer";
 import PhoneInput from "react-phone-number-input/input";
 import { useSignIn } from "../../hooks/authHooks";
-import { BACKGROUNDS } from "../../theme/colors";
 import ContentContext from "../layout/ContentProvider";
 import MainImage from "../home/MainImage";
 
 const PhoneAuth = () => {
   const [showOneTimePasswordInput, setShowOneTimePasswordInput] =
     useState(false);
+  const [signInError, setSignInError] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [oneTimePassword, setOtp] = useState("");
   const { handleSubmit } = useForm();
@@ -55,7 +56,10 @@ const PhoneAuth = () => {
         (window as any).confirmationResult = confirmationResult;
         setShowOneTimePasswordInput(true);
       })
-      .catch(() => {})
+      .catch((e) => {
+        console.log("got an error", e);
+        setSignInError(e.message);
+      })
       .finally(() => setLoading(false));
   };
 
@@ -71,28 +75,27 @@ const PhoneAuth = () => {
   return (
     <>
       <MainImage />
-      <Box
-        minHeight="100vh"
-        style={{
-          background: BACKGROUNDS.default,
-        }}
-        p={4}
-      >
+      <Box minHeight="100vh" p={4}>
         <FormContainer
           authHeadingProps={{
             title: content.auth.login,
+            // callToAction: "Take the ",
+            // link: {
+            //   label: "Genius IQ Test",
+            //   to: ROUTES.MEMBERS,
+            // },
           }}
           buttonProps={
             showOneTimePasswordInput
               ? {
                   isLoading: isLoading,
-                  label: "sign in",
-                  loadingText: "signing in",
+                  label: content.auth.login,
+                  loadingText: content.auth.loggingIn,
                 }
               : {
                   isLoading: isLoading,
-                  label: "next",
-                  loadingText: "sending code",
+                  label: "Next",
+                  loadingText: "Sending code",
                 }
           }
           onSubmit={handleSubmit(
@@ -103,7 +106,7 @@ const PhoneAuth = () => {
         >
           {showOneTimePasswordInput ? (
             <FormControl>
-              <FormLabel>enter your code</FormLabel>
+              <FormLabel>Enter your code</FormLabel>
               <HStack w={"full"}>
                 <PinInput
                   otp={true}
@@ -126,7 +129,7 @@ const PhoneAuth = () => {
               </HStack>
             </FormControl>
           ) : (
-            <FormControl>
+            <FormControl isInvalid={!!signInError}>
               <InputGroup>
                 <Input
                   as={PhoneInput}
@@ -136,6 +139,7 @@ const PhoneAuth = () => {
                   onChange={setPhoneNumber as any}
                 />
               </InputGroup>
+              <FormErrorMessage>{signInError}</FormErrorMessage>
             </FormControl>
           )}
           <div id="recaptcha-container"></div>

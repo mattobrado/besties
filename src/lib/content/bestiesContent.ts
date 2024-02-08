@@ -56,6 +56,7 @@ export const bestiesContent = {
     seeAllUsers: "👥 make friends",
     goToProfile: "👤 my profile",
     newReview: "review",
+    logoSrcURL: "",
   },
   reviewForm: {
     revieweeField: "who are you reviewing?",
