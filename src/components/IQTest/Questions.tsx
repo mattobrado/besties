@@ -50,7 +50,7 @@ const Questions = () => {
   const { description, options } = steps[activeStep];
   return (
     <>
-      <Box p={4}>
+      <Box p={4} pb={24}>
         <Stepper size="sm" index={activeStep} gap="0" colorScheme="pink">
           {steps.map((step, index) => (
             <Step key={index}>
@@ -71,12 +71,26 @@ const Questions = () => {
           </Text>
         </Button>
       </Box>
-      <Box pt={2} pb={6} bg={"gray.800"} id="completion-footer">
+      <Box
+        id="completion-footer"
+        pt={2}
+        pb={6}
+        bg={"gray.800"}
+        position={"fixed"}
+        left={0}
+        bottom={0}
+        w={"100%"}
+      >
         <Center>
           <Text fontSize={"sm"}>{percentComplete.toFixed(0)}% Complete</Text>
         </Center>
         <Center>
-          <Progress w={"150px"} h={"4px"} colorScheme="pink" value={80} />
+          <Progress
+            w={"150px"}
+            h={"4px"}
+            colorScheme="pink"
+            value={percentComplete}
+          />
         </Center>
       </Box>
     </>
