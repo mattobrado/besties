@@ -1,13 +1,12 @@
 {
   "name": "besties",
   "private": true,
-  "version": "2.1.1",
+  "version": "2.1.0",
   "type": "module",
   "scripts": {
     "start": "vite",
     "build": "tsc && vite build",
-    "install-build": "npm i && npm run build",
-    "install-build-bump-patch": "npm run install-build && npm version patch",
+    "pre-deploy": "npm i && npm run build",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0 --fix",
     "preview": "vite preview"
   },
