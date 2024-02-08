@@ -20,12 +20,11 @@ export const ROUTES = {
 };
 
 export const TOAST_PROPS: {
-  duration: number;
+  duration?: number;
   isClosable: boolean;
   position?: ToastPosition;
   colorScheme?: string;
 } = {
-  duration: 2000,
   isClosable: true,
 };
 
