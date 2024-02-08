@@ -12,34 +12,10 @@ import {
   Center,
   Progress,
   Fade,
+  Stack,
 } from "@chakra-ui/react";
-import QuestionCard from "./QuestionCard";
 import { ArrowBackIcon } from "@chakra-ui/icons";
-
-const steps = [
-  { title: "First", description: "Contact Info" },
-  {
-    title: "Second",
-    description: "Choose your first field of expertise",
-    options: [
-      "Mathematics",
-      "Business",
-      "Economics",
-      "Archeology",
-      "History",
-      "Anthropology",
-      "Art",
-      "Literature",
-      "Music",
-      "Film",
-      "Physics",
-      "Chemistry",
-      "Astronomy",
-      "Technology",
-    ].sort(),
-  },
-  { title: "Third", description: "Select Rooms" },
-];
+import steps from "./steps";
 
 const Questions = () => {
   const { activeStep, goToNext, goToPrevious } = useSteps({
@@ -49,7 +25,7 @@ const Questions = () => {
 
   const percentComplete = (activeStep / steps.length) * 100;
 
-  const { description, options } = steps[activeStep];
+  const { description, body } = steps[activeStep];
   return (
     <>
       <Fade in={activeStep > 0}>
@@ -64,17 +40,20 @@ const Questions = () => {
         </Button>
       </Fade>
       <Box p={4} pb={24}>
-        <Stepper size="sm" index={activeStep} gap="0" colorScheme="pink">
-          {steps.map((step, index) => (
-            <Step key={index}>
-              <StepIndicator>
-                <StepStatus complete={<StepIcon />} />
-              </StepIndicator>
-              <StepSeparator />
-            </Step>
-          ))}
-        </Stepper>
-        <QuestionCard description={description} options={options} />
+        <Stack spacing={5} pb={5}>
+          <Stepper size="sm" index={activeStep} gap="0" colorScheme="pink">
+            {steps.map((step, index) => (
+              <Step key={index}>
+                <StepIndicator>
+                  <StepStatus complete={<StepIcon />} />
+                </StepIndicator>
+                <StepSeparator />
+              </Step>
+            ))}
+          </Stepper>
+          <Text fontSize={"3xl"}>{description}</Text>
+          {body}
+        </Stack>
         <Button colorScheme="pink" onClick={goToNext}>
           <Text color={"black"} w={"96px"} fontSize={"lg"}>
             {"Next"}
