@@ -15,7 +15,7 @@ const QuestionCard = ({
 
   return (
     <>
-      <Stack spacing={5}>
+      <Stack spacing={5} pb={5}>
         <Text fontSize={"3xl"}>{question}</Text>
         <RadioGroup onChange={setValue} value={value}>
           <Stack spacing={1}>
@@ -26,14 +26,14 @@ const QuestionCard = ({
             ))}
           </Stack>
         </RadioGroup>
-        <Button
-          style={{ backgroundColor: HEX_COLORS.THE_GENIUS_PROGRAM_PRIMARY }}
-        >
-          <Text color={"black"} w={"96px"} fontSize={"lg"}>
-            {submitButtonLabel}
-          </Text>
-        </Button>
       </Stack>
+      <Button
+        style={{ backgroundColor: HEX_COLORS.THE_GENIUS_PROGRAM_PRIMARY }}
+      >
+        <Text color={"black"} w={"96px"} fontSize={"lg"}>
+          {submitButtonLabel}
+        </Text>
+      </Button>
     </>
   );
 };
