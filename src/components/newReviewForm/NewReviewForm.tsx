@@ -89,7 +89,12 @@ const NewReviewForm = () => {
             ,
           </InputGroup>
         )}
-        <RatingInput iconSize={"5xl"} rating={rating} setRating={setRating} />
+        <RatingInput
+          iconSize={"5xl"}
+          rating={rating}
+          setRating={setRating}
+          direction={"row"}
+        />
         <FormControl isInvalid={!!errors.text}>
           <Textarea
             as={TextareaAutosize}
