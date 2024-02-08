@@ -1,4 +1,12 @@
-import { Button, Center, Heading, Stack, Text, Box } from "@chakra-ui/react";
+import {
+  Button,
+  Center,
+  Heading,
+  Stack,
+  Text,
+  Box,
+  Flex,
+} from "@chakra-ui/react";
 import Logo from "../layout/Logo";
 import { HEX_COLORS } from "../../theme/colors";
 import { Outlet, Link as ReactRouterLink, useLocation } from "react-router-dom";
@@ -8,11 +16,12 @@ const IQTest = () => {
   const { pathname } = useLocation();
 
   const isQuestionsPath = pathname.startsWith(ROUTES.QUESTIONS);
+  const percentComplete = 20;
 
   return (
     <>
       <Logo />
-      <Box px={4}>
+      <Box p={4}>
         {!isQuestionsPath && (
           <Stack spacing={5}>
             <Center>
@@ -44,6 +53,24 @@ const IQTest = () => {
           </Stack>
         )}
         <Outlet />
+      </Box>
+      <Box pt={2} pb={6} bg={"gray.800"}>
+        <Center>
+          <Text fontSize={"sm"}>{percentComplete}% Complete</Text>
+        </Center>
+        <Center>
+          <Flex color="white" w={"150px"} h={"4px"}>
+            <Box
+              w={`${percentComplete}%`}
+              style={{
+                backgroundColor: HEX_COLORS.THE_GENIUS_PROGRAM_PRIMARY,
+              }}
+            />
+            <Box w={`${100 - percentComplete}%`} bg={"white"}>
+              {" "}
+            </Box>
+          </Flex>
+        </Center>
       </Box>
     </>
   );

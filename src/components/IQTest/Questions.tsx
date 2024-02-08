@@ -2,7 +2,7 @@ import QuestionCard from "./QuestionCard";
 
 const Questions = () => (
   <QuestionCard
-    question={"Choose your field of expertise"}
+    question={"Choose your first field of expertise"}
     options={[
       "Mathematics",
       "Business",
