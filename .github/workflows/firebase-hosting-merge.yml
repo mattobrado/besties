@@ -19,5 +19,5 @@ jobs:
             firebaseServiceAccount: "${{ secrets.FIREBASE_SERVICE_ACCOUNT_MYPLACE_618E9 }}"
             channelId: live
             projectId: myplace-618e9
-      # - name: push
-      #     run: git push origin main
+      - name: push
+          run: git push origin main
