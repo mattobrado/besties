@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      GH_PUSH_TOKEN: ${{ secrets.GH_PUSH_TOKEN }}
+      GH_PUSH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
     steps:
       - name: Checkout
