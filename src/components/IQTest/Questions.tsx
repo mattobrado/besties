@@ -10,10 +10,11 @@ import {
   Button,
   Box,
   Center,
-  Flex,
   Progress,
+  Fade,
 } from "@chakra-ui/react";
 import QuestionCard from "./QuestionCard";
+import { ArrowBackIcon } from "@chakra-ui/icons";
 
 const steps = [
   { title: "First", description: "Contact Info" },
@@ -39,8 +40,9 @@ const steps = [
   },
   { title: "Third", description: "Select Rooms" },
 ];
+
 const Questions = () => {
-  const { activeStep, setActiveStep } = useSteps({
+  const { activeStep, goToNext, goToPrevious } = useSteps({
     index: 0,
     count: steps.length,
   });
@@ -50,6 +52,17 @@ const Questions = () => {
   const { description, options } = steps[activeStep];
   return (
     <>
+      <Fade in={activeStep > 0}>
+        <Button
+          leftIcon={<ArrowBackIcon />}
+          colorScheme="black"
+          variant="ghost"
+          size={"sm"}
+          onClick={goToPrevious}
+        >
+          BACK
+        </Button>
+      </Fade>
       <Box p={4} pb={24}>
         <Stepper size="sm" index={activeStep} gap="0" colorScheme="pink">
           {steps.map((step, index) => (
@@ -62,10 +75,7 @@ const Questions = () => {
           ))}
         </Stepper>
         <QuestionCard description={description} options={options} />
-        <Button
-          colorScheme="pink"
-          onClick={() => setActiveStep(activeStep + 1)}
-        >
+        <Button colorScheme="pink" onClick={goToNext}>
           <Text color={"black"} w={"96px"} fontSize={"lg"}>
             {"Next"}
           </Text>
