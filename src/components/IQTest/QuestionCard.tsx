@@ -1,25 +1,22 @@
-import { Button, Radio, RadioGroup, Stack, Text } from "@chakra-ui/react";
+import { Radio, RadioGroup, Stack, Text } from "@chakra-ui/react";
 import { useState } from "react";
-import { HEX_COLORS } from "../../theme/colors";
 
 const QuestionCard = ({
-  question,
+  description,
   options,
-  submitButtonLabel,
 }: {
-  question: string;
-  options: string[];
-  submitButtonLabel: string;
+  description: string;
+  options?: string[];
 }) => {
   const [value, setValue] = useState("");
 
   return (
     <>
       <Stack spacing={5} pb={5}>
-        <Text fontSize={"3xl"}>{question}</Text>
+        <Text fontSize={"3xl"}>{description}</Text>
         <RadioGroup onChange={setValue} value={value}>
           <Stack spacing={1}>
-            {options.map((option) => (
+            {options?.map((option) => (
               <Radio size={"md"} py={1} value={option} key={option}>
                 {option}
               </Radio>
@@ -27,13 +24,6 @@ const QuestionCard = ({
           </Stack>
         </RadioGroup>
       </Stack>
-      <Button
-        style={{ backgroundColor: HEX_COLORS.THE_GENIUS_PROGRAM_PRIMARY }}
-      >
-        <Text color={"black"} w={"96px"} fontSize={"lg"}>
-          {submitButtonLabel}
-        </Text>
-      </Button>
     </>
   );
 };

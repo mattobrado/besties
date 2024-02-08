@@ -7,7 +7,20 @@ import { buttonTheme } from "./buttonTheme";
 import { skeletonTheme } from "./skeletonTheme";
 
 export const customTheme = extendTheme({
-  colors: COLORS,
+  colors: {
+    pink: {
+      "50": "#FEE7EE",
+      "100": "#FCBBCF",
+      "200": "#FA8FB0",
+      "300": "#F86390",
+      "400": "#F63771",
+      "500": "#F40B52",
+      "600": "#C30942",
+      "700": "#920731",
+      "800": "#620421",
+      "900": "#310210",
+    },
+  },
 
   components: {
     Text: {
@@ -25,6 +38,9 @@ export const customTheme = extendTheme({
     Menu: menuTheme,
     Spinner: spinnerTheme,
     Skeleton: skeletonTheme,
+    colors: {
+      pink: "#f00b51",
+    },
   },
 
   styles: {

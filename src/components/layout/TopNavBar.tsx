@@ -12,7 +12,6 @@ import {
 } from "@chakra-ui/react";
 import { CloseIcon, HamburgerIcon } from "@chakra-ui/icons";
 import { useContext } from "react";
-import { HEX_COLORS } from "../../theme/colors";
 import GenericNavBarItem from "./navBarItems/GenericNavBarItem";
 import ConfigContext from "./ConfigProvider";
 import { NUM_ITEMS_OUT_OF_HAMBURGER, ROUTES } from "../../lib/constants";
@@ -29,7 +28,7 @@ const TopNavBar = () => {
 
   return (
     <Flex
-      style={{ backgroundColor: `${HEX_COLORS.THE_GENIUS_PROGRAM_PRIMARY}` }}
+      bg="pink.500"
       h={12}
       alignItems={"center"}
       justifyContent={"space-between"}

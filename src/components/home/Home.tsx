@@ -10,7 +10,6 @@ import {
   useToast,
 } from "@chakra-ui/react";
 import ContentContext from "../layout/ContentProvider";
-import { HEX_COLORS } from "../../theme/colors";
 import MainImage from "./MainImage";
 import PostFeed from "../posts/PostFeed";
 
@@ -26,13 +25,7 @@ const Home = () => {
     <>
       <MainImage />
       <Stack p={4} spacing={2}>
-        <Heading
-          style={{
-            color: `${HEX_COLORS.THE_GENIUS_PROGRAM_PRIMARY}`,
-          }}
-        >
-          {content.home.heading}
-        </Heading>
+        <Heading color="pink.500">{content.home.heading}</Heading>
         <Text>
           The Genius Program is a highly selective society which provides its
           members with exciting opportunities for intellectual stimulation.
