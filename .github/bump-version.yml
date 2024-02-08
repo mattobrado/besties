@@ -1,0 +1,42 @@
+on:
+  pull_request:
+    branches:
+      - main
+    types: [closed]
+
+jobs:
+  bump-version:
+    runs-on: ubuntu-latest
+
+    env:
+      GH_PUSH_TOKEN: ${{ secrets.GH_PUSH_TOKEN }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        if: env.GH_PUSH_TOKEN != ''
+        with:
+          token: ${{ env.GH_PUSH_TOKEN }}
+
+      - name: configure git
+        if: env.GH_PUSH_TOKEN != ''
+        run: |
+          git remote set-url origin https://itsalaidbacklife@github.com/cuttle-cards/cuttle
+          git config --global user.name "Cuttle Continuous Integration"
+          git config --global user.email "itsalaidbacklife@gmail.com"
+
+      - name: bump patch version
+        if: contains(github.event.pull_request.labels.*.name, 'version-patch') && env.GH_PUSH_TOKEN != ''
+        run: npm run version:patch
+
+      - name: bump minor version
+        if: contains(github.event.pull_request.labels.*.name, 'version-minor') && env.GH_PUSH_TOKEN != ''
+        run: npm run version:minor
+
+      - name: bump major version
+        if: contains(github.event.pull_request.labels.*.name, 'version-major') && env.GH_PUSH_TOKEN != ''
+        run: npm run version:major
+
+      - name: push
+        if: env.GH_PUSH_TOKEN != ''
+        run: git push origin main
