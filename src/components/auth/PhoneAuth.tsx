@@ -20,7 +20,11 @@ import { useSignIn } from "../../hooks/authHooks";
 import ContentContext from "../layout/ContentProvider";
 import MainImage from "../home/MainImage";
 
-const PhoneAuth = () => {
+const PhoneAuth = ({
+  isFieldAndButtonOnly,
+}: {
+  isFieldAndButtonOnly: boolean;
+}) => {
   const [showOneTimePasswordInput, setShowOneTimePasswordInput] =
     useState(false);
   const [signInError, setSignInError] = useState("");
@@ -74,17 +78,21 @@ const PhoneAuth = () => {
 
   return (
     <>
-      <MainImage />
+      {isFieldAndButtonOnly && <MainImage />}
       <Box minHeight="100vh" p={4}>
         <FormContainer
-          authHeadingProps={{
-            title: content.auth.login,
-            // callToAction: "Take the ",
-            // link: {
-            //   label: "Genius IQ Test",
-            //   to: ROUTES.MEMBERS,
-            // },
-          }}
+          authHeadingProps={
+            isFieldAndButtonOnly
+              ? {}
+              : {
+                  title: content.auth.login,
+                  // callToAction: "Take the ",
+                  // link: {
+                  //   label: "Genius IQ Test",
+                  //   to: ROUTES.MEMBERS,
+                  // },
+                }
+          }
           buttonProps={
             showOneTimePasswordInput
               ? {

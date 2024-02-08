@@ -1,7 +1,10 @@
+import PhoneAuth from "../auth/PhoneAuth";
+import EditProfile from "../profile/EditProfile";
 import QuestionCard from "./QuestionCard";
 
 const steps = [
-  { title: "First", description: "Contact Info" },
+  { title: "First", description: "Log in", body: <PhoneAuth /> },
+  { title: "First", description: "Contact Info", body: <EditProfile /> },
   {
     title: "Second",
     description: "Choose your first field of expertise",

@@ -1,6 +1,6 @@
 import { FormControl, FormLabel, Input } from "@chakra-ui/react";
 import { useUpdateUser } from "../../hooks/userHooks";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { ROUTES } from "../../lib/constants";
 import AuthUserContext from "../layout/AuthUserContext";
@@ -10,7 +10,6 @@ import { INPUT_TYPE, VALIDATE } from "../../lib/formValidation";
 import FormField from "../auth/FormField";
 import FormContainer from "../auth/FormContainer";
 import { useForm } from "react-hook-form";
-import BackgroundContext from "../../BackGroundContext";
 
 export const EditProfile = () => {
   const { id } = useParams();
@@ -40,8 +39,8 @@ export const EditProfile = () => {
     fileURL,
   } = useUpdateUser(authUser?.id);
 
-  const setBackground = useContext(BackgroundContext);
-  useEffect(() => setBackground(color), [color]);
+  // const setBackground = useContext(BackgroundContext);
+  // useEffect(() => setBackground(color), [color]);
 
   return (
     <FormContainer

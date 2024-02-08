@@ -28,7 +28,7 @@ export const AuthHeading = ({
 };
 
 export type AuthHeadingPropsType = {
-  title: string;
+  title?: string;
   callToAction?: string;
   link?: {
     to: string;

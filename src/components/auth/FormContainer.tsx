@@ -8,7 +8,7 @@ const FormContainer = ({
   onSubmit,
 }: {
   authHeadingProps?: AuthHeadingPropsType;
-  buttonProps: { isLoading: boolean; label: string; loadingText: string };
+  buttonProps?: { isLoading: boolean; label: string; loadingText: string };
   children: React.ReactNode;
   onSubmit: React.FormEventHandler<HTMLFormElement>;
 }) => (
@@ -28,11 +28,11 @@ const FormContainer = ({
             type="submit"
             size="md"
             w="full"
-            isLoading={buttonProps.isLoading}
-            loadingText={buttonProps.loadingText}
+            isLoading={buttonProps?.isLoading}
+            loadingText={buttonProps?.loadingText}
             bg={"white"}
           >
-            {buttonProps.label}
+            {buttonProps?.label}
           </Button>
         </Stack>
       </Box>
