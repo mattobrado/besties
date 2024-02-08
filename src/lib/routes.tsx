@@ -14,6 +14,7 @@ import Members from "../components/lists/Members";
 import ProtectedPageContainer from "../components/layout/ProtectedPageContainer";
 import PostFeed from "../components/posts/PostFeed";
 import IQTest from "../components/IQTest/IQTest";
+import Questions from "../components/IQTest/Questions";
 
 const idString = "/:id";
 
@@ -32,7 +33,6 @@ export const router = createBrowserRouter([
             path: ROUTES.SEARCH,
             element: <Members />,
           },
-          { path: ROUTES.IQ_TEST, element: <IQTest /> },
           { path: ROUTES.POSTS, element: <PostFeed /> },
           {
             path: ROUTES.EDIT_PROFILE + idString,
@@ -41,6 +41,11 @@ export const router = createBrowserRouter([
         ],
       },
     ],
+  },
+  {
+    path: ROUTES.IQ_TEST,
+    element: <IQTest />,
+    children: [{ path: ROUTES.QUESTIONS, element: <Questions /> }],
   },
 
   // {

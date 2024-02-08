@@ -1,52 +1,47 @@
-import {
-  Button,
-  Center,
-  Heading,
-  Popover,
-  PopoverArrow,
-  PopoverCloseButton,
-  PopoverContent,
-  PopoverHeader,
-  PopoverTrigger,
-  Stack,
-  Text,
-} from "@chakra-ui/react";
+import { Button, Center, Heading, Stack, Text } from "@chakra-ui/react";
+import Logo from "../layout/Logo";
+import { HEX_COLORS } from "../../theme/colors";
+import { Outlet, Link as ReactRouterLink, useLocation } from "react-router-dom";
+import { ROUTES } from "../../lib/constants";
 
 const IQTest = () => {
+  const { pathname } = useLocation();
+
+  const isQuestionsPath = pathname.startsWith(ROUTES.QUESTIONS);
+
   return (
-    <Stack py={5} spacing={5}>
-      <Center>
-        <Text fontSize={"3xl"}>IQ Test</Text>
-      </Center>
-      <Center>
-        <Heading size={"2xl"}>Are you a Genius?</Heading>
-      </Center>
-      <Center>
-        <Popover>
-          <PopoverTrigger>
-            <Button>Coming soon</Button>
-          </PopoverTrigger>
-          <PopoverContent bg={"black"}>
-            <PopoverArrow />
-            <PopoverCloseButton />
-            <PopoverHeader>
-              The Genius IQ Test will be available shortly!
-            </PopoverHeader>
-          </PopoverContent>
-        </Popover>
-      </Center>
-      <Center p={5}>
-        <iframe
-          width="335"
-          height="188"
-          src="https://www.youtube.com/embed/enijgkRpsE4?si=z5HIO_BCP594gvXi"
-          title="YouTube video player"
-          // frameborder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          // allowfullscreen
-        ></iframe>
-      </Center>
-    </Stack>
+    <>
+      <Logo />
+      {!isQuestionsPath && (
+        <Stack p={5} spacing={5}>
+          <Center>
+            <Text fontSize={"3xl"}>IQ Test</Text>
+          </Center>
+          <Center>
+            <Heading size={"2xl"}>Are you a Genius?</Heading>
+          </Center>
+          <Center>
+            <Button
+              as={ReactRouterLink}
+              to={ROUTES.QUESTIONS}
+              style={{ backgroundColor: HEX_COLORS.THE_GENIUS_PROGRAM_PRIMARY }}
+            >
+              Take the Test
+            </Button>
+          </Center>
+          <Center>
+            <iframe
+              width="335"
+              height="188"
+              src="https://www.youtube.com/embed/enijgkRpsE4?si=z5HIO_BCP594gvXi"
+              title="YouTube video player"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            ></iframe>
+          </Center>
+        </Stack>
+      )}
+      <Outlet />
+    </>
   );
 };
 

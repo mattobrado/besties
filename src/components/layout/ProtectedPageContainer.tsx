@@ -4,7 +4,7 @@ import { useAuth } from "../../hooks/authHooks";
 import { ROUTES, TOAST_PROPS } from "../../lib/constants";
 import AuthUserContext from "./AuthUserContext";
 import LoadingScreen from "../LoadingScreen";
-import { useToast } from "@chakra-ui/react";
+import { Box, useToast } from "@chakra-ui/react";
 
 const ProtectedPageContainer = () => {
   const { pathname } = useLocation();
@@ -34,11 +34,13 @@ const ProtectedPageContainer = () => {
     }
   }, [pathname, authUser, isLoading]);
   return (
-    authUser && (
-      <AuthUserContext.Provider value={authUser}>
-        {isLoading ? <LoadingScreen /> : <Outlet />}
-      </AuthUserContext.Provider>
-    )
+    <Box px={2} py={4} bg={"white"} minHeight="100vh">
+      {authUser && (
+        <AuthUserContext.Provider value={authUser}>
+          {isLoading ? <LoadingScreen /> : <Outlet />}
+        </AuthUserContext.Provider>
+      )}
+    </Box>
   );
 };
 
