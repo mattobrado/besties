@@ -1,7 +1,6 @@
 import { useHighestRated } from "../../hooks/userHooks";
 import UserList from "../profile/UserList";
 import { Center, Divider, Heading } from "@chakra-ui/react";
-import { COLORS } from "../../theme/colors";
 import { bestiesContent } from "../../lib/content/bestiesContent";
 
 const HighestRated = () => {
@@ -9,7 +8,7 @@ const HighestRated = () => {
   return (
     <>
       <Center>
-        <Heading color={COLORS.BRAND} size={"xl"}>
+        <Heading size={"xl"}>
           <i>{bestiesContent.lists.highestRatedHeading}</i>
         </Heading>
       </Center>

@@ -1,6 +1,5 @@
 import { HStack, Text, Box, IconButton } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
-import { COLORS } from "../../theme/colors";
 import { ACTION_ICON_SIZE } from "../../lib/constants";
 
 const ActionButton = ({
@@ -8,7 +7,6 @@ const ActionButton = ({
   icon,
   number,
   to,
-  color = COLORS.PRIMARY_FONT,
 }: {
   onClick?: () => void;
   icon: JSX.Element;
@@ -26,7 +24,6 @@ const ActionButton = ({
         size={ACTION_ICON_SIZE}
         icon={icon}
         aria-label={"delete post"}
-        color={color}
       />
       <Text fontSize="md">{number}</Text>
     </HStack>

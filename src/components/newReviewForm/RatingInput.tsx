@@ -1,4 +1,4 @@
-import { Button, HStack, Stack, StackDirection, Text } from "@chakra-ui/react";
+import { Button, Stack, StackDirection, Text } from "@chakra-ui/react";
 
 const RatingInput = ({
   iconSize,

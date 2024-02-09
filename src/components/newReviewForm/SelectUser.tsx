@@ -1,5 +1,4 @@
 import { Modal, ModalBody, ModalContent, ModalOverlay } from "@chakra-ui/react";
-import { COLORS } from "../../theme/colors";
 import { UserType } from "../../lib/types";
 import Search from "../search/Search";
 import { bestiesContent } from "../../lib/content/bestiesContent";
@@ -17,7 +16,7 @@ export default function SelectUser({
   return (
     <Modal isOpen={isOpen} onClose={onClose}>
       <ModalOverlay />
-      <ModalContent bg={COLORS.BACKGROUND} shadow={COLORS.BACKGROUND}>
+      <ModalContent>
         <ModalBody mt={2} px={GLOBAL_PX}>
           <Search
             onClick={onClick}

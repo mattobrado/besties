@@ -20,7 +20,6 @@ import { PostType, UserType } from "../../lib/types";
 import { useNavigate } from "react-router-dom";
 import SelectUser from "./SelectUser";
 import UserCard from "../profile/UserCard";
-import { COLORS } from "../../theme/colors";
 import { TfiSearch } from "react-icons/tfi";
 import BackgroundContext from "../../BackGroundContext";
 import AuthUserContext from "../layout/AuthUserContext";
@@ -79,10 +78,7 @@ const NewReviewForm = () => {
           </InputGroup>
         ) : (
           <InputGroup size={"lg"} onClick={onOpen} h={16}>
-            <Input
-              placeholder={bestiesContent.reviewForm.revieweeField}
-              _placeholder={{ color: COLORS.PLACEHOLDER }}
-            />
+            <Input placeholder={bestiesContent.reviewForm.revieweeField} />
             <InputRightElement>
               <TfiSearch />
             </InputRightElement>
@@ -103,7 +99,6 @@ const NewReviewForm = () => {
             placeholder={bestiesContent.reviewForm.reviewField}
             minRows={5}
             {...register("text", VALIDATE.TEXT)}
-            _placeholder={{ color: COLORS.PLACEHOLDER }}
           />
           <FormErrorMessage>
             {typeof errors.text?.message === "string" && errors.text?.message}

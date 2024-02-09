@@ -21,20 +21,22 @@ const FormContainer = ({
         boxShadow={{ base: "none", sm: "md" }}
         borderRadius={{ base: "none", sm: "xl" }}
       >
-        <Stack spacing="1" as={"form"} onSubmit={onSubmit as any}>
+        <Stack spacing="1" as={"form"} pb={8}>
           {children}
+        </Stack>
+        <Box layerStyle={"black"}>
           <Button
-            mt="4"
+            colorScheme="pink"
             type="submit"
-            size="md"
-            w="full"
             isLoading={buttonProps?.isLoading}
             loadingText={buttonProps?.loadingText}
-            bg={"white"}
+            onClick={onSubmit as any}
           >
-            {buttonProps?.label}
+            <Box w={"96px"} fontSize={"lg"} layerStyle={"black"}>
+              {buttonProps?.label}
+            </Box>
           </Button>
-        </Stack>
+        </Box>
       </Box>
     </Stack>
   </Container>
