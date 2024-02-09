@@ -29,7 +29,7 @@ const ProtectedPageContainer = () => {
           status: "error",
           ...TOAST_PROPS,
         });
-        navigate(ROUTES.QUESTIONS);
+        navigate(ROUTES.REGISTRATION);
       }
     }
   }, [pathname, authUser, isLoading]);

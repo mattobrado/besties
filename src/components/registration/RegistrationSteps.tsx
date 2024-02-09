@@ -14,7 +14,7 @@ import {
   Fade,
 } from "@chakra-ui/react";
 import { ArrowBackIcon } from "@chakra-ui/icons";
-import { useAuth } from "../../hooks/authHooks";
+import { useAuth, useLogout } from "../../hooks/authHooks";
 import PhoneAuth from "../auth/PhoneAuth";
 import EditProfile from "../profile/EditProfile";
 import QuestionCard from "./QuestionCard";
@@ -22,7 +22,7 @@ import QuestionCard from "./QuestionCard";
 const RegistrationSteps = () => {
   enum stepIds {
     editProfileId = "edit-profile",
-    loginProfileId = "edit-profile",
+    loginId = "login",
   }
   const { authUser } = useAuth();
   const stepsWithoutSubmitButton: {
@@ -30,7 +30,11 @@ const RegistrationSteps = () => {
     body?: React.ReactNode;
     id?: string;
   }[] = [
-    { description: "Register", body: <PhoneAuth /> },
+    {
+      description: "Register",
+      body: <PhoneAuth />,
+      id: stepIds.loginId,
+    },
     {
       id: stepIds.editProfileId,
       description: "About you",
@@ -81,6 +85,8 @@ const RegistrationSteps = () => {
 
   const percentComplete = (activeStep / steps.length) * 100;
 
+  const { logout } = useLogout();
+
   const { description, body, id } = steps[activeStep];
   if (authUser && activeStep === 0) {
     setActiveStep(1);
@@ -89,6 +95,17 @@ const RegistrationSteps = () => {
   return (
     <>
       <div>
+        <Fade in={activeStep === 1}>
+          <Button
+            leftIcon={<ArrowBackIcon />}
+            colorScheme="black"
+            variant="ghost"
+            size={"sm"}
+            onClick={logout}
+          >
+            LOG OUT
+          </Button>
+        </Fade>
         <Fade in={activeStep > 1}>
           <Button
             leftIcon={<ArrowBackIcon />}

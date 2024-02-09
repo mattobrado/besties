@@ -17,7 +17,7 @@ export const ROUTES = {
   NOTIFICATIONS: PROTECTED + "/notifications",
   // MEMBERS: PROTECTED + "/search-members",
   IQ_TEST,
-  QUESTIONS: IQ_TEST + "/questions",
+  REGISTRATION: IQ_TEST + "/questions",
   POSTS: PROTECTED + "/ideas",
 };
 
