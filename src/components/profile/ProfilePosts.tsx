@@ -1,27 +1,15 @@
 import { Container } from "@chakra-ui/react";
 import PostList from "../posts/PostList";
 import ProfileHeading from "./ProfileHeading";
-import { UserType } from "../../lib/types";
 import { usePostsForProfile } from "../../hooks/postHooks";
 
-const ProfilePosts = ({
-  authUser,
-  uid,
-}: {
-  authUser: UserType;
-  uid: string;
-}) => {
+const ProfilePosts = ({ uid }: { uid: string }) => {
   const { posts } = usePostsForProfile(uid);
 
   return (
     <Container>
       <ProfileHeading text={"activity"} />
-      {posts && (
-        <PostList
-          posts={posts.filter((post) => post.isReview)}
-          authUser={authUser}
-        />
-      )}
+      {posts && <PostList posts={posts.filter((post) => post.isReview)} />}
     </Container>
   );
 };

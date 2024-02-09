@@ -39,8 +39,8 @@ export const EditProfile = ({
   const handleSignup = async (data: any) => {
     await updateUser({
       fullName: data.fullName,
-      songLink: data.url,
-      color,
+      favoriteSongId: data.url,
+      favoriteColor: color,
       bio: data.bio,
     });
     if (onSubmit) onSubmit();

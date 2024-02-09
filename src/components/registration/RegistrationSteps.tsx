@@ -18,7 +18,7 @@ import { useAuth, useLogout } from "../../hooks/authHooks";
 import PhoneAuth from "../auth/PhoneAuth";
 import EditProfile from "../profile/EditProfile";
 import QuestionCard from "./QuestionCard";
-import { schoolSubjects } from "../../lib/constants";
+import { agreementLevels, schoolSubjects } from "../../lib/constants";
 import { useState } from "react";
 import { useUpdateUser } from "../../hooks/userHooks";
 
@@ -50,7 +50,7 @@ const RegistrationSteps = () => {
       body: (
         <QuestionCard
           field={"iAmAQuickLearner"}
-          options={schoolSubjects.sort().concat("Other")}
+          options={agreementLevels}
           value={value}
           setValue={setValue}
           onNext={onNext}
@@ -91,46 +91,33 @@ const RegistrationSteps = () => {
 
   return (
     <>
-      <div>
-        <Fade in={activeStep === 1}>
-          <Button
-            leftIcon={<ArrowBackIcon />}
-            colorScheme="black"
-            variant="ghost"
-            size={"sm"}
-            onClick={logout}
-          >
-            LOG OUT
-          </Button>
-        </Fade>
-        <Fade in={activeStep > 1}>
-          <Button
-            leftIcon={<ArrowBackIcon />}
-            colorScheme="black"
-            variant="ghost"
-            size={"sm"}
-            onClick={goToPrevious}
-          >
-            BACK
-          </Button>
-        </Fade>
-        <Box p={4} pb={24}>
-          <Stepper size="sm" index={activeStep} gap="0" colorScheme="pink">
-            {steps.map((_step, index) => (
-              <Step key={index}>
-                <StepIndicator>
-                  <StepStatus complete={<StepIcon />} />
-                </StepIndicator>
-                <StepSeparator />
-              </Step>
-            ))}
-          </Stepper>
-          <Text fontSize={"3xl"} py={5}>
-            {description}
-          </Text>
-          {body}
-        </Box>
-      </div>
+      <Fade in={activeStep > 0}>
+        <Button
+          leftIcon={<ArrowBackIcon />}
+          colorScheme="black"
+          variant="ghost"
+          size={"sm"}
+          onClick={activeStep === 1 ? logout : goToPrevious}
+        >
+          BACK
+        </Button>
+      </Fade>
+      <Box p={4} pb={24}>
+        <Stepper size="sm" index={activeStep} gap="0" colorScheme="pink" pt={0}>
+          {steps.map((_step, index) => (
+            <Step key={index}>
+              <StepIndicator>
+                <StepStatus complete={<StepIcon />} />
+              </StepIndicator>
+              <StepSeparator />
+            </Step>
+          ))}
+        </Stepper>
+        <Text fontSize={"3xl"} py={5}>
+          {description}
+        </Text>
+        {body}
+      </Box>
       <Box
         id="completion-footer"
         pt={2}

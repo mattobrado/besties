@@ -1,9 +1,8 @@
-import { useContext } from "react";
-import AuthUserContext from "../AuthUserContext";
+import { useAuth } from "../../../hooks/authHooks";
 import Avatar from "../../profile/Avatar";
 
 const AvatarNavBarItem = () => {
-  const authUser = useContext(AuthUserContext);
+  const { authUser } = useAuth();
 
   return <Avatar user={authUser} avatarProps={{ size: "md" }} />;
 };

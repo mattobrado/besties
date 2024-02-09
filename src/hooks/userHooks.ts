@@ -34,28 +34,26 @@ export const useUpdateUser = (uid?: string) => {
   const [isLoading, setLoading] = useState(false);
   const [file, setFile] = useState(null);
 
-  const updateUser = async ({
-    fullName,
-    songLink,
-    color,
-    bio,
-    tag,
-  }: {
-    fullName?: string;
-    songLink?: string;
-    color?: string;
-    bio?: string;
-    tag?: string;
-  }) => {
+  const updateUser = async (userFields: Partial<UserType>) => {
     setLoading(true);
+
+    const {
+      tag,
+      fullName,
+      bio,
+      favoriteColor,
+      iAmAQuickLearner: iAmAQuickLEarner,
+      favoriteSongId,
+    } = userFields;
 
     const user: Partial<UserType> = {};
 
     if (fullName) user.fullName = fullName;
     if (bio) user.bio = bio;
-    if (songLink) user.favoriteSongId = getSongIdFromLink(songLink);
-    if (color) user.favoriteColor = color;
+    if (favoriteSongId) user.favoriteSongId = getSongIdFromLink(favoriteSongId);
+    if (favoriteColor) user.favoriteColor = favoriteColor;
     if (tag) user.tag = tag;
+    if (iAmAQuickLEarner) user.iAmAQuickLearner = iAmAQuickLEarner;
 
     if (file) {
       const fileRef = ref(storage, "avatars/" + uid);

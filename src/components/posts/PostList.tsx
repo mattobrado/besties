@@ -1,16 +1,10 @@
 import { Text } from "@chakra-ui/react";
-import { PostType, UserType } from "../../lib/types";
+import { PostType } from "../../lib/types";
 import Review from "./Review";
 import { bestiesContent } from "../../lib/content/bestiesContent";
 import Comment from "../comments/Comment";
 
-export const PostList = ({
-  posts,
-  authUser: authUser,
-}: {
-  posts: PostType[];
-  authUser: UserType;
-}) => {
+export const PostList = ({ posts }: { posts: PostType[] }) => {
   return (
     <>
       {posts?.length === 0 ? (
@@ -20,9 +14,9 @@ export const PostList = ({
       ) : (
         posts?.map((post) =>
           post.isReview ? (
-            <Review key={post.id} post={post} authUser={authUser} />
+            <Review key={post.id} post={post} />
           ) : post.isComment ? (
-            <Comment key={post.id} post={post} user={authUser} />
+            <Comment key={post.id} post={post} />
           ) : (
             <></>
           )

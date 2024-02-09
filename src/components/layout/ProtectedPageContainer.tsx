@@ -2,7 +2,6 @@ import { useEffect } from "react";
 import { Outlet, useLocation, useNavigate } from "react-router-dom";
 import { useAuth } from "../../hooks/authHooks";
 import { ROUTES, TOAST_PROPS } from "../../lib/constants";
-import AuthUserContext from "./AuthUserContext";
 import LoadingScreen from "../LoadingScreen";
 import { Box, useToast } from "@chakra-ui/react";
 
@@ -35,11 +34,7 @@ const ProtectedPageContainer = () => {
   }, [pathname, authUser, isLoading]);
   return (
     <Box px={2} py={4} bg={"white"} minHeight="100vh">
-      {authUser && (
-        <AuthUserContext.Provider value={authUser}>
-          {isLoading ? <LoadingScreen /> : <Outlet />}
-        </AuthUserContext.Provider>
-      )}
+      {authUser && isLoading ? <LoadingScreen /> : <Outlet />}
     </Box>
   );
 };

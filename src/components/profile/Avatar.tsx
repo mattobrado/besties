@@ -10,7 +10,7 @@ const Avatar = ({
   overrideAvatar,
   isLink = true,
 }: {
-  user: UserType;
+  user?: UserType;
   avatarProps?: AvatarProps;
   children?: React.ReactNode;
   overrideAvatar?: string;
@@ -19,9 +19,9 @@ const Avatar = ({
   return (
     <ChakraAvatar
       as={isLink ? Link : undefined}
-      to={`${ROUTES.PROFILE}/${user.id}`}
-      name={user.fullName}
-      src={overrideAvatar ?? user.avatar}
+      to={`${ROUTES.PROFILE}/${user?.id}`}
+      name={user?.fullName}
+      src={overrideAvatar ?? user?.avatar}
       children={children}
       loading="lazy"
       {...avatarProps}

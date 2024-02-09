@@ -44,10 +44,11 @@ export type UserType = {
   favoriteMovie?: string;
   isMember?: boolean;
   tag?: string;
+  iAmAQuickLearner: string;
 };
 
 export type ToggleLikeType = {
   id: string;
   isLiked: boolean;
-  uid: string;
+  uid?: string;
 };

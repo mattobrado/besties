@@ -1,10 +1,9 @@
 import { Box, Divider, Stack, Text } from "@chakra-ui/react";
 import Actions from "./Actions";
-import { PostType, UserType } from "../../lib/types";
+import { PostType } from "../../lib/types";
 
 const PostBody = ({
   children,
-  currentUser,
   hideCommentButton,
   post,
   subjectLine,
@@ -13,7 +12,6 @@ const PostBody = ({
   children?: React.ReactNode;
   header: React.ReactNode;
   subjectLine?: React.ReactNode;
-  currentUser: UserType;
   hideCommentButton?: boolean;
   post: PostType;
 }) => {
@@ -28,11 +26,7 @@ const PostBody = ({
           {post.text}
         </Text>
         <Box px={bodyPx - 2} pb={1}>
-          <Actions
-            user={currentUser}
-            post={post}
-            hideCommentButton={hideCommentButton}
-          />
+          <Actions post={post} hideCommentButton={hideCommentButton} />
         </Box>
       </Stack>
       <Divider />

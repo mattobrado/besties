@@ -63,3 +63,13 @@ export const schoolSubjects = [
   "Medicine",
   "Government",
 ];
+
+export const agreementLevels = [
+  "1 Not like me",
+  "2",
+  "3",
+  "4",
+  "5",
+  "6",
+  "7 like me",
+];
