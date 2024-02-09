@@ -29,7 +29,10 @@ const Questions = () => {
   const percentComplete = (activeStep / steps.length) * 100;
 
   const { description, body } = steps[activeStep];
-  useEffect(() => setActiveStep(authUser ? 1 : 0), [authUser]);
+  useEffect(
+    () => setActiveStep(authUser && activeStep === 0 ? 1 : 0),
+    [authUser]
+  );
   return (
     <>
       <Fade in={activeStep > 0}>

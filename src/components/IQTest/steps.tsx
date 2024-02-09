@@ -27,6 +27,9 @@ const steps = [
           "Technology",
           "Architecture",
           "Geology",
+          "Biology",
+          "Medicine",
+          "Government",
         ]
           .sort()
           .concat("Other")}
