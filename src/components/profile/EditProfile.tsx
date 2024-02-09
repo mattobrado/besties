@@ -45,12 +45,9 @@ export const EditProfile = ({
     if (onSubmit) onSubmit();
   };
 
-  const {
-    setFile,
-    updateUser: updateUser,
-    isLoading,
-    fileURL,
-  } = useUpdateUser(authUser?.id);
+  const { setFile, updateUser, isLoading, fileURL } = useUpdateUser(
+    authUser?.id
+  );
 
   const content = useContext(ContentContext);
 
@@ -61,7 +58,7 @@ export const EditProfile = ({
       onSubmit={handleSubmit(handleSignup)}
       buttonProps={{
         isLoading: isLoading,
-        label: "Update",
+        label: content.auth.next,
         loadingText: "Updating",
       }}
     >
