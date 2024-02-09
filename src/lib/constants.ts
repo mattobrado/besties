@@ -41,3 +41,25 @@ export const ACTION_ICON_SIZE = "lg";
 export const BOTTOM_NAV_HEIGHT = 24;
 export const LOGO_HEIGHT = "75px";
 export const NUM_ITEMS_OUT_OF_HAMBURGER = 3;
+
+export const schoolSubjects = [
+  "Mathematics",
+  "Business",
+  "Economics",
+  "Archeology",
+  "History",
+  "Anthropology",
+  "Art",
+  "Literature",
+  "Music",
+  "Film",
+  "Physics",
+  "Chemistry",
+  "Astronomy",
+  "Technology",
+  "Architecture",
+  "Geology",
+  "Biology",
+  "Medicine",
+  "Government",
+];

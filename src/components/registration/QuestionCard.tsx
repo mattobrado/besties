@@ -1,18 +1,27 @@
 import { Radio, RadioGroup, Stack } from "@chakra-ui/react";
-import { useState } from "react";
+import { Dispatch, SetStateAction } from "react";
 
-const QuestionCard = ({ options }: { options?: string[] }) => {
-  const [value, setValue] = useState("");
-
+const QuestionCard = ({
+  options,
+  nextButton,
+  value,
+  setValue,
+}: {
+  options?: string[];
+  nextButton: React.ReactNode;
+  value: string;
+  setValue: Dispatch<SetStateAction<string>>;
+}) => {
   return (
     <RadioGroup onChange={setValue} value={value}>
-      <Stack spacing={1}>
+      <Stack spacing={1} pb={5}>
         {options?.map((option) => (
           <Radio size={"md"} py={1} value={option} key={option}>
             {option}
           </Radio>
         ))}
       </Stack>
+      {nextButton}
     </RadioGroup>
   );
 };

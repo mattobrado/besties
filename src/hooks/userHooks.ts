@@ -39,11 +39,13 @@ export const useUpdateUser = (uid?: string) => {
     songLink,
     color,
     bio,
+    tag,
   }: {
     fullName?: string;
     songLink?: string;
     color?: string;
     bio?: string;
+    tag?: string;
   }) => {
     setLoading(true);
 
@@ -53,6 +55,7 @@ export const useUpdateUser = (uid?: string) => {
     if (bio) user.bio = bio;
     if (songLink) user.favoriteSongId = getSongIdFromLink(songLink);
     if (color) user.favoriteColor = color;
+    if (tag) user.tag = tag;
 
     if (file) {
       const fileRef = ref(storage, "avatars/" + uid);

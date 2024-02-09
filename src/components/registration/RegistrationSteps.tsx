@@ -18,76 +18,60 @@ import { useAuth, useLogout } from "../../hooks/authHooks";
 import PhoneAuth from "../auth/PhoneAuth";
 import EditProfile from "../profile/EditProfile";
 import QuestionCard from "./QuestionCard";
+import { schoolSubjects } from "../../lib/constants";
+import NextButton from "./NextButton";
+import { useState } from "react";
+import { useUpdateUser } from "../../hooks/userHooks";
 
 const RegistrationSteps = () => {
-  enum stepIds {
-    editProfileId = "edit-profile",
-    loginId = "login",
-  }
   const { authUser } = useAuth();
-  const stepsWithoutSubmitButton: {
+  const { activeStep, setActiveStep, goToNext, goToPrevious } = useSteps({
+    index: 0,
+    count: 4,
+  });
+  const [value, setValue] = useState("");
+  const { updateUser } = useUpdateUser(authUser?.id);
+
+  const steps: {
     description?: string;
     body?: React.ReactNode;
-    id?: string;
   }[] = [
     {
       description: "Register",
       body: <PhoneAuth />,
-      id: stepIds.loginId,
     },
     {
-      id: stepIds.editProfileId,
-      description: "About you",
-    },
-    {
-      description: "Choose your first field of expertise",
+      description: "Choose your field of expertise",
       body: (
         <QuestionCard
-          options={[
-            "Mathematics",
-            "Business",
-            "Economics",
-            "Archeology",
-            "History",
-            "Anthropology",
-            "Art",
-            "Literature",
-            "Music",
-            "Film",
-            "Physics",
-            "Chemistry",
-            "Astronomy",
-            "Technology",
-            "Architecture",
-            "Geology",
-            "Biology",
-            "Medicine",
-            "Government",
-          ]
-            .sort()
-            .concat("Other")}
+          options={schoolSubjects.sort().concat("Other")}
+          value={value}
+          nextButton={
+            <NextButton
+              onClick={async () => {
+                await updateUser({ tag: value });
+                setValue("");
+                goToNext();
+              }}
+            />
+          }
+          setValue={setValue}
         />
       ),
     },
+    {
+      description: "About you",
+      body: <EditProfile id={""} onSubmit={goToNext} />,
+    },
+
     { description: "Select Rooms" },
   ];
-
-  const { activeStep, setActiveStep, goToNext, goToPrevious } = useSteps({
-    index: 0,
-    count: stepsWithoutSubmitButton.length,
-  });
-
-  const steps = stepsWithoutSubmitButton.map((step) =>
-    step.id === stepIds.editProfileId
-      ? { ...step, ...{ body: <EditProfile id={""} onSubmit={goToNext} /> } }
-      : step
-  );
 
   const percentComplete = (activeStep / steps.length) * 100;
 
   const { logout } = useLogout();
 
-  const { description, body, id } = steps[activeStep];
+  const { description, body } = steps[activeStep];
   if (authUser && activeStep === 0) {
     setActiveStep(1);
   }
@@ -132,13 +116,6 @@ const RegistrationSteps = () => {
             {description}
           </Text>
           {body}
-          {(!id || id in stepIds) && (
-            <Button colorScheme="pink" onClick={goToNext}>
-              <Text color={"black"} w={"96px"} fontSize={"lg"}>
-                {"Next"}
-              </Text>
-            </Button>
-          )}
         </Box>
       </div>
       <Box
