@@ -45,6 +45,7 @@ const RegistrationSteps = () => {
       body: (
         <QuestionCard
           options={schoolSubjects.sort().concat("Other")}
+          initialValue={authUser?.tag}
           value={value}
           nextButton={
             <NextButton

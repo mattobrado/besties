@@ -1,17 +1,20 @@
 import { Radio, RadioGroup, Stack } from "@chakra-ui/react";
-import { Dispatch, SetStateAction } from "react";
+import { Dispatch, SetStateAction, useEffect } from "react";
 
 const QuestionCard = ({
   options,
   nextButton,
-  value,
   setValue,
+  value,
+  initialValue,
 }: {
   options?: string[];
   nextButton: React.ReactNode;
   value: string;
+  initialValue?: string;
   setValue: Dispatch<SetStateAction<string>>;
 }) => {
+  useEffect(() => setValue(initialValue ?? ""), [initialValue]);
   return (
     <RadioGroup onChange={setValue} value={value}>
       <Stack spacing={1} pb={5}>
