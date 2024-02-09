@@ -1,20 +1,14 @@
 import { createBrowserRouter } from "react-router-dom";
 import Layout from "../components/layout/Layout";
 import Home from "../components/home/Home";
-// import NewReviewForm from "../components/newReviewForm/NewReviewForm";
-// import Comments from "../components/comments/Comments";
-// import Profile from "../components/profile/Profile";
-// import HighestRated from "../components/lists/HighestRated";
-// import SearchPage from "../components/search/SearchPage";
 import PhoneAuth from "../components/auth/PhoneAuth";
 import EditProfile from "../components/profile/EditProfile";
-// import Notifications from "../components/notifications/Notifications";
 import { ROUTES } from "./constants";
 import Members from "../components/lists/Members";
 import ProtectedPageContainer from "../components/layout/ProtectedPageContainer";
 import PostFeed from "../components/posts/PostFeed";
 import IQTest from "../components/IQTest/IQTest";
-import Questions from "../components/IQTest/Questions";
+import RegistrationSteps from "../components/IQTest/RegistrationSteps";
 
 const idString = "/:id";
 
@@ -45,7 +39,7 @@ export const router = createBrowserRouter([
   {
     path: ROUTES.IQ_TEST,
     element: <IQTest />,
-    children: [{ path: ROUTES.QUESTIONS, element: <Questions /> }],
+    children: [{ path: ROUTES.QUESTIONS, element: <RegistrationSteps /> }],
   },
 
   // {

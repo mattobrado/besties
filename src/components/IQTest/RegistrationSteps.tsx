@@ -19,7 +19,7 @@ import PhoneAuth from "../auth/PhoneAuth";
 import EditProfile from "../profile/EditProfile";
 import QuestionCard from "./QuestionCard";
 
-const Questions = () => {
+const RegistrationSteps = () => {
   enum stepIds {
     editProfileId = "edit-profile",
     loginProfileId = "edit-profile",
@@ -149,4 +149,4 @@ const Questions = () => {
     </>
   );
 };
-export default Questions;
+export default RegistrationSteps;
