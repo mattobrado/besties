@@ -16,9 +16,12 @@ import {
 } from "@chakra-ui/react";
 import { ArrowBackIcon } from "@chakra-ui/icons";
 import steps from "./steps";
+import { useAuth } from "../../hooks/authHooks";
+import { useEffect } from "react";
 
 const Questions = () => {
-  const { activeStep, goToNext, goToPrevious } = useSteps({
+  const { authUser } = useAuth();
+  const { activeStep, setActiveStep, goToNext, goToPrevious } = useSteps({
     index: 0,
     count: steps.length,
   });
@@ -26,6 +29,7 @@ const Questions = () => {
   const percentComplete = (activeStep / steps.length) * 100;
 
   const { description, body } = steps[activeStep];
+  useEffect(() => setActiveStep(authUser ? 1 : 0), [authUser]);
   return (
     <>
       <Fade in={activeStep > 0}>

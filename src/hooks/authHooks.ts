@@ -93,7 +93,7 @@ export const useSignIn = () => {
           friendUids: [],
           phoneNumber,
         });
-        navigate(`${ROUTES.EDIT_PROFILE}/${uid}`);
+        navigate(`${ROUTES.SEARCH}/${uid}`);
       }
     } catch (error: any) {
       toast({

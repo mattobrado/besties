@@ -83,8 +83,7 @@ const PhoneAuth = ({
         <FormContainer
           authHeadingProps={
             isFieldAndButtonOnly
-              ? {}
-              : {
+              ? {
                   title: content.auth.login,
                   // callToAction: "Take the ",
                   // link: {
@@ -92,6 +91,7 @@ const PhoneAuth = ({
                   //   to: ROUTES.MEMBERS,
                   // },
                 }
+              : {}
           }
           buttonProps={
             showOneTimePasswordInput
@@ -150,9 +150,9 @@ const PhoneAuth = ({
               <FormErrorMessage>{signInError}</FormErrorMessage>
             </FormControl>
           )}
-          <div id="recaptcha-container"></div>
         </FormContainer>
       </Box>
+      <div id="recaptcha-container"></div>
     </>
   );
 };
