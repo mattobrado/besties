@@ -115,7 +115,7 @@ const RegistrationSteps = () => {
             {description}
           </Text>
           {body}
-          {id && id in stepIds && (
+          {(!id || id in stepIds) && (
             <Button colorScheme="pink" onClick={goToNext}>
               <Text color={"black"} w={"96px"} fontSize={"lg"}>
                 {"Next"}
