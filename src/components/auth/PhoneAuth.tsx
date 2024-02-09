@@ -23,7 +23,7 @@ import MainImage from "../home/MainImage";
 const PhoneAuth = ({
   isFieldAndButtonOnly,
 }: {
-  isFieldAndButtonOnly: boolean;
+  isFieldAndButtonOnly?: boolean;
 }) => {
   const [showOneTimePasswordInput, setShowOneTimePasswordInput] =
     useState(false);

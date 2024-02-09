@@ -1,5 +1,4 @@
 export const COLORS = {
-  PRIMARY_FONT: "white",
   BACKGROUND: "black",
   BRAND: "white",
   COLOR_SCHEME: "whiteAlpha",

@@ -71,7 +71,6 @@ const Actions = ({
             variant="ghost"
             icon={<FaTrash />}
             aria-label={"delete post"}
-            color={COLORS.PRIMARY_FONT}
           />
           <AlertDialog
             isOpen={isOpen}

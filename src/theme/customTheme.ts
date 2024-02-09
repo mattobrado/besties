@@ -1,12 +1,13 @@
 import { extendTheme } from "@chakra-ui/react";
 import { spinnerTheme } from "./spinnerTheme";
 import menuTheme from "./menuTheme";
-import { COLORS } from "./colors";
 import bottomNavigationTheme from "./bottomNavigationTheme";
 import { buttonTheme } from "./buttonTheme";
 import { skeletonTheme } from "./skeletonTheme";
 
 export const customTheme = extendTheme({
+  initialColorMode: "dark",
+  useSystemColorMode: false,
   colors: {
     pink: {
       "50": "#FEE7EE",
@@ -23,32 +24,28 @@ export const customTheme = extendTheme({
   },
 
   components: {
-    Text: {
-      baseStyle: () => ({
-        color: COLORS.PRIMARY_FONT,
-      }),
-      variants: {
-        secondary: () => ({
-          color: COLORS.PRIMARY_FONT,
-        }),
-      },
-    },
     BottomNavigation: bottomNavigationTheme,
     Button: buttonTheme,
     Menu: menuTheme,
     Spinner: spinnerTheme,
     Skeleton: skeletonTheme,
-    colors: {
-      pink: "#f00b51",
-    },
   },
 
+  layerStyles: {
+    white: {
+      bg: "black",
+      color: "white",
+    },
+    black: {
+      bg: "white",
+      color: "black",
+    },
+  },
   styles: {
     global: () => ({
       // Optionally set global CSS styles
       body: {
-        color: COLORS.PRIMARY_FONT,
-        bg: COLORS.BACKGROUND,
+        bg: "black",
       },
     }),
   },

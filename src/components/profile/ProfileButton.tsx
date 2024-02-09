@@ -15,7 +15,6 @@ const ProfileButton = ({
     as={Button}
     size={"sm"}
     variant={"outline"}
-    color={COLORS.PRIMARY_FONT}
     onClick={onClick}
     isLoading={isLoading}
   >

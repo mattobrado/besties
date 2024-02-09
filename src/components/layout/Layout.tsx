@@ -11,7 +11,7 @@ const Layout = () => {
   const config = useContext(ConfigContext);
 
   return (
-    <Container px={GLOBAL_PX}>
+    <Container px={GLOBAL_PX} layerStyle="white">
       <Logo />
       <TopNavBar />
       <Box pb={BOTTOM_NAV_HEIGHT}>

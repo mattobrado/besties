@@ -1,18 +1,23 @@
-import { FormControl, FormLabel, Input } from "@chakra-ui/react";
+import { FormControl, FormLabel, HStack, Input } from "@chakra-ui/react";
 import { useUpdateUser } from "../../hooks/userHooks";
 import { useContext, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { ROUTES } from "../../lib/constants";
 import AuthUserContext from "../layout/AuthUserContext";
 import Avatar from "./Avatar";
-import { bestiesContent } from "../../lib/content/bestiesContent";
 import { INPUT_TYPE, VALIDATE } from "../../lib/formValidation";
 import FormField from "../auth/FormField";
 import FormContainer from "../auth/FormContainer";
 import { useForm } from "react-hook-form";
+import ContentContext from "../layout/ContentProvider";
 
-export const EditProfile = () => {
-  const { id } = useParams();
+export const EditProfile = ({
+  id,
+  onSubmit,
+}: {
+  id: string;
+  onSubmit: () => void;
+}) => {
   const navigate = useNavigate();
   const authUser = useContext(AuthUserContext);
   const [color, setColor] = useState(authUser.favoriteColor);
@@ -22,7 +27,7 @@ export const EditProfile = () => {
     formState: { errors },
   } = useForm();
 
-  if (id !== authUser.id) {
+  if (id && id !== authUser.id) {
     navigate(ROUTES.HOME);
   }
   const handleSignup = async (data: any) => {
@@ -31,13 +36,17 @@ export const EditProfile = () => {
       songLink: data.url,
       color,
     });
+    onSubmit();
   };
+
   const {
     setFile,
     updateUser: updateUser,
     isLoading,
     fileURL,
   } = useUpdateUser(authUser?.id);
+
+  const content = useContext(ContentContext);
 
   // const setBackground = useContext(BackgroundContext);
   // useEffect(() => setBackground(color), [color]);
@@ -47,23 +56,29 @@ export const EditProfile = () => {
       onSubmit={handleSubmit(handleSignup)}
       buttonProps={{
         isLoading: isLoading,
-        label: "update",
-        loadingText: "updating",
+        label: "Update",
+        loadingText: "Updating",
       }}
     >
-      <Avatar user={authUser} overrideAvatar={fileURL ?? undefined} />
-      <FormControl py="4">
-        <FormLabel htmlFor="picture">Change avatar</FormLabel>
-        <input
-          type="file"
-          accept="image/*"
-          onChange={(e: any) => setFile(e.target.files[0])}
+      <HStack>
+        <Avatar
+          user={authUser}
+          overrideAvatar={fileURL ?? undefined}
+          avatarProps={{ size: "xl" }}
         />
-      </FormControl>
+        <FormControl py="4">
+          <FormLabel htmlFor="picture">Change avatar</FormLabel>
+          <input
+            type="file"
+            accept="image/*"
+            onChange={(e: any) => setFile(e.target.files[0])}
+          />
+        </FormControl>
+      </HStack>
       <FormField
         error={errors?.fullName}
         inputType={INPUT_TYPE.FULL_NAME}
-        label={bestiesContent.auth.fullName}
+        label={content.auth.fullName}
         register={register}
         validate={
           authUser.fullName ? VALIDATE.FULL_NAME : VALIDATE.FULL_NAME_REQUIRED
@@ -73,12 +88,12 @@ export const EditProfile = () => {
       <FormField
         error={errors?.url}
         inputType={INPUT_TYPE.SONG}
-        label={"favorite song"}
-        placeHolder="paste spotify link"
+        label={"Favorite song"}
+        placeHolder="Paste Spotify link"
         register={register}
       />
       <FormControl>
-        <FormLabel>{"favorite color"}</FormLabel>
+        <FormLabel>{"Favorite color"}</FormLabel>
         <Input
           type={INPUT_TYPE.COLOR}
           value={color}

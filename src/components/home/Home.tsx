@@ -25,20 +25,33 @@ const Home = () => {
     <>
       <MainImage />
       <Stack p={4} spacing={2}>
-        <Heading color="pink.500">{content.home.heading}</Heading>
+        <Heading color={"pink.500"}>{content.home.heading}</Heading>
         <Text>
           The Genius Program is a highly selective society which provides its
           members with exciting opportunities for intellectual stimulation.
         </Text>
         <Text>Activities include:</Text>
+        <UnorderedList>
+          <ListItem>Lorem ipsum dolor sit amet</ListItem>
+          <ListItem>Consectetur adipiscing elit</ListItem>
+          <ListItem>Integer molestie lorem at massa</ListItem>
+          <ListItem>Facilisis in pretium nisl aliquet</ListItem>
+        </UnorderedList>
         <UnorderedList pl={7}>
-          <ListItem>The lively exchange of ideas through lectures</ListItem>
-          <ListItem>Stimulating discussions and debates</ListItem>
           <ListItem>
-            Thought-provoking investigations of members' opinions and attitudes
+            <Text>The lively exchange of ideas through lectures</Text>
+          </ListItem>
+          <ListItem>
+            <Text>Stimulating discussions and debates</Text>
+          </ListItem>
+          <ListItem>
+            <Text>
+              Thought-provoking investigations of members' opinions and
+              attitudes
+            </Text>
           </ListItem>
         </UnorderedList>
-        {config.showPostsOnHomeScreen && <PostFeed />}
+        <Text>{config.showPostsOnHomeScreen && <PostFeed />}</Text>
       </Stack>
     </>
   );

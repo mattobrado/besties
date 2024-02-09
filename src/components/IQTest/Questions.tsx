@@ -15,16 +15,63 @@ import {
   Stack,
 } from "@chakra-ui/react";
 import { ArrowBackIcon } from "@chakra-ui/icons";
-import steps from "./steps";
 import { useAuth } from "../../hooks/authHooks";
 import { useEffect } from "react";
+import PhoneAuth from "../auth/PhoneAuth";
+import EditProfile from "../profile/EditProfile";
+import QuestionCard from "./QuestionCard";
 
 const Questions = () => {
+  const editProfileId = "edit-profile";
   const { authUser } = useAuth();
+  const stepsWithoutSubmitButton = [
+    { description: "Log in", body: <PhoneAuth /> },
+    {
+      id: editProfileId,
+      description: "Contact Info",
+    },
+    {
+      description: "Choose your first field of expertise",
+      body: (
+        <QuestionCard
+          options={[
+            "Mathematics",
+            "Business",
+            "Economics",
+            "Archeology",
+            "History",
+            "Anthropology",
+            "Art",
+            "Literature",
+            "Music",
+            "Film",
+            "Physics",
+            "Chemistry",
+            "Astronomy",
+            "Technology",
+            "Architecture",
+            "Geology",
+            "Biology",
+            "Medicine",
+            "Government",
+          ]
+            .sort()
+            .concat("Other")}
+        />
+      ),
+    },
+    { description: "Select Rooms" },
+  ];
   const { activeStep, setActiveStep, goToNext, goToPrevious } = useSteps({
     index: 0,
-    count: steps.length,
+    count: stepsWithoutSubmitButton.length,
   });
+
+  const steps = stepsWithoutSubmitButton.map((step) =>
+    step.id === editProfileId
+      ? { ...step, ...{ body: <EditProfile id={""} onSubmit={goToNext} /> } }
+      : step
+  );
 
   const percentComplete = (activeStep / steps.length) * 100;
 
@@ -33,6 +80,7 @@ const Questions = () => {
     () => setActiveStep(authUser && activeStep === 0 ? 1 : 0),
     [authUser]
   );
+
   return (
     <>
       <Fade in={activeStep > 0}>

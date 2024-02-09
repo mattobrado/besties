@@ -18,7 +18,6 @@ const menuStyle = definePartsStyle({
   },
   item: {
     // this will style the MenuItem and MenuItemOption components
-    color: COLORS.PRIMARY_FONT,
     bg: COLORS.BACKGROUND,
   },
   divider: {

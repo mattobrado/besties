@@ -9,7 +9,7 @@ const IQTest = () => {
   const isQuestionsPath = pathname.startsWith(ROUTES.QUESTIONS);
 
   return (
-    <>
+    <Box layerStyle="white">
       <Logo />
       {!isQuestionsPath ? (
         <Box p={4}>
@@ -43,7 +43,7 @@ const IQTest = () => {
       ) : (
         <Outlet />
       )}
-    </>
+    </Box>
   );
 };
 
