@@ -19,8 +19,7 @@ import PhoneAuth from "../auth/PhoneAuth";
 import EditProfile from "../profile/EditProfile";
 import RadioOptions from "./RadioOptions";
 import { agreementLevels, schoolSubjects } from "../../lib/constants";
-import { useState } from "react";
-import { useUpdateUser } from "../../hooks/userHooks";
+import ButtonOptions from "./ButtonOptions";
 
 const RegistrationSteps = () => {
   const { authUser } = useAuth();
@@ -28,14 +27,6 @@ const RegistrationSteps = () => {
     index: 0,
     count: 10,
   });
-  const [value, setValue] = useState("");
-  const { updateUser, isLoading } = useUpdateUser(authUser?.id);
-
-  const onNext = async (field: string) => {
-    await updateUser({ [field]: value });
-    setValue("");
-    goToNext();
-  };
 
   const steps: {
     description?: string;
@@ -51,10 +42,7 @@ const RegistrationSteps = () => {
         <RadioOptions
           field={"iAmAQuickLearner"}
           options={agreementLevels}
-          value={value}
-          setValue={setValue}
-          onNext={onNext}
-          isLoading={isLoading}
+          goToNext={goToNext}
         />
       ),
     },
@@ -64,10 +52,7 @@ const RegistrationSteps = () => {
         <RadioOptions
           field={"iLikeDiscussingAbstractTopics"}
           options={agreementLevels}
-          value={value}
-          setValue={setValue}
-          onNext={onNext}
-          isLoading={isLoading}
+          goToNext={goToNext}
         />
       ),
     },
@@ -78,10 +63,7 @@ const RegistrationSteps = () => {
         <RadioOptions
           field={"iLikeDiscussingAbstractTopics"}
           options={agreementLevels}
-          value={value}
-          setValue={setValue}
-          onNext={onNext}
-          isLoading
+          goToNext={goToNext}
         />
       ),
     },
@@ -92,10 +74,18 @@ const RegistrationSteps = () => {
         <RadioOptions
           field={"iLikeDiscussingAbstractTopics"}
           options={agreementLevels}
-          value={value}
-          setValue={setValue}
-          onNext={onNext}
-          isLoading={isLoading}
+          goToNext={goToNext}
+        />
+      ),
+    },
+    {
+      description:
+        "If a bat and a ball cost $11 together and the bat costs $10 more than the ball, how much does the ball cost?",
+      body: (
+        <ButtonOptions
+          field={"math"}
+          options={["50 cents", "1 dollar", "10 cents"]}
+          goToNext={goToNext}
         />
       ),
     },
@@ -105,10 +95,7 @@ const RegistrationSteps = () => {
         <RadioOptions
           field={"tag"}
           options={schoolSubjects.sort().concat("Other")}
-          value={value}
-          setValue={setValue}
-          onNext={onNext}
-          isLoading={isLoading}
+          goToNext={goToNext}
         />
       ),
     },

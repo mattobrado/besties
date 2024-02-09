@@ -1,23 +1,31 @@
 import { Button, Stack } from "@chakra-ui/react";
-import { Dispatch, SetStateAction } from "react";
+import { useAuth } from "../../hooks/authHooks";
+import { useUpdateUser } from "../../hooks/userHooks";
 
 const ButtonOptions = ({
   options,
-  onNext,
-  setValue,
+  field,
+  goToNext,
 }: {
   options?: string[];
-  setValue: Dispatch<SetStateAction<string>>;
-  onNext: () => void;
+  goToNext: Function;
+  field: string;
 }) => {
-  const onClick = (option: string) => {
-    setValue(option);
-    onNext();
-  };
+  const { authUser } = useAuth();
+  const { updateUser, isLoading } = useUpdateUser(authUser?.id);
   return (
     <Stack spacing={3} pb={5}>
+      {isLoading && <h1>"is loading"</h1>}
       {options?.map((option) => (
-        <Button colorScheme="pink" onClick={onClick as any} key={option}>
+        <Button
+          colorScheme="pink"
+          onClick={() => {
+            updateUser({ [field]: option });
+            goToNext();
+          }}
+          key={option}
+          isLoading={isLoading}
+        >
           {option}
         </Button>
       ))}
