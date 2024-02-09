@@ -119,6 +119,7 @@ export const EditProfile = ({
           value={color}
           onChange={(e: any) => setColor(e.target.value)}
           placeholder="gh"
+          p={0}
         />
       </FormControl>
     </FormContainer>
