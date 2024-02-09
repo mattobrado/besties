@@ -15,8 +15,8 @@ export const EditProfile = ({
   id,
   onSubmit,
 }: {
-  id: string;
-  onSubmit: () => void;
+  id?: string;
+  onSubmit?: () => void;
 }) => {
   const navigate = useNavigate();
   const authUser = useContext(AuthUserContext);
@@ -36,7 +36,7 @@ export const EditProfile = ({
       songLink: data.url,
       color,
     });
-    onSubmit();
+    if (onSubmit) onSubmit();
   };
 
   const {

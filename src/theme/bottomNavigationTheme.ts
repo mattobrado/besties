@@ -1,5 +1,4 @@
 import { withDefaultStyles } from "chakra-ui-bottom-navigation";
-import { COLORS } from "./colors";
 
 const bottomNavigationTheme = withDefaultStyles({
   parts: ["Box", "container", "item", "label", "icon"],
@@ -8,7 +7,6 @@ const bottomNavigationTheme = withDefaultStyles({
       position: "fixed",
       display: "flex",
       justifyContent: "space-between",
-      bg: COLORS.BACKGROUND,
     },
     item: {
       flex: 1,

@@ -1,5 +1,4 @@
 import { Button, GridItem } from "@chakra-ui/react";
-import { COLORS } from "../../theme/colors";
 
 const ProfileButton = ({
   text,

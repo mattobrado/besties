@@ -1,5 +1,4 @@
 import { Center, Heading, Divider } from "@chakra-ui/react";
-import { COLORS } from "../../theme/colors";
 import UserList from "../profile/UserList";
 import { useContext } from "react";
 import AuthUserContext from "../layout/AuthUserContext";
@@ -11,7 +10,7 @@ const Notifications = () => {
   return (
     <>
       <Center>
-        <Heading color={COLORS.BRAND} size={"xl"}>
+        <Heading size={"xl"}>
           <i>friend requests</i>
         </Heading>
       </Center>

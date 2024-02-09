@@ -95,7 +95,7 @@ const Questions = () => {
       <Box p={4} pb={24}>
         <Stack spacing={5} pb={5}>
           <Stepper size="sm" index={activeStep} gap="0" colorScheme="pink">
-            {steps.map((step, index) => (
+            {steps.map((_step, index) => (
               <Step key={index}>
                 <StepIndicator>
                   <StepStatus complete={<StepIcon />} />

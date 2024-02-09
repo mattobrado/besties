@@ -1,4 +1,4 @@
-import { Stack, Container, Box, Button, Text } from "@chakra-ui/react";
+import { Stack, Container, Box, Button } from "@chakra-ui/react";
 import { AuthHeading, AuthHeadingPropsType } from "./AuthHeading";
 
 const FormContainer = ({

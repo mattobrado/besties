@@ -1,9 +1,5 @@
 import { extendTheme } from "@chakra-ui/react";
-import { spinnerTheme } from "./spinnerTheme";
-import menuTheme from "./menuTheme";
 import bottomNavigationTheme from "./bottomNavigationTheme";
-import { buttonTheme } from "./buttonTheme";
-import { skeletonTheme } from "./skeletonTheme";
 
 export const customTheme = extendTheme({
   initialColorMode: "dark",
