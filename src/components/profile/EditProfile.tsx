@@ -16,6 +16,7 @@ import { useForm } from "react-hook-form";
 import ContentContext from "../layout/ContentProvider";
 import { AddIcon } from "@chakra-ui/icons";
 import { useAuth } from "../../hooks/authHooks";
+import getSongIdFromLink from "../../utils/getSongIdFromLink";
 
 export const EditProfile = ({
   id,
@@ -39,7 +40,7 @@ export const EditProfile = ({
   const handleSignup = async (data: any) => {
     await updateUser({
       fullName: data.fullName,
-      favoriteSongId: data.url,
+      favoriteSongId: getSongIdFromLink(data.url),
       favoriteColor: color,
       bio: data.bio,
     });

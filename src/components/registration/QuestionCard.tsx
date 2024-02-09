@@ -20,7 +20,7 @@ const QuestionCard = ({
   const { authUser } = useAuth();
   const fieldValue = authUser && authUser[field as keyof UserType];
   const initialValue = typeof fieldValue === "string" ? fieldValue : "";
-  useEffect(() => setValue(initialValue), [initialValue]);
+  useEffect(() => setValue(initialValue), []);
   return (
     <RadioGroup onChange={setValue} value={value}>
       <Stack spacing={1} pb={5}>

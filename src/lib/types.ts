@@ -44,7 +44,8 @@ export type UserType = {
   favoriteMovie?: string;
   isMember?: boolean;
   tag?: string;
-  iAmAQuickLearner: string;
+  iAmAQuickLearner?: string;
+  iLikeDiscussingAbstractTopics?: string;
 };
 
 export type ToggleLikeType = {

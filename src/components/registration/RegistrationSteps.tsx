@@ -46,10 +46,22 @@ const RegistrationSteps = () => {
       body: <PhoneAuth />,
     },
     {
-      description: "I am a quick learner",
+      description: "I am a quick learner.",
       body: (
         <QuestionCard
           field={"iAmAQuickLearner"}
+          options={agreementLevels}
+          value={value}
+          setValue={setValue}
+          onNext={onNext}
+        />
+      ),
+    },
+    {
+      description: "I like discussing abstract concepts.",
+      body: (
+        <QuestionCard
+          field={"iLikeDiscussingAbstractTopics"}
           options={agreementLevels}
           value={value}
           setValue={setValue}

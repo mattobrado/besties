@@ -37,23 +37,7 @@ export const useUpdateUser = (uid?: string) => {
   const updateUser = async (userFields: Partial<UserType>) => {
     setLoading(true);
 
-    const {
-      tag,
-      fullName,
-      bio,
-      favoriteColor,
-      iAmAQuickLearner: iAmAQuickLEarner,
-      favoriteSongId,
-    } = userFields;
-
-    const user: Partial<UserType> = {};
-
-    if (fullName) user.fullName = fullName;
-    if (bio) user.bio = bio;
-    if (favoriteSongId) user.favoriteSongId = getSongIdFromLink(favoriteSongId);
-    if (favoriteColor) user.favoriteColor = favoriteColor;
-    if (tag) user.tag = tag;
-    if (iAmAQuickLEarner) user.iAmAQuickLearner = iAmAQuickLEarner;
+    const user: Partial<UserType> = { ...userFields };
 
     if (file) {
       const fileRef = ref(storage, "avatars/" + uid);
@@ -158,13 +142,4 @@ export const useFriendRequestUsers = (
   }
   if (error) throw error;
   return { users: <UserType[]>users, isLoading };
-};
-
-const getSongIdFromLink = (songLink: string): string | undefined => {
-  try {
-    console.log(songLink.split("track/")[1].split("?")[0]);
-    return songLink.split("track/")[1].split("?")[0];
-  } catch {
-    return;
-  }
 };
