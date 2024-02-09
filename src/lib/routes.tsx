@@ -7,8 +7,8 @@ import { ROUTES } from "./constants";
 import Members from "../components/lists/Members";
 import ProtectedPageContainer from "../components/layout/ProtectedPageContainer";
 import PostFeed from "../components/posts/PostFeed";
-import IQTest from "../components/IQTest/IQTest";
-import RegistrationSteps from "../components/IQTest/RegistrationSteps";
+import IQTest from "../components/registration/IQTest";
+import RegistrationSteps from "../components/registration/RegistrationSteps";
 
 const idString = "/:id";
 
