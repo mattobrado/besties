@@ -19,9 +19,7 @@ import { UserType } from "../lib/types";
 import { COLLECTIONS } from "../lib/constants";
 import { useState } from "react";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
-import { useNavigate } from "react-router-dom";
 import getNewRating from "../utils/getNewRating";
-import { ROUTES } from "../lib/constants";
 
 export const useUser = (
   id?: string
@@ -35,25 +33,25 @@ export const useUser = (
 export const useUpdateUser = (uid?: string) => {
   const [isLoading, setLoading] = useState(false);
   const [file, setFile] = useState(null);
-  const navigate = useNavigate();
 
   const updateUser = async ({
     fullName,
     songLink,
     color,
+    bio,
   }: {
     fullName?: string;
     songLink?: string;
     color?: string;
+    bio?: string;
   }) => {
     setLoading(true);
 
     const user: Partial<UserType> = {};
 
     if (fullName) user.fullName = fullName;
-
+    if (bio) user.bio = bio;
     if (songLink) user.favoriteSongId = getSongIdFromLink(songLink);
-
     if (color) user.favoriteColor = color;
 
     if (file) {
@@ -72,8 +70,6 @@ export const useUpdateUser = (uid?: string) => {
     }
 
     setLoading(false);
-
-    navigate(`${ROUTES.PROFILE}/${uid}`);
   };
 
   return {

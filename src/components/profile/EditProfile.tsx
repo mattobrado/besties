@@ -37,20 +37,18 @@ export const EditProfile = ({
     navigate(ROUTES.HOME);
   }
   const handleSignup = async (data: any) => {
-    updateUser({
+    await updateUser({
       fullName: data.fullName,
       songLink: data.url,
       color,
+      bio: data.bio,
     });
     if (onSubmit) onSubmit();
   };
 
-  const {
-    setFile,
-    updateUser: updateUser,
-    isLoading,
-    fileURL,
-  } = useUpdateUser(authUser?.id);
+  const { setFile, updateUser, isLoading, fileURL } = useUpdateUser(
+    authUser?.id
+  );
 
   const content = useContext(ContentContext);
 
@@ -61,7 +59,7 @@ export const EditProfile = ({
       onSubmit={handleSubmit(handleSignup)}
       buttonProps={{
         isLoading: isLoading,
-        label: "Update",
+        label: content.auth.next,
         loadingText: "Updating",
       }}
     >
@@ -73,8 +71,10 @@ export const EditProfile = ({
             loading="lazy"
             size={"xl"}
             icon={<AddIcon fontSize="1.5rem" />}
-            style={{ backgroundColor: color }}
+            bg={color}
             onClick={() => document.getElementById(imageInputId)?.click()}
+            borderColor={color}
+            borderWidth={3}
           />
         </Center>
         <FormControl>

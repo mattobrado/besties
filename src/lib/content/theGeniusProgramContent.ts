@@ -14,6 +14,7 @@ export const THE_GENIUS_PROGRAM_CONTENT = {
     changeAvatar: "Change avatar",
     pleaseEnterName: "Name can't be blank",
     bio: "Bio",
+    next: "Next",
   },
   navBar: {
     logoSrcURL:
