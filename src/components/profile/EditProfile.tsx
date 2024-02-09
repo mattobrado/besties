@@ -3,6 +3,7 @@ import {
   FormLabel,
   Input,
   Avatar as ChakraAvatar,
+  Center,
 } from "@chakra-ui/react";
 import { useUpdateUser } from "../../hooks/userHooks";
 import { useContext, useState } from "react";
@@ -65,15 +66,17 @@ export const EditProfile = ({
       }}
     >
       <div id="edit-avatar">
-        <ChakraAvatar
-          name={authUser?.fullName}
-          src={fileURL ?? authUser?.avatar}
-          loading="lazy"
-          size={"xl"}
-          icon={<AddIcon fontSize="1.5rem" />}
-          style={{ backgroundColor: color }}
-          onClick={() => document.getElementById(imageInputId)?.click()}
-        />
+        <Center>
+          <ChakraAvatar
+            name={authUser?.fullName}
+            src={fileURL ?? authUser?.avatar}
+            loading="lazy"
+            size={"xl"}
+            icon={<AddIcon fontSize="1.5rem" />}
+            style={{ backgroundColor: color }}
+            onClick={() => document.getElementById(imageInputId)?.click()}
+          />
+        </Center>
         <FormControl>
           <FormLabel htmlFor="picture"></FormLabel>
           <input
@@ -97,10 +100,16 @@ export const EditProfile = ({
         placeHolder={authUser?.fullName}
       />
       <FormField
+        error={errors?.bio}
+        inputType={INPUT_TYPE.BIO}
+        label={content.auth.bio}
+        register={register}
+      />
+      <FormField
         error={errors?.url}
         inputType={INPUT_TYPE.SONG}
         label={content.auth.favoriteSong}
-        placeHolder="Paste Spotify link"
+        placeHolder={content.auth.favoriteSongPlaceholder}
         register={register}
       />
       <FormControl>

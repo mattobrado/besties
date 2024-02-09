@@ -26,7 +26,7 @@ const Questions = () => {
   }
   const { authUser } = useAuth();
   const stepsWithoutSubmitButton: {
-    description: string;
+    description?: string;
     body?: React.ReactNode;
     id?: string;
   }[] = [
@@ -111,7 +111,7 @@ const Questions = () => {
               </Step>
             ))}
           </Stepper>
-          <Text fontSize={"3xl"} pt={5}>
+          <Text fontSize={"3xl"} py={5}>
             {description}
           </Text>
           {body}

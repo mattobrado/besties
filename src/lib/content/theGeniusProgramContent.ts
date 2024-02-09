@@ -13,6 +13,7 @@ export const THE_GENIUS_PROGRAM_CONTENT = {
     favoriteSongPlaceholder: "Paste Spotify link",
     changeAvatar: "Change avatar",
     pleaseEnterName: "Name can't be blank",
+    bio: "Bio",
   },
   navBar: {
     logoSrcURL:
