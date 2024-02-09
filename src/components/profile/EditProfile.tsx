@@ -60,7 +60,7 @@ export const EditProfile = ({
         loadingText: "Updating",
       }}
     >
-      <HStack>
+      <HStack spacing={6}>
         <Avatar
           user={authUser}
           overrideAvatar={fileURL ?? undefined}
@@ -88,7 +88,7 @@ export const EditProfile = ({
       <FormField
         error={errors?.url}
         inputType={INPUT_TYPE.SONG}
-        label={"Favorite song"}
+        label={content.auth.favoriteSong}
         placeHolder="Paste Spotify link"
         register={register}
       />

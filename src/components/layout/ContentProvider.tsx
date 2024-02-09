@@ -1,6 +1,6 @@
 import { createContext } from "react";
-import { bestiesContent } from "../../lib/content/bestiesContent";
+import { THE_GENIUS_PROGRAM_CONTENT } from "../../lib/content/theGeniusProgramContent";
 
-const ContentContext = createContext(bestiesContent);
+const ContentContext = createContext(THE_GENIUS_PROGRAM_CONTENT);
 
 export default ContentContext;
