@@ -1,20 +1,26 @@
 import { Radio, RadioGroup, Stack } from "@chakra-ui/react";
 import { Dispatch, SetStateAction, useEffect } from "react";
+import NextButton from "./NextButton";
+import { useAuth } from "../../hooks/authHooks";
+import { UserType } from "../../lib/types";
 
 const QuestionCard = ({
   options,
-  nextButton,
+  onNext,
   setValue,
   value,
-  initialValue,
+  field,
 }: {
   options?: string[];
-  nextButton: React.ReactNode;
   value: string;
-  initialValue?: string;
   setValue: Dispatch<SetStateAction<string>>;
+  onNext: Function;
+  field: string;
 }) => {
-  useEffect(() => setValue(initialValue ?? ""), [initialValue]);
+  const { authUser } = useAuth();
+  const fieldValue = authUser && authUser[field as keyof UserType];
+  const initialValue = typeof fieldValue === "string" ? fieldValue : "";
+  useEffect(() => setValue(initialValue), [initialValue]);
   return (
     <RadioGroup onChange={setValue} value={value}>
       <Stack spacing={1} pb={5}>
@@ -24,7 +30,7 @@ const QuestionCard = ({
           </Radio>
         ))}
       </Stack>
-      {nextButton}
+      <NextButton onClick={() => onNext(field)} />
     </RadioGroup>
   );
 };

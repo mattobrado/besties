@@ -19,7 +19,6 @@ import PhoneAuth from "../auth/PhoneAuth";
 import EditProfile from "../profile/EditProfile";
 import QuestionCard from "./QuestionCard";
 import { schoolSubjects } from "../../lib/constants";
-import NextButton from "./NextButton";
 import { useState } from "react";
 import { useUpdateUser } from "../../hooks/userHooks";
 
@@ -27,10 +26,16 @@ const RegistrationSteps = () => {
   const { authUser } = useAuth();
   const { activeStep, setActiveStep, goToNext, goToPrevious } = useSteps({
     index: 0,
-    count: 4,
+    count: 10,
   });
   const [value, setValue] = useState("");
   const { updateUser } = useUpdateUser(authUser?.id);
+
+  const onNext = async (field: string) => {
+    await updateUser({ [field]: value });
+    setValue("");
+    goToNext();
+  };
 
   const steps: {
     description?: string;
@@ -41,22 +46,26 @@ const RegistrationSteps = () => {
       body: <PhoneAuth />,
     },
     {
+      description: "I am a quick learner",
+      body: (
+        <QuestionCard
+          field={"iAmAQuickLearner"}
+          options={schoolSubjects.sort().concat("Other")}
+          value={value}
+          setValue={setValue}
+          onNext={onNext}
+        />
+      ),
+    },
+    {
       description: "Choose your field of expertise",
       body: (
         <QuestionCard
+          field={"tag"}
           options={schoolSubjects.sort().concat("Other")}
-          initialValue={authUser?.tag}
           value={value}
-          nextButton={
-            <NextButton
-              onClick={async () => {
-                await updateUser({ tag: value });
-                setValue("");
-                goToNext();
-              }}
-            />
-          }
           setValue={setValue}
+          onNext={onNext}
         />
       ),
     },
@@ -65,6 +74,9 @@ const RegistrationSteps = () => {
       body: <EditProfile id={""} onSubmit={goToNext} />,
     },
 
+    { description: "Select Rooms" },
+    { description: "Select Rooms" },
+    { description: "Select Rooms" },
     { description: "Select Rooms" },
   ];
 
