@@ -45,7 +45,15 @@ const UserCard = ({
         )}
         {/* <AvatarAndFullName user={user} size={"md"} isLink={false} /> */}
         <Center>
-          <Avatar user={user} avatarProps={{ size: "xl" }} isLink={false} />
+          <Avatar
+            user={user}
+            avatarProps={{
+              size: "xl",
+              borderColor: user.favoriteColor,
+              borderWidth: 3,
+            }}
+            isLink={false}
+          />
         </Center>
 
         <Stack spacing={0}>

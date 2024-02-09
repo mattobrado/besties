@@ -37,10 +37,11 @@ export const EditProfile = ({
     navigate(ROUTES.HOME);
   }
   const handleSignup = async (data: any) => {
-    updateUser({
+    await updateUser({
       fullName: data.fullName,
       songLink: data.url,
       color,
+      bio: data.bio,
     });
     if (onSubmit) onSubmit();
   };
@@ -70,8 +71,10 @@ export const EditProfile = ({
             loading="lazy"
             size={"xl"}
             icon={<AddIcon fontSize="1.5rem" />}
-            style={{ backgroundColor: color }}
+            bg={color}
             onClick={() => document.getElementById(imageInputId)?.click()}
+            borderColor={color}
+            borderWidth={3}
           />
         </Center>
         <FormControl>

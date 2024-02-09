@@ -38,19 +38,20 @@ export const useUpdateUser = (uid?: string) => {
     fullName,
     songLink,
     color,
+    bio,
   }: {
     fullName?: string;
     songLink?: string;
     color?: string;
+    bio?: string;
   }) => {
     setLoading(true);
 
     const user: Partial<UserType> = {};
 
     if (fullName) user.fullName = fullName;
-
+    if (bio) user.bio = bio;
     if (songLink) user.favoriteSongId = getSongIdFromLink(songLink);
-
     if (color) user.favoriteColor = color;
 
     if (file) {
