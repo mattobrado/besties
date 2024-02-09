@@ -42,7 +42,7 @@ export type UserType = {
   favoriteAnimal?: string;
   favoriteSongId?: string;
   favoriteMovie?: string;
-  isGenius?: boolean;
+  isMember?: boolean;
 };
 
 export type ToggleLikeType = {
