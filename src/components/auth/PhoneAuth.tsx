@@ -2,7 +2,6 @@ import { useContext, useState } from "react";
 import { RecaptchaVerifier, signInWithPhoneNumber } from "firebase/auth";
 import { auth } from "../../lib/firebase";
 import {
-  Box,
   FormControl,
   FormErrorMessage,
   FormLabel,
@@ -12,6 +11,7 @@ import {
   PinInput,
   PinInputField,
   Spacer,
+  Box,
 } from "@chakra-ui/react";
 import { useForm } from "react-hook-form";
 import FormContainer from "./FormContainer";
@@ -77,66 +77,66 @@ const PhoneAuth = ({
   const content = useContext(ContentContext);
 
   return (
-    <>
+    <Box>
       {isFieldAndButtonOnly && <MainImage />}
-      <Box minHeight="100vh" p={4}>
-        <FormContainer
-          authHeadingProps={
-            isFieldAndButtonOnly
-              ? {
-                  title: content.auth.login,
-                  // callToAction: "Take the ",
-                  // link: {
-                  //   label: "Genius IQ Test",
-                  //   to: ROUTES.MEMBERS,
-                  // },
-                }
-              : {}
-          }
-          buttonProps={
-            showOneTimePasswordInput
-              ? {
-                  isLoading: isLoading,
-                  label: content.auth.login,
-                  loadingText: content.auth.loggingIn,
-                }
-              : {
-                  isLoading: isLoading,
-                  label: "Next",
-                  loadingText: "Sending code",
-                }
-          }
-          onSubmit={handleSubmit(
-            showOneTimePasswordInput
-              ? () => signIn({ oneTimePassword, phoneNumber })
-              : onPhoneNumberSubmit
-          )}
-        >
-          {showOneTimePasswordInput ? (
-            <FormControl>
-              <FormLabel>Enter your code</FormLabel>
-              <HStack w={"full"}>
-                <PinInput
-                  otp={true}
-                  placeholder="🥸"
-                  value={oneTimePassword}
-                  onChange={pinOnChange}
-                >
-                  <PinInputField />
-                  <Spacer border={"transparent"} />
-                  <PinInputField />
-                  <Spacer border={"transparent"} />
-                  <PinInputField />
-                  <Spacer border={"transparent"} />
-                  <PinInputField />
-                  <Spacer border={"transparent"} />
-                  <PinInputField />
-                  <Spacer border={"transparent"} />
-                  <PinInputField />
-                </PinInput>
-              </HStack>
-            </FormControl>
-          ) : (
+      <FormContainer
+        authHeadingProps={
+          isFieldAndButtonOnly
+            ? {
+                title: content.auth.login,
+                // callToAction: "Take the ",
+                // link: {
+                //   label: "Genius IQ Test",
+                //   to: ROUTES.MEMBERS,
+                // },
+              }
+            : {}
+        }
+        buttonProps={
+          showOneTimePasswordInput
+            ? {
+                isLoading: isLoading,
+                label: content.auth.login,
+                loadingText: content.auth.loggingIn,
+              }
+            : {
+                isLoading: isLoading,
+                label: "Next",
+                loadingText: "Sending code",
+              }
+        }
+        onSubmit={handleSubmit(
+          showOneTimePasswordInput
+            ? () => signIn({ oneTimePassword, phoneNumber })
+            : onPhoneNumberSubmit
+        )}
+      >
+        {showOneTimePasswordInput ? (
+          <FormControl>
+            <FormLabel>Enter your code</FormLabel>
+            <HStack w={"full"}>
+              <PinInput
+                otp={true}
+                placeholder="🥸"
+                value={oneTimePassword}
+                onChange={pinOnChange}
+              >
+                <PinInputField />
+                <Spacer border={"transparent"} />
+                <PinInputField />
+                <Spacer border={"transparent"} />
+                <PinInputField />
+                <Spacer border={"transparent"} />
+                <PinInputField />
+                <Spacer border={"transparent"} />
+                <PinInputField />
+                <Spacer border={"transparent"} />
+                <PinInputField />
+              </PinInput>
+            </HStack>
+          </FormControl>
+        ) : (
+          <>
             <FormControl isInvalid={!!signInError}>
               <InputGroup>
                 <Input
@@ -149,11 +149,21 @@ const PhoneAuth = ({
               </InputGroup>
               <FormErrorMessage>{signInError}</FormErrorMessage>
             </FormControl>
-          )}
-        </FormContainer>
-      </Box>
+            {/* <Stack spacing={0}>
+              <Center>
+                <Text fontSize={"xs"}>
+                  You may receive SMS notifications from us for
+                </Text>
+              </Center>
+              <Center>
+                <Text fontSize={"xs"}>security and login purposes.</Text>
+              </Center>
+            </Stack> */}
+          </>
+        )}
+      </FormContainer>
       <div id="recaptcha-container"></div>
-    </>
+    </Box>
   );
 };
 

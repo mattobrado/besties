@@ -1,4 +1,12 @@
-import { Button, Center, Heading, Stack, Text, Box } from "@chakra-ui/react";
+import {
+  Button,
+  Center,
+  Heading,
+  Stack,
+  Text,
+  Box,
+  Container,
+} from "@chakra-ui/react";
 import Logo from "../layout/Logo";
 import { Outlet, Link as ReactRouterLink, useLocation } from "react-router-dom";
 import { ROUTES } from "../../lib/constants";
@@ -9,7 +17,7 @@ const IQTest = () => {
   const isQuestionsPath = pathname.startsWith(ROUTES.QUESTIONS);
 
   return (
-    <Box layerStyle="white">
+    <Container p={0} layerStyle="white">
       <Logo />
       {!isQuestionsPath ? (
         <Box p={4}>
@@ -43,7 +51,7 @@ const IQTest = () => {
       ) : (
         <Outlet />
       )}
-    </Box>
+    </Container>
   );
 };
 

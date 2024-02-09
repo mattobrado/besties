@@ -13,6 +13,7 @@ export const bestiesContent = {
     dontHaveAnAccount: "don't have an account?",
     emailAddress: "email",
     error: "error",
+    favoriteSong: "favorite song",
     forgotPassword: "forgot password?",
     fullName: "name",
     goToLoginMessage: "already a user?",

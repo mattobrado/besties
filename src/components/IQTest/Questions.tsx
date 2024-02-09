@@ -12,7 +12,6 @@ import {
   Center,
   Progress,
   Fade,
-  Stack,
 } from "@chakra-ui/react";
 import { ArrowBackIcon } from "@chakra-ui/icons";
 import { useAuth } from "../../hooks/authHooks";
@@ -21,13 +20,20 @@ import EditProfile from "../profile/EditProfile";
 import QuestionCard from "./QuestionCard";
 
 const Questions = () => {
-  const editProfileId = "edit-profile";
+  enum stepIds {
+    editProfileId = "edit-profile",
+    loginProfileId = "edit-profile",
+  }
   const { authUser } = useAuth();
-  const stepsWithoutSubmitButton = [
-    { description: "Log in", body: <PhoneAuth /> },
+  const stepsWithoutSubmitButton: {
+    description?: string;
+    body?: React.ReactNode;
+    id?: string;
+  }[] = [
+    { description: "Register", body: <PhoneAuth /> },
     {
-      id: editProfileId,
-      description: "Contact Info",
+      id: stepIds.editProfileId,
+      description: "About you",
     },
     {
       description: "Choose your first field of expertise",
@@ -61,13 +67,14 @@ const Questions = () => {
     },
     { description: "Select Rooms" },
   ];
+
   const { activeStep, setActiveStep, goToNext, goToPrevious } = useSteps({
     index: 0,
     count: stepsWithoutSubmitButton.length,
   });
 
   const steps = stepsWithoutSubmitButton.map((step) =>
-    step.id === editProfileId
+    step.id === stepIds.editProfileId
       ? { ...step, ...{ body: <EditProfile id={""} onSubmit={goToNext} /> } }
       : step
   );
@@ -81,19 +88,19 @@ const Questions = () => {
 
   return (
     <>
-      <Fade in={activeStep > 1}>
-        <Button
-          leftIcon={<ArrowBackIcon />}
-          colorScheme="black"
-          variant="ghost"
-          size={"sm"}
-          onClick={goToPrevious}
-        >
-          BACK
-        </Button>
-      </Fade>
-      <Box p={4} pb={24}>
-        <Stack spacing={5} pb={5}>
+      <div>
+        <Fade in={activeStep > 1}>
+          <Button
+            leftIcon={<ArrowBackIcon />}
+            colorScheme="black"
+            variant="ghost"
+            size={"sm"}
+            onClick={goToPrevious}
+          >
+            BACK
+          </Button>
+        </Fade>
+        <Box p={4} pb={24}>
           <Stepper size="sm" index={activeStep} gap="0" colorScheme="pink">
             {steps.map((_step, index) => (
               <Step key={index}>
@@ -104,17 +111,19 @@ const Questions = () => {
               </Step>
             ))}
           </Stepper>
-          <Text fontSize={"3xl"}>{description}</Text>
+          <Text fontSize={"3xl"} py={5}>
+            {description}
+          </Text>
           {body}
-        </Stack>
-        {id !== editProfileId && (
-          <Button colorScheme="pink" onClick={goToNext}>
-            <Text color={"black"} w={"96px"} fontSize={"lg"}>
-              {"Next"}
-            </Text>
-          </Button>
-        )}
-      </Box>
+          {id && id in stepIds && (
+            <Button colorScheme="pink" onClick={goToNext}>
+              <Text color={"black"} w={"96px"} fontSize={"lg"}>
+                {"Next"}
+              </Text>
+            </Button>
+          )}
+        </Box>
+      </div>
       <Box
         id="completion-footer"
         pt={2}

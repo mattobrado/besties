@@ -9,6 +9,7 @@ export const INPUT_TYPE = {
   ONE_TIME_PASS_CODE: "otp",
   SONG: "url",
   COLOR: "color",
+  BIO: "bio",
 };
 
 export const VALIDATE = {

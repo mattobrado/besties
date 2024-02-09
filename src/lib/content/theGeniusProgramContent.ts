@@ -1,14 +1,19 @@
-import { bestiesContent as defaultContent } from "./bestiesContent";
+import { bestiesContent } from "./bestiesContent";
 
 export const THE_GENIUS_PROGRAM_CONTENT = {
-  ...defaultContent,
+  ...bestiesContent,
   loginLogo: undefined,
   auth: {
     appName: "The Genius Program",
     login: "Log in",
     phoneNumberPlaceHolder: "Phone number",
     loggingIn: "Logging in",
-    fullName: "Full name",
+    fullName: "Name",
+    favoriteSong: "Favorite song",
+    favoriteSongPlaceholder: "Paste Spotify link",
+    changeAvatar: "Change avatar",
+    pleaseEnterName: "Name can't be blank",
+    bio: "Bio",
   },
   navBar: {
     logoSrcURL:

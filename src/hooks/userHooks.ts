@@ -32,7 +32,7 @@ export const useUser = (
   return { user: <UserType>user, isLoading, isError };
 };
 
-export const useUpdateUser = (uid: string) => {
+export const useUpdateUser = (uid?: string) => {
   const [isLoading, setLoading] = useState(false);
   const [file, setFile] = useState(null);
   const navigate = useNavigate();
@@ -62,6 +62,9 @@ export const useUpdateUser = (uid: string) => {
 
       const avatarURL = await getDownloadURL(fileRef);
       user.avatar = avatarURL;
+    }
+    if (!uid) {
+      return;
     }
     if (Object.keys(user).length > 0) {
       const docRef = doc(db, COLLECTIONS.USERS, uid);
