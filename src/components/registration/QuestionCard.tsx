@@ -22,7 +22,7 @@ const QuestionCard = ({
   const initialValue = typeof fieldValue === "string" ? fieldValue : "";
   useEffect(() => setValue(initialValue), []);
   return (
-    <RadioGroup onChange={setValue} value={value}>
+    <RadioGroup onChange={setValue} value={value} colorScheme="pink">
       <Stack spacing={1} pb={5}>
         {options?.map((option) => (
           <Radio size={"md"} py={1} value={option} key={option}>
