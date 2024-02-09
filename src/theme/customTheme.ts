@@ -25,19 +25,13 @@ export const customTheme = extendTheme({
 
   components: {
     BottomNavigation: bottomNavigationTheme,
-    Button: buttonTheme,
-    Menu: menuTheme,
-    Spinner: spinnerTheme,
-    Skeleton: skeletonTheme,
   },
 
   layerStyles: {
     white: {
-      bg: "black",
       color: "white",
     },
     black: {
-      bg: "white",
       color: "black",
     },
   },

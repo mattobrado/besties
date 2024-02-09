@@ -16,7 +16,6 @@ import {
 } from "@chakra-ui/react";
 import { ArrowBackIcon } from "@chakra-ui/icons";
 import { useAuth } from "../../hooks/authHooks";
-import { useEffect } from "react";
 import PhoneAuth from "../auth/PhoneAuth";
 import EditProfile from "../profile/EditProfile";
 import QuestionCard from "./QuestionCard";
@@ -75,15 +74,14 @@ const Questions = () => {
 
   const percentComplete = (activeStep / steps.length) * 100;
 
-  const { description, body } = steps[activeStep];
-  useEffect(
-    () => setActiveStep(authUser && activeStep === 0 ? 1 : 0),
-    [authUser]
-  );
+  const { description, body, id } = steps[activeStep];
+  if (authUser && activeStep === 0) {
+    setActiveStep(1);
+  }
 
   return (
     <>
-      <Fade in={activeStep > 0}>
+      <Fade in={activeStep > 1}>
         <Button
           leftIcon={<ArrowBackIcon />}
           colorScheme="black"
@@ -109,11 +107,13 @@ const Questions = () => {
           <Text fontSize={"3xl"}>{description}</Text>
           {body}
         </Stack>
-        <Button colorScheme="pink" onClick={goToNext}>
-          <Text color={"black"} w={"96px"} fontSize={"lg"}>
-            {"Next"}
-          </Text>
-        </Button>
+        {id !== editProfileId && (
+          <Button colorScheme="pink" onClick={goToNext}>
+            <Text color={"black"} w={"96px"} fontSize={"lg"}>
+              {"Next"}
+            </Text>
+          </Button>
+        )}
       </Box>
       <Box
         id="completion-footer"
