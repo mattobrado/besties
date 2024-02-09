@@ -29,7 +29,7 @@ const RegistrationSteps = () => {
     count: 10,
   });
   const [value, setValue] = useState("");
-  const { updateUser } = useUpdateUser(authUser?.id);
+  const { updateUser, isLoading } = useUpdateUser(authUser?.id);
 
   const onNext = async (field: string) => {
     await updateUser({ [field]: value });
@@ -54,6 +54,7 @@ const RegistrationSteps = () => {
           value={value}
           setValue={setValue}
           onNext={onNext}
+          isLoading={isLoading}
         />
       ),
     },
@@ -66,6 +67,7 @@ const RegistrationSteps = () => {
           value={value}
           setValue={setValue}
           onNext={onNext}
+          isLoading={isLoading}
         />
       ),
     },
@@ -79,6 +81,7 @@ const RegistrationSteps = () => {
           value={value}
           setValue={setValue}
           onNext={onNext}
+          isLoading
         />
       ),
     },
@@ -92,6 +95,7 @@ const RegistrationSteps = () => {
           value={value}
           setValue={setValue}
           onNext={onNext}
+          isLoading={isLoading}
         />
       ),
     },
@@ -104,6 +108,7 @@ const RegistrationSteps = () => {
           value={value}
           setValue={setValue}
           onNext={onNext}
+          isLoading={isLoading}
         />
       ),
     },

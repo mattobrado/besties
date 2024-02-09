@@ -11,12 +11,14 @@ const RadioOptions = ({
   setValue,
   value,
   field,
+  isLoading,
 }: {
   options?: string[];
   value: string;
   setValue: Dispatch<SetStateAction<string>>;
   onNext: Function;
   field: string;
+  isLoading: boolean;
 }) => {
   const { authUser } = useAuth();
   const fieldValue = authUser && authUser[field as keyof UserType];
@@ -42,6 +44,7 @@ const RadioOptions = ({
               })
             : onNext(field);
         }}
+        isLoading={isLoading}
       />
     </RadioGroup>
   );

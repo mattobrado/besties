@@ -43,9 +43,10 @@ export type UserType = {
   favoriteSongId?: string;
   favoriteMovie?: string;
   isMember?: boolean;
-  tag?: string;
+  fieldOfExpertise?: string;
   iAmAQuickLearner?: string;
   iLikeDiscussingAbstractTopics?: string;
+  math?: string;
 };
 
 export type ToggleLikeType = {
