@@ -17,7 +17,7 @@ import { ArrowBackIcon } from "@chakra-ui/icons";
 import { useAuth, useLogout } from "../../hooks/authHooks";
 import PhoneAuth from "../auth/PhoneAuth";
 import EditProfile from "../profile/EditProfile";
-import QuestionCard from "./QuestionCard";
+import RadioOptions from "./RadioOptions";
 import { agreementLevels, schoolSubjects } from "../../lib/constants";
 import { useState } from "react";
 import { useUpdateUser } from "../../hooks/userHooks";
@@ -48,7 +48,7 @@ const RegistrationSteps = () => {
     {
       description: "I am a quick learner.",
       body: (
-        <QuestionCard
+        <RadioOptions
           field={"iAmAQuickLearner"}
           options={agreementLevels}
           value={value}
@@ -60,7 +60,33 @@ const RegistrationSteps = () => {
     {
       description: "I like discussing abstract concepts.",
       body: (
-        <QuestionCard
+        <RadioOptions
+          field={"iLikeDiscussingAbstractTopics"}
+          options={agreementLevels}
+          value={value}
+          setValue={setValue}
+          onNext={onNext}
+        />
+      ),
+    },
+    {
+      description:
+        "There is evidence from my achievements and results that I'm above average.",
+      body: (
+        <RadioOptions
+          field={"iLikeDiscussingAbstractTopics"}
+          options={agreementLevels}
+          value={value}
+          setValue={setValue}
+          onNext={onNext}
+        />
+      ),
+    },
+    {
+      description:
+        "I actively look for opportunities to update my understanding. I like to find out where I'm wrong.",
+      body: (
+        <RadioOptions
           field={"iLikeDiscussingAbstractTopics"}
           options={agreementLevels}
           value={value}
@@ -72,7 +98,7 @@ const RegistrationSteps = () => {
     {
       description: "Choose your field of expertise",
       body: (
-        <QuestionCard
+        <RadioOptions
           field={"tag"}
           options={schoolSubjects.sort().concat("Other")}
           value={value}
@@ -85,11 +111,6 @@ const RegistrationSteps = () => {
       description: "About you",
       body: <EditProfile id={""} onSubmit={goToNext} />,
     },
-
-    { description: "Select Rooms" },
-    { description: "Select Rooms" },
-    { description: "Select Rooms" },
-    { description: "Select Rooms" },
   ];
 
   const percentComplete = (activeStep / steps.length) * 100;

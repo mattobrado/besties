@@ -4,7 +4,7 @@ import NextButton from "./NextButton";
 import { useAuth } from "../../hooks/authHooks";
 import { UserType } from "../../lib/types";
 
-const QuestionCard = ({
+const RadioOptions = ({
   options,
   onNext,
   setValue,
@@ -35,4 +35,4 @@ const QuestionCard = ({
   );
 };
 
-export default QuestionCard;
+export default RadioOptions;
