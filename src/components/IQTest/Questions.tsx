@@ -88,40 +88,42 @@ const Questions = () => {
 
   return (
     <>
-      <Fade in={activeStep > 1}>
-        <Button
-          leftIcon={<ArrowBackIcon />}
-          colorScheme="black"
-          variant="ghost"
-          size={"sm"}
-          onClick={goToPrevious}
-        >
-          BACK
-        </Button>
-      </Fade>
-      <Box p={4} pb={24}>
-        <Stepper size="sm" index={activeStep} gap="0" colorScheme="pink">
-          {steps.map((_step, index) => (
-            <Step key={index}>
-              <StepIndicator>
-                <StepStatus complete={<StepIcon />} />
-              </StepIndicator>
-              <StepSeparator />
-            </Step>
-          ))}
-        </Stepper>
-        <Text fontSize={"3xl"} pt={5}>
-          {description}
-        </Text>
-        {body}
-        {id && id in stepIds && (
-          <Button colorScheme="pink" onClick={goToNext}>
-            <Text color={"black"} w={"96px"} fontSize={"lg"}>
-              {"Next"}
-            </Text>
+      <div>
+        <Fade in={activeStep > 1}>
+          <Button
+            leftIcon={<ArrowBackIcon />}
+            colorScheme="black"
+            variant="ghost"
+            size={"sm"}
+            onClick={goToPrevious}
+          >
+            BACK
           </Button>
-        )}
-      </Box>
+        </Fade>
+        <Box p={4} pb={24}>
+          <Stepper size="sm" index={activeStep} gap="0" colorScheme="pink">
+            {steps.map((_step, index) => (
+              <Step key={index}>
+                <StepIndicator>
+                  <StepStatus complete={<StepIcon />} />
+                </StepIndicator>
+                <StepSeparator />
+              </Step>
+            ))}
+          </Stepper>
+          <Text fontSize={"3xl"} pt={5}>
+            {description}
+          </Text>
+          {body}
+          {id && id in stepIds && (
+            <Button colorScheme="pink" onClick={goToNext}>
+              <Text color={"black"} w={"96px"} fontSize={"lg"}>
+                {"Next"}
+              </Text>
+            </Button>
+          )}
+        </Box>
+      </div>
       <Box
         id="completion-footer"
         pt={2}

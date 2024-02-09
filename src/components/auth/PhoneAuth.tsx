@@ -11,6 +11,7 @@ import {
   PinInput,
   PinInputField,
   Spacer,
+  Box,
 } from "@chakra-ui/react";
 import { useForm } from "react-hook-form";
 import FormContainer from "./FormContainer";
@@ -76,7 +77,7 @@ const PhoneAuth = ({
   const content = useContext(ContentContext);
 
   return (
-    <>
+    <Box>
       {isFieldAndButtonOnly && <MainImage />}
       <FormContainer
         authHeadingProps={
@@ -135,22 +136,34 @@ const PhoneAuth = ({
             </HStack>
           </FormControl>
         ) : (
-          <FormControl isInvalid={!!signInError}>
-            <InputGroup>
-              <Input
-                as={PhoneInput}
-                country="US"
-                placeholder={content.auth.phoneNumberPlaceHolder}
-                value={phoneNumber}
-                onChange={setPhoneNumber as any}
-              />
-            </InputGroup>
-            <FormErrorMessage>{signInError}</FormErrorMessage>
-          </FormControl>
+          <>
+            <FormControl isInvalid={!!signInError}>
+              <InputGroup>
+                <Input
+                  as={PhoneInput}
+                  country="US"
+                  placeholder={content.auth.phoneNumberPlaceHolder}
+                  value={phoneNumber}
+                  onChange={setPhoneNumber as any}
+                />
+              </InputGroup>
+              <FormErrorMessage>{signInError}</FormErrorMessage>
+            </FormControl>
+            {/* <Stack spacing={0}>
+              <Center>
+                <Text fontSize={"xs"}>
+                  You may receive SMS notifications from us for
+                </Text>
+              </Center>
+              <Center>
+                <Text fontSize={"xs"}>security and login purposes.</Text>
+              </Center>
+            </Stack> */}
+          </>
         )}
       </FormContainer>
       <div id="recaptcha-container"></div>
-    </>
+    </Box>
   );
 };
 

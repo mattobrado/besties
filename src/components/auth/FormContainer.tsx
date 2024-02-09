@@ -12,7 +12,7 @@ const FormContainer = ({
   children: React.ReactNode;
   onSubmit: React.FormEventHandler<HTMLFormElement>;
 }) => (
-  <Container maxW="lg" px={{ base: "0", sm: "16" }}>
+  <Container maxW="lg" px={{ base: "0", sm: "0" }}>
     <Stack spacing="8">
       {authHeadingProps && <AuthHeading {...authHeadingProps} />}
       <Box

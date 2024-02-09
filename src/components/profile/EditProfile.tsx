@@ -1,15 +1,20 @@
-import { FormControl, FormLabel, HStack, Input } from "@chakra-ui/react";
+import {
+  FormControl,
+  FormLabel,
+  Input,
+  Avatar as ChakraAvatar,
+} from "@chakra-ui/react";
 import { useUpdateUser } from "../../hooks/userHooks";
 import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { ROUTES } from "../../lib/constants";
-import AuthUserContext from "../layout/AuthUserContext";
-import Avatar from "./Avatar";
 import { INPUT_TYPE, VALIDATE } from "../../lib/formValidation";
 import FormField from "../auth/FormField";
 import FormContainer from "../auth/FormContainer";
 import { useForm } from "react-hook-form";
 import ContentContext from "../layout/ContentProvider";
+import { AddIcon } from "@chakra-ui/icons";
+import { useAuth } from "../../hooks/authHooks";
 
 export const EditProfile = ({
   id,
@@ -19,15 +24,15 @@ export const EditProfile = ({
   onSubmit?: () => void;
 }) => {
   const navigate = useNavigate();
-  const authUser = useContext(AuthUserContext);
-  const [color, setColor] = useState(authUser.favoriteColor);
+  const { authUser } = useAuth();
+  const [color, setColor] = useState(authUser?.favoriteColor);
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
 
-  if (id && id !== authUser.id) {
+  if (id && id !== authUser?.id) {
     navigate(ROUTES.HOME);
   }
   const handleSignup = async (data: any) => {
@@ -48,8 +53,7 @@ export const EditProfile = ({
 
   const content = useContext(ContentContext);
 
-  // const setBackground = useContext(BackgroundContext);
-  // useEffect(() => setBackground(color), [color]);
+  const imageInputId = "image-input";
 
   return (
     <FormContainer
@@ -60,30 +64,37 @@ export const EditProfile = ({
         loadingText: "Updating",
       }}
     >
-      <HStack spacing={6}>
-        <Avatar
-          user={authUser}
-          overrideAvatar={fileURL ?? undefined}
-          avatarProps={{ size: "xl" }}
+      <div id="edit-avatar">
+        <ChakraAvatar
+          name={authUser?.fullName}
+          src={fileURL ?? authUser?.avatar}
+          loading="lazy"
+          size={"xl"}
+          icon={<AddIcon fontSize="1.5rem" />}
+          style={{ backgroundColor: color }}
+          onClick={() => document.getElementById(imageInputId)?.click()}
         />
-        <FormControl py="4">
-          <FormLabel htmlFor="picture">Change avatar</FormLabel>
+        <FormControl>
+          <FormLabel htmlFor="picture"></FormLabel>
           <input
+            id={imageInputId}
             type="file"
             accept="image/*"
             onChange={(e: any) => setFile(e.target.files[0])}
+            style={{ display: "none" }}
           />
         </FormControl>
-      </HStack>
+      </div>
+
       <FormField
         error={errors?.fullName}
         inputType={INPUT_TYPE.FULL_NAME}
         label={content.auth.fullName}
         register={register}
         validate={
-          authUser.fullName ? VALIDATE.FULL_NAME : VALIDATE.FULL_NAME_REQUIRED
+          authUser?.fullName ? VALIDATE.FULL_NAME : VALIDATE.FULL_NAME_REQUIRED
         }
-        placeHolder={authUser.fullName}
+        placeHolder={authUser?.fullName}
       />
       <FormField
         error={errors?.url}
