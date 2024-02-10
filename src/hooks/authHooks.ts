@@ -1,13 +1,13 @@
 import { useAuthState, useSignOut } from "react-firebase-hooks/auth";
-import { auth, db } from "../lib/firebase";
-import { useEffect, useState } from "react";
-import { COLLECTIONS, ROUTES, TOAST_PROPS } from "../lib/constants";
+import { auth, db } from "src/lib/firebase";
+import { useContext, useEffect, useState } from "react";
+import { COLLECTIONS, ROUTES, TOAST_PROPS } from "src/lib/constants";
 import { User } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import { useToast } from "@chakra-ui/react";
 import { setDoc, doc, getDoc, DocumentData } from "firebase/firestore";
-import { bestiesContent } from "../lib/content/bestiesContent";
 import type UserType from "src/lib/types/UserType";
+import { ContentContext } from "src/context";
 
 export const useAuth = (): {
   authUser?: UserType;
@@ -56,6 +56,7 @@ export const useSignIn = () => {
   const [isLoading, setLoading] = useState(false);
   const toast = useToast();
   const navigate = useNavigate();
+  const content = useContext(ContentContext);
 
   const signIn = async ({
     oneTimePassword,
@@ -73,9 +74,7 @@ export const useSignIn = () => {
       const docRef = doc(db, COLLECTIONS.USERS, uid);
       const docSnap = await getDoc(docRef);
       const userFormDB = docSnap.data() as UserType;
-      if (userFormDB.isApplicationSubmitted) navigate(ROUTES.APPLICANT);
-      if (userFormDB.isMember) navigate(ROUTES.SEARCH);
-      else {
+      if (!user) {
         await setDoc(docRef, {
           avatar: "",
           date: Date.now(),
@@ -85,11 +84,13 @@ export const useSignIn = () => {
           friendUids: [],
           phoneNumber,
         });
-        navigate(ROUTES.REGISTRATION);
       }
+      if (userFormDB.isMember) navigate(ROUTES.SEARCH);
+      if (userFormDB.isApplicationSubmitted) navigate(ROUTES.APPLICANT);
+      navigate(ROUTES.REGISTRATION);
     } catch (error: any) {
       toast({
-        title: bestiesContent.auth.signupFailed,
+        title: content.auth.signupFailed,
         description: error?.message,
         status: "error",
         ...TOAST_PROPS,

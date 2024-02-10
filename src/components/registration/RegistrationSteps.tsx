@@ -42,7 +42,7 @@ const RegistrationSteps = () => {
   }[] = [
     {
       title: "Register",
-      body: <PhoneAuth />,
+      body: <PhoneAuth isFieldAndButtonOnly />,
     },
     {
       title: "I am a quick learner.",
@@ -54,16 +54,6 @@ const RegistrationSteps = () => {
         />
       ),
     },
-    // {
-    //   title: "I like discussing abstract concepts.",
-    //   body: (
-    //     <RadioOptions
-    //       field={"iLikeDiscussingAbstractTopics"}
-    //       options={agreementLevels}
-    //       goToNext={goToNext}
-    //     />
-    //   ),
-    // },
     {
       title:
         "There is evidence from my achievements and results that I'm above average.",
