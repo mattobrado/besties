@@ -20,7 +20,6 @@ const ApplicantPortal = () => {
   const { authUser, isLoading } = useAuth();
   const { logout } = useLogout();
   const toast = useToast();
-  const { state } = useLocation();
 
   useEffect(() => {
     if (!isLoading && pathname.startsWith(ROUTES.APPLICANT)) {
@@ -50,7 +49,6 @@ const ApplicantPortal = () => {
     color: "white",
     fontSize: "20px",
   };
-  const getNum = (input?: string) => Number(input?.charAt(0));
 
   return (
     <Flex
@@ -94,37 +92,6 @@ const ApplicantPortal = () => {
             <Center>
               <Text fontSize={"xl"}>review.</Text>
             </Center>
-
-            {/* {authUser &&
-              [
-                {
-                  key: "iAmAQuickLearner",
-                  description: "I am a quick learner.",
-                },
-                {
-                  key: "iAmAboveAverage",
-                  description: "There is evidence from my achievements and results that I'm above average.",
-                },
-              ].map((item) => {
-                const { key, description } = item;
-                return (
-                  <Box key={key}>
-                    <Text fontSize={"lg"}>{description}</Text>
-                    <Progress
-                      colorScheme="pink"
-                      hasStripe
-                      isAnimated
-                      value={
-                        ((getNum(authUser[key as keyof UserType] as string) -
-                          1) *
-                          100) /
-                        6
-                      }
-                    />
-                  </Box>
-                );
-              })} */}
-
             <Button
               onClick={() => {
                 updateUser({ isApplicationSubmitted: false }).then(() =>
