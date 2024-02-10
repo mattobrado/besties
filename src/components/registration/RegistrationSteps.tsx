@@ -107,7 +107,7 @@ const RegistrationSteps = () => {
       ),
     },
     {
-      title: "Choose your field of expertise",
+      title: "Choose your field of expertise.",
       body: (
         <RadioOptions
           field={"fieldOfExpertise"}
