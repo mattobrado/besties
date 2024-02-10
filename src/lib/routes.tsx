@@ -2,7 +2,6 @@ import { createBrowserRouter } from "react-router-dom";
 import Layout from "../components/layout/Layout";
 import Home from "../components/home/Home";
 import PhoneAuth from "../components/auth/PhoneAuth";
-import EditProfile from "../components/profile/EditProfile";
 import { ROUTES } from "./constants";
 import Members from "../components/lists/Members";
 import ProtectedPageContainer from "../components/layout/ProtectedPageContainer";
