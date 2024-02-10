@@ -6,6 +6,7 @@ import { useAuth, useUpdateUser } from "src/hooks";
 import { ROUTES } from "src/lib/constants";
 import { VALIDATE } from "src/lib/formValidation";
 import { NextButton } from "src/components/registration";
+import type { UserType } from "src/lib/types";
 
 const RadioOptions = ({
   goToNext,
@@ -17,11 +18,17 @@ const RadioOptions = ({
   const { authUser } = useAuth();
   const { updateUser, isLoading } = useUpdateUser(authUser?.id);
   const navigate = useNavigate();
+
+  const values = {
+    text: authUser && authUser[field as keyof UserType],
+  };
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm();
+  } = useForm({
+    values,
+  });
 
   const handleAddReview = (data: any) => {
     updateUser({ [field]: data.text, isApplicationSubmitted: !goToNext }).then(
@@ -31,25 +38,27 @@ const RadioOptions = ({
     );
   };
   return (
-    <form onSubmit={handleSubmit(handleAddReview)}>
-      <FormControl isInvalid={!!errors.text}>
-        <Box pb={10}>
-          <Textarea
-            as={TextareaAutosize}
-            resize="none"
-            size={"lg"}
-            placeholder={"1000 character limit"}
-            minRows={5}
-            maxLength={1000}
-            {...register("text", VALIDATE.TEXT)}
-          />
-          <FormErrorMessage>
-            {typeof errors.text?.message === "string" && errors.text?.message}
-          </FormErrorMessage>
-        </Box>
-        <NextButton isLoading={isLoading} buttonProps={{ type: "submit" }} />
-      </FormControl>
-    </form>
+    authUser && (
+      <form onSubmit={handleSubmit(handleAddReview)}>
+        <FormControl isInvalid={!!errors.text}>
+          <Box pb={10}>
+            <Textarea
+              as={TextareaAutosize}
+              resize="none"
+              size={"lg"}
+              placeholder={"1000 character limit"}
+              minRows={5}
+              maxLength={1000}
+              {...register("text", VALIDATE.TEXT)}
+            />
+            <FormErrorMessage>
+              {typeof errors.text?.message === "string" && errors.text?.message}
+            </FormErrorMessage>
+          </Box>
+          <NextButton isLoading={isLoading} buttonProps={{ type: "submit" }} />
+        </FormControl>
+      </form>
+    )
   );
 };
 

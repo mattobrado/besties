@@ -61,8 +61,8 @@ const PhoneAuth = ({
         setShowOneTimePasswordInput(true);
       })
       .catch((e) => {
-        console.log("got an error", e);
         setSignInError(e.message);
+        location.reload();
       })
       .finally(() => setLoading(false));
   };

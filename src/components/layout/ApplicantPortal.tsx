@@ -8,28 +8,35 @@ import {
   Button,
   useToast,
 } from "@chakra-ui/react";
-import { AddIcon } from "@chakra-ui/icons";
+import { ArrowBackIcon } from "@chakra-ui/icons";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useEffect } from "react";
-import { useAuth, useUpdateUser } from "src/hooks";
-import { ROUTES, TOAST_PROPS } from "src/lib/constants";
+import { useAuth, useLogout, useUpdateUser } from "src/hooks";
+import { ROUTES, TOAST_PROPS, schoolSubjects } from "src/lib/constants";
 
 const ApplicantPortal = () => {
   const { pathname } = useLocation();
   const navigate = useNavigate();
   const { authUser, isLoading } = useAuth();
+  const { logout } = useLogout();
   const toast = useToast();
-  const { state } = useLocation();
 
   useEffect(() => {
     if (!isLoading && pathname.startsWith(ROUTES.APPLICANT)) {
       if (!authUser?.isApplicationSubmitted) {
         toast({
-          title: state?.toastTitle,
+          title:
+            "You must complete the Genius IQ Test before you can access members-only content",
           status: "error",
           ...TOAST_PROPS,
         });
-        navigate(ROUTES.LOGIN);
+        navigate(ROUTES.IQ_TEST);
+      } else {
+        toast({
+          title: "Your application is under review.",
+          status: "success",
+          ...TOAST_PROPS,
+        });
       }
     }
   }, [pathname, authUser?.isApplicationSubmitted, isLoading]);
@@ -46,8 +53,8 @@ const ApplicantPortal = () => {
     justifyContent: "center",
     boxSize: "full",
     color: "white",
-    fontSize: "20px",
   };
+
   return (
     <Flex
       flexWrap="wrap"
@@ -57,41 +64,79 @@ const ApplicantPortal = () => {
     >
       <Box sx={outerBoxStyles}>
         <Box sx={innerBoxStyles}>
-          <Stack p={24}>
-            <Center>
-              <ChakraAvatar
-                name={authUser?.fullName}
-                src={authUser?.avatar}
-                loading="lazy"
-                size={"2xl"}
-                icon={<AddIcon fontSize="1.5rem" />}
-                borderColor={authUser?.favoriteColor}
-                borderWidth={3}
-              />
-            </Center>
-            <Text fontSize={"2xl"}>Your application is under review.</Text>
+          <Stack p={4} pt={5} spacing={2} w={"100%"}>
+            <Stack spacing={0}>
+              <Center>
+                <ChakraAvatar
+                  name={authUser?.fullName}
+                  src={authUser?.avatar}
+                  loading="lazy"
+                  size={"2xl"}
+                  borderColor={authUser?.favoriteColor}
+                  borderWidth={3}
+                />
+              </Center>
+              <Center>
+                <Text as="b" fontSize={"4xl"}>
+                  {authUser?.fullName}
+                </Text>
+              </Center>
+              <Center>
+                <Text fontSize={"xl"}>
+                  Talented{" "}
+                  <Text as="b" style={{ color: authUser?.favoriteColor }}>
+                    {schoolSubjects
+                      .find(
+                        (item) => item.subject === authUser?.fieldOfExpertise
+                      )
+                      ?.profession.toLowerCase()}
+                  </Text>
+                </Text>
+              </Center>
+              <Center>
+                <Text fontSize={"md"}>Presenting on:</Text>
+              </Center>
+            </Stack>
+            <Text
+              border={"1px"}
+              borderRadius={"10px"}
+              w={"100%"}
+              minHeight={28}
+              style={innerBoxStyles}
+              backdropFilter="auto"
+              backdropBlur="64px"
+              p={1}
+            >
+              {authUser?.mystery}
+            </Text>
             <Button
               onClick={() => {
                 updateUser({ isApplicationSubmitted: false }).then(() =>
-                  navigate(ROUTES.IQ_TEST)
+                  navigate(ROUTES.REGISTRATION)
                 );
               }}
               size={"lg"}
-              borderWidth={"4px"}
+              borderWidth={"2px"}
               borderColor={"black"}
             >
               Change my answers
             </Button>
-            <Button
-              onClick={() => {
-                navigate(ROUTES.HOME);
-              }}
-              size={"lg"}
-              borderWidth={"4px"}
-              borderColor={"black"}
-            >
-              Go home
-            </Button>
+            <Center>
+              <Button
+                leftIcon={<ArrowBackIcon />}
+                colorScheme="black"
+                variant="ghost"
+                size={"sm"}
+                onClick={() => {
+                  logout();
+                }}
+                position={"fixed"}
+                bottom={4}
+                backdropFilter="auto"
+              >
+                {"LOG OUT"}
+              </Button>
+            </Center>
           </Stack>
         </Box>
       </Box>

@@ -57,6 +57,12 @@ export const VALIDATE = {
       message: bestiesContent.auth.fullNameMinLength,
     },
   },
+  EMAIL_REQUIRED: {
+    required: {
+      value: true,
+      message: "Please enter your email address",
+    },
+  },
   FULL_NAME: {
     required: {
       message: bestiesContent.auth.pleaseEnterName,

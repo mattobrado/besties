@@ -22,6 +22,8 @@ type UserType = {
   math?: string;
   iAmAboveAverage?: string;
   isApplicationSubmitted?: boolean;
+  mystery?: string;
+  email?: string;
 };
 
 export default UserType;
