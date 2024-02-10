@@ -64,41 +64,48 @@ const ApplicantPortal = () => {
     >
       <Box sx={outerBoxStyles}>
         <Box sx={innerBoxStyles}>
-          <Stack p={4} pt={5} spacing={1} w={"100%"}>
-            <Center>
-              <ChakraAvatar
-                name={authUser?.fullName}
-                src={authUser?.avatar}
-                loading="lazy"
-                size={"2xl"}
-                borderColor={authUser?.favoriteColor}
-                borderWidth={3}
-              />
-            </Center>
-            <Center>
-              <Text as="b" fontSize={"4xl"}>
-                {authUser?.fullName}
-              </Text>
-            </Center>
-            <Center>
-              <Text fontSize={"2xl"}>
-                Talented{" "}
-                <Text as="b" style={{ color: authUser?.favoriteColor }}>
-                  {schoolSubjects
-                    .find((item) => item.subject === authUser?.fieldOfExpertise)
-                    ?.profession.toLowerCase()}
+          <Stack p={4} pt={5} spacing={2} w={"100%"}>
+            <Stack spacing={0}>
+              <Center>
+                <ChakraAvatar
+                  name={authUser?.fullName}
+                  src={authUser?.avatar}
+                  loading="lazy"
+                  size={"2xl"}
+                  borderColor={authUser?.favoriteColor}
+                  borderWidth={3}
+                />
+              </Center>
+              <Center>
+                <Text as="b" fontSize={"4xl"}>
+                  {authUser?.fullName}
                 </Text>
-              </Text>
-            </Center>
-            <Center>
-              <Text fontSize={"lg"}>Presenting on:</Text>
-            </Center>
+              </Center>
+              <Center>
+                <Text fontSize={"xl"}>
+                  Talented{" "}
+                  <Text as="b" style={{ color: authUser?.favoriteColor }}>
+                    {schoolSubjects
+                      .find(
+                        (item) => item.subject === authUser?.fieldOfExpertise
+                      )
+                      ?.profession.toLowerCase()}
+                  </Text>
+                </Text>
+              </Center>
+              <Center>
+                <Text fontSize={"md"}>Presenting on:</Text>
+              </Center>
+            </Stack>
             <Text
-              border={"2px"}
+              border={"1px"}
               borderRadius={"10px"}
               w={"100%"}
               minHeight={28}
               style={innerBoxStyles}
+              backdropFilter="auto"
+              backdropBlur="64px"
+              p={1}
             >
               {authUser?.mystery}
             </Text>
@@ -109,7 +116,7 @@ const ApplicantPortal = () => {
                 );
               }}
               size={"lg"}
-              borderWidth={"4px"}
+              borderWidth={"2px"}
               borderColor={"black"}
             >
               Change my answers
@@ -124,7 +131,7 @@ const ApplicantPortal = () => {
                   logout();
                 }}
                 position={"fixed"}
-                bottom={16}
+                bottom={4}
                 backdropFilter="auto"
               >
                 {"LOG OUT"}
