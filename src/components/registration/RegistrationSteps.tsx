@@ -21,6 +21,7 @@ import RadioOptions from "./RadioOptions";
 import { agreementLevels, schoolSubjects } from "../../lib/constants";
 import ButtonOptions from "./ButtonOptions";
 import { useState } from "react";
+import ShortResponse from "./ShortResponse";
 
 const RegistrationSteps = () => {
   const { authUser } = useAuth();
@@ -129,13 +130,7 @@ const RegistrationSteps = () => {
       description: `What are your thoughts on ${
         schoolSubjects.find((item) => item.subject === fieldOfExpertise)?.topic
       }`,
-      body: (
-        <ButtonOptions
-          field={"motivation"}
-          options={["Revenge"]}
-          goToNext={goToNext}
-        />
-      ),
+      body: <ShortResponse field={"thoughts"} goToNext={goToNext} />,
     },
     {
       description: "About you",
@@ -170,7 +165,7 @@ const RegistrationSteps = () => {
         </Button>
       </Fade>
       <Box p={4} pb={24}>
-        <Stepper size="sm" index={activeStep} gap="0" colorScheme="pink" pt={0}>
+        <Stepper size="xs" index={activeStep} gap="0" colorScheme="pink" pt={0}>
           {steps.map((_step, index) => (
             <Step key={index}>
               <StepIndicator>
