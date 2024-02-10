@@ -15,7 +15,6 @@ export const ROUTES = {
   SEARCH: PROTECTED + "/search",
   EDIT_PROFILE: PROTECTED + "/edit-profile",
   NOTIFICATIONS: PROTECTED + "/notifications",
-  // MEMBERS: PROTECTED + "/search-members",
   IQ_TEST,
   REGISTRATION: IQ_TEST + "/questions",
   APPLICANT: "/applicant",

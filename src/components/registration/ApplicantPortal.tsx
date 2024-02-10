@@ -24,24 +24,13 @@ const ApplicantPortal = () => {
 
   useEffect(() => {
     if (!isLoading && pathname.startsWith(ROUTES.APPLICANT)) {
-      if (!authUser) {
+      if (!authUser?.isApplicationSubmitted) {
         toast({
           title: state?.toastTitle,
           status: "error",
           ...TOAST_PROPS,
         });
         navigate(ROUTES.LOGIN);
-      } else if (
-        !authUser.isApplicationSubmitted &&
-        !pathname.startsWith(ROUTES.IQ_TEST)
-      ) {
-        toast({
-          title:
-            "You must take the Genius IQ Test before you can access members-only content",
-          status: "error",
-          ...TOAST_PROPS,
-        });
-        navigate(ROUTES.REGISTRATION);
       }
     }
   }, [pathname, authUser?.isApplicationSubmitted, isLoading]);

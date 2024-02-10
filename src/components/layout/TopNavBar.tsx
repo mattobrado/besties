@@ -63,7 +63,7 @@ const TopNavBar = () => {
             <Box h={12} />
             <DrawerBody py={4}>
               {navBarItems?.map((item) => {
-                if (item.isLogout && !authUser) {
+                if (item.isForAuthorizedUsersOnly && !authUser) {
                   return;
                 }
                 if (item.to === ROUTES.LOGIN && authUser) {

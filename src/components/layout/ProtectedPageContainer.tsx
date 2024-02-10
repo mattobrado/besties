@@ -10,25 +10,17 @@ const ProtectedPageContainer = () => {
   const navigate = useNavigate();
   const { authUser, isLoading } = useAuth();
   const toast = useToast();
-  const { state } = useLocation();
 
   useEffect(() => {
     if (!isLoading && pathname.startsWith(ROUTES.PROTECTED)) {
-      if (!authUser) {
-        toast({
-          title: state?.toastTitle,
-          status: "error",
-          ...TOAST_PROPS,
-        });
-        navigate(ROUTES.LOGIN);
-      } else if (!authUser.isMember && !pathname.startsWith(ROUTES.IQ_TEST)) {
+      if (!authUser?.isMember) {
         toast({
           title:
             "You must take the Genius IQ Test before you can access members-only content",
           status: "error",
           ...TOAST_PROPS,
         });
-        navigate(ROUTES.REGISTRATION);
+        navigate(ROUTES.IQ_TEST);
       }
     }
   }, [pathname, authUser, isLoading]);

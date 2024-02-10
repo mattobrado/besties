@@ -4,6 +4,7 @@ import bottomNavigationTheme from "./bottomNavigationTheme";
 export const customTheme = extendTheme({
   initialColorMode: "dark",
   useSystemColorMode: false,
+
   colors: {
     pink: {
       "50": "#FEE7EE",
