@@ -5,14 +5,11 @@ import NewCommentForm from "./NewCommentForm";
 import PostList from "../posts/PostList";
 import { useComments } from "../../hooks/commentHooks";
 import { Container } from "@chakra-ui/react";
-import { useContext } from "react";
-import AuthUserContext from "../layout/AuthUserContext";
 import { ROUTES } from "../../lib/constants";
 
 const Comments = () => {
   const { id } = useParams();
   const { post, isLoading } = usePost(id);
-  const authUser = useContext(AuthUserContext);
   const { comments } = useComments(id);
   const navigate = useNavigate();
 
@@ -21,10 +18,10 @@ const Comments = () => {
 
   return (
     isLoaded && (
-      <Review post={post} authUser={authUser} hideCommentButton={true}>
-        <NewCommentForm user={authUser} post={post} />
+      <Review post={post} hideCommentButton={true}>
+        <NewCommentForm post={post} />
         <Container>
-          <PostList posts={comments} authUser={authUser} />
+          <PostList posts={comments} />
         </Container>
       </Review>
     )

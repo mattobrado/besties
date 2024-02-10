@@ -39,6 +39,11 @@ function CustomHits({
 }) {
   const { hits: users } = useHits();
 
-  return <UserList users={users as unknown as UserType[]} onClick={onClick} />;
+  return (
+    <UserList
+      users={users.filter((user) => user.isMember) as unknown as UserType[]}
+      onClick={onClick}
+    />
+  );
 }
 export default Search;

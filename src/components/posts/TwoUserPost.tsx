@@ -2,20 +2,18 @@ import { HStack, Skeleton, Text } from "@chakra-ui/react";
 import AvatarAndFullName from "../profile/AvatarAndFullName";
 import { useUser } from "../../hooks/userHooks";
 import PostBody from "./PostBody";
-import { PostType, UserType } from "../../lib/types";
+import { PostType } from "../../lib/types";
 import TimeStamp from "./TimeStamp";
 import { POST_HEADER_SIZE } from "../../lib/constants";
 
 const TwoUserPost = ({
   children,
-  currentUser,
   hideCommentButton,
   post,
   subjectLineText,
   verb,
 }: {
   children?: React.ReactNode;
-  currentUser: UserType;
   hideCommentButton?: boolean;
   post: PostType;
   subjectLineText: string;
@@ -46,7 +44,6 @@ const TwoUserPost = ({
             <TimeStamp textProps={{ fontSize: "xs" }} date={date} />
           </HStack>
         }
-        currentUser={currentUser}
         post={post}
         children={children}
         hideCommentButton={hideCommentButton}

@@ -2,18 +2,16 @@ import { HStack, Skeleton } from "@chakra-ui/react";
 import AvatarAndFullName from "../profile/AvatarAndFullName";
 import { useUser } from "../../hooks/userHooks";
 import PostBody from "./PostBody";
-import { PostType, UserType } from "../../lib/types";
+import { PostType } from "../../lib/types";
 import TimeStamp from "./TimeStamp";
 import { POST_HEADER_SIZE } from "../../lib/constants";
 
 const OneUserPost = ({
   children,
-  currentUser,
   post,
   hideCommentButton,
 }: {
   children?: React.ReactNode;
-  currentUser: UserType;
   post: PostType;
   hideCommentButton?: boolean;
 }) => {
@@ -36,7 +34,6 @@ const OneUserPost = ({
             </HStack>
           )
         }
-        currentUser={currentUser}
         post={post}
         children={children}
         hideCommentButton={hideCommentButton}

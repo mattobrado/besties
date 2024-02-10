@@ -22,17 +22,17 @@ import SelectUser from "./SelectUser";
 import UserCard from "../profile/UserCard";
 import { TfiSearch } from "react-icons/tfi";
 import BackgroundContext from "../../BackGroundContext";
-import AuthUserContext from "../layout/AuthUserContext";
 import { ROUTES } from "../../lib/constants";
+import { useAuth } from "../../hooks/authHooks";
 
 const NewReviewForm = () => {
+  const { authUser } = useAuth();
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
   const { addPost, isLoading: addingReview } = useAddPost();
-  const authUser = useContext(AuthUserContext);
   const [rating, setRating] = useState(3);
   const [targetUser, setTargetUser] = useState(
     undefined as UserType | undefined
@@ -52,7 +52,7 @@ const NewReviewForm = () => {
       isReview: true,
       rating: rating,
       targetUid: targetUser.id,
-      posterUid: authUser.id,
+      posterUid: authUser?.id,
       text: review.text,
     });
     navigate(ROUTES.HOME);

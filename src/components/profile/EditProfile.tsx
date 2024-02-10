@@ -16,13 +16,14 @@ import { useForm } from "react-hook-form";
 import ContentContext from "../layout/ContentProvider";
 import { AddIcon } from "@chakra-ui/icons";
 import { useAuth } from "../../hooks/authHooks";
+import getSongIdFromLink from "../../utils/getSongIdFromLink";
 
 export const EditProfile = ({
   id,
-  onSubmit,
+  goToNext,
 }: {
   id?: string;
-  onSubmit?: () => void;
+  goToNext?: () => void;
 }) => {
   const navigate = useNavigate();
   const { authUser } = useAuth();
@@ -39,11 +40,12 @@ export const EditProfile = ({
   const handleSignup = async (data: any) => {
     await updateUser({
       fullName: data.fullName,
-      songLink: data.url,
-      color,
+      favoriteSongId: getSongIdFromLink(data.url),
+      favoriteColor: color,
       bio: data.bio,
+    }).catch(() => {
+      if (goToNext) goToNext();
     });
-    if (onSubmit) onSubmit();
   };
 
   const { setFile, updateUser, isLoading, fileURL } = useUpdateUser(
@@ -119,6 +121,7 @@ export const EditProfile = ({
           value={color}
           onChange={(e: any) => setColor(e.target.value)}
           placeholder="gh"
+          p={0}
         />
       </FormControl>
     </FormContainer>

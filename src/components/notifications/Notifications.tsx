@@ -1,12 +1,11 @@
 import { Center, Heading, Divider } from "@chakra-ui/react";
 import UserList from "../profile/UserList";
-import { useContext } from "react";
-import AuthUserContext from "../layout/AuthUserContext";
 import { useFriendRequestUsers } from "../../hooks/userHooks";
+import { useAuth } from "../../hooks/authHooks";
 
 const Notifications = () => {
-  const authUser = useContext(AuthUserContext);
-  const { users } = useFriendRequestUsers(authUser.friendRequestsReceivedUids);
+  const { authUser } = useAuth();
+  const { users } = useFriendRequestUsers(authUser?.friendRequestsReceivedUids);
   return (
     <>
       <Center>

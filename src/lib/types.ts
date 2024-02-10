@@ -42,11 +42,16 @@ export type UserType = {
   favoriteAnimal?: string;
   favoriteSongId?: string;
   favoriteMovie?: string;
-  isGenius?: boolean;
+  isMember?: boolean;
+  fieldOfExpertise?: string;
+  iAmAQuickLearner?: string;
+  iLikeDiscussingAbstractTopics?: string;
+  math?: string;
+  iAmAboveAverage?: string;
 };
 
 export type ToggleLikeType = {
   id: string;
   isLiked: boolean;
-  uid: string;
+  uid?: string;
 };

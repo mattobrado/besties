@@ -14,12 +14,12 @@ import { ROUTES } from "../../lib/constants";
 const IQTest = () => {
   const { pathname } = useLocation();
 
-  const isQuestionsPath = pathname.startsWith(ROUTES.QUESTIONS);
+  const isRootPath = pathname.endsWith(ROUTES.IQ_TEST);
 
   return (
     <Container p={0} layerStyle="white">
       <Logo />
-      {!isQuestionsPath ? (
+      {isRootPath ? (
         <Box p={4}>
           <Stack spacing={5}>
             <Center>
@@ -31,7 +31,7 @@ const IQTest = () => {
             <Center>
               <Button
                 as={ReactRouterLink}
-                to={ROUTES.QUESTIONS}
+                to={ROUTES.REGISTRATION}
                 colorScheme="pink"
               >
                 Take the Test
