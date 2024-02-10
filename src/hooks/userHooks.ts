@@ -6,7 +6,6 @@ import {
   getDoc,
   orderBy,
   collection,
-  FirestoreError,
   arrayUnion,
   where,
 } from "firebase/firestore";
@@ -22,12 +21,12 @@ import getNewRating from "../utils/getNewRating";
 import type { UserType } from "src/lib/types/index";
 
 export const useUser = (
-  id?: string
-): { user?: UserType; isLoading: boolean; isError?: FirestoreError } => {
-  if (!id) return { isLoading: true };
-  const q = query(doc(db, COLLECTIONS.USERS, id) as any);
-  const [user, isLoading, isError] = useDocumentData(q as any);
-  return { user: <UserType>user, isLoading, isError };
+  uid?: string
+): { user?: UserType; isLoading: boolean } => {
+  if (!uid) return { isLoading: true };
+  const q = query(doc(db, COLLECTIONS.USERS, uid) as any);
+  const [user, isLoading] = useDocumentData(q as any);
+  return { user: <UserType>user, isLoading };
 };
 
 export const useUpdateUser = (uid?: string) => {
@@ -37,21 +36,16 @@ export const useUpdateUser = (uid?: string) => {
   const updateUser = async (userFields: Partial<UserType>) => {
     setLoading(true);
 
-    const user: Partial<UserType> = { ...userFields };
-
     if (file) {
       const fileRef = ref(storage, "avatars/" + uid);
-      await uploadBytes(fileRef, file);
+      await uploadBytes(fileRef, file).catch((e) => console.log(e));
 
       const avatarURL = await getDownloadURL(fileRef);
-      user.avatar = avatarURL;
+      userFields.avatar = avatarURL;
     }
-    if (!uid) {
-      return;
-    }
-    if (Object.keys(user).length > 0) {
+    if (Object.keys(userFields).length > 0 && uid) {
       const docRef = doc(db, COLLECTIONS.USERS, uid);
-      await updateDoc(docRef, user);
+      await updateDoc(docRef, userFields);
     }
 
     setLoading(false);
@@ -59,9 +53,7 @@ export const useUpdateUser = (uid?: string) => {
 
   return {
     setFile,
-    updateUser: uid
-      ? updateUser
-      : async () => console.log("which user id do you want to update?"),
+    updateUser,
     isLoading,
     fileURL: file && URL.createObjectURL(file),
   };

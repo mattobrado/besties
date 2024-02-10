@@ -26,7 +26,7 @@ export const EditProfile = ({
 }) => {
   const { authUser } = useAuth();
   const navigate = useNavigate();
-  const [color, setColor] = useState(authUser?.favoriteColor);
+  const [color, setColor] = useState(authUser?.favoriteColor ?? "#F40B52");
   const {
     register,
     handleSubmit,

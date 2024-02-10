@@ -67,7 +67,7 @@ export const schoolSubjects = [
   { subject: "Psychology", topic: "consciousness" },
 ]
   .sort()
-  .concat({ subject: "Other", topic: "" });
+  .concat({ subject: "Other", topic: "life" });
 
 export const agreementLevels = [
   "1 Not like me",
