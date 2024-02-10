@@ -1,11 +1,9 @@
 import { Outlet } from "react-router-dom";
-import { BottomNavBar } from "./BottomNavBar";
-import TopNavBar from "./TopNavBar";
 import { Box, Container } from "@chakra-ui/react";
-import { BOTTOM_NAV_HEIGHT, GLOBAL_PX } from "../../lib/constants";
 import { useContext } from "react";
-import ConfigContext from "../../context/ConfigProvider";
-import Logo from "./Logo";
+import { ConfigContext } from "src/context";
+import { BOTTOM_NAV_HEIGHT, GLOBAL_PX } from "src/lib/constants";
+import { BottomNavBar, Logo, TopNavBar } from "src/components/layout";
 
 const Layout = () => {
   const config = useContext(ConfigContext);

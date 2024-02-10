@@ -1,5 +1,5 @@
-import { useAuth } from "../../../hooks/authHooks";
-import Avatar from "../../profile/Avatar";
+import { useAuth } from "../../hooks/authHooks";
+import Avatar from "../profile/Avatar";
 
 const AvatarNavBarItem = () => {
   const { authUser } = useAuth();

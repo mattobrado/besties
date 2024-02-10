@@ -12,10 +12,10 @@ import {
 } from "@chakra-ui/react";
 import { CloseIcon, HamburgerIcon } from "@chakra-ui/icons";
 import { useContext } from "react";
-import GenericNavBarItem from "./navBarItems/GenericNavBarItem";
-import ConfigContext from "../../context/ConfigProvider";
-import { NUM_ITEMS_OUT_OF_HAMBURGER } from "../../lib/constants";
-import { useAuth } from "../../hooks/authHooks";
+import { ConfigContext } from "src/context";
+import { NUM_ITEMS_OUT_OF_HAMBURGER } from "src/lib/constants";
+import { useAuth } from "src/hooks";
+import { GenericNavBarItem } from "src/components/layout";
 
 const TopNavBar = () => {
   const config = useContext(ConfigContext);
