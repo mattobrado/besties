@@ -1,6 +1,6 @@
 import { RouterProvider } from "react-router-dom";
 import { router } from "./lib/routes";
-import { Box, ChakraProvider } from "@chakra-ui/react";
+import { ChakraProvider } from "@chakra-ui/react";
 import { customTheme } from "./theme/customTheme";
 import THE_GENIUS_PROGRAM_CONFIG from "./lib/content/theGeniusProgramConfig";
 import { THE_GENIUS_PROGRAM_CONTENT } from "./lib/content/theGeniusProgramContent";
@@ -14,9 +14,7 @@ const App = () => {
     <ChakraProvider theme={customTheme}>
       <ConfigContext.Provider value={config}>
         <ContentContext.Provider value={content as any}>
-          <Box minHeight="100vh">
-            <RouterProvider router={router} />
-          </Box>
+          <RouterProvider router={router} />
         </ContentContext.Provider>
       </ConfigContext.Provider>
     </ChakraProvider>
