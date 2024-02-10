@@ -69,7 +69,7 @@ export const VALIDATE = {
   TEXT: {
     required: {
       value: true,
-      message: "required",
+      message: "Please write your thoughts",
     },
     minLength: {
       value: 1,

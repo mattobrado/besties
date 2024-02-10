@@ -134,11 +134,13 @@ const RegistrationSteps = () => {
     },
     {
       description: "About you",
-      body: <EditProfile id={""} onSubmit={goToNext} />,
+      body: <EditProfile id={""} goToNext={goToNext} />,
     },
     {
-      description: "About you",
-      body: <EditProfile id={""} onSubmit={goToNext} />,
+      description: `What are your thoughts on ${
+        schoolSubjects.find((item) => item.subject === fieldOfExpertise)?.topic
+      }`,
+      body: <ShortResponse field={"thoughts"} goToNext={goToNext} />,
     },
   ];
 

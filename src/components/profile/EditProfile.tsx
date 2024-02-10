@@ -20,10 +20,10 @@ import getSongIdFromLink from "../../utils/getSongIdFromLink";
 
 export const EditProfile = ({
   id,
-  onSubmit,
+  goToNext,
 }: {
   id?: string;
-  onSubmit?: () => void;
+  goToNext?: () => void;
 }) => {
   const navigate = useNavigate();
   const { authUser } = useAuth();
@@ -43,8 +43,9 @@ export const EditProfile = ({
       favoriteSongId: getSongIdFromLink(data.url),
       favoriteColor: color,
       bio: data.bio,
+    }).catch(() => {
+      if (goToNext) goToNext();
     });
-    if (onSubmit) onSubmit();
   };
 
   const { setFile, updateUser, isLoading, fileURL } = useUpdateUser(
