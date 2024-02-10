@@ -22,6 +22,7 @@ const IQTest = () => {
       {isRootPath ? (
         <Box p={4}>
           <Stack spacing={5}>
+            ``
             <Center>
               <Text fontSize={"3xl"}>IQ Test</Text>
             </Center>

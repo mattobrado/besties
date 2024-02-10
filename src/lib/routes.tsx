@@ -9,6 +9,7 @@ import ProtectedPageContainer from "../components/layout/ProtectedPageContainer"
 import PostFeed from "../components/posts/PostFeed";
 import IQTest from "../components/registration/IQTest";
 import RegistrationSteps from "../components/registration/RegistrationSteps";
+import Completion from "../components/registration/Completion";
 
 const idString = "/:id";
 
@@ -41,7 +42,7 @@ export const router = createBrowserRouter([
     element: <IQTest />,
     children: [
       { path: ROUTES.REGISTRATION, element: <RegistrationSteps /> },
-      { path: ROUTES.RESULTS, element: <p>results</p> },
+      { path: ROUTES.RESULTS, element: <Completion /> },
     ],
   },
 
