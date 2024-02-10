@@ -23,6 +23,7 @@ type UserType = {
   iAmAboveAverage?: string;
   isApplicationSubmitted?: boolean;
   mystery?: string;
+  email?: string;
 };
 
 export default UserType;
