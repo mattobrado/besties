@@ -64,7 +64,7 @@ const ApplicantPortal = () => {
     >
       <Box sx={outerBoxStyles}>
         <Box sx={innerBoxStyles}>
-          <Stack p={4} spacing={1} w={"100%"}>
+          <Stack p={4} pt={5} spacing={1} w={"100%"}>
             <Center>
               <ChakraAvatar
                 name={authUser?.fullName}
