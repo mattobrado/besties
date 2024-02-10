@@ -15,7 +15,7 @@ import { ROUTES, TOAST_PROPS } from "../../lib/constants";
 import { useEffect } from "react";
 import { useUpdateUser } from "../../hooks/userHooks";
 
-const Completion = () => {
+const ApplicantPortal = () => {
   const { pathname } = useLocation();
   const navigate = useNavigate();
   const { authUser, isLoading } = useAuth();
@@ -101,4 +101,4 @@ const Completion = () => {
   );
 };
 
-export default Completion;
+export default ApplicantPortal;
