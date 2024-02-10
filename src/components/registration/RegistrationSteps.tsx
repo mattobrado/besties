@@ -152,7 +152,11 @@ const RegistrationSteps = () => {
             satisfactory, you will officially join The Genius Program.
           </Text>
           <Text as={"span"}>
-            Please briefly describe the topic you would like to present on.
+            Please briefly describe the{" "}
+            <Text as="b" color={"pink.500"}>
+              mystery{" "}
+            </Text>
+            you would like to present on.
           </Text>
         </Stack>
       ),
