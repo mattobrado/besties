@@ -83,6 +83,16 @@ const ApplicantPortal = () => {
             >
               Change my answers
             </Button>
+            <Button
+              onClick={() => {
+                navigate(ROUTES.HOME);
+              }}
+              size={"lg"}
+              borderWidth={"4px"}
+              borderColor={"black"}
+            >
+              Go home
+            </Button>
           </Stack>
         </Box>
       </Box>

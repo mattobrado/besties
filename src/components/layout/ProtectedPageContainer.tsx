@@ -16,11 +16,11 @@ const ProtectedPageContainer = () => {
       if (!authUser?.isMember) {
         toast({
           title:
-            "You must take the Genius IQ Test before you can access members-only content",
+            "You must pass the Genius IQ Test before you can access members-only content",
           status: "error",
           ...TOAST_PROPS,
         });
-        navigate(ROUTES.IQ_TEST);
+        navigate(ROUTES.APPLICANT);
       }
     }
   }, [pathname, authUser, isLoading]);
