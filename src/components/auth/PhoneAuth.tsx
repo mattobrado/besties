@@ -78,78 +78,79 @@ const PhoneAuth = ({
 
   return (
     <Box>
-      {isFieldAndButtonOnly && <MainImage />}
-      <FormContainer
-        authHeadingProps={
-          isFieldAndButtonOnly
-            ? {
-                title: content.auth.login,
-                // callToAction: "Take the ",
-                // link: {
-                //   label: "Genius IQ Test",
-                //   to: ROUTES.MEMBERS,
-                // },
-              }
-            : {}
-        }
-        buttonProps={
-          showOneTimePasswordInput
-            ? {
-                isLoading: isLoading,
-                label: content.auth.login,
-                loadingText: content.auth.loggingIn,
-              }
-            : {
-                isLoading: isLoading,
-                label: "Next",
-                loadingText: "Sending code",
-              }
-        }
-        onSubmit={handleSubmit(
-          showOneTimePasswordInput
-            ? () => signIn({ oneTimePassword, phoneNumber })
-            : onPhoneNumberSubmit
-        )}
-      >
-        {showOneTimePasswordInput ? (
-          <FormControl>
-            <FormLabel>Enter your code</FormLabel>
-            <HStack w={"full"}>
-              <PinInput
-                otp={true}
-                placeholder="🥸"
-                value={oneTimePassword}
-                onChange={pinOnChange}
-              >
-                <PinInputField />
-                <Spacer border={"transparent"} />
-                <PinInputField />
-                <Spacer border={"transparent"} />
-                <PinInputField />
-                <Spacer border={"transparent"} />
-                <PinInputField />
-                <Spacer border={"transparent"} />
-                <PinInputField />
-                <Spacer border={"transparent"} />
-                <PinInputField />
-              </PinInput>
-            </HStack>
-          </FormControl>
-        ) : (
-          <>
-            <FormControl isInvalid={!!signInError}>
-              <InputGroup>
-                <Input
-                  as={PhoneInput}
-                  country="US"
-                  placeholder={content.auth.phoneNumberPlaceHolder}
-                  value={phoneNumber}
-                  onChange={setPhoneNumber as any}
-                />
-              </InputGroup>
-              <FormErrorMessage>{signInError}</FormErrorMessage>
+      {!isFieldAndButtonOnly && <MainImage />}
+      <Box p={isFieldAndButtonOnly ? 0 : 4}>
+        <FormContainer
+          authHeadingProps={
+            isFieldAndButtonOnly
+              ? {
+                  title: content.auth.login,
+                  // callToAction: "Take the ",
+                  // link: {
+                  //   label: "Genius IQ Test",
+                  //   to: ROUTES.MEMBERS,
+                  // },
+                }
+              : {}
+          }
+          buttonProps={
+            showOneTimePasswordInput
+              ? {
+                  isLoading: isLoading,
+                  label: content.auth.login,
+                  loadingText: content.auth.loggingIn,
+                }
+              : {
+                  isLoading: isLoading,
+                  label: "Next",
+                  loadingText: "Sending code",
+                }
+          }
+          onSubmit={handleSubmit(
+            showOneTimePasswordInput
+              ? () => signIn({ oneTimePassword, phoneNumber })
+              : onPhoneNumberSubmit
+          )}
+        >
+          {showOneTimePasswordInput ? (
+            <FormControl>
+              <FormLabel>Enter your code</FormLabel>
+              <HStack w={"full"}>
+                <PinInput
+                  otp={true}
+                  placeholder="🥸"
+                  value={oneTimePassword}
+                  onChange={pinOnChange}
+                >
+                  <PinInputField />
+                  <Spacer border={"transparent"} />
+                  <PinInputField />
+                  <Spacer border={"transparent"} />
+                  <PinInputField />
+                  <Spacer border={"transparent"} />
+                  <PinInputField />
+                  <Spacer border={"transparent"} />
+                  <PinInputField />
+                  <Spacer border={"transparent"} />
+                  <PinInputField />
+                </PinInput>
+              </HStack>
             </FormControl>
-            {/* <Stack spacing={0}>
+          ) : (
+            <>
+              <FormControl isInvalid={!!signInError}>
+                <InputGroup>
+                  <Input
+                    as={PhoneInput}
+                    country="US"
+                    placeholder={content.auth.phoneNumberPlaceHolder}
+                    value={phoneNumber}
+                    onChange={setPhoneNumber as any}
+                  />
+                </InputGroup>
+                <FormErrorMessage>{signInError}</FormErrorMessage>
+              </FormControl>
+              {/* <Stack spacing={0}>
               <Center>
                 <Text fontSize={"xs"}>
                   You may receive SMS notifications from us for
@@ -159,9 +160,11 @@ const PhoneAuth = ({
                 <Text fontSize={"xs"}>security and login purposes.</Text>
               </Center>
             </Stack> */}
-          </>
-        )}
-      </FormContainer>
+            </>
+          )}
+        </FormContainer>{" "}
+      </Box>
+
       <div id="recaptcha-container"></div>
     </Box>
   );

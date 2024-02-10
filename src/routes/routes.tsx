@@ -16,7 +16,10 @@ export const router = createBrowserRouter([
     element: <Layout />,
     children: [
       { path: ROUTES.HOME, element: <Home /> },
-      { path: ROUTES.LOGIN, element: <PhoneAuth /> },
+      {
+        path: ROUTES.LOGIN,
+        element: <PhoneAuth />,
+      },
 
       {
         path: ROUTES.PROTECTED,

@@ -14,7 +14,7 @@ import { CloseIcon, HamburgerIcon } from "@chakra-ui/icons";
 import { useContext } from "react";
 import GenericNavBarItem from "./navBarItems/GenericNavBarItem";
 import ConfigContext from "../../context/ConfigProvider";
-import { NUM_ITEMS_OUT_OF_HAMBURGER, ROUTES } from "../../lib/constants";
+import { NUM_ITEMS_OUT_OF_HAMBURGER } from "../../lib/constants";
 import { useAuth } from "../../hooks/authHooks";
 
 const TopNavBar = () => {
@@ -66,7 +66,7 @@ const TopNavBar = () => {
                 if (item.isForAuthorizedUsersOnly && !authUser) {
                   return;
                 }
-                if (item.to === ROUTES.LOGIN && authUser) {
+                if (item.isForGuestsOnly && authUser) {
                   return;
                 }
                 return (
