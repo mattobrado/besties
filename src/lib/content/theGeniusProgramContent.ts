@@ -15,6 +15,7 @@ export const THE_GENIUS_PROGRAM_CONTENT = {
     pleaseEnterName: "Name can't be blank",
     bio: "Bio",
     next: "Next",
+    emailAddress: "Email",
   },
   navBar: {
     logoSrcURL:
