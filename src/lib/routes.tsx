@@ -9,6 +9,7 @@ import ProtectedPageContainer from "../components/layout/ProtectedPageContainer"
 import PostFeed from "../components/posts/PostFeed";
 import IQTest from "../components/registration/IQTest";
 import RegistrationSteps from "../components/registration/RegistrationSteps";
+import Completion from "../components/registration/Completion";
 
 const idString = "/:id";
 
@@ -19,6 +20,7 @@ export const router = createBrowserRouter([
     children: [
       { path: ROUTES.HOME, element: <Home /> },
       { path: ROUTES.LOGIN, element: <PhoneAuth /> },
+
       {
         path: ROUTES.PROTECTED,
         element: <ProtectedPageContainer />,
@@ -39,11 +41,9 @@ export const router = createBrowserRouter([
   {
     path: ROUTES.IQ_TEST,
     element: <IQTest />,
-    children: [
-      { path: ROUTES.REGISTRATION, element: <RegistrationSteps /> },
-      { path: ROUTES.RESULTS, element: <p>results</p> },
-    ],
+    children: [{ path: ROUTES.REGISTRATION, element: <RegistrationSteps /> }],
   },
+  { path: ROUTES.APPLICANT, element: <Completion /> },
 
   // {
   //   path: ROUTES.PROFILE + idString,

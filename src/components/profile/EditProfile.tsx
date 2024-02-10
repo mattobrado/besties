@@ -102,6 +102,13 @@ export const EditProfile = ({
         placeHolder={authUser?.fullName}
       />
       <FormField
+        error={errors?.email}
+        inputType={INPUT_TYPE.EMAIL}
+        label={content.auth.emailAddress}
+        register={register}
+        validate={VALIDATE.EMAIL}
+      />
+      <FormField
         error={errors?.bio}
         inputType={INPUT_TYPE.BIO}
         label={content.auth.bio}

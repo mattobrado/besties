@@ -48,6 +48,7 @@ export type UserType = {
   iLikeDiscussingAbstractTopics?: string;
   math?: string;
   iAmAboveAverage?: string;
+  isApplicationSubmitted?: boolean;
 };
 
 export type ToggleLikeType = {

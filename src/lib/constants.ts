@@ -18,7 +18,7 @@ export const ROUTES = {
   // MEMBERS: PROTECTED + "/search-members",
   IQ_TEST,
   REGISTRATION: IQ_TEST + "/questions",
-  RESULTS: IQ_TEST + "/results",
+  APPLICANT: "/applicant",
   POSTS: PROTECTED + "/ideas",
 };
 

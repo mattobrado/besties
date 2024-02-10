@@ -19,10 +19,11 @@ import { useAuth, useLogout } from "../../hooks/authHooks";
 import PhoneAuth from "../auth/PhoneAuth";
 import EditProfile from "../profile/EditProfile";
 import RadioOptions from "./RadioOptions";
-import { agreementLevels, schoolSubjects } from "../../lib/constants";
+import { ROUTES, agreementLevels, schoolSubjects } from "../../lib/constants";
 import ButtonOptions from "./ButtonOptions";
 import { useState } from "react";
 import ShortResponse from "./ShortResponse";
+import { useNavigate } from "react-router-dom";
 
 const RegistrationSteps = () => {
   const { authUser } = useAuth();
@@ -30,6 +31,7 @@ const RegistrationSteps = () => {
     index: 0,
     count: 10,
   });
+  const navigate = useNavigate();
 
   const [fieldOfExpertise, setFieldOfExpertise] = useState("");
 
@@ -144,7 +146,7 @@ const RegistrationSteps = () => {
         <Stack spacing={5}>
           <Text fontSize={"xlg"}>
             The final step required to become a member of The Genius Program is
-            to deliver an in-person presentation. The theme for this Batch is{" "}
+            to deliver an in-person presentation. The theme for this batch is{" "}
             <Text as="b" color={"pink.500"}>
               mysteries.{" "}
             </Text>
@@ -152,7 +154,11 @@ const RegistrationSteps = () => {
             satisfactory, you will officially join The Genius Program.
           </Text>
           <Text as={"span"}>
-            Please briefly describe the topic you would like to present on.
+            Please briefly describe the{" "}
+            <Text as="b" color={"pink.500"}>
+              mystery{" "}
+            </Text>
+            you would like to present on.
           </Text>
         </Stack>
       ),
@@ -165,8 +171,14 @@ const RegistrationSteps = () => {
   const { logout } = useLogout();
 
   const { title, body, subtitle } = steps[activeStep];
-  if (authUser && activeStep === 0) {
-    setActiveStep(1);
+
+  if (authUser) {
+    if (authUser.isApplicationSubmitted) {
+      navigate(ROUTES.APPLICANT);
+    }
+    if (activeStep === 0) {
+      setActiveStep(1);
+    }
   }
 
   return (
