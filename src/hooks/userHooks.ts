@@ -9,16 +9,16 @@ import {
   arrayUnion,
   where,
 } from "firebase/firestore";
-import { db, storage } from "../lib/firebase";
 import {
   useCollectionData,
   useDocumentData,
 } from "react-firebase-hooks/firestore";
-import { COLLECTIONS } from "../lib/constants";
 import { useState } from "react";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
-import getNewRating from "../utils/getNewRating";
 import type { UserType } from "src/lib/types/index";
+import { COLLECTIONS } from "src/lib/constants";
+import { db, storage } from "src/lib/firebase";
+import getNewRating from "src/utils/getNewRating";
 
 export const useUser = (
   uid?: string
