@@ -17,7 +17,7 @@ import {
 import { ROUTES } from "../../lib/constants";
 import { useAuth } from "src/hooks/authHooks";
 
-const IQTest = () => {
+const Registration = () => {
   const { pathname } = useLocation();
   const { authUser } = useAuth();
   const navigate = useNavigate();
@@ -68,4 +68,4 @@ const IQTest = () => {
   );
 };
 
-export default IQTest;
+export default Registration;

@@ -1,14 +1,14 @@
 import { createBrowserRouter } from "react-router-dom";
-import Layout from "../components/layout/Layout";
-import Home from "../components/home/Home";
-import PhoneAuth from "../components/auth/PhoneAuth";
-import { ROUTES } from "../lib/constants";
-import Members from "../components/lists/Members";
-import ProtectedPageContainer from "../components/layout/ProtectedPageContainer";
-import PostFeed from "../components/posts/PostFeed";
-import IQTest from "../components/registration/IQTest";
-import RegistrationSteps from "../components/registration/RegistrationSteps";
-import ApplicantPortal from "../components/registration/ApplicantPortal";
+import { Home } from "src/components";
+import { PhoneAuth } from "src/components/auth";
+import {
+  ApplicantPortal,
+  Layout,
+  ProtectedPageContainer,
+} from "src/components/layout";
+import Members from "src/components/lists/Members";
+import { Registration, RegistrationSteps } from "src/components/registration";
+import { ROUTES } from "src/lib/constants";
 
 export const router = createBrowserRouter([
   {
@@ -29,14 +29,13 @@ export const router = createBrowserRouter([
             path: ROUTES.SEARCH,
             element: <Members />,
           },
-          { path: ROUTES.POSTS, element: <PostFeed /> },
         ],
       },
     ],
   },
   {
     path: ROUTES.IQ_TEST,
-    element: <IQTest />,
+    element: <Registration />,
     children: [{ path: ROUTES.REGISTRATION, element: <RegistrationSteps /> }],
   },
   { path: ROUTES.APPLICANT, element: <ApplicantPortal /> },
