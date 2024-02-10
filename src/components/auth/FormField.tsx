@@ -49,7 +49,7 @@ const FormField = ({
         size={"lg"}
         minRows={3}
         maxLength={100}
-        placeholder="100 character limit"
+        placeholder={placeHolder ?? "100 character limit"}
         {...register(inputType, validate)}
       />
     )}
