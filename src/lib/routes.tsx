@@ -39,7 +39,10 @@ export const router = createBrowserRouter([
   {
     path: ROUTES.IQ_TEST,
     element: <IQTest />,
-    children: [{ path: ROUTES.REGISTRATION, element: <RegistrationSteps /> }],
+    children: [
+      { path: ROUTES.REGISTRATION, element: <RegistrationSteps /> },
+      { path: ROUTES.RESULTS, element: <p>results</p> },
+    ],
   },
 
   // {

@@ -156,7 +156,7 @@ const RegistrationSteps = () => {
           </Text>
         </Stack>
       ),
-      body: <ShortResponse field={"mystery"} goToNext={goToNext} />,
+      body: <ShortResponse field={"mystery"} />,
     },
   ];
 

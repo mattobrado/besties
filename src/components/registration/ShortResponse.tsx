@@ -5,17 +5,19 @@ import { useUpdateUser } from "../../hooks/userHooks";
 import { VALIDATE } from "../../lib/formValidation";
 import TextareaAutosize from "react-textarea-autosize";
 import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
+import { ROUTES } from "../../lib/constants";
 
 const RadioOptions = ({
   goToNext,
   field,
 }: {
-  goToNext: Function;
+  goToNext?: Function;
   field: string;
 }) => {
   const { authUser } = useAuth();
   const { updateUser, isLoading } = useUpdateUser(authUser?.id);
-
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -23,7 +25,9 @@ const RadioOptions = ({
   } = useForm();
 
   const handleAddReview = (data: any) => {
-    updateUser({ [field]: data.text }).then(() => goToNext());
+    updateUser({ [field]: data.text }).then(() => {
+      goToNext ? goToNext() : navigate(ROUTES.RESULTS);
+    });
   };
   return (
     <form onSubmit={handleSubmit(handleAddReview)}>

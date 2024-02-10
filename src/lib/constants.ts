@@ -18,6 +18,7 @@ export const ROUTES = {
   // MEMBERS: PROTECTED + "/search-members",
   IQ_TEST,
   REGISTRATION: IQ_TEST + "/questions",
+  RESULTS: IQ_TEST + "/results",
   POSTS: PROTECTED + "/ideas",
 };
 
@@ -43,27 +44,27 @@ export const LOGO_HEIGHT = "75px";
 export const NUM_ITEMS_OUT_OF_HAMBURGER = 3;
 
 export const schoolSubjects = [
-  { subject: "Mathematics", topic: "Gödel's incompleteness theorems" },
-  { subject: "Business", topic: "Tesla stock" },
-  { subject: "Economics", topic: "China" },
-  { subject: "Archeology", topic: "what dinosaur's really looked like" },
-  { subject: "History", topic: "World War II" },
   { subject: "Anthropology", topic: "hunter-gatherer societies" },
+  { subject: "Archeology", topic: "what dinosaur's really looked like" },
+  { subject: "Architecture", topic: "The Sydney Opera House" },
   { subject: "Art", topic: "Picasso" },
-  { subject: "Literature", topic: "which book is best" },
-  { subject: "Music", topic: "Kanye West" },
-  { subject: "Film", topic: "A24" },
-  { subject: "Physics", topic: "particle-wave duality" },
-  { subject: "Neurology", topic: "" },
-  { subject: "Chemistry", topic: "the healing power of chemicals" },
   { subject: "Astronomy", topic: "UFOs" },
-  { subject: "Technology", topic: "AI" },
-  { subject: "Architecture", topic: "Freedom tower" },
-  { subject: "Geology", topic: "rocks" },
   { subject: "Biology", topic: "bacteria" },
-  { subject: "Zoology", topic: "deep sea animals" },
-  { subject: "Medicine", topic: "pandemics" },
+  { subject: "Business", topic: "Tesla stock" },
+  { subject: "Chemistry", topic: "DNA" },
+  { subject: "Economics", topic: "China" },
+  { subject: "Film", topic: "A24" },
+  { subject: "Geology", topic: "rocks" },
   { subject: "Government", topic: "the future of the United States" },
+  { subject: "History", topic: "World War II" },
+  { subject: "Literature", topic: "which book is best" },
+  { subject: "Mathematics", topic: "Gödel's incompleteness theorems" },
+  { subject: "Medicine", topic: "pandemics" },
+  { subject: "Music", topic: "Kanye West" },
+  { subject: "Neurology", topic: "" },
+  { subject: "Physics", topic: "particle-wave duality" },
+  { subject: "Technology", topic: "AI" },
+  { subject: "Zoology", topic: "deep sea animals" },
 ];
 
 export const agreementLevels = [
