@@ -20,7 +20,7 @@ const THE_GENIUS_PROGRAM_CONFIG = {
         toastTitle: "You must be logged in to access the members-only area",
       },
     },
-    { label: "Join us", to: ROUTES.LOGIN },
+    { label: "Join us", to: ROUTES.IQ_TEST },
     // { label: "GENIUS", to: "" },
     // { label: bestiesContent.navBar.mostPopular, to: ROUTES.HOME },
     // { label: bestiesContent.navBar.highestRated, to: ROUTES.HIGHEST_RATED },
