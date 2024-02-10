@@ -12,11 +12,10 @@ import {
 } from "@chakra-ui/react";
 import { CloseIcon, HamburgerIcon } from "@chakra-ui/icons";
 import { useContext } from "react";
-import { HEX_COLORS } from "../../theme/colors";
-import GenericNavBarItem from "./navBarItems/GenericNavBarItem";
-import ConfigContext from "./ConfigProvider";
-import { NUM_ITEMS_OUT_OF_HAMBURGER, ROUTES } from "../../lib/constants";
-import { useAuth } from "../../hooks/authHooks";
+import { ConfigContext } from "src/context";
+import { NUM_ITEMS_OUT_OF_HAMBURGER } from "src/lib/constants";
+import { useAuth } from "src/hooks";
+import { GenericNavBarItem } from "src/components/layout";
 
 const TopNavBar = () => {
   const config = useContext(ConfigContext);
@@ -29,7 +28,7 @@ const TopNavBar = () => {
 
   return (
     <Flex
-      style={{ backgroundColor: `${HEX_COLORS.THE_GENIUS_PROGRAM_PRIMARY}` }}
+      bg="pink.500"
       h={12}
       alignItems={"center"}
       justifyContent={"space-between"}
@@ -64,10 +63,10 @@ const TopNavBar = () => {
             <Box h={12} />
             <DrawerBody py={4}>
               {navBarItems?.map((item) => {
-                if (item.isLogout && !authUser) {
+                if (item.isForAuthorizedUsersOnly && !authUser) {
                   return;
                 }
-                if (item.to === ROUTES.LOGIN && authUser) {
+                if (item.isForGuestsOnly && authUser) {
                   return;
                 }
                 return (

@@ -1,44 +1,41 @@
 import { useEffect } from "react";
 import { Outlet, useLocation, useNavigate } from "react-router-dom";
-import { useAuth } from "../../hooks/authHooks";
-import { ROUTES, TOAST_PROPS } from "../../lib/constants";
-import AuthUserContext from "./AuthUserContext";
-import LoadingScreen from "../LoadingScreen";
-import { useToast } from "@chakra-ui/react";
+import { Box, useToast } from "@chakra-ui/react";
+import { useAuth } from "src/hooks";
+import { ROUTES, TOAST_PROPS } from "src/lib/constants";
+import { LoadingScreen } from "src/components";
 
 const ProtectedPageContainer = () => {
   const { pathname } = useLocation();
   const navigate = useNavigate();
   const { authUser, isLoading } = useAuth();
   const toast = useToast();
-  const { state } = useLocation();
 
   useEffect(() => {
     if (!isLoading && pathname.startsWith(ROUTES.PROTECTED)) {
-      if (!authUser) {
-        toast({
-          title: state?.toastTitle,
-          status: "error",
-          ...TOAST_PROPS,
-        });
-        navigate(ROUTES.LOGIN);
-      } else if (!authUser.isGenius && !pathname.startsWith(ROUTES.IQ_TEST)) {
+      if (!authUser?.isApplicationSubmitted) {
         toast({
           title:
-            "You must take the Genius IQ Test before you can access members-only content",
+            "You must pass the Genius IQ Test before you can access members-only content",
           status: "error",
           ...TOAST_PROPS,
         });
         navigate(ROUTES.IQ_TEST);
+      } else if (!authUser?.isMember) {
+        toast({
+          title:
+            "You must pass the Genius IQ Test before you can access members-only content",
+          status: "error",
+          ...TOAST_PROPS,
+        });
+        navigate(ROUTES.APPLICANT);
       }
     }
   }, [pathname, authUser, isLoading]);
   return (
-    authUser && (
-      <AuthUserContext.Provider value={authUser}>
-        {isLoading ? <LoadingScreen /> : <Outlet />}
-      </AuthUserContext.Provider>
-    )
+    <Box px={2} py={4} bg={"white"} minHeight="100vh">
+      {authUser && isLoading ? <LoadingScreen /> : <Outlet />}
+    </Box>
   );
 };
 

@@ -1,13 +1,19 @@
-import { Button, HStack, Text } from "@chakra-ui/react";
+import { Button, Stack, StackDirection, Text } from "@chakra-ui/react";
 
 const RatingInput = ({
   iconSize,
   rating,
   setRating,
+  filledElement = "⭐️",
+  unfilledElement = "❔",
+  direction,
 }: {
   iconSize: string;
   rating: number;
   setRating: React.Dispatch<React.SetStateAction<number>>;
+  filledElement?: React.ReactNode;
+  unfilledElement?: React.ReactNode;
+  direction?: StackDirection;
 }) => {
   const Buttons = [];
 
@@ -26,7 +32,7 @@ const RatingInput = ({
     return (
       <>
         <Text fontSize={iconSize} onClick={onClick}>
-          {fill ? "⭐️" : "❔"}
+          {fill ? filledElement : unfilledElement}
         </Text>
       </>
     );
@@ -49,7 +55,11 @@ const RatingInput = ({
     Buttons.push(<RatingButton key={i} idx={i} fill={i <= rating} />);
   }
 
-  return <HStack justify="center">{Buttons}</HStack>;
+  return (
+    <Stack justify="center" direction={direction}>
+      {Buttons}
+    </Stack>
+  );
 };
 
 export default RatingInput;

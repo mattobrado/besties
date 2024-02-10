@@ -3,11 +3,12 @@ import { bestiesContent } from "../../lib/content/bestiesContent";
 import TextareaAutosize from "react-textarea-autosize";
 import { useForm } from "react-hook-form";
 import { VALIDATE } from "../../lib/formValidation";
-import { PostType, UserType } from "../../lib/types";
+import { PostType } from "../../lib/types";
 import { useAddPost } from "../../hooks/postHooks";
-import { COLORS } from "../../theme/colors";
+import { useAuth } from "../../hooks/authHooks";
 
-const NewCommentForm = ({ user, post }: { user: UserType; post: PostType }) => {
+const NewCommentForm = ({ post }: { post: PostType }) => {
+  const { authUser } = useAuth();
   const { id: postId } = post;
   const {
     register,
@@ -18,11 +19,11 @@ const NewCommentForm = ({ user, post }: { user: UserType; post: PostType }) => {
   const { addPost, isLoading } = useAddPost();
 
   const handleAddComment = (comment: Partial<PostType>) => {
-    if (!user) return;
+    if (!authUser) return;
     addPost({
       isComment: true,
       parentPostId: postId,
-      posterUid: user.id,
+      posterUid: authUser.id,
       text: comment.text,
     });
     reset();
@@ -38,7 +39,6 @@ const NewCommentForm = ({ user, post }: { user: UserType; post: PostType }) => {
             size={"lg"}
             pb={1}
             placeholder={bestiesContent.commentForm.commentField}
-            _placeholder={{ color: COLORS.PLACEHOLDER }}
             {...register("text", VALIDATE.TEXT)}
           />
         </FormControl>

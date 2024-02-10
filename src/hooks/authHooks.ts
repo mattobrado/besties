@@ -1,22 +1,13 @@
 import { useAuthState, useSignOut } from "react-firebase-hooks/auth";
-import { auth, db } from "../lib/firebase";
-import { useEffect, useState } from "react";
-import { COLLECTIONS, ROUTES, TOAST_PROPS } from "../lib/constants";
+import { auth, db } from "src/lib/firebase";
+import { useContext, useEffect, useState } from "react";
+import { COLLECTIONS, ROUTES, TOAST_PROPS } from "src/lib/constants";
 import { User } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import { useToast } from "@chakra-ui/react";
-import {
-  setDoc,
-  doc,
-  getDoc,
-  DocumentData,
-  where,
-  collection,
-  getDocs,
-  query,
-} from "firebase/firestore";
-import { UserType } from "../lib/types";
-import { bestiesContent } from "../lib/content/bestiesContent";
+import { setDoc, doc, getDoc, DocumentData } from "firebase/firestore";
+import type UserType from "src/lib/types/UserType";
+import { ContentContext } from "src/context";
 
 export const useAuth = (): {
   authUser?: UserType;
@@ -51,7 +42,7 @@ export const useLogout = () => {
 
   const logout = async () => {
     if (await signOut()) {
-      navigate(ROUTES.HOME);
+      navigate(ROUTES.REGISTRATION);
       setTimeout(() => {
         location.reload();
       }, 1000);
@@ -65,6 +56,7 @@ export const useSignIn = () => {
   const [isLoading, setLoading] = useState(false);
   const toast = useToast();
   const navigate = useNavigate();
+  const content = useContext(ContentContext);
 
   const signIn = async ({
     oneTimePassword,
@@ -79,12 +71,11 @@ export const useSignIn = () => {
         oneTimePassword
       );
       const uid = user.uid;
-      const q = query(collection(db, "users"), where("id", "==", uid));
-      const querySnapshot = await getDocs(q);
-      const userExists = querySnapshot.size > 0;
-      if (userExists) navigate(ROUTES.SEARCH);
-      else {
-        await setDoc(doc(db, COLLECTIONS.USERS, uid), {
+      const docRef = doc(db, COLLECTIONS.USERS, uid);
+      const docSnap = await getDoc(docRef);
+      const userFormDB = docSnap.data() as UserType;
+      if (!user) {
+        await setDoc(docRef, {
           avatar: "",
           date: Date.now(),
           id: uid,
@@ -93,11 +84,13 @@ export const useSignIn = () => {
           friendUids: [],
           phoneNumber,
         });
-        navigate(`${ROUTES.EDIT_PROFILE}/${uid}`);
       }
+      if (userFormDB.isMember) navigate(ROUTES.SEARCH);
+      if (userFormDB.isApplicationSubmitted) navigate(ROUTES.APPLICANT);
+      navigate(ROUTES.REGISTRATION);
     } catch (error: any) {
       toast({
-        title: bestiesContent.auth.signupFailed,
+        title: content.auth.signupFailed,
         description: error?.message,
         status: "error",
         ...TOAST_PROPS,

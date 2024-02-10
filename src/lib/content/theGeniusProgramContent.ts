@@ -8,6 +8,15 @@ export const THE_GENIUS_PROGRAM_CONTENT = {
     login: "Log in",
     phoneNumberPlaceHolder: "Phone number",
     loggingIn: "Logging in",
+    fullName: "Name",
+    favoriteSong: "Favorite song",
+    favoriteSongPlaceholder: "Paste Spotify link",
+    changeAvatar: "Change avatar",
+    pleaseEnterName: "Name can't be blank",
+    bio: "Bio",
+    next: "Next",
+    emailAddress: "Email",
+    signupFailed: "Registration failed",
   },
   navBar: {
     logoSrcURL:

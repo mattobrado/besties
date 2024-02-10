@@ -25,28 +25,8 @@ export type PostType = {
   text: string;
 };
 
-export type UserType = {
-  bio: string;
-  avatar?: string;
-  date: number;
-  fullName?: string;
-  id: string;
-  rating?: number;
-  ratingCount: number;
-  popularity: number;
-  friendUids: string[];
-  friendRequestsReceivedUids: string[];
-  phoneNumber: string;
-  favoriteColor?: string;
-  favoriteFood?: string;
-  favoriteAnimal?: string;
-  favoriteSongId?: string;
-  favoriteMovie?: string;
-  isGenius?: boolean;
-};
-
 export type ToggleLikeType = {
   id: string;
   isLiked: boolean;
-  uid: string;
+  uid?: string;
 };

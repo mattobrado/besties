@@ -1,90 +1,135 @@
-import { FormControl, FormLabel, Input } from "@chakra-ui/react";
+import {
+  FormControl,
+  FormLabel,
+  Input,
+  Avatar as ChakraAvatar,
+  Center,
+} from "@chakra-ui/react";
 import { useUpdateUser } from "../../hooks/userHooks";
-import { useContext, useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useContext, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { ROUTES } from "../../lib/constants";
-import AuthUserContext from "../layout/AuthUserContext";
-import Avatar from "./Avatar";
-import { bestiesContent } from "../../lib/content/bestiesContent";
 import { INPUT_TYPE, VALIDATE } from "../../lib/formValidation";
 import FormField from "../auth/FormField";
 import FormContainer from "../auth/FormContainer";
 import { useForm } from "react-hook-form";
-import BackgroundContext from "../../BackGroundContext";
-
-export const EditProfile = () => {
-  const { id } = useParams();
+import ContentContext from "../../context/ContentProvider";
+import { AddIcon } from "@chakra-ui/icons";
+import getSongIdFromLink from "../../utils/getSongIdFromLink";
+import { useAuth } from "../../hooks/authHooks";
+export const EditProfile = ({
+  id,
+  goToNext,
+}: {
+  id?: string;
+  goToNext?: () => void;
+}) => {
+  const { authUser } = useAuth();
   const navigate = useNavigate();
-  const authUser = useContext(AuthUserContext);
-  const [color, setColor] = useState(authUser.favoriteColor);
+  const [color, setColor] = useState(authUser?.favoriteColor ?? "#F40B52");
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
 
-  if (id !== authUser.id) {
+  if (id && id !== authUser?.id) {
     navigate(ROUTES.HOME);
   }
-  const handleSignup = async (data: any) => {
-    updateUser({
-      fullName: data.fullName,
-      songLink: data.url,
-      color,
-    });
-  };
-  const {
-    setFile,
-    updateUser: updateUser,
-    isLoading,
-    fileURL,
-  } = useUpdateUser(authUser?.id);
+  const { updateUser, isLoading, setFile, fileURL } = useUpdateUser(
+    authUser?.id
+  );
 
-  const setBackground = useContext(BackgroundContext);
-  useEffect(() => setBackground(color), [color]);
+  const handleSignup = async (data: any) => {
+    await updateUser({
+      fullName: data.fullName,
+      favoriteSongId: getSongIdFromLink(data.url),
+      favoriteColor: color,
+      bio: data.bio,
+    })
+      .then(() => {
+        if (goToNext) goToNext();
+      })
+      .catch((e) => console.log(e));
+  };
+
+  const content = useContext(ContentContext);
+
+  const imageInputId = "image-input";
 
   return (
     <FormContainer
       onSubmit={handleSubmit(handleSignup)}
       buttonProps={{
         isLoading: isLoading,
-        label: "update",
-        loadingText: "updating",
+        label: content.auth.next,
+        loadingText: "Updating",
       }}
     >
-      <Avatar user={authUser} overrideAvatar={fileURL ?? undefined} />
-      <FormControl py="4">
-        <FormLabel htmlFor="picture">Change avatar</FormLabel>
-        <input
-          type="file"
-          accept="image/*"
-          onChange={(e: any) => setFile(e.target.files[0])}
-        />
-      </FormControl>
+      <div id="edit-avatar">
+        <Center>
+          <ChakraAvatar
+            name={authUser?.fullName}
+            src={fileURL ?? authUser?.avatar}
+            loading="lazy"
+            size={"xl"}
+            icon={<AddIcon fontSize="1.5rem" />}
+            bg={color}
+            onClick={() => document.getElementById(imageInputId)?.click()}
+            borderColor={color}
+            borderWidth={3}
+          />
+        </Center>
+        <FormControl>
+          <FormLabel htmlFor="picture"></FormLabel>
+          <input
+            id={imageInputId}
+            type="file"
+            accept="image/*"
+            onChange={(e: any) => setFile(e.target.files[0])}
+            style={{ display: "none" }}
+          />
+        </FormControl>
+      </div>
+
       <FormField
         error={errors?.fullName}
         inputType={INPUT_TYPE.FULL_NAME}
-        label={bestiesContent.auth.fullName}
+        label={content.auth.fullName}
         register={register}
         validate={
-          authUser.fullName ? VALIDATE.FULL_NAME : VALIDATE.FULL_NAME_REQUIRED
+          authUser?.fullName ? VALIDATE.FULL_NAME : VALIDATE.FULL_NAME_REQUIRED
         }
-        placeHolder={authUser.fullName}
+        placeHolder={authUser?.fullName}
+      />
+      <FormField
+        error={errors?.email}
+        inputType={INPUT_TYPE.EMAIL}
+        label={content.auth.emailAddress}
+        register={register}
+        validate={VALIDATE.EMAIL}
+      />
+      <FormField
+        error={errors?.bio}
+        inputType={INPUT_TYPE.BIO}
+        label={content.auth.bio}
+        register={register}
       />
       <FormField
         error={errors?.url}
         inputType={INPUT_TYPE.SONG}
-        label={"favorite song"}
-        placeHolder="paste spotify link"
+        label={content.auth.favoriteSong}
+        placeHolder={content.auth.favoriteSongPlaceholder}
         register={register}
       />
       <FormControl>
-        <FormLabel>{"favorite color"}</FormLabel>
+        <FormLabel>{"Favorite color"}</FormLabel>
         <Input
           type={INPUT_TYPE.COLOR}
           value={color}
           onChange={(e: any) => setColor(e.target.value)}
           placeholder="gh"
+          p={0}
         />
       </FormControl>
     </FormContainer>

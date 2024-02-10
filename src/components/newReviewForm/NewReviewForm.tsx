@@ -16,24 +16,23 @@ import { useForm } from "react-hook-form";
 import { useAddPost } from "../../hooks/postHooks";
 import { useContext, useEffect, useState } from "react";
 import { VALIDATE } from "../../lib/formValidation";
-import { PostType, UserType } from "../../lib/types";
+import type { PostType, UserType } from "src/lib/types/index";
 import { useNavigate } from "react-router-dom";
 import SelectUser from "./SelectUser";
 import UserCard from "../profile/UserCard";
-import { COLORS } from "../../theme/colors";
 import { TfiSearch } from "react-icons/tfi";
 import BackgroundContext from "../../BackGroundContext";
-import AuthUserContext from "../layout/AuthUserContext";
 import { ROUTES } from "../../lib/constants";
+import { useAuth } from "../../hooks/authHooks";
 
 const NewReviewForm = () => {
+  const { authUser } = useAuth();
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
   const { addPost, isLoading: addingReview } = useAddPost();
-  const authUser = useContext(AuthUserContext);
   const [rating, setRating] = useState(3);
   const [targetUser, setTargetUser] = useState(
     undefined as UserType | undefined
@@ -53,7 +52,7 @@ const NewReviewForm = () => {
       isReview: true,
       rating: rating,
       targetUid: targetUser.id,
-      posterUid: authUser.id,
+      posterUid: authUser?.id,
       text: review.text,
     });
     navigate(ROUTES.HOME);
@@ -79,17 +78,19 @@ const NewReviewForm = () => {
           </InputGroup>
         ) : (
           <InputGroup size={"lg"} onClick={onOpen} h={16}>
-            <Input
-              placeholder={bestiesContent.reviewForm.revieweeField}
-              _placeholder={{ color: COLORS.PLACEHOLDER }}
-            />
+            <Input placeholder={bestiesContent.reviewForm.revieweeField} />
             <InputRightElement>
               <TfiSearch />
             </InputRightElement>
             ,
           </InputGroup>
         )}
-        <RatingInput iconSize={"5xl"} rating={rating} setRating={setRating} />
+        <RatingInput
+          iconSize={"5xl"}
+          rating={rating}
+          setRating={setRating}
+          direction={"row"}
+        />
         <FormControl isInvalid={!!errors.text}>
           <Textarea
             as={TextareaAutosize}
@@ -98,7 +99,6 @@ const NewReviewForm = () => {
             placeholder={bestiesContent.reviewForm.reviewField}
             minRows={5}
             {...register("text", VALIDATE.TEXT)}
-            _placeholder={{ color: COLORS.PLACEHOLDER }}
           />
           <FormErrorMessage>
             {typeof errors.text?.message === "string" && errors.text?.message}

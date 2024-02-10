@@ -6,15 +6,15 @@ import ProfilePosts from "./ProfilePosts";
 import AvatarInAvatar from "./AvatarInAvatar";
 import { ROUTES } from "../../lib/constants";
 import { useContext, useEffect } from "react";
-import AuthUserContext from "../layout/AuthUserContext";
 import ProfileButton from "./ProfileButton";
 import SpotifySong from "./SpotifySong";
 import BackgroundContext from "../../BackGroundContext";
+import { useAuth } from "../../hooks/authHooks";
 
 const Profile = () => {
   const { id } = useParams();
   const { user } = useUser(id);
-  const authUser = useContext(AuthUserContext);
+  const { authUser } = useAuth();
   const navigate = useNavigate();
   const { sendFriendRequest, isLoading: isFriendRequestLoading } =
     useFriendRequest();
@@ -79,7 +79,7 @@ const Profile = () => {
           </OrderedList>
         </Container> */}
         {user.favoriteSongId && <SpotifySong id={user.favoriteSongId} />}
-        <ProfilePosts authUser={authUser} uid={user.id} />
+        <ProfilePosts uid={user.id} />
       </Stack>
     )
   );

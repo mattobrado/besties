@@ -1,5 +1,5 @@
 import { Stack, Container, Box, Button } from "@chakra-ui/react";
-import { AuthHeading, AuthHeadingPropsType } from "./AuthHeading";
+import { AuthHeading, type AuthHeadingPropsType } from "src/components/auth";
 
 const FormContainer = ({
   authHeadingProps,
@@ -8,11 +8,11 @@ const FormContainer = ({
   onSubmit,
 }: {
   authHeadingProps?: AuthHeadingPropsType;
-  buttonProps: { isLoading: boolean; label: string; loadingText: string };
+  buttonProps?: { isLoading: boolean; label: string; loadingText: string };
   children: React.ReactNode;
   onSubmit: React.FormEventHandler<HTMLFormElement>;
 }) => (
-  <Container maxW="lg" px={{ base: "0", sm: "16" }}>
+  <Container maxW="lg" px={{ base: "0", sm: "0" }}>
     <Stack spacing="8">
       {authHeadingProps && <AuthHeading {...authHeadingProps} />}
       <Box
@@ -21,20 +21,22 @@ const FormContainer = ({
         boxShadow={{ base: "none", sm: "md" }}
         borderRadius={{ base: "none", sm: "xl" }}
       >
-        <Stack spacing="1" as={"form"} onSubmit={onSubmit as any}>
+        <Stack spacing="2" as={"form"} pb={8}>
           {children}
-          <Button
-            mt="4"
-            type="submit"
-            size="md"
-            w="full"
-            isLoading={buttonProps.isLoading}
-            loadingText={buttonProps.loadingText}
-            bg={"white"}
-          >
-            {buttonProps.label}
-          </Button>
         </Stack>
+        <Box layerStyle={"black"}>
+          <Button
+            colorScheme="pink"
+            type="submit"
+            isLoading={buttonProps?.isLoading}
+            loadingText={buttonProps?.loadingText}
+            onClick={onSubmit as any}
+          >
+            <Box w={"96px"} fontSize={"lg"}>
+              {buttonProps?.label}
+            </Box>
+          </Button>
+        </Box>
       </Box>
     </Stack>
   </Container>

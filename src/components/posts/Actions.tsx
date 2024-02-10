@@ -12,35 +12,34 @@ import {
   Spacer,
   useDisclosure,
 } from "@chakra-ui/react";
-import { PostType, UserType } from "../../lib/types";
+import { PostType } from "../../lib/types";
 import { bestiesContent } from "../../lib/content/bestiesContent";
 import { useDeletePost, useToggleLike } from "../../hooks/postHooks";
 import { ROUTES } from "../../lib/constants";
 import ActionButton from "./ActionButton";
 import React from "react";
-import { COLORS } from "../../theme/colors";
 import { ChatIcon } from "@chakra-ui/icons";
 import { FaRegHeart, FaHeart, FaTrash } from "react-icons/fa";
 import { ACTION_ICON_SIZE } from "../../lib/constants";
+import { useAuth } from "../../hooks/authHooks";
 
 const Actions = ({
   post,
-  user,
   hideCommentButton,
 }: {
   post: PostType;
-  user: UserType;
   hideCommentButton?: boolean;
 }) => {
+  const { authUser } = useAuth();
   const { id, likeUids, posterUid, likeCount, commentCount } = post;
   const { isOpen, onOpen, onClose } = useDisclosure();
   const cancelRef = React.useRef();
 
-  const isLiked = likeUids.includes(user.id);
+  const isLiked = !!authUser?.id && likeUids.includes(authUser?.id);
   const config = {
     id,
     isLiked,
-    uid: user.id,
+    uid: authUser?.id,
   };
 
   const { toggleLike } = useToggleLike(config);
@@ -62,7 +61,7 @@ const Actions = ({
           />
         )}
       </HStack>
-      {user.id === posterUid && (
+      {authUser?.id === posterUid && (
         <>
           <Spacer />
           <IconButton
@@ -71,7 +70,6 @@ const Actions = ({
             variant="ghost"
             icon={<FaTrash />}
             aria-label={"delete post"}
-            color={COLORS.PRIMARY_FONT}
           />
           <AlertDialog
             isOpen={isOpen}
@@ -79,7 +77,7 @@ const Actions = ({
             onClose={onClose}
           >
             <AlertDialogOverlay>
-              <AlertDialogContent bg={COLORS.BACKGROUND}>
+              <AlertDialogContent>
                 <AlertDialogHeader fontSize="lg" fontWeight="bold">
                   {bestiesContent.post.deleteReviewHeading}
                 </AlertDialogHeader>
@@ -90,11 +88,7 @@ const Actions = ({
                   <Button ref={cancelRef as any} onClick={onClose}>
                     {bestiesContent.cancel}
                   </Button>
-                  <Button
-                    colorScheme={COLORS.COLOR_SCHEME}
-                    onClick={deletePost}
-                    ml={3}
-                  >
+                  <Button onClick={deletePost} ml={3}>
                     {bestiesContent.delete}
                   </Button>
                 </AlertDialogFooter>

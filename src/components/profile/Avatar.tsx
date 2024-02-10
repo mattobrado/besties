@@ -1,7 +1,7 @@
 import { AvatarProps, Avatar as ChakraAvatar } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 import { ROUTES } from "../../lib/constants";
-import { UserType } from "../../lib/types";
+import type { UserType } from "src/lib/types/index";
 
 const Avatar = ({
   user,
@@ -10,7 +10,7 @@ const Avatar = ({
   overrideAvatar,
   isLink = true,
 }: {
-  user: UserType;
+  user?: UserType;
   avatarProps?: AvatarProps;
   children?: React.ReactNode;
   overrideAvatar?: string;
@@ -19,9 +19,9 @@ const Avatar = ({
   return (
     <ChakraAvatar
       as={isLink ? Link : undefined}
-      to={`${ROUTES.PROFILE}/${user.id}`}
-      name={user.fullName}
-      src={overrideAvatar ?? user.avatar}
+      to={`${ROUTES.PROFILE}/${user?.id}`}
+      name={user?.fullName}
+      src={overrideAvatar ?? user?.avatar}
       children={children}
       loading="lazy"
       {...avatarProps}

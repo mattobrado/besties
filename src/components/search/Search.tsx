@@ -1,18 +1,19 @@
 import algoliasearch from "algoliasearch/lite";
-import { UserType } from "../../lib/types";
 import { Stack } from "@chakra-ui/react";
 import { InstantSearch, useHits } from "react-instantsearch";
-import CustomSearchBox from "./CustomSearchBox";
-import { bestiesContent } from "../../lib/content/bestiesContent";
-import UserList from "../profile/UserList";
+import type { UserType } from "src/lib/types/index";
+import { useContext } from "react";
+import { ContentContext } from "src/context";
+import { CustomSearchBox } from "src/components/search";
+import { UserList } from "src/components/profile";
 
 const Search = ({
   onClick: onClick,
-  placeholderText = bestiesContent.search.search,
 }: {
   onClick?: (user: UserType | undefined) => void;
-  placeholderText?: string;
 }) => {
+  const content = useContext(ContentContext);
+  const placeholderText = content.search.search;
   return (
     <InstantSearch
       searchClient={algoliasearch(
@@ -39,6 +40,11 @@ function CustomHits({
 }) {
   const { hits: users } = useHits();
 
-  return <UserList users={users as unknown as UserType[]} onClick={onClick} />;
+  return (
+    <UserList
+      users={users.filter((user) => user.isMember) as unknown as UserType[]}
+      onClick={onClick}
+    />
+  );
 }
 export default Search;

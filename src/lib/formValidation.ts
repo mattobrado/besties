@@ -9,6 +9,7 @@ export const INPUT_TYPE = {
   ONE_TIME_PASS_CODE: "otp",
   SONG: "url",
   COLOR: "color",
+  BIO: "bio",
 };
 
 export const VALIDATE = {
@@ -68,7 +69,7 @@ export const VALIDATE = {
   TEXT: {
     required: {
       value: true,
-      message: "required",
+      message: "Please write your thoughts",
     },
     minLength: {
       value: 1,

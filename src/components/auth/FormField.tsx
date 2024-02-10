@@ -3,6 +3,7 @@ import {
   FormLabel,
   Input,
   FormErrorMessage,
+  Textarea,
 } from "@chakra-ui/react";
 import {
   UseFormRegister,
@@ -11,6 +12,8 @@ import {
   FieldErrorsImpl,
   Merge,
 } from "react-hook-form";
+import TextareaAutosize from "react-textarea-autosize";
+import { INPUT_TYPE } from "src/lib/formValidation";
 
 const FormField = ({
   error,
@@ -31,13 +34,26 @@ const FormField = ({
 }) => (
   <FormControl isInvalid={!!error}>
     <FormLabel htmlFor={inputType}>{label}</FormLabel>
-    <Input
-      id={inputType}
-      type={inputType}
-      {...register(inputType, validate)}
-      placeholder={placeHolder}
-      value={value}
-    />
+    {inputType !== INPUT_TYPE.BIO ? (
+      <Input
+        id={inputType}
+        type={inputType}
+        {...register(inputType, validate)}
+        placeholder={placeHolder}
+        value={value}
+      />
+    ) : (
+      <Textarea
+        as={TextareaAutosize}
+        resize="none"
+        size={"lg"}
+        minRows={3}
+        maxLength={100}
+        placeholder="100 character limit"
+        {...register(inputType, validate)}
+      />
+    )}
+
     <FormErrorMessage>
       {typeof error?.message === "string" && error.message}
     </FormErrorMessage>

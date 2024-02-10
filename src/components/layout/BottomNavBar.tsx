@@ -1,9 +1,9 @@
 import { BottomNavigation } from "chakra-ui-bottom-navigation";
-import MyNavigationItem from "./MyNavigationItem";
 import { TfiWrite, TfiHome, TfiSearch, TfiBell } from "react-icons/tfi";
-import { ROUTES } from "../../lib/constants";
+import { MyNavigationItem } from "src/components/layout";
+import { ROUTES } from "src/lib/constants";
 
-export const BottomNavBar = () => {
+const BottomNavBar = () => {
   return (
     <BottomNavigation
       shadow={"transparent"}
@@ -28,3 +28,5 @@ export const BottomNavBar = () => {
     </BottomNavigation>
   );
 };
+
+export default BottomNavBar;

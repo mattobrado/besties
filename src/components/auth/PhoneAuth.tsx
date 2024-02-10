@@ -1,8 +1,6 @@
 import { useContext, useState } from "react";
 import { RecaptchaVerifier, signInWithPhoneNumber } from "firebase/auth";
-import { auth } from "../../lib/firebase";
 import {
-  Box,
   FormControl,
   FormErrorMessage,
   FormLabel,
@@ -12,15 +10,21 @@ import {
   PinInput,
   PinInputField,
   Spacer,
+  Box,
 } from "@chakra-ui/react";
 import { useForm } from "react-hook-form";
-import FormContainer from "./FormContainer";
 import PhoneInput from "react-phone-number-input/input";
-import { useSignIn } from "../../hooks/authHooks";
-import ContentContext from "../layout/ContentProvider";
-import MainImage from "../home/MainImage";
+import { MainImage } from "src/components";
+import { useSignIn } from "src/hooks";
+import { auth } from "src/lib/firebase";
+import { ContentContext } from "src/context";
+import { FormContainer } from "src/components/auth";
 
-const PhoneAuth = () => {
+const PhoneAuth = ({
+  isFieldAndButtonOnly,
+}: {
+  isFieldAndButtonOnly?: boolean;
+}) => {
   const [showOneTimePasswordInput, setShowOneTimePasswordInput] =
     useState(false);
   const [signInError, setSignInError] = useState("");
@@ -73,17 +77,12 @@ const PhoneAuth = () => {
   const content = useContext(ContentContext);
 
   return (
-    <>
-      <MainImage />
-      <Box minHeight="100vh" p={4}>
+    <Box>
+      {!isFieldAndButtonOnly && <MainImage />}
+      <Box p={isFieldAndButtonOnly ? 0 : 4}>
         <FormContainer
           authHeadingProps={{
-            title: content.auth.login,
-            // callToAction: "Take the ",
-            // link: {
-            //   label: "Genius IQ Test",
-            //   to: ROUTES.MEMBERS,
-            // },
+            title: isFieldAndButtonOnly ? undefined : content.auth.login,
           }}
           buttonProps={
             showOneTimePasswordInput
@@ -129,23 +128,26 @@ const PhoneAuth = () => {
               </HStack>
             </FormControl>
           ) : (
-            <FormControl isInvalid={!!signInError}>
-              <InputGroup>
-                <Input
-                  as={PhoneInput}
-                  country="US"
-                  placeholder={content.auth.phoneNumberPlaceHolder}
-                  value={phoneNumber}
-                  onChange={setPhoneNumber as any}
-                />
-              </InputGroup>
-              <FormErrorMessage>{signInError}</FormErrorMessage>
-            </FormControl>
+            <>
+              <FormControl isInvalid={!!signInError}>
+                <InputGroup>
+                  <Input
+                    as={PhoneInput}
+                    country="US"
+                    placeholder={content.auth.phoneNumberPlaceHolder}
+                    value={phoneNumber}
+                    onChange={setPhoneNumber as any}
+                  />
+                </InputGroup>
+                <FormErrorMessage>{signInError}</FormErrorMessage>
+              </FormControl>
+            </>
           )}
-          <div id="recaptcha-container"></div>
-        </FormContainer>
+        </FormContainer>{" "}
       </Box>
-    </>
+
+      <div id="recaptcha-container"></div>
+    </Box>
   );
 };
 

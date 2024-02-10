@@ -1,9 +1,7 @@
 import { Center, Container, Text, Spacer, Stack } from "@chakra-ui/react";
-import { UserType } from "../../lib/types";
+import type { UserType } from "src/lib/types/index";
 import { bestiesContent } from "../../lib/content/bestiesContent";
 import { useNavigate } from "react-router-dom";
-// import { useContext } from "react";
-// import BackgroundContext from "../../BackGroundContext";
 import { ROUTES } from "../../lib/constants";
 import Avatar from "./Avatar";
 
@@ -21,7 +19,6 @@ const UserCard = ({
 }) => {
   const navigate = useNavigate();
 
-  // const setBackground = useContext(BackgroundContext);
   return (
     <Container
       borderWidth={"1px"}
@@ -45,7 +42,15 @@ const UserCard = ({
         )}
         {/* <AvatarAndFullName user={user} size={"md"} isLink={false} /> */}
         <Center>
-          <Avatar user={user} avatarProps={{ size: "xl" }} isLink={false} />
+          <Avatar
+            user={user}
+            avatarProps={{
+              size: "xl",
+              borderColor: user.favoriteColor,
+              borderWidth: 3,
+            }}
+            isLink={false}
+          />
         </Center>
 
         <Stack spacing={0}>

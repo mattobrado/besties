@@ -6,71 +6,49 @@ import {
   getDoc,
   orderBy,
   collection,
-  FirestoreError,
   arrayUnion,
   where,
 } from "firebase/firestore";
-import { db, storage } from "../lib/firebase";
 import {
   useCollectionData,
   useDocumentData,
 } from "react-firebase-hooks/firestore";
-import { UserType } from "../lib/types";
-import { COLLECTIONS } from "../lib/constants";
 import { useState } from "react";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
-import { useNavigate } from "react-router-dom";
-import getNewRating from "../utils/getNewRating";
-import { ROUTES } from "../lib/constants";
+import type { UserType } from "src/lib/types/index";
+import { COLLECTIONS } from "src/lib/constants";
+import { db, storage } from "src/lib/firebase";
+import getNewRating from "src/utils/getNewRating";
 
 export const useUser = (
-  id?: string
-): { user?: UserType; isLoading: boolean; isError?: FirestoreError } => {
-  if (!id) return { user: undefined, isLoading: false };
-  const q = query(doc(db, COLLECTIONS.USERS, id) as any);
-  const [user, isLoading, isError] = useDocumentData(q as any);
-  return { user: <UserType>user, isLoading, isError };
+  uid?: string
+): { user?: UserType; isLoading: boolean } => {
+  if (!uid) return { isLoading: true };
+  const q = query(doc(db, COLLECTIONS.USERS, uid) as any);
+  const [user, isLoading] = useDocumentData(q as any);
+  return { user: <UserType>user, isLoading };
 };
 
-export const useUpdateUser = (uid: string) => {
+export const useUpdateUser = (uid?: string) => {
   const [isLoading, setLoading] = useState(false);
   const [file, setFile] = useState(null);
-  const navigate = useNavigate();
 
-  const updateUser = async ({
-    fullName,
-    songLink,
-    color,
-  }: {
-    fullName?: string;
-    songLink?: string;
-    color?: string;
-  }) => {
+  const updateUser = async (userFields: Partial<UserType>) => {
     setLoading(true);
-
-    const user: Partial<UserType> = {};
-
-    if (fullName) user.fullName = fullName;
-
-    if (songLink) user.favoriteSongId = getSongIdFromLink(songLink);
-
-    if (color) user.favoriteColor = color;
 
     if (file) {
       const fileRef = ref(storage, "avatars/" + uid);
-      await uploadBytes(fileRef, file);
+      await uploadBytes(fileRef, file).catch((e) => console.log(e));
 
       const avatarURL = await getDownloadURL(fileRef);
-      user.avatar = avatarURL;
+      userFields.avatar = avatarURL;
     }
-    if (Object.keys(user).length > 0) {
+    if (Object.keys(userFields).length > 0 && uid) {
       const docRef = doc(db, COLLECTIONS.USERS, uid);
-      await updateDoc(docRef, user);
+      await updateDoc(docRef, userFields);
     }
 
     setLoading(false);
-
-    navigate(`${ROUTES.PROFILE}/${uid}`);
   };
 
   return {
@@ -158,13 +136,4 @@ export const useFriendRequestUsers = (
   }
   if (error) throw error;
   return { users: <UserType[]>users, isLoading };
-};
-
-const getSongIdFromLink = (songLink: string): string | undefined => {
-  try {
-    console.log(songLink.split("track/")[1].split("?")[0]);
-    return songLink.split("track/")[1].split("?")[0];
-  } catch {
-    return;
-  }
 };

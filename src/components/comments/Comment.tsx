@@ -1,20 +1,11 @@
-import { PostType, UserType } from "../../lib/types";
+import { PostType } from "../../lib/types";
 import OneUserPost from "../posts/OneUserPost";
 
 const Comment = ({
   post,
-  user,
   children,
 }: {
   post: PostType;
-  user: UserType;
   children?: React.ReactNode;
-}) => (
-  <OneUserPost
-    children={children}
-    currentUser={user}
-    hideCommentButton={true}
-    post={post}
-  />
-);
+}) => <OneUserPost children={children} hideCommentButton={true} post={post} />;
 export default Comment;

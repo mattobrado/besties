@@ -1,6 +1,6 @@
 import { Grid } from "@chakra-ui/react";
-import { UserType } from "../../lib/types";
-import UserCard from "./UserCard";
+import { UserCard } from "src/components/profile";
+import type { UserType } from "src/lib/types/index";
 
 const UserList = ({
   users,
