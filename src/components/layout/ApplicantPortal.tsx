@@ -112,7 +112,7 @@ const ApplicantPortal = () => {
             <Button
               onClick={() => {
                 updateUser({ isApplicationSubmitted: false }).then(() =>
-                  navigate(ROUTES.IQ_TEST)
+                  navigate(ROUTES.REGISTRATION)
                 );
               }}
               size={"lg"}
