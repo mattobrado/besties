@@ -6,14 +6,47 @@ import {
   Stack,
   Center,
   Button,
+  useToast,
 } from "@chakra-ui/react";
 import { useAuth } from "../../hooks/authHooks";
 import { AddIcon } from "@chakra-ui/icons";
-import { Link as ReactRouterLink } from "react-router-dom";
-import { ROUTES } from "../../lib/constants";
+import { useLocation, useNavigate } from "react-router-dom";
+import { ROUTES, TOAST_PROPS } from "../../lib/constants";
+import { useEffect } from "react";
+import { useUpdateUser } from "../../hooks/userHooks";
 
 const Completion = () => {
-  const { authUser } = useAuth();
+  const { pathname } = useLocation();
+  const navigate = useNavigate();
+  const { authUser, isLoading } = useAuth();
+  const toast = useToast();
+  const { state } = useLocation();
+
+  useEffect(() => {
+    if (!isLoading && pathname.startsWith(ROUTES.APPLICANT)) {
+      if (!authUser) {
+        toast({
+          title: state?.toastTitle,
+          status: "error",
+          ...TOAST_PROPS,
+        });
+        navigate(ROUTES.LOGIN);
+      } else if (
+        !authUser.isApplicationSubmitted &&
+        !pathname.startsWith(ROUTES.IQ_TEST)
+      ) {
+        toast({
+          title:
+            "You must take the Genius IQ Test before you can access members-only content",
+          status: "error",
+          ...TOAST_PROPS,
+        });
+        navigate(ROUTES.REGISTRATION);
+      }
+    }
+  }, [pathname, authUser?.isApplicationSubmitted, isLoading]);
+  const { updateUser } = useUpdateUser(authUser?.id);
+
   const outerBoxStyles = {
     w: "100%",
     background:
@@ -52,8 +85,11 @@ const Completion = () => {
               Your application is under review.
             </Text>
             <Button
-              as={ReactRouterLink}
-              to={ROUTES.HOME}
+              onClick={() => {
+                updateUser({ isApplicationSubmitted: false }).then(() =>
+                  navigate(ROUTES.IQ_TEST)
+                );
+              }}
               size={"lg"}
               borderWidth={"4px"}
               borderColor={"black"}

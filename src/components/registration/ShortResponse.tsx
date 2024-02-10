@@ -25,9 +25,11 @@ const RadioOptions = ({
   } = useForm();
 
   const handleAddReview = (data: any) => {
-    updateUser({ [field]: data.text }).then(() => {
-      goToNext ? goToNext() : navigate(ROUTES.RESULTS);
-    });
+    updateUser({ [field]: data.text, isApplicationSubmitted: !goToNext }).then(
+      () => {
+        goToNext ? goToNext() : navigate(ROUTES.APPLICANT);
+      }
+    );
   };
   return (
     <form onSubmit={handleSubmit(handleAddReview)}>
