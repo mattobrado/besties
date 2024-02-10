@@ -18,7 +18,7 @@ type UserType = {
   isMember?: boolean;
   fieldOfExpertise?: string;
   iAmAQuickLearner?: string;
-  iLikeDiscussingAbstractTopics?: string;
+  iAmOpenMinded?: string;
   math?: string;
   iAmAboveAverage?: string;
   isApplicationSubmitted?: boolean;
