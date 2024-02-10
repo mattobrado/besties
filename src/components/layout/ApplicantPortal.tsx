@@ -53,8 +53,8 @@ const ApplicantPortal = () => {
     <Flex
       flexWrap="wrap"
       justifyContent="space-evenly"
-      minHeight="100vh"
       layerStyle={"white"}
+      minHeight="100vh"
     >
       <Box sx={outerBoxStyles}>
         <Box sx={innerBoxStyles}>

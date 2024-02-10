@@ -13,7 +13,15 @@ const ProtectedPageContainer = () => {
 
   useEffect(() => {
     if (!isLoading && pathname.startsWith(ROUTES.PROTECTED)) {
-      if (!authUser?.isMember) {
+      if (!authUser?.isApplicationSubmitted) {
+        toast({
+          title:
+            "You must pass the Genius IQ Test before you can access members-only content",
+          status: "error",
+          ...TOAST_PROPS,
+        });
+        navigate(ROUTES.IQ_TEST);
+      } else if (!authUser?.isMember) {
         toast({
           title:
             "You must pass the Genius IQ Test before you can access members-only content",
