@@ -34,7 +34,7 @@ const ApplicantPortal = () => {
       }
     }
   }, [pathname, authUser?.isApplicationSubmitted, isLoading]);
-  const { updateUser } = useUpdateUser(authUser.id);
+  const { updateUser } = useUpdateUser(authUser?.id);
 
   const outerBoxStyles = {
     w: "100%",
