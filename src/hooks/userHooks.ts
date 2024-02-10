@@ -29,7 +29,7 @@ export const useUser = (
   return { user: <UserType>user, isLoading, isError };
 };
 
-export const useUpdateUser = (uid: string) => {
+export const useUpdateUser = (uid?: string) => {
   const [isLoading, setLoading] = useState(false);
   const [file, setFile] = useState(null);
 
