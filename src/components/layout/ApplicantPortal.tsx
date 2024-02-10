@@ -8,7 +8,7 @@ import {
   Button,
   useToast,
 } from "@chakra-ui/react";
-import { AddIcon, ArrowBackIcon } from "@chakra-ui/icons";
+import { ArrowBackIcon } from "@chakra-ui/icons";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import { useAuth, useLogout, useUpdateUser } from "src/hooks";
@@ -31,6 +31,12 @@ const ApplicantPortal = () => {
           ...TOAST_PROPS,
         });
         navigate(ROUTES.IQ_TEST);
+      } else {
+        toast({
+          title: "Your application is under review.",
+          status: "success",
+          ...TOAST_PROPS,
+        });
       }
     }
   }, [pathname, authUser?.isApplicationSubmitted, isLoading]);
@@ -47,7 +53,6 @@ const ApplicantPortal = () => {
     justifyContent: "center",
     boxSize: "full",
     color: "white",
-    fontSize: "20px",
   };
 
   return (
@@ -59,14 +64,13 @@ const ApplicantPortal = () => {
     >
       <Box sx={outerBoxStyles}>
         <Box sx={innerBoxStyles}>
-          <Stack p={12}>
+          <Stack p={4} spacing={1} w={"100%"}>
             <Center>
               <ChakraAvatar
                 name={authUser?.fullName}
                 src={authUser?.avatar}
                 loading="lazy"
                 size={"2xl"}
-                icon={<AddIcon fontSize="1.5rem" />}
                 borderColor={authUser?.favoriteColor}
                 borderWidth={3}
               />
@@ -77,7 +81,7 @@ const ApplicantPortal = () => {
               </Text>
             </Center>
             <Center>
-              <Text fontSize={"xl"}>
+              <Text fontSize={"2xl"}>
                 Talented{" "}
                 <Text as="b" style={{ color: authUser?.favoriteColor }}>
                   {schoolSubjects
@@ -87,11 +91,17 @@ const ApplicantPortal = () => {
               </Text>
             </Center>
             <Center>
-              <Text fontSize={"xl"}>Your application is under</Text>
+              <Text fontSize={"lg"}>Presenting on:</Text>
             </Center>
-            <Center>
-              <Text fontSize={"xl"}>review.</Text>
-            </Center>
+            <Text
+              border={"2px"}
+              borderRadius={"10px"}
+              w={"100%"}
+              minHeight={28}
+              style={innerBoxStyles}
+            >
+              {authUser?.mystery}
+            </Text>
             <Button
               onClick={() => {
                 updateUser({ isApplicationSubmitted: false }).then(() =>
@@ -114,7 +124,7 @@ const ApplicantPortal = () => {
                   logout();
                 }}
                 position={"fixed"}
-                bottom={5}
+                bottom={16}
                 backdropFilter="auto"
               >
                 {"LOG OUT"}

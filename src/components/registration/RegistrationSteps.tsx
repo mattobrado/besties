@@ -163,7 +163,7 @@ const RegistrationSteps = () => {
     setActiveStep(1);
   }
 
-  const isBackButtonLogginOut = activeStep === 1;
+  const isBackButtonLoggingOut = activeStep === 1;
 
   return (
     <>
@@ -173,9 +173,9 @@ const RegistrationSteps = () => {
           colorScheme="black"
           variant="ghost"
           size={"sm"}
-          onClick={isBackButtonLogginOut ? logout : goToPrevious}
+          onClick={isBackButtonLoggingOut ? logout : goToPrevious}
         >
-          {isBackButtonLogginOut ? "LOG OUT" : "BACK"}
+          {isBackButtonLoggingOut ? "LOG OUT" : "BACK"}
         </Button>
       </Fade>
       <Box p={4} pb={24}>
