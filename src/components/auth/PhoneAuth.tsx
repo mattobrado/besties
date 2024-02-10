@@ -141,16 +141,6 @@ const PhoneAuth = ({
                 </InputGroup>
                 <FormErrorMessage>{signInError}</FormErrorMessage>
               </FormControl>
-              {/* <Stack spacing={0}>
-              <Center>
-                <Text fontSize={"xs"}>
-                  You may receive SMS notifications from us for
-                </Text>
-              </Center>
-              <Center>
-                <Text fontSize={"xs"}>security and login purposes.</Text>
-              </Center>
-            </Stack> */}
             </>
           )}
         </FormContainer>{" "}
