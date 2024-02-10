@@ -15,7 +15,7 @@ const NextButton = ({
     isLoading={isLoading}
     {...buttonProps}
   >
-    <Text color={"black"} w={"96px"} fontSize={"lg"}>
+    <Text w={"96px"} fontSize={"lg"}>
       {"Next"}
     </Text>
   </Button>
