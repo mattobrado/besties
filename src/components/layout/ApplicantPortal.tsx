@@ -26,7 +26,7 @@ const ApplicantPortal = () => {
       if (!authUser?.isApplicationSubmitted) {
         toast({
           title:
-            "You must pass the Genius IQ Test before you can access members-only content",
+            "You must complete the Genius IQ Test before you can access members-only content",
           status: "error",
           ...TOAST_PROPS,
         });
