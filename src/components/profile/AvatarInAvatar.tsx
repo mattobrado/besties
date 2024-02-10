@@ -1,4 +1,4 @@
-import { UserType } from "../../lib/types";
+import type { UserType } from "src/lib/types/index";
 import Avatar from "./Avatar";
 import { Avatar as ChakraAvatar } from "@chakra-ui/react";
 

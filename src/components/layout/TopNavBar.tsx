@@ -13,7 +13,7 @@ import {
 import { CloseIcon, HamburgerIcon } from "@chakra-ui/icons";
 import { useContext } from "react";
 import GenericNavBarItem from "./navBarItems/GenericNavBarItem";
-import ConfigContext from "./ConfigProvider";
+import ConfigContext from "../../context/ConfigProvider";
 import { NUM_ITEMS_OUT_OF_HAMBURGER, ROUTES } from "../../lib/constants";
 import { useAuth } from "../../hooks/authHooks";
 

@@ -16,7 +16,7 @@ import { useForm } from "react-hook-form";
 import { useAddPost } from "../../hooks/postHooks";
 import { useContext, useEffect, useState } from "react";
 import { VALIDATE } from "../../lib/formValidation";
-import { PostType, UserType } from "../../lib/types";
+import type { PostType, UserType } from "src/lib/types/index";
 import { useNavigate } from "react-router-dom";
 import SelectUser from "./SelectUser";
 import UserCard from "../profile/UserCard";

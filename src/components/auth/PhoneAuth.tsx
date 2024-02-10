@@ -17,8 +17,8 @@ import { useForm } from "react-hook-form";
 import FormContainer from "./FormContainer";
 import PhoneInput from "react-phone-number-input/input";
 import { useSignIn } from "../../hooks/authHooks";
-import ContentContext from "../layout/ContentProvider";
-import MainImage from "../home/MainImage";
+import ContentContext from "../../context/ContentProvider";
+import { MainImage } from "src/components";
 
 const PhoneAuth = ({
   isFieldAndButtonOnly,

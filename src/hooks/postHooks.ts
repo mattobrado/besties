@@ -15,7 +15,7 @@ import {
 import { useState } from "react";
 import { db } from "../lib/firebase";
 import { uuidv4 } from "@firebase/util";
-import { PostType, ToggleLikeType } from "../lib/types";
+import { PostType, ToggleLikeType } from "src/lib/types/index";
 import {
   useCollectionData,
   useDocumentData,

@@ -1,10 +1,10 @@
 import algoliasearch from "algoliasearch/lite";
-import { UserType } from "../../lib/types";
 import { Stack } from "@chakra-ui/react";
 import { InstantSearch, useHits } from "react-instantsearch";
 import CustomSearchBox from "./CustomSearchBox";
 import { bestiesContent } from "../../lib/content/bestiesContent";
 import UserList from "../profile/UserList";
+import type { UserType } from "src/lib/types/index";
 
 const Search = ({
   onClick: onClick,

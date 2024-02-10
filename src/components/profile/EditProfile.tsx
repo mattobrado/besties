@@ -13,7 +13,7 @@ import { INPUT_TYPE, VALIDATE } from "../../lib/formValidation";
 import FormField from "../auth/FormField";
 import FormContainer from "../auth/FormContainer";
 import { useForm } from "react-hook-form";
-import ContentContext from "../layout/ContentProvider";
+import ContentContext from "../../context/ContentProvider";
 import { AddIcon } from "@chakra-ui/icons";
 import getSongIdFromLink from "../../utils/getSongIdFromLink";
 import { useAuth } from "../../hooks/authHooks";

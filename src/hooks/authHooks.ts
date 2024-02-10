@@ -6,8 +6,8 @@ import { User } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import { useToast } from "@chakra-ui/react";
 import { setDoc, doc, getDoc, DocumentData } from "firebase/firestore";
-import { UserType } from "../lib/types";
 import { bestiesContent } from "../lib/content/bestiesContent";
+import type UserType from "src/lib/types/UserType";
 
 export const useAuth = (): {
   authUser?: UserType;

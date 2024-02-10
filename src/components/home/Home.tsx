@@ -1,6 +1,4 @@
 import { useContext } from "react";
-// import BackgroundContext from "../../BackGroundContext";
-import ConfigContext from "../layout/ConfigProvider";
 import {
   Heading,
   ListItem,
@@ -9,15 +7,13 @@ import {
   UnorderedList,
   useToast,
 } from "@chakra-ui/react";
-import ContentContext from "../layout/ContentProvider";
-import MainImage from "./MainImage";
-import PostFeed from "../posts/PostFeed";
+import { MainImage } from "src/components";
+import { PostFeed } from "src/components/posts";
+import { ConfigContext, ContentContext } from "src/context";
 
 const Home = () => {
-  // const setBackground = useContext(BackgroundContext);
   const config = useContext(ConfigContext);
   const content = useContext(ContentContext);
-  // useEffect(() => setBackground(), []);
   const toast = useToast();
   toast.closeAll();
 

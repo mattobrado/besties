@@ -1,7 +1,7 @@
 import { Box } from "@chakra-ui/react";
 import Search from "../search/Search";
 import { useContext } from "react";
-import ContentContext from "../layout/ContentProvider";
+import ContentContext from "../../context/ContentProvider";
 
 const Members = () => {
   const content = useContext(ContentContext);

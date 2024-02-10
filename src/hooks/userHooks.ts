@@ -15,11 +15,11 @@ import {
   useCollectionData,
   useDocumentData,
 } from "react-firebase-hooks/firestore";
-import { UserType } from "../lib/types";
 import { COLLECTIONS } from "../lib/constants";
 import { useState } from "react";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import getNewRating from "../utils/getNewRating";
+import type { UserType } from "src/lib/types/index";
 
 export const useUser = (
   id?: string

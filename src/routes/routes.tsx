@@ -2,7 +2,7 @@ import { createBrowserRouter } from "react-router-dom";
 import Layout from "../components/layout/Layout";
 import Home from "../components/home/Home";
 import PhoneAuth from "../components/auth/PhoneAuth";
-import { ROUTES } from "./constants";
+import { ROUTES } from "../lib/constants";
 import Members from "../components/lists/Members";
 import ProtectedPageContainer from "../components/layout/ProtectedPageContainer";
 import PostFeed from "../components/posts/PostFeed";

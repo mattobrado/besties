@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import ContentContext from "../layout/ContentProvider";
+import ContentContext from "../context/ContentProvider";
 import { Image } from "@chakra-ui/react";
 
 const MainImage = () => {
