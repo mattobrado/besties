@@ -1,8 +1,7 @@
-import { FormControl, FormErrorMessage, Textarea } from "@chakra-ui/react";
+import { Box, FormControl, FormErrorMessage, Textarea } from "@chakra-ui/react";
 import NextButton from "./NextButton";
 import { useAuth } from "../../hooks/authHooks";
 import { useUpdateUser } from "../../hooks/userHooks";
-import { bestiesContent } from "../../lib/content/bestiesContent";
 import { VALIDATE } from "../../lib/formValidation";
 import TextareaAutosize from "react-textarea-autosize";
 import { useForm } from "react-hook-form";
@@ -29,17 +28,20 @@ const RadioOptions = ({
   return (
     <form onSubmit={handleSubmit(handleAddReview)}>
       <FormControl isInvalid={!!errors.text}>
-        <Textarea
-          as={TextareaAutosize}
-          resize="none"
-          size={"lg"}
-          placeholder={bestiesContent.reviewForm.reviewField}
-          minRows={5}
-          {...register("text", VALIDATE.TEXT)}
-        />
-        <FormErrorMessage>
-          {typeof errors.text?.message === "string" && errors.text?.message}
-        </FormErrorMessage>
+        <Box pb={10}>
+          <Textarea
+            as={TextareaAutosize}
+            resize="none"
+            size={"lg"}
+            placeholder={"1000 character limit"}
+            minRows={5}
+            maxLength={1000}
+            {...register("text", VALIDATE.TEXT)}
+          />
+          <FormErrorMessage>
+            {typeof errors.text?.message === "string" && errors.text?.message}
+          </FormErrorMessage>
+        </Box>
         <NextButton isLoading={isLoading} buttonProps={{ type: "submit" }} />
       </FormControl>
     </form>

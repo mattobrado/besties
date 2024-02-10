@@ -60,7 +60,8 @@ export const schoolSubjects = [
   { subject: "Technology", topic: "AI" },
   { subject: "Architecture", topic: "Freedom tower" },
   { subject: "Geology", topic: "rocks" },
-  { subject: "Biology", topic: "deep sea animals" },
+  { subject: "Biology", topic: "bacteria" },
+  { subject: "Zoology", topic: "deep sea animals" },
   { subject: "Medicine", topic: "pandemics" },
   { subject: "Government", topic: "the future of the United states" },
 ];
