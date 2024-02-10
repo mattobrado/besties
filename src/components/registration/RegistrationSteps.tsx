@@ -49,22 +49,22 @@ const RegistrationSteps = () => {
         />
       ),
     },
-    {
-      description: "I like discussing abstract concepts.",
-      body: (
-        <RadioOptions
-          field={"iLikeDiscussingAbstractTopics"}
-          options={agreementLevels}
-          goToNext={goToNext}
-        />
-      ),
-    },
+    // {
+    //   description: "I like discussing abstract concepts.",
+    //   body: (
+    //     <RadioOptions
+    //       field={"iLikeDiscussingAbstractTopics"}
+    //       options={agreementLevels}
+    //       goToNext={goToNext}
+    //     />
+    //   ),
+    // },
     {
       description:
         "There is evidence from my achievements and results that I'm above average.",
       body: (
         <RadioOptions
-          field={"iLikeDiscussingAbstractTopics"}
+          field={"iAmAboveAverage"}
           options={agreementLevels}
           goToNext={goToNext}
         />
@@ -116,30 +116,30 @@ const RegistrationSteps = () => {
       body: (
         <RadioOptions
           field={"fieldOfExpertise"}
-          options={schoolSubjects.sort().concat("Other")}
+          options={schoolSubjects
+            .map((item) => item.subject)
+            .sort()
+            .concat("Other")}
           goToNext={goToNext}
           setFieldOfExpertise={setFieldOfExpertise}
         />
       ),
     },
     {
-      description: `What are your thoughts on ${fieldOfExpertise}`,
+      description: `What are your thoughts on ${
+        schoolSubjects.find((item) => item.subject === fieldOfExpertise)?.topic
+      }`,
       body: (
         <ButtonOptions
           field={"motivation"}
-          options={[
-            "Maximizing profits",
-            "Creating utopia",
-            "Living life to the fullest",
-            "Transcending the levels of consciousness",
-            "My art",
-            "Fighting the system",
-            "I am unmotivated",
-            "Revenge",
-          ]}
+          options={["Revenge"]}
           goToNext={goToNext}
         />
       ),
+    },
+    {
+      description: "About you",
+      body: <EditProfile id={""} onSubmit={goToNext} />,
     },
     {
       description: "About you",
