@@ -144,7 +144,7 @@ const RegistrationSteps = () => {
         <Stack spacing={5}>
           <Text fontSize={"xlg"}>
             The final step required to become a member of The Genius Program is
-            to deliver an in-person presentation. The theme for this Batch is{" "}
+            to deliver an in-person presentation. The theme for this batch is{" "}
             <Text as="b" color={"pink.500"}>
               mysteries.{" "}
             </Text>
