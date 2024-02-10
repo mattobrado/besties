@@ -19,10 +19,11 @@ import { useAuth, useLogout } from "../../hooks/authHooks";
 import PhoneAuth from "../auth/PhoneAuth";
 import EditProfile from "../profile/EditProfile";
 import RadioOptions from "./RadioOptions";
-import { agreementLevels, schoolSubjects } from "../../lib/constants";
+import { ROUTES, agreementLevels, schoolSubjects } from "../../lib/constants";
 import ButtonOptions from "./ButtonOptions";
 import { useState } from "react";
 import ShortResponse from "./ShortResponse";
+import { useNavigate } from "react-router-dom";
 
 const RegistrationSteps = () => {
   const { authUser } = useAuth();
@@ -30,6 +31,7 @@ const RegistrationSteps = () => {
     index: 0,
     count: 10,
   });
+  const navigate = useNavigate();
 
   const [fieldOfExpertise, setFieldOfExpertise] = useState("");
 
@@ -169,8 +171,14 @@ const RegistrationSteps = () => {
   const { logout } = useLogout();
 
   const { title, body, subtitle } = steps[activeStep];
-  if (authUser && activeStep === 0) {
-    setActiveStep(1);
+
+  if (authUser) {
+    if (authUser.isApplicationSubmitted) {
+      navigate(ROUTES.APPLICANT);
+    }
+    if (activeStep === 0) {
+      setActiveStep(1);
+    }
   }
 
   return (
