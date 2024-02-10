@@ -1,7 +1,7 @@
 import { Stack, Heading, Text, Link } from "@chakra-ui/react";
 import { useContext } from "react";
 import { Link as ReactRouterLink } from "react-router-dom";
-import ContentContext from "../../context/ContentProvider";
+import { ContentContext } from "src/context";
 
 export const AuthHeading = ({
   title,
