@@ -70,7 +70,7 @@ const RegistrationSteps = () => {
         "I actively look for opportunities to update my understanding. I like to find out where I'm wrong.",
       body: (
         <RadioOptions
-          field={"iLikeDiscussingAbstractTopics"}
+          field={"iAmOpenMinded"}
           options={agreementLevels}
           goToNext={goToNext}
         />
