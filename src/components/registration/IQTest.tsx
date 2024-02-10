@@ -8,13 +8,25 @@ import {
   Container,
 } from "@chakra-ui/react";
 import Logo from "../layout/Logo";
-import { Outlet, Link as ReactRouterLink, useLocation } from "react-router-dom";
+import {
+  Outlet,
+  Link as ReactRouterLink,
+  useLocation,
+  useNavigate,
+} from "react-router-dom";
 import { ROUTES } from "../../lib/constants";
+import { useAuth } from "src/hooks/authHooks";
 
 const IQTest = () => {
   const { pathname } = useLocation();
+  const { authUser } = useAuth();
+  const navigate = useNavigate();
 
   const isRootPath = pathname.endsWith(ROUTES.IQ_TEST);
+
+  if (authUser?.isApplicationSubmitted) {
+    navigate(ROUTES.APPLICANT);
+  }
 
   return (
     <Container p={0} layerStyle="white">
