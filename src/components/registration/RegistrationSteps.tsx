@@ -20,6 +20,7 @@ import EditProfile from "../profile/EditProfile";
 import RadioOptions from "./RadioOptions";
 import { agreementLevels, schoolSubjects } from "../../lib/constants";
 import ButtonOptions from "./ButtonOptions";
+import { useState } from "react";
 
 const RegistrationSteps = () => {
   const { authUser } = useAuth();
@@ -27,6 +28,8 @@ const RegistrationSteps = () => {
     index: 0,
     count: 10,
   });
+
+  const [fieldOfExpertise, setFieldOfExpertise] = useState("");
 
   const steps: {
     description?: string;
@@ -112,8 +115,28 @@ const RegistrationSteps = () => {
       description: "Choose your field of expertise",
       body: (
         <RadioOptions
-          field={"tag"}
+          field={"fieldOfExpertise"}
           options={schoolSubjects.sort().concat("Other")}
+          goToNext={goToNext}
+          setFieldOfExpertise={setFieldOfExpertise}
+        />
+      ),
+    },
+    {
+      description: `What are your thoughts on ${fieldOfExpertise}`,
+      body: (
+        <ButtonOptions
+          field={"motivation"}
+          options={[
+            "Maximizing profits",
+            "Creating utopia",
+            "Living life to the fullest",
+            "Transcending the levels of consciousness",
+            "My art",
+            "Fighting the system",
+            "I am unmotivated",
+            "Revenge",
+          ]}
           goToNext={goToNext}
         />
       ),

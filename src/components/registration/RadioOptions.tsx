@@ -1,5 +1,5 @@
 import { Radio, RadioGroup, Stack, useToast } from "@chakra-ui/react";
-import { Dispatch, SetStateAction, useEffect, useState } from "react";
+import { Dispatch, SetStateAction, useState } from "react";
 import NextButton from "./NextButton";
 import { useAuth } from "../../hooks/authHooks";
 import { TOAST_PROPS } from "../../lib/constants";
@@ -9,10 +9,12 @@ const RadioOptions = ({
   options,
   goToNext,
   field,
+  setFieldOfExpertise: setFieldOfExpertise,
 }: {
   options?: string[];
   goToNext: Function;
   field: string;
+  setFieldOfExpertise?: Dispatch<SetStateAction<string>>;
 }) => {
   const { authUser } = useAuth();
   const toast = useToast();
@@ -35,7 +37,10 @@ const RadioOptions = ({
                 status: "error",
                 ...TOAST_PROPS,
               })
-            : updateUser({ [field]: value }).then(() => goToNext());
+            : updateUser({ [field]: value }).then(() => {
+                if (setFieldOfExpertise) setFieldOfExpertise(value);
+                goToNext();
+              });
         }}
         isLoading={isLoading}
       />
