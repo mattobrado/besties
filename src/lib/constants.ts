@@ -43,31 +43,59 @@ export const LOGO_HEIGHT = "75px";
 export const NUM_ITEMS_OUT_OF_HAMBURGER = 3;
 
 export const schoolSubjects = [
-  { subject: "Anthropology", topic: "hunter-gatherer societies" },
-  { subject: "Archeology", topic: "what dinosaur's really looked like" },
-  { subject: "Architecture", topic: "The Sydney Opera House" },
-  { subject: "Art", topic: "Picasso" },
-  { subject: "Astronomy", topic: "UFOs" },
-  { subject: "Biology", topic: "gene editing" },
-  { subject: "Business", topic: "Tesla stock" },
-  { subject: "Chemistry", topic: "DNA" },
-  { subject: "Economics", topic: "China" },
-  { subject: "Film", topic: "A24" },
-  { subject: "Geology", topic: "rocks" },
-  { subject: "Government", topic: "the future of the United States" },
-  { subject: "History", topic: "World War II" },
-  { subject: "Literature", topic: "which book is best" },
-  { subject: "Mathematics", topic: "Gödel's incompleteness theorems" },
-  { subject: "Medicine", topic: "pandemics" },
-  { subject: "Music", topic: "Kanye West" },
-  { subject: "Neurology", topic: "the brain" },
-  { subject: "Physics", topic: "particle-wave duality" },
-  { subject: "Technology", topic: "AI" },
-  { subject: "Zoology", topic: "deep sea animals" },
-  { subject: "Psychology", topic: "consciousness" },
+  {
+    profession: "Anthropologist",
+    subject: "Anthropology",
+    topic: "hunter-gatherer societies",
+  },
+  {
+    profession: "Archeologist",
+    subject: "Archeology",
+    topic: "what dinosaur's really looked like",
+  },
+  {
+    profession: "Architect",
+    subject: "Architecture",
+    topic: "The Sydney Opera House",
+  },
+  { profession: "Artist", subject: "Art", topic: "Picasso" },
+  { profession: "Astronomer", subject: "Astronomy", topic: "UFOs" },
+  { profession: "Biologist", subject: "Biology", topic: "gene editing" },
+  { profession: "Business leader", subject: "Business", topic: "Tesla stock" },
+  { profession: "Chemist", subject: "Chemistry", topic: "DNA" },
+  { profession: "Economist", subject: "Economics", topic: "China" },
+  { profession: "Filmmaker", subject: "Film", topic: "A24" },
+  { profession: "Geologist", subject: "Geology", topic: "rocks" },
+  {
+    profession: "Political leader",
+    subject: "Government",
+    topic: "the future of the United States",
+  },
+  { profession: "Historian", subject: "History", topic: "World War II" },
+  { profession: "", subject: "Literature", topic: "which book is best" },
+  {
+    profession: "Mathematician",
+    subject: "Mathematics",
+    topic: "Gödel's incompleteness theorems",
+  },
+  {
+    profession: "Medical professional",
+    subject: "Medicine",
+    topic: "pandemics",
+  },
+  { profession: "Musician", subject: "Music", topic: "Kanye West" },
+  { profession: "Neurologist", subject: "Neurology", topic: "the brain" },
+  {
+    profession: "Physicist",
+    subject: "Physics",
+    topic: "particle-wave duality",
+  },
+  { profession: "Technologist", subject: "Technology", topic: "AI" },
+  { profession: "Zoologist", subject: "Zoology", topic: "deep sea animals" },
+  { profession: "Psychologist", subject: "Psychology", topic: "consciousness" },
 ]
   .sort()
-  .concat({ subject: "Other", topic: "life" });
+  .concat({ profession: "professional", subject: "Other", topic: "life" });
 
 export const agreementLevels = [
   "1 Not like me",

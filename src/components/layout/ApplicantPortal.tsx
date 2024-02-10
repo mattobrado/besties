@@ -8,16 +8,17 @@ import {
   Button,
   useToast,
 } from "@chakra-ui/react";
-import { AddIcon } from "@chakra-ui/icons";
+import { AddIcon, ArrowBackIcon } from "@chakra-ui/icons";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useEffect } from "react";
-import { useAuth, useUpdateUser } from "src/hooks";
-import { ROUTES, TOAST_PROPS } from "src/lib/constants";
+import { useAuth, useLogout, useUpdateUser } from "src/hooks";
+import { ROUTES, TOAST_PROPS, schoolSubjects } from "src/lib/constants";
 
 const ApplicantPortal = () => {
   const { pathname } = useLocation();
   const navigate = useNavigate();
   const { authUser, isLoading } = useAuth();
+  const { logout } = useLogout();
   const toast = useToast();
   const { state } = useLocation();
 
@@ -25,11 +26,12 @@ const ApplicantPortal = () => {
     if (!isLoading && pathname.startsWith(ROUTES.APPLICANT)) {
       if (!authUser?.isApplicationSubmitted) {
         toast({
-          title: state?.toastTitle,
+          title:
+            "You must pass the Genius IQ Test before you can access members-only content",
           status: "error",
           ...TOAST_PROPS,
         });
-        navigate(ROUTES.LOGIN);
+        navigate(ROUTES.IQ_TEST);
       }
     }
   }, [pathname, authUser?.isApplicationSubmitted, isLoading]);
@@ -48,6 +50,8 @@ const ApplicantPortal = () => {
     color: "white",
     fontSize: "20px",
   };
+  const getNum = (input?: string) => Number(input?.charAt(0));
+
   return (
     <Flex
       flexWrap="wrap"
@@ -57,7 +61,7 @@ const ApplicantPortal = () => {
     >
       <Box sx={outerBoxStyles}>
         <Box sx={innerBoxStyles}>
-          <Stack p={24}>
+          <Stack p={12}>
             <Center>
               <ChakraAvatar
                 name={authUser?.fullName}
@@ -69,7 +73,58 @@ const ApplicantPortal = () => {
                 borderWidth={3}
               />
             </Center>
-            <Text fontSize={"2xl"}>Your application is under review.</Text>
+            <Center>
+              <Text as="b" fontSize={"4xl"}>
+                {authUser?.fullName}
+              </Text>
+            </Center>
+            <Center>
+              <Text fontSize={"xl"}>
+                Talented{" "}
+                <Text as="b" style={{ color: authUser?.favoriteColor }}>
+                  {schoolSubjects
+                    .find((item) => item.subject === authUser?.fieldOfExpertise)
+                    ?.profession.toLowerCase()}
+                </Text>
+              </Text>
+            </Center>
+            <Center>
+              <Text fontSize={"xl"}>Your application is under</Text>
+            </Center>
+            <Center>
+              <Text fontSize={"xl"}>review.</Text>
+            </Center>
+
+            {/* {authUser &&
+              [
+                {
+                  key: "iAmAQuickLearner",
+                  description: "I am a quick learner.",
+                },
+                {
+                  key: "iAmAboveAverage",
+                  description: "There is evidence from my achievements and results that I'm above average.",
+                },
+              ].map((item) => {
+                const { key, description } = item;
+                return (
+                  <Box key={key}>
+                    <Text fontSize={"lg"}>{description}</Text>
+                    <Progress
+                      colorScheme="pink"
+                      hasStripe
+                      isAnimated
+                      value={
+                        ((getNum(authUser[key as keyof UserType] as string) -
+                          1) *
+                          100) /
+                        6
+                      }
+                    />
+                  </Box>
+                );
+              })} */}
+
             <Button
               onClick={() => {
                 updateUser({ isApplicationSubmitted: false }).then(() =>
@@ -82,16 +137,22 @@ const ApplicantPortal = () => {
             >
               Change my answers
             </Button>
-            <Button
-              onClick={() => {
-                navigate(ROUTES.HOME);
-              }}
-              size={"lg"}
-              borderWidth={"4px"}
-              borderColor={"black"}
-            >
-              Go home
-            </Button>
+            <Center>
+              <Button
+                leftIcon={<ArrowBackIcon />}
+                colorScheme="black"
+                variant="ghost"
+                size={"sm"}
+                onClick={() => {
+                  logout();
+                }}
+                position={"fixed"}
+                bottom={5}
+                backdropFilter="auto"
+              >
+                {"LOG OUT"}
+              </Button>
+            </Center>
           </Stack>
         </Box>
       </Box>
