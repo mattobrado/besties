@@ -11,8 +11,6 @@ import IQTest from "../components/registration/IQTest";
 import RegistrationSteps from "../components/registration/RegistrationSteps";
 import ApplicantPortal from "../components/registration/ApplicantPortal";
 
-const idString = "/:id";
-
 export const router = createBrowserRouter([
   {
     path: ROUTES.ROOT,
@@ -30,10 +28,6 @@ export const router = createBrowserRouter([
             element: <Members />,
           },
           { path: ROUTES.POSTS, element: <PostFeed /> },
-          {
-            path: ROUTES.EDIT_PROFILE + idString,
-            element: <EditProfile />,
-          },
         ],
       },
     ],
