@@ -7,15 +7,15 @@ import {
   Box,
   Container,
 } from "@chakra-ui/react";
-import Logo from "../layout/Logo";
 import {
   Outlet,
   Link as ReactRouterLink,
   useLocation,
   useNavigate,
 } from "react-router-dom";
-import { ROUTES } from "../../lib/constants";
-import { useAuth } from "src/hooks/authHooks";
+import { Logo } from "src/components/layout";
+import { useAuth } from "src/hooks";
+import { ROUTES } from "src/lib/constants";
 
 const Registration = () => {
   const { pathname } = useLocation();
