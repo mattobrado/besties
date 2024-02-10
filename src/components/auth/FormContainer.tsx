@@ -21,7 +21,7 @@ const FormContainer = ({
         boxShadow={{ base: "none", sm: "md" }}
         borderRadius={{ base: "none", sm: "xl" }}
       >
-        <Stack spacing="1" as={"form"} pb={8}>
+        <Stack spacing="2" as={"form"} pb={8}>
           {children}
         </Stack>
         <Box layerStyle={"black"}>

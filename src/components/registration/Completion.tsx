@@ -50,7 +50,7 @@ const Completion = () => {
   const outerBoxStyles = {
     w: "100%",
     background:
-      "url(https://firebasestorage.googleapis.com/v0/b/myplace-618e9.appspot.com/o/assets%2F3UAP.gif?alt=media&token=c73a2e46-2566-4d48-b184-555cd77df963) center/cover no-repeat",
+      "url(https://firebasestorage.googleapis.com/v0/b/myplace-618e9.appspot.com/o/assets%2F37Es.gif?alt=media&token=dd12e387-fa30-40e2-9729-7afaabf4b991) center/cover no-repeat",
   };
 
   const innerBoxStyles = {
@@ -68,7 +68,7 @@ const Completion = () => {
       layerStyle={"white"}
     >
       <Box sx={outerBoxStyles}>
-        <Box sx={innerBoxStyles} backdropFilter="auto" backdropBlur="2px">
+        <Box sx={innerBoxStyles}>
           <Stack p={24}>
             <Center>
               <ChakraAvatar
@@ -81,9 +81,7 @@ const Completion = () => {
                 borderWidth={3}
               />
             </Center>
-            <Text as="b" layerStyle={"black"} fontSize={"2xl"}>
-              Your application is under review.
-            </Text>
+            <Text fontSize={"2xl"}>Your application is under review.</Text>
             <Button
               onClick={() => {
                 updateUser({ isApplicationSubmitted: false }).then(() =>

@@ -20,7 +20,6 @@ export const router = createBrowserRouter([
     children: [
       { path: ROUTES.HOME, element: <Home /> },
       { path: ROUTES.LOGIN, element: <PhoneAuth /> },
-      { path: ROUTES.APPLICANT, element: <Completion /> },
 
       {
         path: ROUTES.PROTECTED,
@@ -44,6 +43,7 @@ export const router = createBrowserRouter([
     element: <IQTest />,
     children: [{ path: ROUTES.REGISTRATION, element: <RegistrationSteps /> }],
   },
+  { path: ROUTES.APPLICANT, element: <Completion /> },
 
   // {
   //   path: ROUTES.PROFILE + idString,
