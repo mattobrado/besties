@@ -93,6 +93,11 @@ export const schoolSubjects = [
   { profession: "Technologist", subject: "Technology", topic: "AI" },
   { profession: "Zoologist", subject: "Zoology", topic: "deep sea animals" },
   { profession: "Psychologist", subject: "Psychology", topic: "consciousness" },
+  {
+    profession: "Philosopher",
+    subject: "Philosophy",
+    topic: "the mind vs. the body",
+  },
 ]
   .sort()
   .concat({ profession: "professional", subject: "Other", topic: "life" });

@@ -107,7 +107,7 @@ const RegistrationSteps = () => {
       ),
     },
     {
-      title: "Choose your field of expertise",
+      title: "Choose your field of expertise.",
       body: (
         <RadioOptions
           field={"fieldOfExpertise"}
@@ -120,7 +120,7 @@ const RegistrationSteps = () => {
     {
       title: `What are your thoughts on ${
         schoolSubjects.find((item) => item.subject === fieldOfExpertise)?.topic
-      }`,
+      }?`,
       body: <ShortResponse field={"thoughts"} goToNext={goToNext} />,
     },
     {
