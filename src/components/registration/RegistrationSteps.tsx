@@ -90,6 +90,25 @@ const RegistrationSteps = () => {
       ),
     },
     {
+      description: "My main motivation is",
+      body: (
+        <ButtonOptions
+          field={"motivation"}
+          options={[
+            "Maximizing profits",
+            "Creating utopia",
+            "Living life to the fullest",
+            "Transcending the levels of consciousness",
+            "My art",
+            "Fighting the system",
+            "I am unmotivated",
+            "Revenge",
+          ]}
+          goToNext={goToNext}
+        />
+      ),
+    },
+    {
       description: "Choose your field of expertise",
       body: (
         <RadioOptions

@@ -15,16 +15,15 @@ const ButtonOptions = ({
   const { updateUser, isLoading } = useUpdateUser(authUser?.id);
   return (
     <Stack spacing={3} pb={5}>
-      {isLoading && <h1>"is loading"</h1>}
       {options?.map((option) => (
         <Button
-          colorScheme="pink"
+          colorScheme={"pink"}
           onClick={() => {
-            updateUser({ [field]: option });
-            goToNext();
+            updateUser({ [field]: option }).then(() => goToNext());
           }}
           key={option}
           isLoading={isLoading}
+          backgroundColor={option === "Revenge" ? "black" : undefined}
         >
           {option}
         </Button>

@@ -1,5 +1,5 @@
 import { Radio, RadioGroup, Stack, useToast } from "@chakra-ui/react";
-import { useState } from "react";
+import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import NextButton from "./NextButton";
 import { useAuth } from "../../hooks/authHooks";
 import { TOAST_PROPS } from "../../lib/constants";
@@ -35,8 +35,7 @@ const RadioOptions = ({
                 status: "error",
                 ...TOAST_PROPS,
               })
-            : updateUser({ [field]: value });
-          goToNext();
+            : updateUser({ [field]: value }).then(() => goToNext());
         }}
         isLoading={isLoading}
       />
