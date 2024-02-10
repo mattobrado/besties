@@ -6,7 +6,7 @@ import {
   Center,
 } from "@chakra-ui/react";
 import { useUpdateUser } from "../../hooks/userHooks";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { ROUTES } from "../../lib/constants";
 import { INPUT_TYPE, VALIDATE } from "../../lib/formValidation";
@@ -27,7 +27,12 @@ export const EditProfile = ({
 }) => {
   const { authUser } = useAuth();
   const navigate = useNavigate();
-  const [color, setColor] = useState(authUser?.favoriteColor ?? "#F40B52");
+  const [color, setColor] = useState("#F40B52");
+  useEffect(() => {
+    if (authUser?.favoriteColor) {
+      setColor(authUser.favoriteColor);
+    }
+  }, [authUser?.favoriteColor]);
   const values: Partial<UserType> = {
     fullName: authUser?.fullName,
     email: authUser?.email,
