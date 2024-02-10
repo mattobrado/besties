@@ -5,16 +5,7 @@ import { COLLECTIONS, ROUTES, TOAST_PROPS } from "../lib/constants";
 import { User } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import { useToast } from "@chakra-ui/react";
-import {
-  setDoc,
-  doc,
-  getDoc,
-  DocumentData,
-  where,
-  collection,
-  getDocs,
-  query,
-} from "firebase/firestore";
+import { setDoc, doc, getDoc, DocumentData } from "firebase/firestore";
 import { UserType } from "../lib/types";
 import { bestiesContent } from "../lib/content/bestiesContent";
 
@@ -79,12 +70,13 @@ export const useSignIn = () => {
         oneTimePassword
       );
       const uid = user.uid;
-      const q = query(collection(db, "users"), where("id", "==", uid));
-      const querySnapshot = await getDocs(q);
-      const userExists = querySnapshot.size > 0;
-      if (userExists) navigate(ROUTES.SEARCH);
+      const docRef = doc(db, COLLECTIONS.USERS, uid);
+      const docSnap = await getDoc(docRef);
+      const userFormDB = docSnap.data() as UserType;
+      if (userFormDB.isApplicationSubmitted) navigate(ROUTES.APPLICANT);
+      if (userFormDB.isMember) navigate(ROUTES.SEARCH);
       else {
-        await setDoc(doc(db, COLLECTIONS.USERS, uid), {
+        await setDoc(docRef, {
           avatar: "",
           date: Date.now(),
           id: uid,
@@ -93,7 +85,7 @@ export const useSignIn = () => {
           friendUids: [],
           phoneNumber,
         });
-        navigate(`${ROUTES.SEARCH}/${uid}`);
+        navigate(ROUTES.REGISTRATION);
       }
     } catch (error: any) {
       toast({

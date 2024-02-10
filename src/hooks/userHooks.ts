@@ -22,15 +22,14 @@ import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import getNewRating from "../utils/getNewRating";
 
 export const useUser = (
-  id?: string
+  id: string
 ): { user?: UserType; isLoading: boolean; isError?: FirestoreError } => {
-  if (!id) return { user: undefined, isLoading: false };
   const q = query(doc(db, COLLECTIONS.USERS, id) as any);
   const [user, isLoading, isError] = useDocumentData(q as any);
   return { user: <UserType>user, isLoading, isError };
 };
 
-export const useUpdateUser = (uid?: string) => {
+export const useUpdateUser = (uid: string) => {
   const [isLoading, setLoading] = useState(false);
   const [file, setFile] = useState(null);
 

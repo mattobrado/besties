@@ -138,7 +138,11 @@ const RegistrationSteps = () => {
     },
     {
       title: "About you",
-      body: <EditProfile id={""} goToNext={goToNext} />,
+      body: authUser ? (
+        <EditProfile id={""} goToNext={goToNext} authUser={authUser} />
+      ) : (
+        "loading"
+      ),
     },
     {
       title: "Presentation topic",

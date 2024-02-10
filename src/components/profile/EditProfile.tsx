@@ -4,6 +4,7 @@ import {
   Input,
   Avatar as ChakraAvatar,
   Center,
+  Spinner,
 } from "@chakra-ui/react";
 import { useUpdateUser } from "../../hooks/userHooks";
 import { useContext, useState } from "react";
@@ -15,18 +16,19 @@ import FormContainer from "../auth/FormContainer";
 import { useForm } from "react-hook-form";
 import ContentContext from "../layout/ContentProvider";
 import { AddIcon } from "@chakra-ui/icons";
-import { useAuth } from "../../hooks/authHooks";
 import getSongIdFromLink from "../../utils/getSongIdFromLink";
+import { UserType } from "../../lib/types";
 
 export const EditProfile = ({
   id,
   goToNext,
+  authUser,
 }: {
   id?: string;
   goToNext?: () => void;
+  authUser: UserType;
 }) => {
   const navigate = useNavigate();
-  const { authUser } = useAuth();
   const [color, setColor] = useState(authUser?.favoriteColor);
   const {
     register,
@@ -37,20 +39,22 @@ export const EditProfile = ({
   if (id && id !== authUser?.id) {
     navigate(ROUTES.HOME);
   }
+
+  const { setFile, updateUser, isLoading, fileURL } = useUpdateUser(
+    authUser.id
+  );
   const handleSignup = async (data: any) => {
     await updateUser({
       fullName: data.fullName,
       favoriteSongId: getSongIdFromLink(data.url),
       favoriteColor: color,
       bio: data.bio,
-    }).catch(() => {
-      if (goToNext) goToNext();
-    });
+    })
+      .then(() => {
+        if (goToNext) goToNext();
+      })
+      .catch((e) => console.log(e));
   };
-
-  const { setFile, updateUser, isLoading, fileURL } = useUpdateUser(
-    authUser?.id
-  );
 
   const content = useContext(ContentContext);
 
