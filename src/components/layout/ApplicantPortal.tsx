@@ -8,12 +8,11 @@ import {
   Button,
   useToast,
 } from "@chakra-ui/react";
-import { useAuth } from "../../hooks/authHooks";
 import { AddIcon } from "@chakra-ui/icons";
 import { useLocation, useNavigate } from "react-router-dom";
-import { ROUTES, TOAST_PROPS } from "../../lib/constants";
 import { useEffect } from "react";
-import { useUpdateUser } from "../../hooks/userHooks";
+import { useAuth, useUpdateUser } from "src/hooks";
+import { ROUTES, TOAST_PROPS } from "src/lib/constants";
 
 const ApplicantPortal = () => {
   const { pathname } = useLocation();
