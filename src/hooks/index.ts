@@ -1,1 +1,1 @@
-export { useAuth, useLogout } from "./authHooks";
+export { useAuth, useLogout, useSignIn } from "./authHooks";
