@@ -42,7 +42,7 @@ const RegistrationSteps = () => {
   }[] = [
     {
       title: "Register",
-      body: <PhoneAuth />,
+      body: <PhoneAuth isFieldAndButtonOnly />,
     },
     {
       title: "I am a quick learner.",
@@ -54,16 +54,6 @@ const RegistrationSteps = () => {
         />
       ),
     },
-    // {
-    //   title: "I like discussing abstract concepts.",
-    //   body: (
-    //     <RadioOptions
-    //       field={"iLikeDiscussingAbstractTopics"}
-    //       options={agreementLevels}
-    //       goToNext={goToNext}
-    //     />
-    //   ),
-    // },
     {
       title:
         "There is evidence from my achievements and results that I'm above average.",
@@ -121,10 +111,7 @@ const RegistrationSteps = () => {
       body: (
         <RadioOptions
           field={"fieldOfExpertise"}
-          options={schoolSubjects
-            .map((item) => item.subject)
-            .sort()
-            .concat("Other")}
+          options={schoolSubjects.map((item) => item.subject)}
           goToNext={goToNext}
           setFieldOfExpertise={setFieldOfExpertise}
         />
@@ -138,7 +125,7 @@ const RegistrationSteps = () => {
     },
     {
       title: "About you",
-      body: <EditProfile id={""} goToNext={goToNext} />,
+      body: authUser ? <EditProfile id={""} goToNext={goToNext} /> : "loading",
     },
     {
       title: "Presentation topic",
@@ -181,6 +168,8 @@ const RegistrationSteps = () => {
     }
   }
 
+  const isBackButtonLogginOut = activeStep === 1;
+
   return (
     <>
       <Fade in={activeStep > 0}>
@@ -189,9 +178,9 @@ const RegistrationSteps = () => {
           colorScheme="black"
           variant="ghost"
           size={"sm"}
-          onClick={activeStep === 1 ? logout : goToPrevious}
+          onClick={isBackButtonLogginOut ? logout : goToPrevious}
         >
-          BACK
+          {isBackButtonLogginOut ? "LOG OUT" : "BACK"}
         </Button>
       </Fade>
       <Box p={4} pb={24}>

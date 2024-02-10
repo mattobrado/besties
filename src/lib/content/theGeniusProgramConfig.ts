@@ -20,11 +20,19 @@ const THE_GENIUS_PROGRAM_CONFIG = {
         toastTitle: "You must be logged in to access the members-only area",
       },
     },
-    { label: "Join us", to: ROUTES.LOGIN },
+    {
+      label: "APPLICANT PORTAL",
+      to: ROUTES.APPLICANT,
+      state: {
+        toastTitle: "You must be logged in to access the applicant portal",
+      },
+      isForAuthorizedUsersOnly: true,
+    },
+    { label: "Join us", to: ROUTES.IQ_TEST, isForGuestsOnly: true },
     // { label: "GENIUS", to: "" },
     // { label: bestiesContent.navBar.mostPopular, to: ROUTES.HOME },
     // { label: bestiesContent.navBar.highestRated, to: ROUTES.HIGHEST_RATED },
-    { label: "LOG OUT", isLogout: true },
+    { label: "LOG OUT", isLogout: true, isForAuthorizedUsersOnly: true },
   ],
 };
 

@@ -13,11 +13,10 @@ import { INPUT_TYPE, VALIDATE } from "../../lib/formValidation";
 import FormField from "../auth/FormField";
 import FormContainer from "../auth/FormContainer";
 import { useForm } from "react-hook-form";
-import ContentContext from "../layout/ContentProvider";
+import ContentContext from "../../context/ContentProvider";
 import { AddIcon } from "@chakra-ui/icons";
-import { useAuth } from "../../hooks/authHooks";
 import getSongIdFromLink from "../../utils/getSongIdFromLink";
-
+import { useAuth } from "../../hooks/authHooks";
 export const EditProfile = ({
   id,
   goToNext,
@@ -25,9 +24,9 @@ export const EditProfile = ({
   id?: string;
   goToNext?: () => void;
 }) => {
-  const navigate = useNavigate();
   const { authUser } = useAuth();
-  const [color, setColor] = useState(authUser?.favoriteColor);
+  const navigate = useNavigate();
+  const [color, setColor] = useState(authUser?.favoriteColor ?? "#F40B52");
   const {
     register,
     handleSubmit,
@@ -37,20 +36,22 @@ export const EditProfile = ({
   if (id && id !== authUser?.id) {
     navigate(ROUTES.HOME);
   }
+  const { updateUser, isLoading, setFile, fileURL } = useUpdateUser(
+    authUser?.id
+  );
+
   const handleSignup = async (data: any) => {
     await updateUser({
       fullName: data.fullName,
       favoriteSongId: getSongIdFromLink(data.url),
       favoriteColor: color,
       bio: data.bio,
-    }).catch(() => {
-      if (goToNext) goToNext();
-    });
+    })
+      .then(() => {
+        if (goToNext) goToNext();
+      })
+      .catch((e) => console.log(e));
   };
-
-  const { setFile, updateUser, isLoading, fileURL } = useUpdateUser(
-    authUser?.id
-  );
 
   const content = useContext(ContentContext);
 

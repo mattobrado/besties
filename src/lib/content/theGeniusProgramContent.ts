@@ -16,6 +16,7 @@ export const THE_GENIUS_PROGRAM_CONTENT = {
     bio: "Bio",
     next: "Next",
     emailAddress: "Email",
+    signupFailed: "Registration failed",
   },
   navBar: {
     logoSrcURL:

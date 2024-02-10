@@ -15,7 +15,7 @@ import { ROUTES, TOAST_PROPS } from "../../lib/constants";
 import { useEffect } from "react";
 import { useUpdateUser } from "../../hooks/userHooks";
 
-const Completion = () => {
+const ApplicantPortal = () => {
   const { pathname } = useLocation();
   const navigate = useNavigate();
   const { authUser, isLoading } = useAuth();
@@ -24,24 +24,13 @@ const Completion = () => {
 
   useEffect(() => {
     if (!isLoading && pathname.startsWith(ROUTES.APPLICANT)) {
-      if (!authUser) {
+      if (!authUser?.isApplicationSubmitted) {
         toast({
           title: state?.toastTitle,
           status: "error",
           ...TOAST_PROPS,
         });
         navigate(ROUTES.LOGIN);
-      } else if (
-        !authUser.isApplicationSubmitted &&
-        !pathname.startsWith(ROUTES.IQ_TEST)
-      ) {
-        toast({
-          title:
-            "You must take the Genius IQ Test before you can access members-only content",
-          status: "error",
-          ...TOAST_PROPS,
-        });
-        navigate(ROUTES.REGISTRATION);
       }
     }
   }, [pathname, authUser?.isApplicationSubmitted, isLoading]);
@@ -101,4 +90,4 @@ const Completion = () => {
   );
 };
 
-export default Completion;
+export default ApplicantPortal;

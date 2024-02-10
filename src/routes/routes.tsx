@@ -2,16 +2,13 @@ import { createBrowserRouter } from "react-router-dom";
 import Layout from "../components/layout/Layout";
 import Home from "../components/home/Home";
 import PhoneAuth from "../components/auth/PhoneAuth";
-import EditProfile from "../components/profile/EditProfile";
-import { ROUTES } from "./constants";
+import { ROUTES } from "../lib/constants";
 import Members from "../components/lists/Members";
 import ProtectedPageContainer from "../components/layout/ProtectedPageContainer";
 import PostFeed from "../components/posts/PostFeed";
 import IQTest from "../components/registration/IQTest";
 import RegistrationSteps from "../components/registration/RegistrationSteps";
-import Completion from "../components/registration/Completion";
-
-const idString = "/:id";
+import ApplicantPortal from "../components/registration/ApplicantPortal";
 
 export const router = createBrowserRouter([
   {
@@ -19,7 +16,10 @@ export const router = createBrowserRouter([
     element: <Layout />,
     children: [
       { path: ROUTES.HOME, element: <Home /> },
-      { path: ROUTES.LOGIN, element: <PhoneAuth /> },
+      {
+        path: ROUTES.LOGIN,
+        element: <PhoneAuth />,
+      },
 
       {
         path: ROUTES.PROTECTED,
@@ -30,10 +30,6 @@ export const router = createBrowserRouter([
             element: <Members />,
           },
           { path: ROUTES.POSTS, element: <PostFeed /> },
-          {
-            path: ROUTES.EDIT_PROFILE + idString,
-            element: <EditProfile />,
-          },
         ],
       },
     ],
@@ -43,30 +39,5 @@ export const router = createBrowserRouter([
     element: <IQTest />,
     children: [{ path: ROUTES.REGISTRATION, element: <RegistrationSteps /> }],
   },
-  { path: ROUTES.APPLICANT, element: <Completion /> },
-
-  // {
-  //   path: ROUTES.PROFILE + idString,
-  //   element: <Profile />,
-  // },
-  // {
-  //   path: ROUTES.ADD_REVIEW,
-  //   element: <NewReviewForm />,
-  // },
-  // {
-  //   path: ROUTES.SEARCH,
-  //   element: <SearchPage />,
-  // },
-  // {
-  //   path: ROUTES.POST + idString,
-  //   element: <Comments />,
-  // },
-  // {
-  //   path: ROUTES.HIGHEST_RATED,
-  //   element: <HighestRated />,
-  // },
-  // {
-  //   path: ROUTES.NOTIFICATIONS,
-  //   element: <Notifications />,
-  // },
+  { path: ROUTES.APPLICANT, element: <ApplicantPortal /> },
 ]);

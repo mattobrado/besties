@@ -1,4 +1,4 @@
-import { BACKGROUNDS } from "../theme/colors";
+import { BACKGROUNDS } from "../lib/theme/colors";
 
 const getBackground = (color?: string) => {
   if (!color) return BACKGROUNDS.default;

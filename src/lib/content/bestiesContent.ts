@@ -38,7 +38,7 @@ export const bestiesContent = {
     signingUp: "signing up",
     signInToYourAccount: "sign in to your account",
     signup: "sign up",
-    signupFailed: "signing Up failed",
+    signupFailed: "signing up failed",
     signupSubtitle: "to enjoy all of our cool features ✌️",
     signupSuccess: "account created",
     username: "username",

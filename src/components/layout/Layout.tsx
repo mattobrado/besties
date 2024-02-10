@@ -4,7 +4,7 @@ import TopNavBar from "./TopNavBar";
 import { Box, Container } from "@chakra-ui/react";
 import { BOTTOM_NAV_HEIGHT, GLOBAL_PX } from "../../lib/constants";
 import { useContext } from "react";
-import ConfigContext from "./ConfigProvider";
+import ConfigContext from "../../context/ConfigProvider";
 import Logo from "./Logo";
 
 const Layout = () => {

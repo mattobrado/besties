@@ -1,6 +1,6 @@
 import { HStack, Text } from "@chakra-ui/react";
 import Avatar from "./Avatar";
-import { UserType } from "../../lib/types";
+import type { UserType } from "src/lib/types/index";
 import { Link } from "react-router-dom";
 import { ROUTES } from "../../lib/constants";
 

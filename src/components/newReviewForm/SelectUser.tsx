@@ -1,5 +1,5 @@
 import { Modal, ModalBody, ModalContent, ModalOverlay } from "@chakra-ui/react";
-import { UserType } from "../../lib/types";
+import type { UserType } from "src/lib/types/index";
 import Search from "../search/Search";
 import { bestiesContent } from "../../lib/content/bestiesContent";
 import { GLOBAL_PX } from "../../lib/constants";

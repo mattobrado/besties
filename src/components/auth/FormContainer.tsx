@@ -32,7 +32,7 @@ const FormContainer = ({
             loadingText={buttonProps?.loadingText}
             onClick={onSubmit as any}
           >
-            <Box w={"96px"} fontSize={"lg"} layerStyle={"black"}>
+            <Box w={"96px"} fontSize={"lg"}>
               {buttonProps?.label}
             </Box>
           </Button>

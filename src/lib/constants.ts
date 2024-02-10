@@ -15,7 +15,6 @@ export const ROUTES = {
   SEARCH: PROTECTED + "/search",
   EDIT_PROFILE: PROTECTED + "/edit-profile",
   NOTIFICATIONS: PROTECTED + "/notifications",
-  // MEMBERS: PROTECTED + "/search-members",
   IQ_TEST,
   REGISTRATION: IQ_TEST + "/questions",
   APPLICANT: "/applicant",
@@ -61,11 +60,14 @@ export const schoolSubjects = [
   { subject: "Mathematics", topic: "Gödel's incompleteness theorems" },
   { subject: "Medicine", topic: "pandemics" },
   { subject: "Music", topic: "Kanye West" },
-  { subject: "Neurology", topic: "" },
+  { subject: "Neurology", topic: "the brain" },
   { subject: "Physics", topic: "particle-wave duality" },
   { subject: "Technology", topic: "AI" },
   { subject: "Zoology", topic: "deep sea animals" },
-];
+  { subject: "Psychology", topic: "consciousness" },
+]
+  .sort()
+  .concat({ subject: "Other", topic: "life" });
 
 export const agreementLevels = [
   "1 Not like me",
@@ -74,5 +76,5 @@ export const agreementLevels = [
   "4",
   "5",
   "6",
-  "7 like me",
+  "7 Like me",
 ];
