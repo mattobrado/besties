@@ -49,7 +49,7 @@ export const schoolSubjects = [
   { subject: "Architecture", topic: "The Sydney Opera House" },
   { subject: "Art", topic: "Picasso" },
   { subject: "Astronomy", topic: "UFOs" },
-  { subject: "Biology", topic: "bacteria" },
+  { subject: "Biology", topic: "gene editing" },
   { subject: "Business", topic: "Tesla stock" },
   { subject: "Chemistry", topic: "DNA" },
   { subject: "Economics", topic: "China" },
