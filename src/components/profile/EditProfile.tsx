@@ -17,6 +17,7 @@ import ContentContext from "../../context/ContentProvider";
 import { AddIcon } from "@chakra-ui/icons";
 import getSongIdFromLink from "../../utils/getSongIdFromLink";
 import { useAuth } from "../../hooks/authHooks";
+import type { UserType } from "src/lib/types";
 export const EditProfile = ({
   id,
   goToNext,
@@ -41,12 +42,18 @@ export const EditProfile = ({
   );
 
   const handleSignup = async (data: any) => {
+    const dataWithoutEmptyStrings: Partial<UserType> = {};
+    Object.keys(data).forEach((key) => {
+      if (key === "url") {
+        dataWithoutEmptyStrings.favoriteSongId = getSongIdFromLink(data[key]);
+      }
+      if (data[key] !== "") {
+        dataWithoutEmptyStrings[key as keyof UserType] = data[key];
+      }
+    });
     await updateUser({
-      fullName: data.fullName ?? undefined,
-      favoriteSongId: getSongIdFromLink(data.url),
+      ...dataWithoutEmptyStrings,
       favoriteColor: color,
-      bio: data.bio,
-      email: data.email,
     })
       .then(() => {
         if (goToNext) goToNext();
