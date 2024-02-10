@@ -1,9 +1,8 @@
 import { Radio, RadioGroup, Stack, useToast } from "@chakra-ui/react";
 import { Dispatch, SetStateAction, useState } from "react";
-import NextButton from "./NextButton";
-import { useAuth } from "../../hooks/authHooks";
-import { TOAST_PROPS } from "../../lib/constants";
-import { useUpdateUser } from "../../hooks/userHooks";
+import { NextButton } from "src/components/registration";
+import { useAuth, useUpdateUser } from "src/hooks";
+import { TOAST_PROPS } from "src/lib/constants";
 
 const RadioOptions = ({
   options,

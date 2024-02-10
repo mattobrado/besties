@@ -1,6 +1,5 @@
 import { useContext, useState } from "react";
 import { RecaptchaVerifier, signInWithPhoneNumber } from "firebase/auth";
-import { auth } from "../../lib/firebase";
 import {
   FormControl,
   FormErrorMessage,
@@ -14,11 +13,12 @@ import {
   Box,
 } from "@chakra-ui/react";
 import { useForm } from "react-hook-form";
-import FormContainer from "./FormContainer";
 import PhoneInput from "react-phone-number-input/input";
-import { useSignIn } from "../../hooks/authHooks";
-import ContentContext from "../../context/ContentProvider";
 import { MainImage } from "src/components";
+import { useSignIn } from "src/hooks";
+import { auth } from "src/lib/firebase";
+import { ContentContext } from "src/context";
+import { FormContainer } from "src/components/auth";
 
 const PhoneAuth = ({
   isFieldAndButtonOnly,
@@ -141,16 +141,6 @@ const PhoneAuth = ({
                 </InputGroup>
                 <FormErrorMessage>{signInError}</FormErrorMessage>
               </FormControl>
-              {/* <Stack spacing={0}>
-              <Center>
-                <Text fontSize={"xs"}>
-                  You may receive SMS notifications from us for
-                </Text>
-              </Center>
-              <Center>
-                <Text fontSize={"xs"}>security and login purposes.</Text>
-              </Center>
-            </Stack> */}
             </>
           )}
         </FormContainer>{" "}

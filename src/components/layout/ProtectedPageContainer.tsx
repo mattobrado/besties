@@ -1,9 +1,9 @@
 import { useEffect } from "react";
 import { Outlet, useLocation, useNavigate } from "react-router-dom";
-import { useAuth } from "../../hooks/authHooks";
-import { ROUTES, TOAST_PROPS } from "../../lib/constants";
-import LoadingScreen from "../LoadingScreen";
 import { Box, useToast } from "@chakra-ui/react";
+import { useAuth } from "src/hooks";
+import { ROUTES, TOAST_PROPS } from "src/lib/constants";
+import { LoadingScreen } from "src/components";
 
 const ProtectedPageContainer = () => {
   const { pathname } = useLocation();
@@ -13,7 +13,15 @@ const ProtectedPageContainer = () => {
 
   useEffect(() => {
     if (!isLoading && pathname.startsWith(ROUTES.PROTECTED)) {
-      if (!authUser?.isMember) {
+      if (!authUser?.isApplicationSubmitted) {
+        toast({
+          title:
+            "You must pass the Genius IQ Test before you can access members-only content",
+          status: "error",
+          ...TOAST_PROPS,
+        });
+        navigate(ROUTES.IQ_TEST);
+      } else if (!authUser?.isMember) {
         toast({
           title:
             "You must pass the Genius IQ Test before you can access members-only content",

@@ -1,6 +1,6 @@
 import { Button } from "@chakra-ui/react";
 import { Link as ReactRouterLink } from "react-router-dom";
-import { useLogout } from "../../../hooks/authHooks";
+import { useLogout } from "src/hooks";
 
 const GenericNavBarItem = ({
   label,

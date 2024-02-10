@@ -1,6 +1,5 @@
 import { Button, Stack } from "@chakra-ui/react";
-import { useAuth } from "../../hooks/authHooks";
-import { useUpdateUser } from "../../hooks/userHooks";
+import { useAuth, useUpdateUser } from "src/hooks";
 
 const ButtonOptions = ({
   options,

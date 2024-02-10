@@ -15,14 +15,16 @@ import {
   Stack,
 } from "@chakra-ui/react";
 import { ArrowBackIcon } from "@chakra-ui/icons";
-import { useAuth, useLogout } from "../../hooks/authHooks";
-import PhoneAuth from "../auth/PhoneAuth";
-import EditProfile from "../profile/EditProfile";
-import RadioOptions from "./RadioOptions";
-import { agreementLevels, schoolSubjects } from "../../lib/constants";
-import ButtonOptions from "./ButtonOptions";
 import { useState } from "react";
-import ShortResponse from "./ShortResponse";
+import { useAuth, useLogout } from "src/hooks";
+import { PhoneAuth } from "src/components/auth";
+import {
+  ButtonOptions,
+  RadioOptions,
+  ShortResponse,
+} from "src/components/registration";
+import { agreementLevels, schoolSubjects } from "src/lib/constants";
+import { EditProfile } from "src/components/profile";
 
 const RegistrationSteps = () => {
   const { authUser } = useAuth();

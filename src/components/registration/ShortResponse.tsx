@@ -1,12 +1,11 @@
 import { Box, FormControl, FormErrorMessage, Textarea } from "@chakra-ui/react";
-import NextButton from "./NextButton";
-import { useAuth } from "../../hooks/authHooks";
-import { useUpdateUser } from "../../hooks/userHooks";
-import { VALIDATE } from "../../lib/formValidation";
 import TextareaAutosize from "react-textarea-autosize";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
-import { ROUTES } from "../../lib/constants";
+import { useAuth, useUpdateUser } from "src/hooks";
+import { ROUTES } from "src/lib/constants";
+import { VALIDATE } from "src/lib/formValidation";
+import { NextButton } from "src/components/registration";
 
 const RadioOptions = ({
   goToNext,
