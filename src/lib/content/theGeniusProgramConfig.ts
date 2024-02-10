@@ -21,7 +21,7 @@ const THE_GENIUS_PROGRAM_CONFIG = {
       },
     },
     {
-      label: "APPLICANT PORTAL",
+      label: "Check application status",
       to: ROUTES.APPLICANT,
       state: {
         toastTitle: "You must be logged in to access the applicant portal",
@@ -29,6 +29,11 @@ const THE_GENIUS_PROGRAM_CONFIG = {
       isForAuthorizedUsersOnly: true,
     },
     { label: "Join us", to: ROUTES.IQ_TEST, isForGuestsOnly: true },
+    {
+      label: "Check application status",
+      to: ROUTES.LOGIN,
+      isForGuestsOnly: true,
+    },
     // { label: "GENIUS", to: "" },
     // { label: bestiesContent.navBar.mostPopular, to: ROUTES.HOME },
     // { label: bestiesContent.navBar.highestRated, to: ROUTES.HIGHEST_RATED },
