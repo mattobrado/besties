@@ -38,29 +38,4 @@ export const router = createBrowserRouter([
     children: [{ path: ROUTES.REGISTRATION, element: <RegistrationSteps /> }],
   },
   { path: ROUTES.APPLICANT, element: <ApplicantPortal /> },
-
-  // {
-  //   path: ROUTES.PROFILE + idString,
-  //   element: <Profile />,
-  // },
-  // {
-  //   path: ROUTES.ADD_REVIEW,
-  //   element: <NewReviewForm />,
-  // },
-  // {
-  //   path: ROUTES.SEARCH,
-  //   element: <SearchPage />,
-  // },
-  // {
-  //   path: ROUTES.POST + idString,
-  //   element: <Comments />,
-  // },
-  // {
-  //   path: ROUTES.HIGHEST_RATED,
-  //   element: <HighestRated />,
-  // },
-  // {
-  //   path: ROUTES.NOTIFICATIONS,
-  //   element: <Notifications />,
-  // },
 ]);
