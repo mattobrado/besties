@@ -22,8 +22,9 @@ import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import getNewRating from "../utils/getNewRating";
 
 export const useUser = (
-  id: string
+  id?: string
 ): { user?: UserType; isLoading: boolean; isError?: FirestoreError } => {
+  if (!id) return { isLoading: true };
   const q = query(doc(db, COLLECTIONS.USERS, id) as any);
   const [user, isLoading, isError] = useDocumentData(q as any);
   return { user: <UserType>user, isLoading, isError };
@@ -58,7 +59,9 @@ export const useUpdateUser = (uid?: string) => {
 
   return {
     setFile,
-    updateUser,
+    updateUser: uid
+      ? updateUser
+      : async () => console.log("which user id do you want to update?"),
     isLoading,
     fileURL: file && URL.createObjectURL(file),
   };

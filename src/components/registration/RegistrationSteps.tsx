@@ -121,10 +121,7 @@ const RegistrationSteps = () => {
       body: (
         <RadioOptions
           field={"fieldOfExpertise"}
-          options={schoolSubjects
-            .map((item) => item.subject)
-            .sort()
-            .concat("Other")}
+          options={schoolSubjects.map((item) => item.subject)}
           goToNext={goToNext}
           setFieldOfExpertise={setFieldOfExpertise}
         />
@@ -138,11 +135,7 @@ const RegistrationSteps = () => {
     },
     {
       title: "About you",
-      body: authUser ? (
-        <EditProfile id={""} goToNext={goToNext} authUser={authUser} />
-      ) : (
-        "loading"
-      ),
+      body: authUser ? <EditProfile id={""} goToNext={goToNext} /> : "loading",
     },
     {
       title: "Presentation topic",
