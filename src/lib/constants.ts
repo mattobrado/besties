@@ -58,7 +58,7 @@ export const schoolSubjects = [
     subject: "Architecture",
     topic: "The Sydney Opera House",
   },
-  { profession: "Artist", subject: "Art", topic: "Picasso" },
+  { profession: "Artist", subject: "Art", topic: "the point of art" },
   { profession: "Astronomer", subject: "Astronomy", topic: "UFOs" },
   { profession: "Biologist", subject: "Biology", topic: "gene editing" },
   { profession: "Business leader", subject: "Business", topic: "Tesla stock" },

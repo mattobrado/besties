@@ -42,10 +42,11 @@ export const EditProfile = ({
 
   const handleSignup = async (data: any) => {
     await updateUser({
-      fullName: data.fullName,
+      fullName: data.fullName ?? undefined,
       favoriteSongId: getSongIdFromLink(data.url),
       favoriteColor: color,
       bio: data.bio,
+      email: data.email,
     })
       .then(() => {
         if (goToNext) goToNext();
@@ -58,81 +59,85 @@ export const EditProfile = ({
   const imageInputId = "image-input";
 
   return (
-    <FormContainer
-      onSubmit={handleSubmit(handleSignup)}
-      buttonProps={{
-        isLoading: isLoading,
-        label: content.auth.next,
-        loadingText: "Updating",
-      }}
-    >
-      <div id="edit-avatar">
-        <Center>
-          <ChakraAvatar
-            name={authUser?.fullName}
-            src={fileURL ?? authUser?.avatar}
-            loading="lazy"
-            size={"xl"}
-            icon={<AddIcon fontSize="1.5rem" />}
-            bg={color}
-            onClick={() => document.getElementById(imageInputId)?.click()}
-            borderColor={color}
-            borderWidth={3}
-          />
-        </Center>
+    authUser && (
+      <FormContainer
+        onSubmit={handleSubmit(handleSignup)}
+        buttonProps={{
+          isLoading: isLoading,
+          label: content.auth.next,
+          loadingText: "Updating",
+        }}
+      >
+        <div id="edit-avatar">
+          <Center>
+            <ChakraAvatar
+              name={authUser?.fullName}
+              src={fileURL ?? authUser?.avatar}
+              loading="lazy"
+              size={"xl"}
+              icon={<AddIcon fontSize="1.5rem" />}
+              bg={color}
+              onClick={() => document.getElementById(imageInputId)?.click()}
+              borderColor={color}
+              borderWidth={3}
+            />
+          </Center>
+          <FormControl>
+            <FormLabel htmlFor="picture"></FormLabel>
+            <input
+              id={imageInputId}
+              type="file"
+              accept="image/*"
+              onChange={(e: any) => setFile(e.target.files[0])}
+              style={{ display: "none" }}
+            />
+          </FormControl>
+        </div>
+
+        <FormField
+          error={errors?.fullName}
+          inputType={INPUT_TYPE.FULL_NAME}
+          label={content.auth.fullName}
+          placeHolder={authUser.fullName}
+          register={register}
+          validate={
+            authUser.fullName ? VALIDATE.FULL_NAME : VALIDATE.FULL_NAME_REQUIRED
+          }
+        />
+        <FormField
+          error={errors?.email}
+          inputType={INPUT_TYPE.EMAIL}
+          label={content.auth.emailAddress}
+          placeHolder={authUser.email}
+          register={register}
+          validate={!authUser.email && VALIDATE.EMAIL_REQUIRED}
+        />
+        <FormField
+          error={errors?.bio}
+          inputType={INPUT_TYPE.BIO}
+          label={content.auth.bio}
+          register={register}
+          placeHolder={authUser.bio}
+        />
+        <FormField
+          error={errors?.url}
+          inputType={INPUT_TYPE.SONG}
+          label={content.auth.favoriteSong}
+          placeHolder={content.auth.favoriteSongPlaceholder}
+          register={register}
+        />
         <FormControl>
-          <FormLabel htmlFor="picture"></FormLabel>
-          <input
-            id={imageInputId}
-            type="file"
-            accept="image/*"
-            onChange={(e: any) => setFile(e.target.files[0])}
-            style={{ display: "none" }}
+          <FormLabel>{"Favorite color"}</FormLabel>
+          <Input
+            type={INPUT_TYPE.COLOR}
+            value={color}
+            onChange={(e: any) => setColor(e.target.value)}
+            placeholder="gh"
+            p={0}
           />
         </FormControl>
-      </div>
-
-      <FormField
-        error={errors?.fullName}
-        inputType={INPUT_TYPE.FULL_NAME}
-        label={content.auth.fullName}
-        register={register}
-        validate={
-          authUser?.fullName ? VALIDATE.FULL_NAME : VALIDATE.FULL_NAME_REQUIRED
-        }
-        placeHolder={authUser?.fullName}
-      />
-      <FormField
-        error={errors?.email}
-        inputType={INPUT_TYPE.EMAIL}
-        label={content.auth.emailAddress}
-        register={register}
-        validate={VALIDATE.EMAIL}
-      />
-      <FormField
-        error={errors?.bio}
-        inputType={INPUT_TYPE.BIO}
-        label={content.auth.bio}
-        register={register}
-      />
-      <FormField
-        error={errors?.url}
-        inputType={INPUT_TYPE.SONG}
-        label={content.auth.favoriteSong}
-        placeHolder={content.auth.favoriteSongPlaceholder}
-        register={register}
-      />
-      <FormControl>
-        <FormLabel>{"Favorite color"}</FormLabel>
-        <Input
-          type={INPUT_TYPE.COLOR}
-          value={color}
-          onChange={(e: any) => setColor(e.target.value)}
-          placeholder="gh"
-          p={0}
-        />
-      </FormControl>
-    </FormContainer>
+      </FormContainer>
+    )
   );
 };
 
