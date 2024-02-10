@@ -28,11 +28,17 @@ export const EditProfile = ({
   const { authUser } = useAuth();
   const navigate = useNavigate();
   const [color, setColor] = useState(authUser?.favoriteColor ?? "#F40B52");
+  const values: Partial<UserType> = {
+    fullName: authUser?.fullName,
+    email: authUser?.email,
+    bio: authUser?.bio,
+  };
+
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm();
+  } = useForm({ values });
 
   if (id && id !== authUser?.id) {
     navigate(ROUTES.HOME);
@@ -127,7 +133,7 @@ export const EditProfile = ({
           placeHolder={authUser.bio}
         />
         <FormField
-          error={errors?.url}
+          error={errors?.favoriteSongId}
           inputType={INPUT_TYPE.SONG}
           label={content.auth.favoriteSong}
           placeHolder={content.auth.favoriteSongPlaceholder}
