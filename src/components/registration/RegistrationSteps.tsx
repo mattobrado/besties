@@ -12,6 +12,7 @@ import {
   Center,
   Progress,
   Fade,
+  Stack,
 } from "@chakra-ui/react";
 import { ArrowBackIcon } from "@chakra-ui/icons";
 import { useAuth, useLogout } from "../../hooks/authHooks";
@@ -33,15 +34,16 @@ const RegistrationSteps = () => {
   const [fieldOfExpertise, setFieldOfExpertise] = useState("");
 
   const steps: {
-    description?: string;
+    title?: string;
+    subtitle?: React.ReactNode;
     body?: React.ReactNode;
   }[] = [
     {
-      description: "Register",
+      title: "Register",
       body: <PhoneAuth />,
     },
     {
-      description: "I am a quick learner.",
+      title: "I am a quick learner.",
       body: (
         <RadioOptions
           field={"iAmAQuickLearner"}
@@ -51,7 +53,7 @@ const RegistrationSteps = () => {
       ),
     },
     // {
-    //   description: "I like discussing abstract concepts.",
+    //   title: "I like discussing abstract concepts.",
     //   body: (
     //     <RadioOptions
     //       field={"iLikeDiscussingAbstractTopics"}
@@ -61,7 +63,7 @@ const RegistrationSteps = () => {
     //   ),
     // },
     {
-      description:
+      title:
         "There is evidence from my achievements and results that I'm above average.",
       body: (
         <RadioOptions
@@ -72,7 +74,7 @@ const RegistrationSteps = () => {
       ),
     },
     {
-      description:
+      title:
         "I actively look for opportunities to update my understanding. I like to find out where I'm wrong.",
       body: (
         <RadioOptions
@@ -83,7 +85,7 @@ const RegistrationSteps = () => {
       ),
     },
     {
-      description:
+      title:
         "If a bat and a ball cost $11 together and the bat costs $10 more than the ball, how much does the ball cost?",
       body: (
         <ButtonOptions
@@ -94,7 +96,7 @@ const RegistrationSteps = () => {
       ),
     },
     {
-      description: "My main motivation is",
+      title: "My main motivation is",
       body: (
         <ButtonOptions
           field={"motivation"}
@@ -113,7 +115,7 @@ const RegistrationSteps = () => {
       ),
     },
     {
-      description: "Choose your field of expertise",
+      title: "Choose your field of expertise",
       body: (
         <RadioOptions
           field={"fieldOfExpertise"}
@@ -127,20 +129,34 @@ const RegistrationSteps = () => {
       ),
     },
     {
-      description: `What are your thoughts on ${
+      title: `What are your thoughts on ${
         schoolSubjects.find((item) => item.subject === fieldOfExpertise)?.topic
       }`,
       body: <ShortResponse field={"thoughts"} goToNext={goToNext} />,
     },
     {
-      description: "About you",
+      title: "About you",
       body: <EditProfile id={""} goToNext={goToNext} />,
     },
     {
-      description: `What are your thoughts on ${
-        schoolSubjects.find((item) => item.subject === fieldOfExpertise)?.topic
-      }`,
-      body: <ShortResponse field={"thoughts"} goToNext={goToNext} />,
+      title: "Presentation topic",
+      subtitle: (
+        <Stack spacing={5}>
+          <Text fontSize={"xlg"}>
+            The final step required to become a member of The Genius Program is
+            to deliver an in-person presentation. The theme for this Batch is{" "}
+            <Text as="b" color={"pink.500"}>
+              mysteries.{" "}
+            </Text>
+            After the judges evaluate your presentation and find it
+            satisfactory, you will officially join The Genius Program.
+          </Text>
+          <Text as={"span"}>
+            Please briefly describe the topic you would like to present on.
+          </Text>
+        </Stack>
+      ),
+      body: <ShortResponse field={"mystery"} goToNext={goToNext} />,
     },
   ];
 
@@ -148,7 +164,7 @@ const RegistrationSteps = () => {
 
   const { logout } = useLogout();
 
-  const { description, body } = steps[activeStep];
+  const { title, body, subtitle } = steps[activeStep];
   if (authUser && activeStep === 0) {
     setActiveStep(1);
   }
@@ -177,9 +193,10 @@ const RegistrationSteps = () => {
             </Step>
           ))}
         </Stepper>
-        <Text fontSize={"3xl"} py={5}>
-          {description}
-        </Text>
+        <Stack py={5}>
+          <Text fontSize={"3xl"}>{title}</Text>
+          {subtitle}
+        </Stack>
         {body}
       </Box>
       <Box

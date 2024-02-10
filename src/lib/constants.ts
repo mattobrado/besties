@@ -50,7 +50,7 @@ export const schoolSubjects = [
   { subject: "History", topic: "World War II" },
   { subject: "Anthropology", topic: "hunter-gatherer societies" },
   { subject: "Art", topic: "Picasso" },
-  { subject: "Literature", topic: "" },
+  { subject: "Literature", topic: "which book is best" },
   { subject: "Music", topic: "Kanye West" },
   { subject: "Film", topic: "A24" },
   { subject: "Physics", topic: "particle-wave duality" },
@@ -63,7 +63,7 @@ export const schoolSubjects = [
   { subject: "Biology", topic: "bacteria" },
   { subject: "Zoology", topic: "deep sea animals" },
   { subject: "Medicine", topic: "pandemics" },
-  { subject: "Government", topic: "the future of the United states" },
+  { subject: "Government", topic: "the future of the United States" },
 ];
 
 export const agreementLevels = [

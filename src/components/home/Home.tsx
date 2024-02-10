@@ -31,12 +31,6 @@ const Home = () => {
           members with exciting opportunities for intellectual stimulation.
         </Text>
         <Text>Activities include:</Text>
-        <UnorderedList>
-          <ListItem>Lorem ipsum dolor sit amet</ListItem>
-          <ListItem>Consectetur adipiscing elit</ListItem>
-          <ListItem>Integer molestie lorem at massa</ListItem>
-          <ListItem>Facilisis in pretium nisl aliquet</ListItem>
-        </UnorderedList>
         <UnorderedList pl={7}>
           <ListItem>
             <Text>The lively exchange of ideas through lectures</Text>
