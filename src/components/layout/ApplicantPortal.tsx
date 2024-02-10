@@ -7,6 +7,7 @@ import {
   Center,
   Button,
   useToast,
+  Container,
 } from "@chakra-ui/react";
 import { ArrowBackIcon } from "@chakra-ui/icons";
 import { useLocation, useNavigate } from "react-router-dom";
@@ -56,91 +57,93 @@ const ApplicantPortal = () => {
   };
 
   return (
-    <Flex
-      flexWrap="wrap"
-      justifyContent="space-evenly"
-      layerStyle={"white"}
-      minHeight="100vh"
-    >
-      <Box sx={outerBoxStyles}>
-        <Box sx={innerBoxStyles}>
-          <Stack p={4} pt={5} spacing={2} w={"100%"}>
-            <Stack spacing={0}>
-              <Center>
-                <ChakraAvatar
-                  name={authUser?.fullName}
-                  src={authUser?.avatar}
-                  loading="lazy"
-                  size={"2xl"}
-                  borderColor={authUser?.favoriteColor}
-                  borderWidth={3}
-                />
-              </Center>
-              <Center>
-                <Text as="b" fontSize={"4xl"}>
-                  {authUser?.fullName}
-                </Text>
-              </Center>
-              <Center>
-                <Text fontSize={"xl"}>
-                  Talented{" "}
-                  <Text as="b" style={{ color: authUser?.favoriteColor }}>
-                    {schoolSubjects
-                      .find(
-                        (item) => item.subject === authUser?.fieldOfExpertise
-                      )
-                      ?.profession.toLowerCase()}
+    <Container>
+      <Flex
+        flexWrap="wrap"
+        justifyContent="space-evenly"
+        layerStyle={"white"}
+        minHeight="100vh"
+      >
+        <Box sx={outerBoxStyles}>
+          <Box sx={innerBoxStyles}>
+            <Stack p={4} pt={5} spacing={2} w={"100%"}>
+              <Stack spacing={0}>
+                <Center>
+                  <ChakraAvatar
+                    name={authUser?.fullName}
+                    src={authUser?.avatar}
+                    loading="lazy"
+                    size={"2xl"}
+                    borderColor={authUser?.favoriteColor}
+                    borderWidth={3}
+                  />
+                </Center>
+                <Center>
+                  <Text as="b" fontSize={"4xl"}>
+                    {authUser?.fullName}
                   </Text>
-                </Text>
-              </Center>
+                </Center>
+                <Center>
+                  <Text fontSize={"xl"}>
+                    Talented{" "}
+                    <Text as="b" style={{ color: authUser?.favoriteColor }}>
+                      {schoolSubjects
+                        .find(
+                          (item) => item.subject === authUser?.fieldOfExpertise
+                        )
+                        ?.profession.toLowerCase()}
+                    </Text>
+                  </Text>
+                </Center>
+                <Center>
+                  <Text fontSize={"md"}>Presenting on:</Text>
+                </Center>
+              </Stack>
+              <Text
+                border={"1px"}
+                borderRadius={"10px"}
+                w={"100%"}
+                minHeight={28}
+                style={innerBoxStyles}
+                backdropFilter="auto"
+                backdropBlur="64px"
+                p={1}
+              >
+                {authUser?.mystery}
+              </Text>
+              <Button
+                onClick={() => {
+                  updateUser({ isApplicationSubmitted: false }).then(() =>
+                    navigate(ROUTES.REGISTRATION)
+                  );
+                }}
+                size={"lg"}
+                borderWidth={"2px"}
+                borderColor={"black"}
+              >
+                Change my answers
+              </Button>
               <Center>
-                <Text fontSize={"md"}>Presenting on:</Text>
+                <Button
+                  leftIcon={<ArrowBackIcon />}
+                  colorScheme="black"
+                  variant="ghost"
+                  size={"sm"}
+                  onClick={() => {
+                    logout();
+                  }}
+                  position={"fixed"}
+                  bottom={4}
+                  backdropFilter="auto"
+                >
+                  {"LOG OUT"}
+                </Button>
               </Center>
             </Stack>
-            <Text
-              border={"1px"}
-              borderRadius={"10px"}
-              w={"100%"}
-              minHeight={28}
-              style={innerBoxStyles}
-              backdropFilter="auto"
-              backdropBlur="64px"
-              p={1}
-            >
-              {authUser?.mystery}
-            </Text>
-            <Button
-              onClick={() => {
-                updateUser({ isApplicationSubmitted: false }).then(() =>
-                  navigate(ROUTES.REGISTRATION)
-                );
-              }}
-              size={"lg"}
-              borderWidth={"2px"}
-              borderColor={"black"}
-            >
-              Change my answers
-            </Button>
-            <Center>
-              <Button
-                leftIcon={<ArrowBackIcon />}
-                colorScheme="black"
-                variant="ghost"
-                size={"sm"}
-                onClick={() => {
-                  logout();
-                }}
-                position={"fixed"}
-                bottom={4}
-                backdropFilter="auto"
-              >
-                {"LOG OUT"}
-              </Button>
-            </Center>
-          </Stack>
+          </Box>
         </Box>
-      </Box>
-    </Flex>
+      </Flex>
+    </Container>
   );
 };
 
