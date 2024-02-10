@@ -81,18 +81,9 @@ const PhoneAuth = ({
       {!isFieldAndButtonOnly && <MainImage />}
       <Box p={isFieldAndButtonOnly ? 0 : 4}>
         <FormContainer
-          authHeadingProps={
-            isFieldAndButtonOnly
-              ? {
-                  title: content.auth.login,
-                  // callToAction: "Take the ",
-                  // link: {
-                  //   label: "Genius IQ Test",
-                  //   to: ROUTES.MEMBERS,
-                  // },
-                }
-              : {}
-          }
+          authHeadingProps={{
+            title: isFieldAndButtonOnly ? undefined : content.auth.login,
+          }}
           buttonProps={
             showOneTimePasswordInput
               ? {
