@@ -20,7 +20,7 @@ const ProtectedPageContainer = () => {
           status: "error",
           ...TOAST_PROPS,
         });
-        navigate(ROUTES.IQ_TEST);
+        navigate(ROUTES.REGISTRATION);
       } else if (!authUser?.isMember) {
         toast({
           title:
