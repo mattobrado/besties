@@ -62,7 +62,6 @@ const PhoneAuth = ({
       })
       .catch((e) => {
         setSignInError(e.message);
-        location.reload();
       })
       .finally(() => setLoading(false));
   };
