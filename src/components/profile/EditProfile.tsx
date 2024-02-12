@@ -12,8 +12,13 @@ import { AddIcon } from "@chakra-ui/icons";
 import { useAuth, useUpdateUser } from "src/hooks";
 import { FormContainer, FormField } from "src/components/auth";
 import { ContentContext } from "src/context";
-import { INPUT_TYPE, ROUTES, VALIDATE, type UserType } from "src/lib";
-import { getSongIdFromLink } from "src/lib/utils";
+import {
+  INPUT_TYPE,
+  ROUTES,
+  VALIDATE,
+  type UserType,
+  getSongIdFromLink,
+} from "src/lib";
 export const EditProfile = ({
   id,
   goToNext,

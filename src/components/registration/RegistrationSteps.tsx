@@ -23,8 +23,8 @@ import {
   RadioOptions,
   ShortResponse,
 } from "src/components/registration";
-import { agreementLevels, schoolSubjects } from "src/lib/constants";
 import { EditProfile } from "src/components/profile";
+import { agreementLevels, schoolSubjects } from "src/lib";
 
 const RegistrationSteps = () => {
   const { authUser } = useAuth();

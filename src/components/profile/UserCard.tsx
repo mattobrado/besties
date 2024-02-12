@@ -1,10 +1,9 @@
 import { Center, Container, Text, Spacer, Stack } from "@chakra-ui/react";
-import type { UserType } from "src/lib/types/index";
 import { useNavigate } from "react-router-dom";
-import { ROUTES } from "src/lib/constants";
 import { Avatar } from "src/components/profile";
 import { ContentContext } from "src/context";
 import { useContext } from "react";
+import { ROUTES, type UserType } from "src/lib";
 
 const UserCard = ({
   user,
@@ -31,7 +30,6 @@ const UserCard = ({
         onClick
           ? onClick
           : () => {
-              // setBackground(user.favoriteColor);
               navigate(`${ROUTES.PROFILE}/${user.id}`);
             }
       }
@@ -42,7 +40,6 @@ const UserCard = ({
             #{ranking}
           </Center>
         )}
-        {/* <AvatarAndFullName user={user} size={"md"} isLink={false} /> */}
         <Center>
           <Avatar
             user={user}

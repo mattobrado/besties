@@ -2,14 +2,13 @@ import { Center, Grid, Stack, Text } from "@chakra-ui/react";
 import { useNavigate, useParams } from "react-router-dom";
 import { useFriendRequest, useUser } from "src/hooks/userHooks";
 import { useAuth } from "src/hooks";
-import { getStars } from "src/lib/utils";
 import AvatarInAvatar from "src/components/profile/AvatarInAvatar";
 import {
   ProfileButton,
   ProfilePosts,
   SpotifySong,
 } from "src/components/profile";
-import { ROUTES } from "src/lib/constants";
+import { ROUTES, getStars } from "src/lib";
 
 const Profile = () => {
   const { id } = useParams();
