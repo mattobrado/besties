@@ -7,7 +7,6 @@ import {
   ProtectedPageContainer,
 } from "src/components/layout";
 import { Registration, RegistrationSteps } from "src/components/registration";
-import { Search } from "src/components/search";
 import { ROUTES } from "src/lib";
 
 export const router = createBrowserRouter([
@@ -27,7 +26,7 @@ export const router = createBrowserRouter([
         children: [
           {
             path: ROUTES.MEMBERS,
-            element: <Search />,
+            element: "coming soon",
           },
         ],
       },

@@ -136,7 +136,7 @@ const RegistrationSteps = () => {
           <Text fontSize={"xlg"}>
             The final step required to become a member of The Genius Program is
             to deliver an in-person presentation. The theme for this batch is{" "}
-            <Text as="b" color={"pink.500"}>
+            <Text as="b" color={"brand.500"}>
               mysteries.{" "}
             </Text>
             After the judges evaluate your presentation and find it
@@ -144,7 +144,7 @@ const RegistrationSteps = () => {
           </Text>
           <Text as={"span"}>
             Please briefly describe the{" "}
-            <Text as="b" color={"pink.500"}>
+            <Text as="b" color={"brand.500"}>
               mystery{" "}
             </Text>
             you would like to present on.
@@ -181,10 +181,16 @@ const RegistrationSteps = () => {
         </Button>
       </Fade>
       <Box p={4} pb={24}>
-        <Stepper size="xs" index={activeStep} gap="0" colorScheme="pink" pt={0}>
+        <Stepper
+          size="xs"
+          index={activeStep}
+          gap="0"
+          pt={0}
+          colorScheme="brand"
+        >
           {steps.map((_step, index) => (
             <Step key={index}>
-              <StepIndicator>
+              <StepIndicator color={"brand"}>
                 <StepStatus complete={<StepIcon />} />
               </StepIndicator>
               <StepSeparator />
@@ -214,7 +220,7 @@ const RegistrationSteps = () => {
           <Progress
             w={"150px"}
             h={"4px"}
-            colorScheme="pink"
+            colorScheme="brand"
             value={percentComplete}
           />
         </Center>

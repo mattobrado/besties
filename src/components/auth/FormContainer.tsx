@@ -24,9 +24,9 @@ const FormContainer = ({
         <Stack spacing="2" as={"form"} pb={8}>
           {children}
         </Stack>
-        <Box layerStyle={"black"}>
+        <Box>
           <Button
-            colorScheme="pink"
+            variant={"brandPrimary"}
             type="submit"
             isLoading={buttonProps?.isLoading}
             loadingText={buttonProps?.loadingText}

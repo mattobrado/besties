@@ -9,7 +9,11 @@ const Logo = () => {
   return (
     <Box p={4}>
       <Link to={ROUTES.HOME} as={ReactRouterLink}>
-        <Image src={content.navBar.logoSrcURL} h={LOGO_HEIGHT} />
+        <Image
+          src={content.navBar.logoSrcURL}
+          h={LOGO_HEIGHT}
+          alt={content.home.altText}
+        />
       </Link>
     </Box>
   );

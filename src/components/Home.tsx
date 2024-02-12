@@ -21,7 +21,7 @@ const Home = () => {
     <>
       <MainImage />
       <Stack p={4} spacing={2}>
-        <Heading color={"pink.500"}>{content.home.heading}</Heading>
+        <Heading>{content.home.heading}</Heading>
         <Text>
           The Genius Program is a highly selective society which provides its
           members with exciting opportunities for intellectual stimulation.

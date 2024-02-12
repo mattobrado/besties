@@ -6,11 +6,11 @@ export const ROUTES = {
   ROOT: "/",
   HOME: "/",
   LOGIN: "/login",
+  MEMBERS: PROTECTED,
   PROFILE: PROTECTED + "/u",
   HIGHEST_RATED: PROTECTED + "/top-users",
   POST: PROTECTED + "/post",
   ADD_REVIEW: PROTECTED + "/review",
-  MEMBERS: PROTECTED + "/search",
   EDIT_PROFILE: PROTECTED + "/edit-profile",
   NOTIFICATIONS: PROTECTED + "/notifications",
   REGISTER: REGISTER,
@@ -33,7 +33,7 @@ export const THE_GENIUS_PROGRAM_CONTENT = {
     phoneNumberPlaceHolder: "Phone number",
     loggingIn: "Logging in",
     fullName: "Name",
-    favoriteSong: "Favorite song",
+    favoriteSong: "Favorite song (optional)",
     favoriteSongPlaceholder: "Paste Spotify link",
     changeAvatar: "Change avatar",
     pleaseEnterName: "Name can't be blank",
@@ -56,7 +56,7 @@ export const THE_GENIUS_PROGRAM_CONTENT = {
       "https://firebasestorage.googleapis.com/v0/b/myplace-618e9.appspot.com/o/assets%2Fthe-genius-program-high-resolution-logo-transparent.png?alt=media&token=438f09bb-bc6d-4413-9c2b-87fb226a72fb",
     logOut: "Log out",
     items: [
-      { id: "home", label: "ABOUT US", to: "" },
+      { id: "home", label: "ABOUT US", to: "/" },
       {
         id: "register",
         label: "GENIUS IQ TEST",
@@ -92,6 +92,7 @@ export const THE_GENIUS_PROGRAM_CONTENT = {
     homeScreenImage:
       "https://firebasestorage.googleapis.com/v0/b/myplace-618e9.appspot.com/o/assets%2FImageForArticle_2310_16611751753395783.webp?alt=media&token=8726fc79-bd09-40df-9846-643ee9818928",
     heading: "Welcome to The Genius Program",
+    altText: "Home",
   },
   lists: {
     search: "Search for a genius",
@@ -181,6 +182,15 @@ export const THE_GENIUS_PROGRAM_CONTENT = {
     reviewMinLength: "Review must be at least 1 character long",
     reviewMaxLength: "Review must be less than 280 characters",
   },
+  video: (
+    <iframe
+      width="335"
+      height="188"
+      src="https://www.youtube.com/embed/enijgkRpsE4?si=z5HIO_BCP594gvXi"
+      title="YouTube video player"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+    ></iframe>
+  ),
 };
 
 export const VALIDATE = {
