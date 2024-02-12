@@ -2,7 +2,7 @@ import { Box, Image, Link } from "@chakra-ui/react";
 import { useContext } from "react";
 import { Link as ReactRouterLink } from "react-router-dom";
 import { ContentContext } from "src/context";
-import { LOGO_HEIGHT, ROUTES } from "src/lib/constants";
+import { LOGO_HEIGHT, ROUTES } from "src/lib";
 
 const Logo = () => {
   const content = useContext(ContentContext);

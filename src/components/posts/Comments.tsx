@@ -1,11 +1,9 @@
 import { useNavigate, useParams } from "react-router-dom";
-import { usePost } from "../../hooks/postHooks";
-import Review from "../posts/Review";
-import NewCommentForm from "./NewCommentForm";
-import PostList from "../posts/PostList";
-import { useComments } from "../../hooks/commentHooks";
 import { Container } from "@chakra-ui/react";
-import { ROUTES } from "../../lib/constants";
+import { useComments, usePost } from "src/hooks";
+import { ROUTES } from "src/lib";
+import { PostList, Review } from "src/components/posts";
+import NewCommentForm from "src/components/posts/NewCommentForm";
 
 const Comments = () => {
   const { id } = useParams();
