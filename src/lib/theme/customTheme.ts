@@ -1,5 +1,4 @@
 import { extendTheme } from "@chakra-ui/react";
-import bottomNavigationTheme from "./bottomNavigationTheme";
 
 export const customTheme = extendTheme({
   initialColorMode: "dark",
@@ -18,10 +17,6 @@ export const customTheme = extendTheme({
       "800": "#620421",
       "900": "#310210",
     },
-  },
-
-  components: {
-    BottomNavigation: bottomNavigationTheme,
   },
 
   layerStyles: {
