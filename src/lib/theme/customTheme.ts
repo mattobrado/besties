@@ -32,7 +32,6 @@ export const customTheme = extendTheme({
         bg: props.colorMode === "dark" ? "black" : "white",
         lineHeight: "tall",
       },
-      h2: { color: "pink.500" },
     }),
   },
 });

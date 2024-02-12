@@ -182,6 +182,15 @@ export const THE_GENIUS_PROGRAM_CONTENT = {
     reviewMinLength: "Review must be at least 1 character long",
     reviewMaxLength: "Review must be less than 280 characters",
   },
+  video: (
+    <iframe
+      width="335"
+      height="188"
+      src="https://www.youtube.com/embed/enijgkRpsE4?si=z5HIO_BCP594gvXi"
+      title="YouTube video player"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+    ></iframe>
+  ),
 };
 
 export const VALIDATE = {
