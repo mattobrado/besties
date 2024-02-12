@@ -1,7 +1,7 @@
 import { Container } from "@chakra-ui/react";
-import PostList from "../posts/PostList";
-import ProfileHeading from "./ProfileHeading";
-import { usePostsForProfile } from "../../hooks/postHooks";
+import { PostList } from "src/components/posts";
+import ProfileHeading from "src/components/profile/ProfileHeading";
+import { usePostsForProfile } from "src/hooks";
 
 const ProfilePosts = ({ uid }: { uid: string }) => {
   const { posts } = usePostsForProfile(uid);
