@@ -5,3 +5,4 @@ export { default as PostBody } from "./PostBody";
 export { default as TimeStamp } from "./TimeStamp";
 export { default as Review } from "./Review";
 export { default as Comment } from "./Comment";
+export { default as TwoUserPost } from "./TwoUserPost";
