@@ -12,5 +12,6 @@ export {
   GLOBAL_PX,
   schoolSubjects,
   TOAST_PROPS,
+  LOGO_HEIGHT,
 } from "./constants";
 export { customTheme } from "./theme";
