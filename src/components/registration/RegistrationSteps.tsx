@@ -15,7 +15,7 @@ import {
   Stack,
 } from "@chakra-ui/react";
 import { ArrowBackIcon } from "@chakra-ui/icons";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useAuth, useLogout } from "src/hooks";
 import { PhoneAuth } from "src/components/auth";
 import {
@@ -24,10 +24,11 @@ import {
   ShortResponse,
 } from "src/components/registration";
 import { EditProfile } from "src/components/profile";
-import { agreementLevels, schoolSubjects } from "src/lib";
+import { ContentContext } from "src/context";
 
 const RegistrationSteps = () => {
   const { authUser } = useAuth();
+  const content = useContext(ContentContext);
   const { activeStep, setActiveStep, goToNext, goToPrevious } = useSteps({
     index: 0,
     count: 10,
@@ -49,7 +50,7 @@ const RegistrationSteps = () => {
       body: (
         <RadioOptions
           field={"iAmAQuickLearner"}
-          options={agreementLevels}
+          options={content.agreementLevels}
           goToNext={goToNext}
         />
       ),
@@ -60,7 +61,7 @@ const RegistrationSteps = () => {
       body: (
         <RadioOptions
           field={"iAmAboveAverage"}
-          options={agreementLevels}
+          options={content.agreementLevels}
           goToNext={goToNext}
         />
       ),
@@ -71,7 +72,7 @@ const RegistrationSteps = () => {
       body: (
         <RadioOptions
           field={"iAmOpenMinded"}
-          options={agreementLevels}
+          options={content.agreementLevels}
           goToNext={goToNext}
         />
       ),
@@ -111,7 +112,7 @@ const RegistrationSteps = () => {
       body: (
         <RadioOptions
           field={"fieldOfExpertise"}
-          options={schoolSubjects.map((item) => item.subject)}
+          options={content.schoolSubjects.map((item) => item.subject)}
           goToNext={goToNext}
           setFieldOfExpertise={setFieldOfExpertise}
         />
@@ -119,7 +120,8 @@ const RegistrationSteps = () => {
     },
     {
       title: `What are your thoughts on ${
-        schoolSubjects.find((item) => item.subject === fieldOfExpertise)?.topic
+        content.schoolSubjects.find((item) => item.subject === fieldOfExpertise)
+          ?.topic
       }?`,
       body: <ShortResponse field={"thoughts"} goToNext={goToNext} />,
     },

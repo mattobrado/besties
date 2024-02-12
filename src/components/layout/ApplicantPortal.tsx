@@ -11,14 +11,16 @@ import {
 } from "@chakra-ui/react";
 import { ArrowBackIcon } from "@chakra-ui/icons";
 import { useLocation, useNavigate } from "react-router-dom";
-import { useEffect } from "react";
+import { useContext, useEffect } from "react";
 import { useAuth, useLogout, useUpdateUser } from "src/hooks";
-import { ROUTES, TOAST_PROPS, schoolSubjects } from "src/lib";
+import { ROUTES, TOAST_PROPS } from "src/lib";
+import { ContentContext } from "src/context";
 
 const ApplicantPortal = () => {
+  const { authUser, isLoading } = useAuth();
+  const content = useContext(ContentContext);
   const { pathname } = useLocation();
   const navigate = useNavigate();
-  const { authUser, isLoading } = useAuth();
   const { logout } = useLogout();
   const toast = useToast();
 
@@ -87,7 +89,7 @@ const ApplicantPortal = () => {
                   <Text fontSize={"xl"}>
                     Talented{" "}
                     <Text as="b" style={{ color: authUser?.favoriteColor }}>
-                      {schoolSubjects
+                      {content.schoolSubjects
                         .find(
                           (item) => item.subject === authUser?.fieldOfExpertise
                         )

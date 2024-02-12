@@ -1,6 +1,6 @@
 import type { UserType } from "src/lib";
-import Avatar from "./Avatar";
 import { Avatar as ChakraAvatar } from "@chakra-ui/react";
+import { Avatar } from "src/components/profile";
 
 const AvatarInAvatar = ({
   user,

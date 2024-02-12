@@ -1,4 +1,5 @@
 import { ToastPosition } from "@chakra-ui/react";
+import bestiesContent from "src/lib/config/bestiesContent";
 
 const PROTECTED = "/members-only";
 const IQ_TEST = "/iq-test";
@@ -41,78 +42,6 @@ export const ACTION_ICON_SIZE = "lg";
 export const BOTTOM_NAV_HEIGHT = 24;
 export const LOGO_HEIGHT = "75px";
 export const NUM_ITEMS_OUT_OF_HAMBURGER = 3;
-
-export const schoolSubjects = [
-  {
-    profession: "Anthropologist",
-    subject: "Anthropology",
-    topic: "hunter-gatherer societies",
-  },
-  {
-    profession: "Archeologist",
-    subject: "Archeology",
-    topic: "what dinosaur's really looked like",
-  },
-  {
-    profession: "Architect",
-    subject: "Architecture",
-    topic: "The Sydney Opera House",
-  },
-  { profession: "Artist", subject: "Art", topic: "the point of art" },
-  { profession: "Astronomer", subject: "Astronomy", topic: "UFOs" },
-  { profession: "Biologist", subject: "Biology", topic: "gene editing" },
-  { profession: "Business leader", subject: "Business", topic: "Tesla stock" },
-  { profession: "Chemist", subject: "Chemistry", topic: "DNA" },
-  { profession: "Economist", subject: "Economics", topic: "China" },
-  { profession: "Filmmaker", subject: "Film", topic: "A24" },
-  { profession: "Geologist", subject: "Geology", topic: "rocks" },
-  {
-    profession: "Political leader",
-    subject: "Government",
-    topic: "the future of the United States",
-  },
-  { profession: "Historian", subject: "History", topic: "World War II" },
-  { profession: "", subject: "Literature", topic: "which book is best" },
-  {
-    profession: "Mathematician",
-    subject: "Mathematics",
-    topic: "Gödel's incompleteness theorems",
-  },
-  {
-    profession: "Medical professional",
-    subject: "Medicine",
-    topic: "pandemics",
-  },
-  { profession: "Musician", subject: "Music", topic: "Kanye West" },
-  { profession: "Neurologist", subject: "Neurology", topic: "the brain" },
-  {
-    profession: "Physicist",
-    subject: "Physics",
-    topic: "particle-wave duality",
-  },
-  { profession: "Technologist", subject: "Technology", topic: "AI" },
-  { profession: "Zoologist", subject: "Zoology", topic: "deep sea animals" },
-  { profession: "Psychologist", subject: "Psychology", topic: "consciousness" },
-  {
-    profession: "Philosopher",
-    subject: "Philosophy",
-    topic: "the mind vs. the body",
-  },
-]
-  .sort()
-  .concat({ profession: "professional", subject: "Other", topic: "life" });
-
-export const agreementLevels = [
-  "1 Not like me",
-  "2",
-  "3",
-  "4",
-  "5",
-  "6",
-  "7 Like me",
-];
-
-import { bestiesContent } from "./config/bestiesContent";
 
 export const INPUT_TYPE = {
   EMAIL: "email",

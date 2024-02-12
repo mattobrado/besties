@@ -1,7 +1,7 @@
-import { bestiesContent } from "./bestiesContent";
+import { BESTIES_CONTENT } from "src/lib";
 
 const THE_GENIUS_PROGRAM_CONTENT = {
-  ...bestiesContent,
+  ...BESTIES_CONTENT,
   loginLogo: undefined,
   auth: {
     appName: "The Genius Program",
@@ -32,6 +32,74 @@ const THE_GENIUS_PROGRAM_CONTENT = {
   search: {
     search: "Search for a genius",
   },
+  schoolSubjects: [
+    {
+      profession: "Anthropologist",
+      subject: "Anthropology",
+      topic: "hunter-gatherer societies",
+    },
+    {
+      profession: "Archeologist",
+      subject: "Archeology",
+      topic: "what dinosaur's really looked like",
+    },
+    {
+      profession: "Architect",
+      subject: "Architecture",
+      topic: "The Sydney Opera House",
+    },
+    { profession: "Artist", subject: "Art", topic: "the point of art" },
+    { profession: "Astronomer", subject: "Astronomy", topic: "UFOs" },
+    { profession: "Biologist", subject: "Biology", topic: "gene editing" },
+    {
+      profession: "Business leader",
+      subject: "Business",
+      topic: "Tesla stock",
+    },
+    { profession: "Chemist", subject: "Chemistry", topic: "DNA" },
+    { profession: "Economist", subject: "Economics", topic: "China" },
+    { profession: "Filmmaker", subject: "Film", topic: "A24" },
+    { profession: "Geologist", subject: "Geology", topic: "rocks" },
+    {
+      profession: "Political leader",
+      subject: "Government",
+      topic: "the future of the United States",
+    },
+    { profession: "Historian", subject: "History", topic: "World War II" },
+    { profession: "", subject: "Literature", topic: "which book is best" },
+    {
+      profession: "Mathematician",
+      subject: "Mathematics",
+      topic: "Gödel's incompleteness theorems",
+    },
+    {
+      profession: "Medical professional",
+      subject: "Medicine",
+      topic: "pandemics",
+    },
+    { profession: "Musician", subject: "Music", topic: "Kanye West" },
+    { profession: "Neurologist", subject: "Neurology", topic: "the brain" },
+    {
+      profession: "Physicist",
+      subject: "Physics",
+      topic: "particle-wave duality",
+    },
+    { profession: "Technologist", subject: "Technology", topic: "AI" },
+    { profession: "Zoologist", subject: "Zoology", topic: "deep sea animals" },
+    {
+      profession: "Psychologist",
+      subject: "Psychology",
+      topic: "consciousness",
+    },
+    {
+      profession: "Philosopher",
+      subject: "Philosophy",
+      topic: "the mind vs. the body",
+    },
+  ]
+    .sort()
+    .concat({ profession: "professional", subject: "Other", topic: "life" }),
+  agreementLevels: ["1 Not like me", "2", "3", "4", "5", "6", "7 Like me"],
 };
 
 export default THE_GENIUS_PROGRAM_CONTENT;
