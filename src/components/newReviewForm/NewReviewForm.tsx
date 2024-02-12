@@ -13,12 +13,11 @@ import TextareaAutosize from "react-textarea-autosize";
 import { useForm } from "react-hook-form";
 import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import SelectUser from "./SelectUser";
 import { TfiSearch } from "react-icons/tfi";
 import { useAddPost, useAuth } from "src/hooks";
 import { UserCard } from "src/components/profile";
 import { ContentContext } from "src/context";
-import { RatingInput } from "src/components/newReviewForm";
+import { RatingInput, SelectUser } from "src/components/newReviewForm";
 import { ROUTES, type PostType, type UserType, VALIDATE } from "src/lib";
 
 const NewReviewForm = () => {
