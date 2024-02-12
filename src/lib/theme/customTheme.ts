@@ -1,8 +1,13 @@
 import { extendTheme } from "@chakra-ui/react";
+import { buttonTheme } from "./button";
+import { drawerTheme } from "./drawer";
 
 export const customTheme = extendTheme({
-  initialColorMode: "dark",
-  useSystemColorMode: false,
+  config: {
+    initialColorMode: "dark",
+    useSystemColorMode: false,
+  },
+  components: { Drawer: drawerTheme, Button: buttonTheme },
 
   colors: {
     pink: {
@@ -19,19 +24,13 @@ export const customTheme = extendTheme({
     },
   },
 
-  layerStyles: {
-    white: {
-      color: "white",
-    },
-    black: {
-      color: "black",
-    },
-  },
   styles: {
-    global: () => ({
-      // Optionally set global CSS styles
-      body: {
-        bg: "black",
+    global: (props: { colorMode: string }) => ({
+      "html, body": {
+        fontSize: "sm",
+        color: props.colorMode === "dark" ? "white" : "black",
+        bg: props.colorMode === "dark" ? "black" : "white",
+        lineHeight: "tall",
       },
     }),
   },

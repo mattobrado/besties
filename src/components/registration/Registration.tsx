@@ -29,7 +29,7 @@ const Registration = () => {
   }
 
   return (
-    <Container p={0} layerStyle="white">
+    <Container p={0}>
       <Logo />
       {isRootPath ? (
         <Box p={4}>

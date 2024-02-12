@@ -1,18 +1,50 @@
-import { THE_GENIUS_PROGRAM_CONTENT } from "../../src/lib";
+import { ROUTES, THE_GENIUS_PROGRAM_CONTENT } from "../../src/lib";
 
-describe("template spec", () => {
+const rootPath = "http://localhost:5173/";
+
+describe("navigation", () => {
   beforeEach(() => {
     cy.viewport("iphone-6");
-    cy.visit("http://localhost:5173/");
+    cy.visit(rootPath);
   });
 
-  describe("navigation", () => {
-    it("passes", () => {
-      cy.get("[alt=Home");
-      cy.contains(THE_GENIUS_PROGRAM_CONTENT.navBar.items[0].label);
-      cy.contains(THE_GENIUS_PROGRAM_CONTENT.navBar.items[0].label);
-      cy.contains(THE_GENIUS_PROGRAM_CONTENT.navBar.items[1].label);
-      cy.get('[aria-label="Toggle navigation"]');
+  describe("the brand logo", () => {
+    it("navigates home", () => {
+      cy.get("[alt=Home").click();
+      cy.location("pathname").should("eq", "/");
+    });
+  });
+  describe("the about us link", () => {
+    it("navigates home", () => {
+      const item = THE_GENIUS_PROGRAM_CONTENT.navBar.items[0];
+      cy.contains(item.label).click();
+      cy.location("pathname").should("eq", item.to);
+    });
+  });
+  describe("the registration link", () => {
+    it("navigates to registration", () => {
+      const item = THE_GENIUS_PROGRAM_CONTENT.navBar.items[1];
+      cy.contains(item.label).click();
+      cy.location("pathname").should("eq", item.to);
+    });
+  });
+  describe("the the members page link", () => {
+    it("navigates to registration if use is unauthorized", () => {
+      const item = THE_GENIUS_PROGRAM_CONTENT.navBar.items[2];
+      cy.contains(item.label).click();
+      cy.location("pathname").should("eq", ROUTES.REGISTER);
+    });
+  });
+  describe("authorization", () => {
+    it("navigates to registration if use is unauthorized", () => {
+      const item = THE_GENIUS_PROGRAM_CONTENT.navBar.items[2];
+      cy.contains(item.label).click();
+      cy.location("pathname").should("eq", ROUTES.REGISTER);
+    });
+  });
+  describe("hamburger menu", () => {
+    it("navigates to registration if use is unauthorized", () => {
+      cy.get('[aria-label="Toggle navigation"]').click();
     });
   });
 });

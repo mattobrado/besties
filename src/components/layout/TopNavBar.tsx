@@ -18,9 +18,9 @@ import { useContext } from "react";
 import { ContentContext } from "src/context";
 
 const TopNavBar = () => {
-  const { isOpen, onOpen, onClose } = useDisclosure();
   const { authUser } = useAuth();
   const content = useContext(ContentContext);
+  const { isOpen, onOpen, onClose } = useDisclosure();
   const NAV_BAR_ITEMS = content.navBar.items;
 
   const itemsOutOfHamburger = NAV_BAR_ITEMS.slice(
@@ -36,20 +36,25 @@ const TopNavBar = () => {
       justifyContent={"space-between"}
     >
       {itemsOutOfHamburger.map((item) => (
-        <GenericNavBarItem {...item} />
+        <GenericNavBarItem variant="brandPrimary" {...item} />
       ))}
       <>
         <Button
           onClick={onOpen}
-          variant="ghost"
+          variant="brandPrimary"
           p={3}
           aria-label="Toggle navigation"
         >
           {isOpen ? <CloseIcon /> : <HamburgerIcon boxSize={6} />}
         </Button>
-        <Drawer isOpen={isOpen} placement="right" onClose={onClose}>
+        <Drawer
+          isOpen={isOpen}
+          placement="right"
+          onClose={onClose}
+          colorScheme="pink"
+        >
           <DrawerOverlay />
-          <DrawerContent bg={"black"} w={"full"}>
+          <DrawerContent w={"full"}>
             <DrawerCloseButton size={"lg"} p={4} />
             <Box h={12} />
             <DrawerBody py={4}>

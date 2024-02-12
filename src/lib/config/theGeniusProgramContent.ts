@@ -6,11 +6,11 @@ export const ROUTES = {
   ROOT: "/",
   HOME: "/",
   LOGIN: "/login",
+  MEMBERS: PROTECTED,
   PROFILE: PROTECTED + "/u",
   HIGHEST_RATED: PROTECTED + "/top-users",
   POST: PROTECTED + "/post",
   ADD_REVIEW: PROTECTED + "/review",
-  MEMBERS: PROTECTED + "/search",
   EDIT_PROFILE: PROTECTED + "/edit-profile",
   NOTIFICATIONS: PROTECTED + "/notifications",
   REGISTER: REGISTER,
@@ -56,7 +56,7 @@ export const THE_GENIUS_PROGRAM_CONTENT = {
       "https://firebasestorage.googleapis.com/v0/b/myplace-618e9.appspot.com/o/assets%2Fthe-genius-program-high-resolution-logo-transparent.png?alt=media&token=438f09bb-bc6d-4413-9c2b-87fb226a72fb",
     logOut: "Log out",
     items: [
-      { id: "home", label: "ABOUT US", to: "" },
+      { id: "home", label: "ABOUT US", to: "/" },
       {
         id: "register",
         label: "GENIUS IQ TEST",

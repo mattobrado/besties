@@ -7,8 +7,8 @@ const GenericNavBarItem = ({
   to,
   isLogout,
   state,
-  color,
   onClick,
+  variant,
 }: {
   label: string;
   to?: string;
@@ -16,7 +16,7 @@ const GenericNavBarItem = ({
   state?: {
     [key: string]: string;
   };
-  color?: string;
+  variant?: string;
   onClick?: () => void;
 }) => {
   const { logout } = useLogout();
@@ -36,9 +36,8 @@ const GenericNavBarItem = ({
             : onClick
           : () => {}
       }
-      variant="ghost"
+      variant={variant ?? "ghost"}
       size={"sm"}
-      color={color}
     >
       {label.toUpperCase()}
     </Button>
