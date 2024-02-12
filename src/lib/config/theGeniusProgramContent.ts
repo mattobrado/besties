@@ -1,6 +1,6 @@
 import { bestiesContent } from "./bestiesContent";
 
-export const THE_GENIUS_PROGRAM_CONTENT = {
+const THE_GENIUS_PROGRAM_CONTENT = {
   ...bestiesContent,
   loginLogo: undefined,
   auth: {
@@ -33,3 +33,5 @@ export const THE_GENIUS_PROGRAM_CONTENT = {
     search: "Search for a genius",
   },
 };
+
+export default THE_GENIUS_PROGRAM_CONTENT;
