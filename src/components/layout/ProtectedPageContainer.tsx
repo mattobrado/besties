@@ -20,7 +20,7 @@ const ProtectedPageContainer = () => {
           status: "error",
           ...TOAST_PROPS,
         });
-        navigate(ROUTES.IQ_TEST);
+        navigate(ROUTES.REGISTER);
       } else if (!authUser?.isMember) {
         toast({
           title:
@@ -28,7 +28,7 @@ const ProtectedPageContainer = () => {
           status: "error",
           ...TOAST_PROPS,
         });
-        navigate(ROUTES.APPLICANT);
+        navigate(ROUTES.APPLICATION_STATUS);
       }
     }
   }, [pathname, authUser, isLoading]);

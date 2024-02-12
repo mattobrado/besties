@@ -22,10 +22,10 @@ const Registration = () => {
   const { authUser } = useAuth();
   const navigate = useNavigate();
 
-  const isRootPath = pathname.endsWith(ROUTES.IQ_TEST);
+  const isRootPath = pathname.endsWith(ROUTES.REGISTER);
 
   if (authUser?.isApplicationSubmitted) {
-    navigate(ROUTES.APPLICANT);
+    navigate(ROUTES.APPLICATION_STATUS);
   }
 
   return (

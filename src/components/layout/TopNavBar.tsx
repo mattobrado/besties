@@ -13,11 +13,15 @@ import {
 import { CloseIcon, HamburgerIcon } from "@chakra-ui/icons";
 import { useAuth } from "src/hooks";
 import { GenericNavBarItem } from "src/components/layout";
-import { NAV_BAR_ITEMS, NUM_ITEMS_OUT_OF_HAMBURGER } from "src/lib";
+import { NUM_ITEMS_OUT_OF_HAMBURGER } from "src/lib";
+import { useContext } from "react";
+import { ContentContext } from "src/context";
 
 const TopNavBar = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const { authUser } = useAuth();
+  const content = useContext(ContentContext);
+  const NAV_BAR_ITEMS = content.navBar.items;
 
   const itemsOutOfHamburger = NAV_BAR_ITEMS.slice(
     0,
@@ -32,13 +36,7 @@ const TopNavBar = () => {
       justifyContent={"space-between"}
     >
       {itemsOutOfHamburger.map((item) => (
-        <GenericNavBarItem
-          label={item.label}
-          to={item.to}
-          key={item.label}
-          isLogout={item.isLogout}
-          state={item.state}
-        />
+        <GenericNavBarItem {...item} />
       ))}
       <>
         <Button
@@ -64,19 +62,9 @@ const TopNavBar = () => {
                 if (item.isForAuthorizedUsersOnly && !authUser) {
                   return;
                 }
-                if (item.isForGuestsOnly && authUser) {
-                  return;
-                }
                 return (
                   <Center key={item.label} py={4}>
-                    <GenericNavBarItem
-                      label={item.label}
-                      to={item.to}
-                      isLogout={item.isLogout}
-                      state={item.state}
-                      color="white"
-                      onClick={onClose}
-                    />
+                    <GenericNavBarItem {...item} onClick={onClose} />
                   </Center>
                 );
               })}

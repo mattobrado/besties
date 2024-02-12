@@ -25,7 +25,7 @@ const ApplicantPortal = () => {
   const toast = useToast();
 
   useEffect(() => {
-    if (!isLoading && pathname.startsWith(ROUTES.APPLICANT)) {
+    if (!isLoading && pathname.startsWith(ROUTES.APPLICATION_STATUS)) {
       if (!authUser?.isApplicationSubmitted) {
         toast({
           title:
@@ -33,7 +33,7 @@ const ApplicantPortal = () => {
           status: "error",
           ...TOAST_PROPS,
         });
-        navigate(ROUTES.IQ_TEST);
+        navigate(ROUTES.REGISTER);
       } else {
         toast({
           title: "Your application is under review.",
