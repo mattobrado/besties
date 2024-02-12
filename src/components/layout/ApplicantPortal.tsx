@@ -13,7 +13,7 @@ import { ArrowBackIcon } from "@chakra-ui/icons";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import { useAuth, useLogout, useUpdateUser } from "src/hooks";
-import { ROUTES, TOAST_PROPS, schoolSubjects } from "src/lib/constants";
+import { ROUTES, TOAST_PROPS, schoolSubjects } from "src/lib";
 
 const ApplicantPortal = () => {
   const { pathname } = useLocation();
