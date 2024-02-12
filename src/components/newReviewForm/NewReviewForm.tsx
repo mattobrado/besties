@@ -19,8 +19,7 @@ import { useAddPost, useAuth } from "src/hooks";
 import { UserCard } from "src/components/profile";
 import { ContentContext } from "src/context";
 import { RatingInput } from "src/components/newReviewForm";
-import { ROUTES, type PostType, type UserType } from "src/lib";
-import { VALIDATE } from "src/lib/constants";
+import { ROUTES, type PostType, type UserType, VALIDATE } from "src/lib";
 
 const NewReviewForm = () => {
   const { authUser } = useAuth();

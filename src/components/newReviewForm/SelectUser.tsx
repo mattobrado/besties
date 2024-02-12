@@ -1,7 +1,5 @@
 import { Modal, ModalBody, ModalContent, ModalOverlay } from "@chakra-ui/react";
 import { Search } from "src/components/search";
-import { GLOBAL_PX } from "src/lib/constants";
-import type { UserType } from "src/lib/types/index";
 
 export default function SelectUser({
   isOpen,
