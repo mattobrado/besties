@@ -1,6 +1,5 @@
 import { query, collection, where, getDocs } from "firebase/firestore";
-import { db } from "../firebase";
-import { COLLECTIONS } from "../constants";
+import { COLLECTIONS, db } from "src/lib";
 
 const isUsernameDuplicated = async (username: string) => {
   const q = query(
