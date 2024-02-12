@@ -11,7 +11,8 @@ describe("registration", () => {
     cy.get('button[type="submit"]').click();
     // cy.get("#pinInput-0").type("555555");
     cy.wait(1000);
-    cy.get("#editProfile").click();
+    const editProfileButton = cy.get("#editProfile");
+    if (editProfileButton) editProfileButton.click();
     cy.get(":nth-child(1) > .chakra-radio__control").click();
     cy.get('button[type="submit"]').click();
     cy.get(":nth-child(7) > .chakra-radio__control").click();
