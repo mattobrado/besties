@@ -1,6 +1,7 @@
 import { Text, TextProps } from "@chakra-ui/react";
 import { formatDistanceToNow } from "date-fns";
-import { bestiesContent } from "../../lib/content/bestiesContent";
+import { useContext } from "react";
+import { ContentContext } from "src/context";
 
 const TimeStamp = ({
   date,
@@ -8,10 +9,13 @@ const TimeStamp = ({
 }: {
   date: number;
   textProps?: TextProps;
-}) => (
-  <Text {...textProps}>
-    {formatDistanceToNow(date)} {bestiesContent.post.ago}
-  </Text>
-);
+}) => {
+  const content = useContext(ContentContext);
+  return (
+    <Text {...textProps}>
+      {formatDistanceToNow(date)} {content.post.ago}
+    </Text>
+  );
+};
 
 export default TimeStamp;
