@@ -1,8 +1,7 @@
 import { useContext } from "react";
 import { TwoUserPost } from "src/components/posts";
 import { ContentContext } from "src/context";
-import type { PostType } from "src/lib/types";
-import { getStars } from "src/lib/utils";
+import { getStars, type PostType } from "src/lib";
 
 const Review = ({
   post,

@@ -19,3 +19,4 @@ export {
   POST_HEADER_SIZE,
 } from "./constants";
 export { customTheme } from "./theme";
+export { getStars } from "./utils";

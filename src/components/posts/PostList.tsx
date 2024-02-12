@@ -1,8 +1,8 @@
 import { Text } from "@chakra-ui/react";
-import type { PostType } from "src/lib/types";
 import { ContentContext } from "src/context";
 import { useContext } from "react";
 import { Review, Comment } from "src/components/posts";
+import type { PostType } from "src/lib";
 
 export const PostList = ({ posts }: { posts: PostType[] }) => {
   const content = useContext(ContentContext);

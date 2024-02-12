@@ -2,8 +2,7 @@ import { HStack, Skeleton, Text } from "@chakra-ui/react";
 import { PostBody, TimeStamp } from "src/components/posts";
 import { AvatarAndFullName } from "src/components/profile";
 import { useUser } from "src/hooks";
-import { POST_HEADER_SIZE } from "src/lib/constants";
-import type { PostType } from "src/lib/types";
+import { POST_HEADER_SIZE, type PostType } from "src/lib";
 
 const TwoUserPost = ({
   children,
