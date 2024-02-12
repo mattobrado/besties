@@ -1,7 +1,7 @@
 import { Center, Grid, Stack, Text } from "@chakra-ui/react";
 import { useNavigate, useParams } from "react-router-dom";
 import { useFriendRequest, useUser } from "../../hooks/userHooks";
-import getStars from "../../utils/getStars";
+import getStars from "../../lib/utils/getStars";
 import ProfilePosts from "./ProfilePosts";
 import AvatarInAvatar from "./AvatarInAvatar";
 import { ROUTES } from "../../lib/constants";

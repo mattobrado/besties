@@ -18,7 +18,7 @@ import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import type { UserType } from "src/lib/types/index";
 import { COLLECTIONS } from "src/lib/constants";
 import { db, storage } from "src/lib/firebase";
-import getNewRating from "src/utils/getNewRating";
+import getNewRating from "src/lib/utils/getNewRating";
 
 export const useUser = (
   uid?: string
