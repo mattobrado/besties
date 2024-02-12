@@ -15,7 +15,7 @@ import {
 } from "react-router-dom";
 import { Logo } from "src/components/layout";
 import { useAuth } from "src/hooks";
-import { ROUTES } from "src/lib/constants";
+import { ROUTES } from "src/lib";
 
 const Registration = () => {
   const { pathname } = useLocation();

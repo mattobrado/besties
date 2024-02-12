@@ -1,4 +1,4 @@
-import { ROUTES } from "../constants";
+import { ROUTES } from "src/lib";
 
 const THE_GENIUS_PROGRAM_CONFIG = {
   showBottomNavBar: false,

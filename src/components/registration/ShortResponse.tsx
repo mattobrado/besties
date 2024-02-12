@@ -3,10 +3,8 @@ import TextareaAutosize from "react-textarea-autosize";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { useAuth, useUpdateUser } from "src/hooks";
-import { ROUTES } from "src/lib/constants";
-import { VALIDATE } from "src/lib/formValidation";
 import { NextButton } from "src/components/registration";
-import type { UserType } from "src/lib/types";
+import { VALIDATE, type UserType, ROUTES } from "src/lib";
 
 const RadioOptions = ({
   goToNext,

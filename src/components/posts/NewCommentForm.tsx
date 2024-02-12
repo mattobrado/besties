@@ -1,14 +1,14 @@
 import { Box, Button, Flex, FormControl, Input } from "@chakra-ui/react";
-import { bestiesContent } from "../../lib/content/bestiesContent";
 import TextareaAutosize from "react-textarea-autosize";
 import { useForm } from "react-hook-form";
-import { VALIDATE } from "../../lib/formValidation";
-import { PostType } from "../../lib/types";
-import { useAddPost } from "../../hooks/postHooks";
-import { useAuth } from "../../hooks/authHooks";
+import { useAddPost, useAuth } from "src/hooks";
+import { ContentContext } from "src/context";
+import { useContext } from "react";
+import { VALIDATE, type PostType } from "src/lib";
 
 const NewCommentForm = ({ post }: { post: PostType }) => {
   const { authUser } = useAuth();
+  const content = useContext(ContentContext);
   const { id: postId } = post;
   const {
     register,
@@ -38,7 +38,7 @@ const NewCommentForm = ({ post }: { post: PostType }) => {
             resize="none"
             size={"lg"}
             pb={1}
-            placeholder={bestiesContent.commentForm.commentField}
+            placeholder={content.commentForm.commentField}
             {...register("text", VALIDATE.TEXT)}
           />
         </FormControl>
@@ -49,9 +49,9 @@ const NewCommentForm = ({ post }: { post: PostType }) => {
             type="submit"
             size="sm"
             isLoading={isLoading}
-            loadingText={bestiesContent.submitButtonLoadingText}
+            loadingText={content.submitButtonLoadingText}
           >
-            {bestiesContent.submitButtonText}
+            {content.submitButtonText}
           </Button>
         </FormControl>
       </Box>

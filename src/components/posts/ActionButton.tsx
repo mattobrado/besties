@@ -1,6 +1,6 @@
 import { HStack, Text, Box, IconButton } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
-import { ACTION_ICON_SIZE } from "../../lib/constants";
+import { ACTION_ICON_SIZE } from "src/lib";
 
 const ActionButton = ({
   onClick,

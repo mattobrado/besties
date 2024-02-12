@@ -10,9 +10,7 @@ import {
   where,
 } from "firebase/firestore";
 import { useCollectionData } from "react-firebase-hooks/firestore";
-import { db } from "../lib/firebase";
-import { COLLECTIONS } from "../lib/constants";
-import { PostType } from "../lib/types";
+import { COLLECTIONS, db, type PostType } from "src/lib";
 
 export const useComments = (postID?: string) => {
   const q = query(

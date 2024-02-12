@@ -1,13 +1,18 @@
 import { useAuthState, useSignOut } from "react-firebase-hooks/auth";
-import { auth, db } from "src/lib/firebase";
 import { useContext, useEffect, useState } from "react";
-import { COLLECTIONS, ROUTES, TOAST_PROPS } from "src/lib/constants";
 import { User } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import { useToast } from "@chakra-ui/react";
 import { setDoc, doc, getDoc, DocumentData } from "firebase/firestore";
-import type UserType from "src/lib/types/UserType";
 import { ContentContext } from "src/context";
+import {
+  auth,
+  COLLECTIONS,
+  db,
+  ROUTES,
+  TOAST_PROPS,
+  type UserType,
+} from "src/lib";
 
 export const useAuth = (): {
   authUser?: UserType;

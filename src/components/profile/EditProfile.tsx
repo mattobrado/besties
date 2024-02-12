@@ -5,19 +5,20 @@ import {
   Avatar as ChakraAvatar,
   Center,
 } from "@chakra-ui/react";
-import { useUpdateUser } from "../../hooks/userHooks";
 import { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { ROUTES } from "../../lib/constants";
-import { INPUT_TYPE, VALIDATE } from "../../lib/formValidation";
-import FormField from "../auth/FormField";
-import FormContainer from "../auth/FormContainer";
 import { useForm } from "react-hook-form";
-import ContentContext from "../../context/ContentProvider";
 import { AddIcon } from "@chakra-ui/icons";
-import getSongIdFromLink from "../../utils/getSongIdFromLink";
-import { useAuth } from "../../hooks/authHooks";
-import type { UserType } from "src/lib/types";
+import { useAuth, useUpdateUser } from "src/hooks";
+import { FormContainer, FormField } from "src/components/auth";
+import { ContentContext } from "src/context";
+import {
+  INPUT_TYPE,
+  ROUTES,
+  VALIDATE,
+  type UserType,
+  getSongIdFromLink,
+} from "src/lib";
 export const EditProfile = ({
   id,
   goToNext,
@@ -26,6 +27,7 @@ export const EditProfile = ({
   goToNext?: () => void;
 }) => {
   const { authUser } = useAuth();
+  const content = useContext(ContentContext);
   const navigate = useNavigate();
   const [color, setColor] = useState("#F40B52");
   useEffect(() => {
@@ -71,8 +73,6 @@ export const EditProfile = ({
       })
       .catch((e) => console.log(e));
   };
-
-  const content = useContext(ContentContext);
 
   const imageInputId = "image-input";
 

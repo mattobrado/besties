@@ -2,8 +2,8 @@ import { Outlet } from "react-router-dom";
 import { Box, Container } from "@chakra-ui/react";
 import { useContext } from "react";
 import { ConfigContext } from "src/context";
-import { BOTTOM_NAV_HEIGHT, GLOBAL_PX } from "src/lib/constants";
 import { BottomNavBar, Logo, TopNavBar } from "src/components/layout";
+import { BOTTOM_NAV_HEIGHT, GLOBAL_PX } from "src/lib";
 
 const Layout = () => {
   const config = useContext(ConfigContext);

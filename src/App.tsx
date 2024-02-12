@@ -1,11 +1,12 @@
 import { RouterProvider } from "react-router-dom";
-import { router } from "./routes/routes";
 import { ChakraProvider } from "@chakra-ui/react";
-import { customTheme } from "./lib/theme/customTheme";
-import THE_GENIUS_PROGRAM_CONFIG from "./lib/content/theGeniusProgramConfig";
-import { THE_GENIUS_PROGRAM_CONTENT } from "./lib/content/theGeniusProgramContent";
-import ConfigContext from "./context/ConfigProvider";
-import ContentContext from "./context/ContentProvider";
+import {
+  THE_GENIUS_PROGRAM_CONFIG,
+  THE_GENIUS_PROGRAM_CONTENT,
+  customTheme,
+} from "src/lib";
+import { ConfigContext, ContentContext } from "src/context";
+import { router } from "src/router";
 
 const App = () => {
   const content = THE_GENIUS_PROGRAM_CONTENT;

@@ -2,8 +2,8 @@ import { useEffect } from "react";
 import { Outlet, useLocation, useNavigate } from "react-router-dom";
 import { Box, useToast } from "@chakra-ui/react";
 import { useAuth } from "src/hooks";
-import { ROUTES, TOAST_PROPS } from "src/lib/constants";
 import { LoadingScreen } from "src/components";
+import { ROUTES, TOAST_PROPS } from "src/lib";
 
 const ProtectedPageContainer = () => {
   const { pathname } = useLocation();

@@ -9,24 +9,20 @@ import {
   Textarea,
   useDisclosure,
 } from "@chakra-ui/react";
-import RatingInput from "./RatingInput";
-import { bestiesContent } from "../../lib/content/bestiesContent";
 import TextareaAutosize from "react-textarea-autosize";
 import { useForm } from "react-hook-form";
-import { useAddPost } from "../../hooks/postHooks";
-import { useContext, useEffect, useState } from "react";
-import { VALIDATE } from "../../lib/formValidation";
-import type { PostType, UserType } from "src/lib/types/index";
+import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import SelectUser from "./SelectUser";
-import UserCard from "../profile/UserCard";
 import { TfiSearch } from "react-icons/tfi";
-import BackgroundContext from "../../BackGroundContext";
-import { ROUTES } from "../../lib/constants";
-import { useAuth } from "../../hooks/authHooks";
+import { useAddPost, useAuth } from "src/hooks";
+import { UserCard } from "src/components/profile";
+import { ContentContext } from "src/context";
+import { RatingInput, SelectUser } from "src/components/newReviewForm";
+import { ROUTES, type PostType, type UserType, VALIDATE } from "src/lib";
 
 const NewReviewForm = () => {
   const { authUser } = useAuth();
+  const content = useContext(ContentContext);
   const {
     register,
     handleSubmit,
@@ -39,12 +35,6 @@ const NewReviewForm = () => {
   );
   const navigate = useNavigate();
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const setBackground = useContext(BackgroundContext);
-
-  useEffect(
-    () => setBackground(targetUser?.favoriteColor),
-    [targetUser?.favoriteColor]
-  );
 
   const handleAddReview = (review: Partial<PostType>) => {
     if (!targetUser) return;
@@ -72,13 +62,11 @@ const NewReviewForm = () => {
         {targetUser ? (
           <InputGroup size={"lg"} onClick={onOpen}>
             <UserCard user={targetUser} onClick={onOpen} />,
-            <InputRightElement mt={2}>
-              {bestiesContent.editEmoji}
-            </InputRightElement>
+            <InputRightElement mt={2}>{content.editEmoji}</InputRightElement>
           </InputGroup>
         ) : (
           <InputGroup size={"lg"} onClick={onOpen} h={16}>
-            <Input placeholder={bestiesContent.reviewForm.revieweeField} />
+            <Input placeholder={content.reviewForm.revieweeField} />
             <InputRightElement>
               <TfiSearch />
             </InputRightElement>
@@ -96,7 +84,7 @@ const NewReviewForm = () => {
             as={TextareaAutosize}
             resize="none"
             size={"lg"}
-            placeholder={bestiesContent.reviewForm.reviewField}
+            placeholder={content.reviewForm.reviewField}
             minRows={5}
             {...register("text", VALIDATE.TEXT)}
           />
@@ -109,9 +97,9 @@ const NewReviewForm = () => {
           size="md"
           w="full"
           isLoading={addingReview}
-          loadingText={bestiesContent.submitButtonLoadingText}
+          loadingText={content.submitButtonLoadingText}
         >
-          {bestiesContent.submitButtonText}
+          {content.submitButtonText}
         </Button>
       </Stack>
     </form>
