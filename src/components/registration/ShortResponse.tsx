@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { useAuth, useUpdateUser } from "src/hooks";
 import { NextButton } from "src/components/registration";
-import { VALIDATE, type UserType, ROUTES } from "src/lib";
+import { type UserType, ROUTES, VALIDATE } from "src/lib";
 
 const RadioOptions = ({
   goToNext,
@@ -31,7 +31,7 @@ const RadioOptions = ({
   const handleAddReview = (data: any) => {
     updateUser({ [field]: data.text, isApplicationSubmitted: !goToNext }).then(
       () => {
-        goToNext ? goToNext() : navigate(ROUTES.APPLICANT);
+        goToNext ? goToNext() : navigate(ROUTES.APPLICATION_STATUS);
       }
     );
   };

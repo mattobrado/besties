@@ -26,7 +26,7 @@ export const router = createBrowserRouter([
         element: <ProtectedPageContainer />,
         children: [
           {
-            path: ROUTES.SEARCH,
+            path: ROUTES.MEMBERS,
             element: <Search />,
           },
         ],
@@ -34,9 +34,9 @@ export const router = createBrowserRouter([
     ],
   },
   {
-    path: ROUTES.IQ_TEST,
+    path: ROUTES.REGISTER,
     element: <Registration />,
     children: [{ path: ROUTES.REGISTRATION, element: <RegistrationSteps /> }],
   },
-  { path: ROUTES.APPLICANT, element: <ApplicantPortal /> },
+  { path: ROUTES.APPLICATION_STATUS, element: <ApplicantPortal /> },
 ]);
