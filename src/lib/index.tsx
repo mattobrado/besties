@@ -20,4 +20,4 @@ export {
   agreementLevels,
 } from "./constants";
 export { customTheme } from "./theme";
-export { getStars, getSongIdFromLink } from "./utils";
+export { getStars, getSongIdFromLink, getNewRating } from "./utils";

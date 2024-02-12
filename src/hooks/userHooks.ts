@@ -15,10 +15,8 @@ import {
 } from "react-firebase-hooks/firestore";
 import { useState } from "react";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
-import type { UserType } from "src/lib/types/index";
-import { COLLECTIONS } from "src/lib/constants";
-import { db, storage } from "src/lib/firebase";
-import getNewRating from "src/lib/utils/getNewRating";
+import { COLLECTIONS, db, getNewRating, type UserType } from "src/lib";
+import { storage } from "src/lib/firebase";
 
 export const useUser = (
   uid?: string
