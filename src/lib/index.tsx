@@ -13,5 +13,6 @@ export {
   schoolSubjects,
   TOAST_PROPS,
   LOGO_HEIGHT,
+  NUM_ITEMS_OUT_OF_HAMBURGER,
 } from "./constants";
 export { customTheme } from "./theme";

@@ -15,6 +15,7 @@ import { useContext } from "react";
 import { ConfigContext } from "src/context";
 import { useAuth } from "src/hooks";
 import { GenericNavBarItem } from "src/components/layout";
+import { NUM_ITEMS_OUT_OF_HAMBURGER } from "src/lib";
 
 const TopNavBar = () => {
   const config = useContext(ConfigContext);
