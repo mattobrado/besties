@@ -112,7 +112,7 @@ export const agreementLevels = [
   "7 Like me",
 ];
 
-import { bestiesContent } from "./content/bestiesContent";
+import { bestiesContent } from "./config/bestiesContent";
 
 export const INPUT_TYPE = {
   EMAIL: "email",

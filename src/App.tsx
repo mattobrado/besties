@@ -2,8 +2,8 @@ import { RouterProvider } from "react-router-dom";
 import { router } from "./routes/routes";
 import { ChakraProvider } from "@chakra-ui/react";
 import { customTheme } from "./lib/theme/customTheme";
-import THE_GENIUS_PROGRAM_CONFIG from "./lib/content/theGeniusProgramConfig";
-import { THE_GENIUS_PROGRAM_CONTENT } from "./lib/content/theGeniusProgramContent";
+import THE_GENIUS_PROGRAM_CONFIG from "./lib/config/theGeniusProgramConfig";
+import { THE_GENIUS_PROGRAM_CONTENT } from "./lib/config/theGeniusProgramContent";
 import ConfigContext from "./context/ConfigProvider";
 import ContentContext from "./context/ContentProvider";
 
