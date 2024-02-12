@@ -1,15 +1,17 @@
-import { useHighestRated } from "../../hooks/userHooks";
-import UserList from "../profile/UserList";
 import { Center, Divider, Heading } from "@chakra-ui/react";
-import { bestiesContent } from "../../lib/content/bestiesContent";
+import { useContext } from "react";
+import { UserList } from "src/components/profile";
+import { ContentContext } from "src/context";
+import { useHighestRated } from "src/hooks/userHooks";
 
 const HighestRated = () => {
   const { users } = useHighestRated();
+  const content = useContext(ContentContext);
   return (
     <>
       <Center>
         <Heading size={"xl"}>
-          <i>{bestiesContent.lists.highestRatedHeading}</i>
+          <i>{content.lists.highestRatedHeading}</i>
         </Heading>
       </Center>
       <Divider mb={3} />

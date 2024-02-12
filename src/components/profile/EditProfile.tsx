@@ -8,8 +8,7 @@ import {
 import { useUpdateUser } from "../../hooks/userHooks";
 import { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { ROUTES } from "../../lib/constants";
-import { INPUT_TYPE, VALIDATE } from "../../lib/formValidation";
+import { ROUTES, INPUT_TYPE, VALIDATE } from "../../lib/constants";
 import FormField from "../auth/FormField";
 import FormContainer from "../auth/FormContainer";
 import { useForm } from "react-hook-form";

@@ -3,8 +3,7 @@ import TextareaAutosize from "react-textarea-autosize";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { useAuth, useUpdateUser } from "src/hooks";
-import { ROUTES } from "src/lib/constants";
-import { VALIDATE } from "src/lib/formValidation";
+import { ROUTES, VALIDATE } from "src/lib/constants";
 import { NextButton } from "src/components/registration";
 import type { UserType } from "src/lib/types";
 

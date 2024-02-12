@@ -13,7 +13,7 @@ import {
   Merge,
 } from "react-hook-form";
 import TextareaAutosize from "react-textarea-autosize";
-import { INPUT_TYPE } from "src/lib/formValidation";
+import { INPUT_TYPE } from "src/lib/constants";
 
 const FormField = ({
   error,

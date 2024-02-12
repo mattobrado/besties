@@ -1,7 +1,7 @@
 import { BottomNavigationItem } from "chakra-ui-bottom-navigation";
 import { Text } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
-import { BOTTOM_NAV_HEIGHT } from "../../lib/constants";
+import { BOTTOM_NAV_HEIGHT } from "src/lib/constants";
 
 const MyNavigationItem = ({
   icon,
