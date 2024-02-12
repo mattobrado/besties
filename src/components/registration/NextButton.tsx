@@ -14,6 +14,7 @@ const NextButton = ({
     isLoading={isLoading}
     variant={"brandPrimary"}
     id={"continueRegistration"}
+    type="submit"
     {...buttonProps}
   >
     <Text w={"96px"} fontSize={"lg"}>

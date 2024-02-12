@@ -33,7 +33,7 @@ export const THE_GENIUS_PROGRAM_CONTENT = {
     phoneNumberPlaceHolder: "Phone number",
     loggingIn: "Logging in",
     fullName: "Name",
-    favoriteSong: "Favorite song",
+    favoriteSong: "Favorite song (optional)",
     favoriteSongPlaceholder: "Paste Spotify link",
     changeAvatar: "Change avatar",
     pleaseEnterName: "Name can't be blank",

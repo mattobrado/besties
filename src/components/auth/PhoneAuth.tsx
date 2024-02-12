@@ -111,6 +111,7 @@ const PhoneAuth = ({
                   placeholder="🥸"
                   value={oneTimePassword}
                   onChange={pinOnChange}
+                  id="pinInput"
                 >
                   <PinInputField />
                   <Spacer border={"transparent"} />

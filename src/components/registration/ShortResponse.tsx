@@ -48,6 +48,7 @@ const RadioOptions = ({
               minRows={5}
               maxLength={1000}
               {...register("text", VALIDATE.TEXT)}
+              id="shortResponseInput"
             />
             <FormErrorMessage>
               {typeof errors.text?.message === "string" && errors.text?.message}

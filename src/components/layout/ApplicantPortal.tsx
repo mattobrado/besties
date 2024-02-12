@@ -117,6 +117,9 @@ const ApplicantPortal = () => {
                 size={"lg"}
                 borderWidth={"2px"}
                 borderColor={"black"}
+                bg={"white"}
+                color={"black"}
+                id="editProfile"
               >
                 Change my answers
               </Button>

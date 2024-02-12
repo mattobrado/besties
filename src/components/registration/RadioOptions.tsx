@@ -22,8 +22,14 @@ const RadioOptions = ({
   return (
     <RadioGroup onChange={setValue} value={value} colorScheme="brand">
       <Stack spacing={1} pb={5}>
-        {options?.map((option) => (
-          <Radio size={"md"} py={1} value={option} key={option}>
+        {options?.map((option, index) => (
+          <Radio
+            size={"md"}
+            py={1}
+            value={option}
+            key={option}
+            id={`option-${index}`}
+          >
             {option}
           </Radio>
         ))}
