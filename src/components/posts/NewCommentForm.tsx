@@ -49,9 +49,9 @@ const NewCommentForm = ({ post }: { post: PostType }) => {
             type="submit"
             size="sm"
             isLoading={isLoading}
-            loadingText={content.submitButtonLoadingText}
+            loadingText={content.post.submitButtonLoadingText}
           >
-            {content.submitButtonText}
+            {content.post.submitButtonText}
           </Button>
         </FormControl>
       </Box>

@@ -10,7 +10,7 @@ export const PostList = ({ posts }: { posts: PostType[] }) => {
     <>
       {posts?.length === 0 ? (
         <Text textAlign="center" fontSize="lg">
-          {content.activity.noActivity}
+          {content.noActivity}
         </Text>
       ) : (
         posts?.map((post) =>

@@ -1,7 +1,10 @@
-import { BESTIES_CONTENT } from "src/lib";
-
 const THE_GENIUS_PROGRAM_CONTENT = {
-  ...BESTIES_CONTENT,
+  starEmoji: "⭐️",
+  editEmoji: "✏️",
+  noActivity: "no activity yet...",
+  cancel: "Cancel",
+  delete: "Delete",
+
   loginLogo: undefined,
   auth: {
     appName: "The Genius Program",
@@ -29,8 +32,9 @@ const THE_GENIUS_PROGRAM_CONTENT = {
       "https://firebasestorage.googleapis.com/v0/b/myplace-618e9.appspot.com/o/assets%2FImageForArticle_2310_16611751753395783.webp?alt=media&token=8726fc79-bd09-40df-9846-643ee9818928",
     heading: "Welcome to The Genius Program",
   },
-  search: {
+  lists: {
     search: "Search for a genius",
+    highestRatedHeading: "Best people",
   },
   schoolSubjects: [
     {
@@ -100,6 +104,22 @@ const THE_GENIUS_PROGRAM_CONTENT = {
     .sort()
     .concat({ profession: "professional", subject: "Other", topic: "life" }),
   agreementLevels: ["1 Not like me", "2", "3", "4", "5", "6", "7 Like me"],
+  post: {
+    reviewed: "reviewed",
+    deleteReviewHeading: "Delete review",
+    deleteReviewBody: "Are you sure?",
+    ago: "ago",
+    submitButtonText: "Post",
+    submitButtonLoadingText: "Posting...",
+  },
+  newPost: {
+    revieweeField: "Who are you reviewing?",
+
+    reviewField: "What do we need to know?",
+    fieldRequired: "Required",
+    reviewMinLength: "Review must be at least 1 character long",
+    reviewMaxLength: "Review must be less than 280 characters",
+  },
 };
 
 export default THE_GENIUS_PROGRAM_CONTENT;

@@ -66,7 +66,7 @@ const NewReviewForm = () => {
           </InputGroup>
         ) : (
           <InputGroup size={"lg"} onClick={onOpen} h={16}>
-            <Input placeholder={content.reviewForm.revieweeField} />
+            <Input placeholder={content.newPost.revieweeField} />
             <InputRightElement>
               <TfiSearch />
             </InputRightElement>
@@ -84,7 +84,7 @@ const NewReviewForm = () => {
             as={TextareaAutosize}
             resize="none"
             size={"lg"}
-            placeholder={content.reviewForm.reviewField}
+            placeholder={content.newPost.reviewField}
             minRows={5}
             {...register("text", VALIDATE.TEXT)}
           />
@@ -97,9 +97,9 @@ const NewReviewForm = () => {
           size="md"
           w="full"
           isLoading={addingReview}
-          loadingText={content.submitButtonLoadingText}
+          loadingText={content.post.submitButtonLoadingText}
         >
-          {content.submitButtonText}
+          {content.post.submitButtonText}
         </Button>
       </Stack>
     </form>
