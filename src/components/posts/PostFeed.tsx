@@ -1,6 +1,6 @@
-import { usePosts } from "../../hooks/postHooks";
-import LoadingScreen from "../LoadingScreen";
-import PostList from "./PostList";
+import { LoadingScreen } from "src/components";
+import { PostList } from "src/components/posts";
+import { usePosts } from "src/hooks/postHooks";
 
 const PostFeed = () => {
   const { posts } = usePosts();
