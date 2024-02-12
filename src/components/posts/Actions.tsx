@@ -12,16 +12,14 @@ import {
   Spacer,
   useDisclosure,
 } from "@chakra-ui/react";
-import { PostType } from "../../lib/types";
-import { bestiesContent } from "../../lib/content/bestiesContent";
-import { useDeletePost, useToggleLike } from "../../hooks/postHooks";
-import { ROUTES } from "../../lib/constants";
 import ActionButton from "./ActionButton";
-import React from "react";
+import React, { useContext } from "react";
 import { ChatIcon } from "@chakra-ui/icons";
 import { FaRegHeart, FaHeart, FaTrash } from "react-icons/fa";
-import { ACTION_ICON_SIZE } from "../../lib/constants";
-import { useAuth } from "../../hooks/authHooks";
+import type { PostType } from "src/lib/types";
+import { useAuth, useDeletePost, useToggleLike } from "src/hooks";
+import { ACTION_ICON_SIZE, ROUTES } from "src/lib/constants";
+import { ContentContext } from "src/context";
 
 const Actions = ({
   post,
@@ -31,6 +29,7 @@ const Actions = ({
   hideCommentButton?: boolean;
 }) => {
   const { authUser } = useAuth();
+  const content = useContext(ContentContext);
   const { id, likeUids, posterUid, likeCount, commentCount } = post;
   const { isOpen, onOpen, onClose } = useDisclosure();
   const cancelRef = React.useRef();
@@ -79,17 +78,17 @@ const Actions = ({
             <AlertDialogOverlay>
               <AlertDialogContent>
                 <AlertDialogHeader fontSize="lg" fontWeight="bold">
-                  {bestiesContent.post.deleteReviewHeading}
+                  {content.post.deleteReviewHeading}
                 </AlertDialogHeader>
                 <AlertDialogBody>
-                  {bestiesContent.post.deleteReviewBody}
+                  {content.post.deleteReviewBody}
                 </AlertDialogBody>
                 <AlertDialogFooter>
                   <Button ref={cancelRef as any} onClick={onClose}>
-                    {bestiesContent.cancel}
+                    {content.cancel}
                   </Button>
                   <Button onClick={deletePost} ml={3}>
-                    {bestiesContent.delete}
+                    {content.delete}
                   </Button>
                 </AlertDialogFooter>
               </AlertDialogContent>
