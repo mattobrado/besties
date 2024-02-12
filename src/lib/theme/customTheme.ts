@@ -28,11 +28,11 @@ export const customTheme = extendTheme({
   },
 
   styles: {
-    global: (props: { colorMode: string }) => ({
+    global: () => ({
       "html, body": {
         fontSize: "sm",
-        color: props.colorMode === "dark" ? "white" : "black",
-        bg: props.colorMode === "dark" ? "black" : "white",
+        color: "white",
+        bg: "black",
         lineHeight: "tall",
       },
     }),
