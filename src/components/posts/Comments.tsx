@@ -1,8 +1,8 @@
 import { useNavigate, useParams } from "react-router-dom";
 import { usePost } from "../../hooks/postHooks";
-import Review from "../posts/Review";
+import Review from "./Review";
 import NewCommentForm from "./NewCommentForm";
-import PostList from "../posts/PostList";
+import PostList from "./PostList";
 import { useComments } from "../../hooks/commentHooks";
 import { Container } from "@chakra-ui/react";
 import { ROUTES } from "../../lib/constants";
