@@ -26,7 +26,7 @@ const FormContainer = ({
         </Stack>
         <Box>
           <Button
-            colorScheme="pink"
+            variant={"brandPrimary"}
             type="submit"
             isLoading={buttonProps?.isLoading}
             loadingText={buttonProps?.loadingText}

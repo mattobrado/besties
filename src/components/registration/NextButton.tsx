@@ -10,9 +10,10 @@ const NextButton = ({
   buttonProps?: { type: "button" | "submit" | "reset" };
 }) => (
   <Button
-    colorScheme="pink"
     onClick={onClick}
     isLoading={isLoading}
+    variant={"brandPrimary"}
+    id={"continueRegistration"}
     {...buttonProps}
   >
     <Text w={"96px"} fontSize={"lg"}>

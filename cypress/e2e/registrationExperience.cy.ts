@@ -6,7 +6,8 @@ describe("registration", () => {
   it("navigates home", () => {
     cy.viewport("iphone-6");
     cy.visit(rootPath + ROUTES.REGISTER);
-    // cy.get("[alt=Home").click();
-    // cy.location("pathname").should("eq", "/");
+    cy.get("#beginRegistration").click();
+    cy.get("input").type("5555555");
+    cy.get('button[type="submit"]').click();
   });
 });

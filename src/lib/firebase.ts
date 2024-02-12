@@ -14,7 +14,12 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
+
 export const app = initializeApp(firebaseConfig);
 export const db = getFirestore(app);
 export const auth = getAuth(app);
 export const storage = getStorage(app);
+
+console.log();
+auth.settings.appVerificationDisabledForTesting =
+  window.location.hostname === "localhost";

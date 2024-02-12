@@ -49,6 +49,7 @@ const Registration = () => {
                 as={ReactRouterLink}
                 to={ROUTES.REGISTRATION}
                 variant={"brandSecondary"}
+                id="beginRegistration"
               >
                 Take the Test
               </Button>
