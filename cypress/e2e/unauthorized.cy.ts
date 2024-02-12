@@ -43,8 +43,10 @@ describe("navigation", () => {
     });
   });
   describe("hamburger menu", () => {
-    it("navigates to registration if use is unauthorized", () => {
+    beforeEach(() => {
       cy.get('[aria-label="Toggle navigation"]').click();
     });
+
+    it("", () => {});
   });
 });
