@@ -4,5 +4,5 @@ export {
 } from "./config";
 export type { UserType, PostType, ToggleLikeType } from "./types";
 export { db } from "./firebase";
-export { COLLECTIONS, ROUTES } from "./constants";
+export { COLLECTIONS, ROUTES, INPUT_TYPE } from "./constants";
 export { customTheme } from "./theme";
