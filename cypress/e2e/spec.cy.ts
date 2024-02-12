@@ -8,7 +8,11 @@ describe("template spec", () => {
 
   describe("navigation", () => {
     it("passes", () => {
+      cy.get("[alt=Home");
       cy.contains(THE_GENIUS_PROGRAM_CONTENT.navBar.items[0].label);
+      cy.contains(THE_GENIUS_PROGRAM_CONTENT.navBar.items[0].label);
+      cy.contains(THE_GENIUS_PROGRAM_CONTENT.navBar.items[1].label);
+      cy.get('[aria-label="Toggle navigation"]');
     });
   });
 });

@@ -40,19 +40,14 @@ const TopNavBar = () => {
       ))}
       <>
         <Button
-          // ref={buttonRef}
           onClick={onOpen}
           variant="ghost"
           p={3}
+          aria-label="Toggle navigation"
         >
           {isOpen ? <CloseIcon /> : <HamburgerIcon boxSize={6} />}
         </Button>
-        <Drawer
-          isOpen={isOpen}
-          placement="right"
-          onClose={onClose}
-          // finalFocusRef={buttonRef}
-        >
+        <Drawer isOpen={isOpen} placement="right" onClose={onClose}>
           <DrawerOverlay />
           <DrawerContent bg={"black"} w={"full"}>
             <DrawerCloseButton size={"lg"} p={4} />
