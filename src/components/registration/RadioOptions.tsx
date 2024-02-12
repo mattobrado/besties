@@ -20,7 +20,7 @@ const RadioOptions = ({
   const { updateUser, isLoading } = useUpdateUser(authUser?.id);
   const [value, setValue] = useState("");
   return (
-    <RadioGroup onChange={setValue} value={value} colorScheme="pink">
+    <RadioGroup onChange={setValue} value={value} colorScheme="brand">
       <Stack spacing={1} pb={5}>
         {options?.map((option) => (
           <Radio size={"md"} py={1} value={option} key={option}>

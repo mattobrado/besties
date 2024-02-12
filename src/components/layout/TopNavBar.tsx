@@ -30,7 +30,7 @@ const TopNavBar = () => {
 
   return (
     <Flex
-      bg="pink.500"
+      bg="brand.500"
       h={12}
       alignItems={"center"}
       justifyContent={"space-between"}
@@ -51,7 +51,7 @@ const TopNavBar = () => {
           isOpen={isOpen}
           placement="right"
           onClose={onClose}
-          colorScheme="pink"
+          colorScheme="brand"
         >
           <DrawerOverlay />
           <DrawerContent w={"full"}>

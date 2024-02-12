@@ -16,7 +16,7 @@ const ButtonOptions = ({
     <Stack spacing={3} pb={5}>
       {options?.map((option) => (
         <Button
-          colorScheme={"pink"}
+          colorScheme={"brand"}
           onClick={() => {
             updateUser({ [field]: option }).then(() => goToNext());
           }}

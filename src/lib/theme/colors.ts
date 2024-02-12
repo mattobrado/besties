@@ -15,5 +15,5 @@ export const BACKGROUNDS = {
   blue: "linear-gradient(90deg, rgb(128, 233, 255), rgb(128, 169, 255))",
   cyan: "linear-gradient(90deg, rgb(118, 228, 247), rgb(9, 135, 160))",
   purple: "linear-gradient(90deg, rgb(128, 233, 255), rgb(128, 169, 255))",
-  pink: "linear-gradient(90deg, rgb(128, 233, 255), rgb(128, 169, 255))",
+  brand: "linear-gradient(90deg, rgb(128, 233, 255), rgb(128, 169, 255))",
 };
