@@ -15,5 +15,7 @@ export {
   LOGO_HEIGHT,
   NUM_ITEMS_OUT_OF_HAMBURGER,
   VALIDATE,
+  ACTION_ICON_SIZE,
+  POST_HEADER_SIZE,
 } from "./constants";
 export { customTheme } from "./theme";

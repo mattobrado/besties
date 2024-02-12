@@ -1,11 +1,10 @@
 import { Box, Button, Flex, FormControl, Input } from "@chakra-ui/react";
 import TextareaAutosize from "react-textarea-autosize";
 import { useForm } from "react-hook-form";
-import type { PostType } from "src/lib/types";
 import { useAddPost, useAuth } from "src/hooks";
 import { ContentContext } from "src/context";
 import { useContext } from "react";
-import { VALIDATE } from "src/lib/constants";
+import { VALIDATE, type PostType } from "src/lib";
 
 const NewCommentForm = ({ post }: { post: PostType }) => {
   const { authUser } = useAuth();

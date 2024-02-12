@@ -16,10 +16,9 @@ import ActionButton from "./ActionButton";
 import React, { useContext } from "react";
 import { ChatIcon } from "@chakra-ui/icons";
 import { FaRegHeart, FaHeart, FaTrash } from "react-icons/fa";
-import type { PostType } from "src/lib/types";
 import { useAuth, useDeletePost, useToggleLike } from "src/hooks";
-import { ACTION_ICON_SIZE, ROUTES } from "src/lib/constants";
 import { ContentContext } from "src/context";
+import { ROUTES, type PostType, ACTION_ICON_SIZE } from "src/lib";
 
 const Actions = ({
   post,

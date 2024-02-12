@@ -1,6 +1,4 @@
 import { Box, Divider, Stack, Text } from "@chakra-ui/react";
-import Actions from "./Actions";
-import type { PostType } from "src/lib/types";
 
 const PostBody = ({
   children,

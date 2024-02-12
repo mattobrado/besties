@@ -1,5 +1,5 @@
 import { OneUserPost } from "src/components/posts";
-import type { PostType } from "src/lib/types";
+import type { PostType } from "src/lib";
 
 const Comment = ({
   post,
