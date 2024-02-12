@@ -9,12 +9,11 @@ import { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { AddIcon } from "@chakra-ui/icons";
-import type { UserType } from "src/lib/types";
 import { useAuth, useUpdateUser } from "src/hooks";
-import { INPUT_TYPE, ROUTES, VALIDATE } from "src/lib/constants";
-import { getSongIdFromLink } from "src/lib/utils";
 import { FormContainer, FormField } from "src/components/auth";
 import { ContentContext } from "src/context";
+import { INPUT_TYPE, ROUTES, VALIDATE, type UserType } from "src/lib";
+import { getSongIdFromLink } from "src/lib/utils";
 export const EditProfile = ({
   id,
   goToNext,
