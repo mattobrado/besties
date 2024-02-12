@@ -5,5 +5,6 @@ export {
   useToggleLike,
   useDeletePost,
   usePostsForProfile,
+  usePost,
 } from "./postHooks";
-export { removeComment, addComment } from "./commentHooks";
+export { removeComment, addComment, useComments } from "./commentHooks";
