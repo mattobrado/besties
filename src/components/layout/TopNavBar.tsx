@@ -13,11 +13,15 @@ import {
 import { CloseIcon, HamburgerIcon } from "@chakra-ui/icons";
 import { useAuth } from "src/hooks";
 import { GenericNavBarItem } from "src/components/layout";
-import { NAV_BAR_ITEMS, NUM_ITEMS_OUT_OF_HAMBURGER } from "src/lib";
+import { NUM_ITEMS_OUT_OF_HAMBURGER } from "src/lib";
+import { useContext } from "react";
+import { ContentContext } from "src/context";
 
 const TopNavBar = () => {
-  const { isOpen, onOpen, onClose } = useDisclosure();
   const { authUser } = useAuth();
+  const content = useContext(ContentContext);
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const NAV_BAR_ITEMS = content.navBar.items;
 
   const itemsOutOfHamburger = NAV_BAR_ITEMS.slice(
     0,
@@ -26,26 +30,20 @@ const TopNavBar = () => {
 
   return (
     <Flex
-      bg="pink.500"
+      bg="brand.500"
       h={12}
       alignItems={"center"}
       justifyContent={"space-between"}
     >
       {itemsOutOfHamburger.map((item) => (
-        <GenericNavBarItem
-          label={item.label}
-          to={item.to}
-          key={item.label}
-          isLogout={item.isLogout}
-          state={item.state}
-        />
+        <GenericNavBarItem variant="brandPrimary" {...item} />
       ))}
       <>
         <Button
-          // ref={buttonRef}
           onClick={onOpen}
-          variant="ghost"
+          variant="brandPrimary"
           p={3}
+          aria-label="Toggle navigation"
         >
           {isOpen ? <CloseIcon /> : <HamburgerIcon boxSize={6} />}
         </Button>
@@ -53,10 +51,10 @@ const TopNavBar = () => {
           isOpen={isOpen}
           placement="right"
           onClose={onClose}
-          // finalFocusRef={buttonRef}
+          colorScheme="brand"
         >
           <DrawerOverlay />
-          <DrawerContent bg={"black"} w={"full"}>
+          <DrawerContent w={"full"}>
             <DrawerCloseButton size={"lg"} p={4} />
             <Box h={12} />
             <DrawerBody py={4}>
@@ -64,19 +62,9 @@ const TopNavBar = () => {
                 if (item.isForAuthorizedUsersOnly && !authUser) {
                   return;
                 }
-                if (item.isForGuestsOnly && authUser) {
-                  return;
-                }
                 return (
                   <Center key={item.label} py={4}>
-                    <GenericNavBarItem
-                      label={item.label}
-                      to={item.to}
-                      isLogout={item.isLogout}
-                      state={item.state}
-                      color="white"
-                      onClick={onClose}
-                    />
+                    <GenericNavBarItem {...item} onClick={onClose} />
                   </Center>
                 );
               })}

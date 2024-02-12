@@ -87,8 +87,9 @@ export const useSignIn = () => {
           phoneNumber,
         });
       }
-      if (userFormDB.isMember) navigate(ROUTES.SEARCH);
-      if (userFormDB.isApplicationSubmitted) navigate(ROUTES.APPLICANT);
+      if (userFormDB.isMember) navigate(ROUTES.MEMBERS);
+      if (userFormDB.isApplicationSubmitted)
+        navigate(ROUTES.APPLICATION_STATUS);
       navigate(ROUTES.REGISTRATION);
     } catch (error: any) {
       toast({

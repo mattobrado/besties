@@ -7,6 +7,7 @@ import {
   Box,
   Container,
 } from "@chakra-ui/react";
+import { useContext } from "react";
 import {
   Outlet,
   Link as ReactRouterLink,
@@ -14,22 +15,24 @@ import {
   useNavigate,
 } from "react-router-dom";
 import { Logo } from "src/components/layout";
+import { ContentContext } from "src/context";
 import { useAuth } from "src/hooks";
 import { ROUTES } from "src/lib";
 
 const Registration = () => {
-  const { pathname } = useLocation();
   const { authUser } = useAuth();
+  const content = useContext(ContentContext);
+  const { pathname } = useLocation();
   const navigate = useNavigate();
 
-  const isRootPath = pathname.endsWith(ROUTES.IQ_TEST);
+  const isRootPath = pathname.endsWith(ROUTES.REGISTER);
 
   if (authUser?.isApplicationSubmitted) {
-    navigate(ROUTES.APPLICANT);
+    navigate(ROUTES.APPLICATION_STATUS);
   }
 
   return (
-    <Container p={0} layerStyle="white">
+    <Container p={0}>
       <Logo />
       {isRootPath ? (
         <Box p={4}>
@@ -45,20 +48,13 @@ const Registration = () => {
               <Button
                 as={ReactRouterLink}
                 to={ROUTES.REGISTRATION}
-                colorScheme="pink"
+                variant={"brandSecondary"}
+                id="beginRegistration"
               >
                 Take the Test
               </Button>
             </Center>
-            <Center>
-              <iframe
-                width="335"
-                height="188"
-                src="https://www.youtube.com/embed/enijgkRpsE4?si=z5HIO_BCP594gvXi"
-                title="YouTube video player"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              ></iframe>
-            </Center>
+            <Center>{content.video}</Center>
           </Stack>
         </Box>
       ) : (

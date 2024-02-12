@@ -51,6 +51,7 @@ const FormField = ({
         maxLength={100}
         placeholder={"100 character limit"}
         {...register(inputType, validate)}
+        id={inputType}
       />
     )}
 

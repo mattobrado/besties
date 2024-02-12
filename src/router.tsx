@@ -7,7 +7,6 @@ import {
   ProtectedPageContainer,
 } from "src/components/layout";
 import { Registration, RegistrationSteps } from "src/components/registration";
-import { Search } from "src/components/search";
 import { ROUTES } from "src/lib";
 
 export const router = createBrowserRouter([
@@ -26,17 +25,17 @@ export const router = createBrowserRouter([
         element: <ProtectedPageContainer />,
         children: [
           {
-            path: ROUTES.SEARCH,
-            element: <Search />,
+            path: ROUTES.MEMBERS,
+            element: "coming soon",
           },
         ],
       },
     ],
   },
   {
-    path: ROUTES.IQ_TEST,
+    path: ROUTES.REGISTER,
     element: <Registration />,
     children: [{ path: ROUTES.REGISTRATION, element: <RegistrationSteps /> }],
   },
-  { path: ROUTES.APPLICANT, element: <ApplicantPortal /> },
+  { path: ROUTES.APPLICATION_STATUS, element: <ApplicantPortal /> },
 ]);

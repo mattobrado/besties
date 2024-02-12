@@ -25,7 +25,7 @@ const ApplicantPortal = () => {
   const toast = useToast();
 
   useEffect(() => {
-    if (!isLoading && pathname.startsWith(ROUTES.APPLICANT)) {
+    if (!isLoading && pathname.startsWith(ROUTES.APPLICATION_STATUS)) {
       if (!authUser?.isApplicationSubmitted) {
         toast({
           title:
@@ -33,7 +33,7 @@ const ApplicantPortal = () => {
           status: "error",
           ...TOAST_PROPS,
         });
-        navigate(ROUTES.IQ_TEST);
+        navigate(ROUTES.REGISTER);
       } else {
         toast({
           title: "Your application is under review.",
@@ -60,12 +60,7 @@ const ApplicantPortal = () => {
 
   return (
     <Container>
-      <Flex
-        flexWrap="wrap"
-        justifyContent="space-evenly"
-        layerStyle={"white"}
-        minHeight="100vh"
-      >
+      <Flex flexWrap="wrap" justifyContent="space-evenly" minHeight="100vh">
         <Box sx={outerBoxStyles}>
           <Box sx={innerBoxStyles}>
             <Stack p={4} pt={5} spacing={2} w={"100%"}>
@@ -122,6 +117,9 @@ const ApplicantPortal = () => {
                 size={"lg"}
                 borderWidth={"2px"}
                 borderColor={"black"}
+                bg={"white"}
+                color={"black"}
+                id="editProfile"
               >
                 Change my answers
               </Button>

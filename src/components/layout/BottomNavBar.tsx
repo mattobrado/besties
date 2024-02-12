@@ -24,7 +24,7 @@ const BottomNavBar = () => {
       />
       <MyNavigationItem icon={<TfiWrite />} to={ROUTES.ADD_REVIEW} />
       <MyNavigationItem icon={<TfiBell />} to={ROUTES.NOTIFICATIONS} />
-      <MyNavigationItem icon={<TfiSearch />} to={ROUTES.SEARCH} />
+      <MyNavigationItem icon={<TfiSearch />} to={ROUTES.MEMBERS} />
     </BottomNavigation>
   );
 };
