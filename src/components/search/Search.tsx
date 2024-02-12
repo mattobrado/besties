@@ -1,11 +1,11 @@
 import algoliasearch from "algoliasearch/lite";
 import { Stack } from "@chakra-ui/react";
 import { InstantSearch, useHits } from "react-instantsearch";
-import type { UserType } from "src/lib/types/index";
 import { useContext } from "react";
 import { ContentContext } from "src/context";
 import { CustomSearchBox } from "src/components/search";
 import { UserList } from "src/components/profile";
+import type { UserType } from "src/lib";
 
 const Search = ({
   onClick: onClick,
@@ -13,7 +13,7 @@ const Search = ({
   onClick?: (user: UserType | undefined) => void;
 }) => {
   const content = useContext(ContentContext);
-  const placeholderText = content.search.search;
+  const placeholderText = content.lists.search;
   return (
     <InstantSearch
       searchClient={algoliasearch(

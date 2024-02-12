@@ -11,20 +11,18 @@ import {
   Center,
 } from "@chakra-ui/react";
 import { CloseIcon, HamburgerIcon } from "@chakra-ui/icons";
-import { useContext } from "react";
-import { ConfigContext } from "src/context";
-import { NUM_ITEMS_OUT_OF_HAMBURGER } from "src/lib/constants";
 import { useAuth } from "src/hooks";
 import { GenericNavBarItem } from "src/components/layout";
+import { NAV_BAR_ITEMS, NUM_ITEMS_OUT_OF_HAMBURGER } from "src/lib";
 
 const TopNavBar = () => {
-  const config = useContext(ConfigContext);
   const { isOpen, onOpen, onClose } = useDisclosure();
   const { authUser } = useAuth();
 
-  const { navBarItems } = config;
-
-  const itemsOutOfHamburger = navBarItems.slice(0, NUM_ITEMS_OUT_OF_HAMBURGER);
+  const itemsOutOfHamburger = NAV_BAR_ITEMS.slice(
+    0,
+    NUM_ITEMS_OUT_OF_HAMBURGER
+  );
 
   return (
     <Flex
@@ -62,7 +60,7 @@ const TopNavBar = () => {
             <DrawerCloseButton size={"lg"} p={4} />
             <Box h={12} />
             <DrawerBody py={4}>
-              {navBarItems?.map((item) => {
+              {NAV_BAR_ITEMS?.map((item) => {
                 if (item.isForAuthorizedUsersOnly && !authUser) {
                   return;
                 }

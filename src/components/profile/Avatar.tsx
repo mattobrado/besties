@@ -1,7 +1,6 @@
 import { AvatarProps, Avatar as ChakraAvatar } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
-import { ROUTES } from "../../lib/constants";
-import type { UserType } from "src/lib/types/index";
+import { ROUTES, type UserType } from "src/lib";
 
 const Avatar = ({
   user,

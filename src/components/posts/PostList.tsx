@@ -1,15 +1,16 @@
 import { Text } from "@chakra-ui/react";
-import { PostType } from "../../lib/types";
-import Review from "./Review";
-import { bestiesContent } from "../../lib/content/bestiesContent";
-import Comment from "../comments/Comment";
+import { ContentContext } from "src/context";
+import { useContext } from "react";
+import { Review, Comment } from "src/components/posts";
+import type { PostType } from "src/lib";
 
 export const PostList = ({ posts }: { posts: PostType[] }) => {
+  const content = useContext(ContentContext);
   return (
     <>
       {posts?.length === 0 ? (
         <Text textAlign="center" fontSize="lg">
-          {bestiesContent.activity.noActivity}
+          {content.noActivity}
         </Text>
       ) : (
         posts?.map((post) =>

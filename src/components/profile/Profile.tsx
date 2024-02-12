@@ -1,15 +1,14 @@
 import { Center, Grid, Stack, Text } from "@chakra-ui/react";
 import { useNavigate, useParams } from "react-router-dom";
-import { useFriendRequest, useUser } from "../../hooks/userHooks";
-import getStars from "../../utils/getStars";
-import ProfilePosts from "./ProfilePosts";
-import AvatarInAvatar from "./AvatarInAvatar";
-import { ROUTES } from "../../lib/constants";
-import { useContext, useEffect } from "react";
-import ProfileButton from "./ProfileButton";
-import SpotifySong from "./SpotifySong";
-import BackgroundContext from "../../BackGroundContext";
-import { useAuth } from "../../hooks/authHooks";
+import { useFriendRequest, useUser } from "src/hooks/userHooks";
+import { useAuth } from "src/hooks";
+import AvatarInAvatar from "src/components/profile/AvatarInAvatar";
+import {
+  ProfileButton,
+  ProfilePosts,
+  SpotifySong,
+} from "src/components/profile";
+import { ROUTES, getStars } from "src/lib";
 
 const Profile = () => {
   const { id } = useParams();
@@ -20,9 +19,6 @@ const Profile = () => {
     useFriendRequest();
 
   const isLoaded = authUser && !!user;
-
-  const setBackground = useContext(BackgroundContext);
-  useEffect(() => setBackground(user?.favoriteColor), [user?.favoriteColor]);
 
   return (
     isLoaded && (
@@ -68,16 +64,6 @@ const Profile = () => {
                 <ProfileButton text={"boost"} key={"boost"} />,
               ]}
         </Grid>
-        {/* <Container>
-          <ProfileHeading text={"besties"} />
-          <OrderedList spacing={1}>
-            <ListItem>Suck-o-tron</ListItem> <Divider />
-            <ListItem>Manthan</ListItem> <Divider />
-            <ListItem>Trent</ListItem> <Divider />
-            <ListItem>Marlon</ListItem> <Divider />
-            <ListItem>myself</ListItem> <Divider />
-          </OrderedList>
-        </Container> */}
         {user.favoriteSongId && <SpotifySong id={user.favoriteSongId} />}
         <ProfilePosts uid={user.id} />
       </Stack>
