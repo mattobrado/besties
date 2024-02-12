@@ -13,7 +13,7 @@ const Search = ({
   onClick?: (user: UserType | undefined) => void;
 }) => {
   const content = useContext(ContentContext);
-  const placeholderText = content.search.search;
+  const placeholderText = content.lists.search;
   return (
     <InstantSearch
       searchClient={algoliasearch(
