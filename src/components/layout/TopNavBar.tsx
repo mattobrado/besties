@@ -45,7 +45,7 @@ const TopNavBar = () => {
           p={3}
           aria-label="Toggle navigation"
         >
-          {isOpen ? <CloseIcon /> : <HamburgerIcon boxSize={6} />}
+          {isOpen ? <CloseIcon boxSize={6} /> : <HamburgerIcon boxSize={6} />}
         </Button>
         <Drawer
           isOpen={isOpen}
