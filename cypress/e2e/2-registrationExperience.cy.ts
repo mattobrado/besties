@@ -36,6 +36,6 @@ describe("registration", () => {
     cy.get('button[type="submit"]').click();
     cy.get("#shortResponseInput").type("{selectAll} automated test answer");
     cy.get('button[type="submit"]').click();
-    cy.get("#logout").click();
   });
+  afterEach(() => cy.get("#logout").click());
 });
