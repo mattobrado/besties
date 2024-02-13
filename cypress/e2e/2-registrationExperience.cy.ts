@@ -16,8 +16,7 @@ describe("registration", () => {
     cy.get("#pinInput-4").type("5");
     cy.get("#pinInput-5").type("5");
     cy.wait(1000);
-    const editProfileButton = cy.get("#editProfile");
-    if (editProfileButton) editProfileButton.click();
+    cy.get("#editProfile").click();
     cy.get(":nth-child(1) > .chakra-radio__control").click();
     cy.get('button[type="submit"]').click();
     cy.get(":nth-child(7) > .chakra-radio__control").click();
@@ -37,5 +36,8 @@ describe("registration", () => {
     cy.get("#shortResponseInput").type("{selectAll} automated test answer");
     cy.get('button[type="submit"]').click();
   });
-  afterEach(() => cy.get("#logout").click());
+  afterEach(() => {
+    cy.get("#logout").click();
+    cy.location("pathname").should("eq", "/");
+  });
 });
