@@ -9,7 +9,6 @@ import {
   useDisclosure,
   Box,
   Center,
-  DarkMode,
 } from "@chakra-ui/react";
 import { CloseIcon, HamburgerIcon } from "@chakra-ui/icons";
 import { useAuth } from "src/hooks";
@@ -30,52 +29,50 @@ const TopNavBar = () => {
   );
 
   return (
-    <DarkMode>
-      <Flex
-        bg="brand.500"
-        h={12}
-        alignItems={"center"}
-        justifyContent={"space-between"}
-      >
-        {itemsOutOfHamburger.map((item) => (
-          <GenericNavBarItem variant="brandPrimary" {...item} />
-        ))}
-        <>
-          <Button
-            onClick={onOpen}
-            variant="brandPrimary"
-            p={3}
-            aria-label="Toggle navigation"
-          >
-            {isOpen ? <CloseIcon /> : <HamburgerIcon boxSize={6} />}
-          </Button>
-          <Drawer
-            isOpen={isOpen}
-            placement="right"
-            onClose={onClose}
-            colorScheme="brand"
-          >
-            <DrawerOverlay />
-            <DrawerContent w={"full"}>
-              <DrawerCloseButton size={"lg"} p={4} />
-              <Box h={12} />
-              <DrawerBody py={4}>
-                {NAV_BAR_ITEMS?.map((item) => {
-                  if (item.isForAuthorizedUsersOnly && !authUser) {
-                    return;
-                  }
-                  return (
-                    <Center key={item.label} py={4}>
-                      <GenericNavBarItem {...item} onClick={onClose} />
-                    </Center>
-                  );
-                })}
-              </DrawerBody>
-            </DrawerContent>
-          </Drawer>
-        </>
-      </Flex>
-    </DarkMode>
+    <Flex
+      bg="brand.500"
+      h={12}
+      alignItems={"center"}
+      justifyContent={"space-between"}
+    >
+      {itemsOutOfHamburger.map((item) => (
+        <GenericNavBarItem variant="brandPrimary" {...item} />
+      ))}
+      <>
+        <Button
+          onClick={onOpen}
+          variant="brandPrimary"
+          p={3}
+          aria-label="Toggle navigation"
+        >
+          {isOpen ? <CloseIcon /> : <HamburgerIcon boxSize={6} />}
+        </Button>
+        <Drawer
+          isOpen={isOpen}
+          placement="right"
+          onClose={onClose}
+          colorScheme="brand"
+        >
+          <DrawerOverlay />
+          <DrawerContent w={"full"}>
+            <DrawerCloseButton size={"lg"} p={4} />
+            <Box h={12} />
+            <DrawerBody py={4}>
+              {NAV_BAR_ITEMS?.map((item) => {
+                if (item.isForAuthorizedUsersOnly && !authUser) {
+                  return;
+                }
+                return (
+                  <Center key={item.label} py={4}>
+                    <GenericNavBarItem {...item} onClick={onClose} />
+                  </Center>
+                );
+              })}
+            </DrawerBody>
+          </DrawerContent>
+        </Drawer>
+      </>
+    </Flex>
   );
 };
 
