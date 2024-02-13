@@ -1,5 +1,5 @@
 import { RouterProvider } from "react-router-dom";
-import { ChakraProvider, DarkMode } from "@chakra-ui/react";
+import { ChakraProvider } from "@chakra-ui/react";
 import {
   THE_GENIUS_PROGRAM_CONFIG,
   THE_GENIUS_PROGRAM_CONTENT,
@@ -13,15 +13,13 @@ const App = () => {
   const config = THE_GENIUS_PROGRAM_CONFIG;
 
   return (
-    <DarkMode>
-      <ChakraProvider theme={customTheme}>
-        <ConfigContext.Provider value={config}>
-          <ContentContext.Provider value={content as any}>
-            <RouterProvider router={router} />
-          </ContentContext.Provider>
-        </ConfigContext.Provider>
-      </ChakraProvider>
-    </DarkMode>
+    <ChakraProvider theme={customTheme}>
+      <ConfigContext.Provider value={config}>
+        <ContentContext.Provider value={content as any}>
+          <RouterProvider router={router} />
+        </ContentContext.Provider>
+      </ConfigContext.Provider>
+    </ChakraProvider>
   );
 };
 
