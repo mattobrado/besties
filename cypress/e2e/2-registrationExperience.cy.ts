@@ -9,7 +9,12 @@ describe("registration", () => {
     cy.get("#beginRegistration").click();
     cy.get("input").type("5555555");
     cy.get('button[type="submit"]').click();
-    cy.get("#pinInput-0").type("555555");
+    cy.get("#pinInput-0").type("5");
+    cy.get("#pinInput-1").type("5");
+    cy.get("#pinInput-2").type("5");
+    cy.get("#pinInput-3").type("5");
+    cy.get("#pinInput-4").type("5");
+    cy.get("#pinInput-5").type("5");
     cy.wait(1000);
     const editProfileButton = cy.get("#editProfile");
     if (editProfileButton) editProfileButton.click();
