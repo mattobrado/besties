@@ -6,6 +6,7 @@ import {
   Text,
   Box,
   Container,
+  DarkMode,
 } from "@chakra-ui/react";
 import { useContext } from "react";
 import {
@@ -32,35 +33,37 @@ const Registration = () => {
   }
 
   return (
-    <Container p={0}>
-      <Logo />
-      {isRootPath ? (
-        <Box p={4}>
-          <Stack spacing={5}>
-            ``
-            <Center>
-              <Text fontSize={"3xl"}>IQ Test</Text>
-            </Center>
-            <Center>
-              <Heading size={"2xl"}>Are you a Genius?</Heading>
-            </Center>
-            <Center>
-              <Button
-                as={ReactRouterLink}
-                to={ROUTES.REGISTRATION}
-                variant={"brandSecondary"}
-                id="beginRegistration"
-              >
-                Take the Test
-              </Button>
-            </Center>
-            <Center>{content.video}</Center>
-          </Stack>
-        </Box>
-      ) : (
-        <Outlet />
-      )}
-    </Container>
+    <DarkMode>
+      <Container p={0}>
+        <Logo />
+        {isRootPath ? (
+          <Box p={4}>
+            <Stack spacing={5}>
+              ``
+              <Center>
+                <Text fontSize={"3xl"}>IQ Test</Text>
+              </Center>
+              <Center>
+                <Heading size={"2xl"}>Are you a Genius?</Heading>
+              </Center>
+              <Center>
+                <Button
+                  as={ReactRouterLink}
+                  to={ROUTES.REGISTRATION}
+                  variant={"brandSecondary"}
+                  id="beginRegistration"
+                >
+                  Take the Test
+                </Button>
+              </Center>
+              <Center>{content.video}</Center>
+            </Stack>
+          </Box>
+        ) : (
+          <Outlet />
+        )}
+      </Container>
+    </DarkMode>
   );
 };
 
