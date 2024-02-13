@@ -138,6 +138,7 @@ const ApplicantPortal = () => {
                     position={"fixed"}
                     bottom={4}
                     backdropFilter="auto"
+                    id="logout"
                   >
                     {"LOG OUT"}
                   </Button>

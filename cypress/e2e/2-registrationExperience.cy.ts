@@ -9,7 +9,7 @@ describe("registration", () => {
     cy.get("#beginRegistration").click();
     cy.get("input").type("5555555");
     cy.get('button[type="submit"]').click();
-    // cy.get("#pinInput-0").type("555555");
+    cy.get("#pinInput-0").type("555555");
     cy.wait(1000);
     const editProfileButton = cy.get("#editProfile");
     if (editProfileButton) editProfileButton.click();
@@ -31,5 +31,6 @@ describe("registration", () => {
     cy.get('button[type="submit"]').click();
     cy.get("#shortResponseInput").type("{selectAll} automated test answer");
     cy.get('button[type="submit"]').click();
+    cy.get("#logout").click();
   });
 });
