@@ -176,6 +176,7 @@ const RegistrationSteps = () => {
           variant="ghost"
           size={"sm"}
           onClick={isBackButtonLoggingOut ? logout : goToPrevious}
+          id={isBackButtonLoggingOut ? "logout" : ""}
         >
           {isBackButtonLoggingOut ? "LOG OUT" : "BACK"}
         </Button>

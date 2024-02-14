@@ -1,14 +1,15 @@
 {
   "name": "besties",
   "private": true,
-  "version": "2.2.13",
+  "version": "2.2.15",
   "type": "module",
   "scripts": {
     "start": "vite",
     "build": "tsc && vite build",
     "pre-deploy": "npm ci && npm run build",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0 --fix",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "cypress:open": "cypress open"
   },
   "dependencies": {
     "@chakra-ui/icons": "^2.1.1",

@@ -35,15 +35,20 @@ const ApplicantPortal = () => {
           ...TOAST_PROPS,
         });
         navigate(ROUTES.REGISTER);
-      } else {
-        toast({
-          title: "Your application is under review.",
-          status: "success",
-          ...TOAST_PROPS,
-        });
       }
     }
   }, [pathname, authUser?.isApplicationSubmitted, isLoading]);
+
+  useEffect(() => {
+    if (authUser?.isApplicationSubmitted) {
+      toast({
+        title: "Your application is under review.",
+        status: "success",
+        ...TOAST_PROPS,
+      });
+    }
+  }, [authUser?.isApplicationSubmitted]);
+
   const { updateUser } = useUpdateUser(authUser?.id);
 
   const outerBoxStyles = {
@@ -131,13 +136,17 @@ const ApplicantPortal = () => {
                     leftIcon={<ArrowBackIcon />}
                     colorScheme="black"
                     variant="ghost"
-                    size={"sm"}
+                    size={"md"}
                     onClick={() => {
                       logout();
                     }}
                     position={"fixed"}
-                    bottom={4}
+                    bottom={20}
                     backdropFilter="auto"
+                    backdropBlur="64px"
+                    id="logout"
+                    borderWidth={"1px"}
+                    borderRadius={"10px"}
                   >
                     {"LOG OUT"}
                   </Button>
