@@ -5,7 +5,6 @@ import {
   Stack,
   Text,
   UnorderedList,
-  useToast,
 } from "@chakra-ui/react";
 import { MainImage } from "src/components";
 import { PostFeed } from "src/components/posts";
@@ -14,8 +13,6 @@ import { ConfigContext, ContentContext } from "src/context";
 const Home = () => {
   const config = useContext(ConfigContext);
   const content = useContext(ContentContext);
-  const toast = useToast();
-  toast.closeAll();
 
   return (
     <>

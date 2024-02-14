@@ -36,7 +36,7 @@ const TopNavBar = () => {
       justifyContent={"space-between"}
     >
       {itemsOutOfHamburger.map((item) => (
-        <GenericNavBarItem variant="brandPrimary" {...item} />
+        <GenericNavBarItem key={item.label} variant="brandPrimary" {...item} />
       ))}
       <>
         <Button
@@ -45,7 +45,7 @@ const TopNavBar = () => {
           p={3}
           aria-label="Toggle navigation"
         >
-          {isOpen ? <CloseIcon /> : <HamburgerIcon boxSize={6} />}
+          {isOpen ? <CloseIcon boxSize={6} /> : <HamburgerIcon boxSize={6} />}
         </Button>
         <Drawer
           isOpen={isOpen}

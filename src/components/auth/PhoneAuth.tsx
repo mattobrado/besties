@@ -35,25 +35,16 @@ const PhoneAuth = ({
   const { signIn, isLoading: isSignInLoading } = useSignIn();
   const isLoading = isSendingCodeLoading || isSignInLoading;
 
-  const onCaptchaVerify = () => {
-    if (!(window as any).recaptchaVerifier) {
-      (window as any).recaptchaVerifier = new RecaptchaVerifier(
-        auth,
-        "recaptcha-container",
-        {
-          size: "invisible",
-          callback: () => {
-            onPhoneNumberSubmit();
-          },
-          "expired-callback": () => {},
-        }
-      );
-    }
-  };
-
-  const onPhoneNumberSubmit = () => {
+  const onPhoneNumberSubmit = async () => {
     setLoading(true);
-    onCaptchaVerify();
+    (window as any).recaptchaVerifier = new RecaptchaVerifier(
+      auth,
+      "recaptcha-container",
+      {
+        size: "invisible",
+        "expired-callback": () => {},
+      }
+    );
 
     signInWithPhoneNumber(auth, phoneNumber, (window as any).recaptchaVerifier)
       .then((confirmationResult) => {
@@ -146,6 +137,7 @@ const PhoneAuth = ({
         </FormContainer>{" "}
       </Box>
 
+      <div id="recaptcha-container"></div>
       <div id="recaptcha-container"></div>
     </Box>
   );

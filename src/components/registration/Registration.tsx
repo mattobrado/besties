@@ -8,7 +8,7 @@ import {
   Container,
   DarkMode,
 } from "@chakra-ui/react";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import {
   Outlet,
   Link as ReactRouterLink,
@@ -27,10 +27,11 @@ const Registration = () => {
   const navigate = useNavigate();
 
   const isRootPath = pathname.endsWith(ROUTES.REGISTER);
-
-  if (authUser?.isApplicationSubmitted) {
-    navigate(ROUTES.APPLICATION_STATUS);
-  }
+  useEffect(() => {
+    if (authUser?.isApplicationSubmitted) {
+      navigate(ROUTES.APPLICATION_STATUS);
+    }
+  }, [authUser?.isApplicationSubmitted]);
 
   return (
     <DarkMode>
