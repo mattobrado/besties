@@ -36,7 +36,7 @@ const TopNavBar = () => {
       justifyContent={"space-between"}
     >
       {itemsOutOfHamburger.map((item) => (
-        <GenericNavBarItem variant="brandPrimary" {...item} />
+        <GenericNavBarItem key={item.label} variant="brandPrimary" {...item} />
       ))}
       <>
         <Button
