@@ -3,18 +3,18 @@ import { Dispatch, SetStateAction, useState } from "react";
 import { NextButton } from "src/components/registration";
 import { useAuth, useUpdateUser } from "src/hooks";
 import { TOAST_PROPS } from "src/lib";
+import type { RegistrationStepPropsType } from "src/lib/types";
+
+export type RadioOptionsPropsType = RegistrationStepPropsType & {
+  setFieldOfExpertise?: Dispatch<SetStateAction<string>>;
+};
 
 export const RadioOptions = ({
   options,
-  goToNext,
+  onNextButtonClick,
   field,
   setFieldOfExpertise: setFieldOfExpertise,
-}: {
-  options?: string[];
-  goToNext: Function;
-  field: string;
-  setFieldOfExpertise?: Dispatch<SetStateAction<string>>;
-}) => {
+}: RadioOptionsPropsType) => {
   const { authUser } = useAuth();
   const toast = useToast();
   const { updateUser, isLoading } = useUpdateUser(authUser?.id);
@@ -44,7 +44,7 @@ export const RadioOptions = ({
               })
             : updateUser({ [field]: value }).then(() => {
                 if (setFieldOfExpertise) setFieldOfExpertise(value);
-                goToNext();
+                onNextButtonClick();
               });
         }}
         isLoading={isLoading}

@@ -20,11 +20,11 @@ import { ContentContext } from "src/context";
 import { FormContainer } from "src/components/auth";
 import { auth } from "src/lib";
 
-export const PhoneAuth = ({
-  isFieldAndButtonOnly,
-}: {
+export type PhoneAuthPropsType = {
   isFieldAndButtonOnly?: boolean;
-}) => {
+};
+
+export const PhoneAuth = ({ isFieldAndButtonOnly }: PhoneAuthPropsType) => {
   const [showOneTimePasswordInput, setShowOneTimePasswordInput] =
     useState(false);
   const [signInError, setSignInError] = useState("");

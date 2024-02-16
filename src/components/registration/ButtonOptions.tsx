@@ -1,15 +1,12 @@
 import { Button, Stack } from "@chakra-ui/react";
 import { useAuth, useUpdateUser } from "src/hooks";
+import type { RegistrationStepPropsType } from "src/lib/types";
 
 export const ButtonOptions = ({
   options,
   field,
-  goToNext,
-}: {
-  options?: string[];
-  goToNext: Function;
-  field: string;
-}) => {
+  onNextButtonClick,
+}: RegistrationStepPropsType) => {
   const { authUser } = useAuth();
   const { updateUser, isLoading } = useUpdateUser(authUser?.id);
   return (
@@ -18,7 +15,7 @@ export const ButtonOptions = ({
         <Button
           colorScheme={"brand"}
           onClick={() => {
-            updateUser({ [field]: option }).then(() => goToNext());
+            updateUser({ [field]: option }).then(() => onNextButtonClick());
           }}
           key={option}
           isLoading={isLoading}

@@ -1,7 +1,9 @@
 export {
   THE_GENIUS_PROGRAM_CONTENT,
+  THE_GENIUS_PROGRAM_CONFIG,
   ROUTES,
   VALIDATE,
+  REGISTRATION_STEPS,
+  REGISTRATION_STEP_TYPES,
 } from "./theGeniusProgramContent";
 export { BESTIES_CONTENT } from "./bestiesContent";
-export { THE_GENIUS_PROGRAM_CONFIG } from "./theGeniusProgramConfig";

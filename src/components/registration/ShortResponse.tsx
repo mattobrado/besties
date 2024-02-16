@@ -1,21 +1,21 @@
 import { Box, FormControl, FormErrorMessage, Textarea } from "@chakra-ui/react";
 import TextareaAutosize from "react-textarea-autosize";
 import { useForm } from "react-hook-form";
-import { useNavigate } from "react-router-dom";
 import { useAuth, useUpdateUser } from "src/hooks";
 import { NextButton } from "src/components/registration";
-import { type UserType, ROUTES, VALIDATE } from "src/lib";
+import { type UserType, VALIDATE } from "src/lib";
+import type { RegistrationStepPropsType } from "src/lib/types";
+
+export type ShortResponsePropsType = RegistrationStepPropsType & {
+  field: string;
+};
 
 export const ShortResponse = ({
-  goToNext,
+  onNextButtonClick,
   field,
-}: {
-  goToNext?: Function;
-  field: string;
-}) => {
+}: ShortResponsePropsType) => {
   const { authUser } = useAuth();
   const { updateUser, isLoading } = useUpdateUser(authUser?.id);
-  const navigate = useNavigate();
 
   const values = {
     text: authUser && authUser[field as keyof UserType],
@@ -28,16 +28,16 @@ export const ShortResponse = ({
     values,
   });
 
-  const handleAddReview = (data: any) => {
-    updateUser({ [field]: data.text, isApplicationSubmitted: !goToNext }).then(
-      () => {
-        goToNext ? goToNext() : navigate(ROUTES.APPLICATION_STATUS);
-      }
-    );
+  const handleAddResponse = (data: any) => {
+    updateUser({
+      [field]: data.text,
+    }).then(() => {
+      onNextButtonClick();
+    });
   };
   return (
     authUser && (
-      <form onSubmit={handleSubmit(handleAddReview)}>
+      <form onSubmit={handleSubmit(handleAddResponse)}>
         <FormControl isInvalid={!!errors.text}>
           <Box pb={10}>
             <Textarea
