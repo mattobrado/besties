@@ -8,7 +8,7 @@ import {
 import { ConfigContext, ContentContext } from "src/context";
 import { router } from "src/router";
 
-const App = () => {
+export const App = () => {
   const content = THE_GENIUS_PROGRAM_CONTENT;
   const config = THE_GENIUS_PROGRAM_CONFIG;
 
@@ -22,5 +22,3 @@ const App = () => {
     </ChakraProvider>
   );
 };
-
-export default App;

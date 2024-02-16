@@ -1,4 +1,4 @@
-type UserType = {
+export type UserType = {
   bio: string;
   avatar?: string;
   date: number;
@@ -25,5 +25,3 @@ type UserType = {
   mystery?: string;
   email?: string;
 };
-
-export default UserType;

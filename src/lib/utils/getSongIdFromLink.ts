@@ -1,4 +1,4 @@
-const getSongIdFromLink = (songLink?: string): string | undefined => {
+export const getSongIdFromLink = (songLink?: string): string | undefined => {
   if (!songLink) return "";
   try {
     console.log(songLink.split("track/")[1].split("?")[0]);
@@ -7,5 +7,3 @@ const getSongIdFromLink = (songLink?: string): string | undefined => {
     return;
   }
 };
-
-export default getSongIdFromLink;

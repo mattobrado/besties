@@ -1,6 +1,6 @@
 import { Button, Text } from "@chakra-ui/react";
 
-const NextButton = ({
+export const NextButton = ({
   onClick,
   isLoading,
   buttonProps,
@@ -22,5 +22,3 @@ const NextButton = ({
     </Text>
   </Button>
 );
-
-export default NextButton;

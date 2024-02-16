@@ -4,7 +4,7 @@ import { UserList } from "src/components/profile";
 import { ContentContext } from "src/context";
 import { useHighestRated } from "src/hooks/userHooks";
 
-const HighestRated = () => {
+export const HighestRated = () => {
   const { users } = useHighestRated();
   const content = useContext(ContentContext);
   return (
@@ -19,5 +19,3 @@ const HighestRated = () => {
     </>
   );
 };
-
-export default HighestRated;

@@ -17,7 +17,7 @@ import { NUM_ITEMS_OUT_OF_HAMBURGER } from "src/lib";
 import { useContext } from "react";
 import { ContentContext } from "src/context";
 
-const TopNavBar = () => {
+export const TopNavBar = () => {
   const { authUser } = useAuth();
   const content = useContext(ContentContext);
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -75,5 +75,3 @@ const TopNavBar = () => {
     </Flex>
   );
 };
-
-export default TopNavBar;

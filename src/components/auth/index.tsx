@@ -1,5 +1,5 @@
-export { default as PhoneAuth } from "./PhoneAuth";
-export { default as FormContainer } from "./FormContainer";
-export { default as FormField } from "./FormField";
+export { PhoneAuth } from "./PhoneAuth";
+export { FormContainer } from "./FormContainer";
+export { FormField } from "./FormField";
 export { AuthHeading } from "./AuthHeading";
 export type { AuthHeadingPropsType } from "./AuthHeading";

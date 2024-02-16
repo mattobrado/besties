@@ -1,6 +1,6 @@
 import { withDefaultStyles } from "chakra-ui-bottom-navigation";
 
-const bottomNavigationTheme = withDefaultStyles({
+export const bottomNavigationTheme = withDefaultStyles({
   parts: ["Box", "container", "item", "label", "icon"],
   baseStyle: {
     container: {
@@ -17,5 +17,3 @@ const bottomNavigationTheme = withDefaultStyles({
     },
   },
 });
-
-export default bottomNavigationTheme;

@@ -17,7 +17,7 @@ import { useAuth, useLogout, useUpdateUser } from "src/hooks";
 import { ROUTES, TOAST_PROPS } from "src/lib";
 import { ContentContext } from "src/context";
 
-const ApplicantPortal = () => {
+export const ApplicantPortal = () => {
   const { authUser, isLoading } = useAuth();
   const content = useContext(ContentContext);
   const { pathname } = useLocation();
@@ -159,5 +159,3 @@ const ApplicantPortal = () => {
     </DarkMode>
   );
 };
-
-export default ApplicantPortal;

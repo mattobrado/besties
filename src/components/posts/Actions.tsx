@@ -12,7 +12,7 @@ import {
   Spacer,
   useDisclosure,
 } from "@chakra-ui/react";
-import ActionButton from "./ActionButton";
+import { ActionButton } from "./ActionButton";
 import React, { useContext } from "react";
 import { ChatIcon } from "@chakra-ui/icons";
 import { FaRegHeart, FaHeart, FaTrash } from "react-icons/fa";
@@ -20,7 +20,7 @@ import { useAuth, useDeletePost, useToggleLike } from "src/hooks";
 import { ContentContext } from "src/context";
 import { ROUTES, type PostType, ACTION_ICON_SIZE } from "src/lib";
 
-const Actions = ({
+export const Actions = ({
   post,
   hideCommentButton,
 }: {
@@ -98,5 +98,3 @@ const Actions = ({
     </Flex>
   );
 };
-
-export default Actions;

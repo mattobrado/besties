@@ -7,7 +7,7 @@ import { CustomSearchBox } from "src/components/search";
 import { UserList } from "src/components/profile";
 import type { UserType } from "src/lib";
 
-const Search = ({
+export const Search = ({
   onClick: onClick,
 }: {
   onClick?: (user: UserType | undefined) => void;
@@ -47,4 +47,3 @@ function CustomHits({
     />
   );
 }
-export default Search;

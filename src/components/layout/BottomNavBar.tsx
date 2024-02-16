@@ -3,7 +3,7 @@ import { TfiWrite, TfiHome, TfiSearch, TfiBell } from "react-icons/tfi";
 import { MyNavigationItem } from "src/components/layout";
 import { ROUTES } from "src/lib";
 
-const BottomNavBar = () => {
+export const BottomNavBar = () => {
   return (
     <BottomNavigation
       shadow={"transparent"}
@@ -28,5 +28,3 @@ const BottomNavBar = () => {
     </BottomNavigation>
   );
 };
-
-export default BottomNavBar;

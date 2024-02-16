@@ -6,7 +6,7 @@ import { useAuth, useUpdateUser } from "src/hooks";
 import { NextButton } from "src/components/registration";
 import { type UserType, ROUTES, VALIDATE } from "src/lib";
 
-const RadioOptions = ({
+export const ShortResponse = ({
   goToNext,
   field,
 }: {
@@ -60,5 +60,3 @@ const RadioOptions = ({
     )
   );
 };
-
-export default RadioOptions;

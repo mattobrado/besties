@@ -1,6 +1,6 @@
 import { Button, Stack, StackDirection, Text } from "@chakra-ui/react";
 
-const RatingInput = ({
+export const RatingInput = ({
   iconSize,
   rating,
   setRating,
@@ -61,5 +61,3 @@ const RatingInput = ({
     </Stack>
   );
 };
-
-export default RatingInput;

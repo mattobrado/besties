@@ -26,5 +26,3 @@ export const PostList = ({ posts }: { posts: PostType[] }) => {
     </>
   );
 };
-
-export default PostList;

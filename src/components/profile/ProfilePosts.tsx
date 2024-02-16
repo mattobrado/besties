@@ -1,9 +1,9 @@
 import { Container } from "@chakra-ui/react";
 import { PostList } from "src/components/posts";
-import ProfileHeading from "src/components/profile/ProfileHeading";
+import { ProfileHeading } from "src/components/profile";
 import { usePostsForProfile } from "src/hooks";
 
-const ProfilePosts = ({ uid }: { uid: string }) => {
+export const ProfilePosts = ({ uid }: { uid: string }) => {
   const { posts } = usePostsForProfile(uid);
 
   return (
@@ -13,5 +13,3 @@ const ProfilePosts = ({ uid }: { uid: string }) => {
     </Container>
   );
 };
-
-export default ProfilePosts;

@@ -20,7 +20,7 @@ import { ContentContext } from "src/context";
 import { RatingInput, SelectUser } from "src/components/newReviewForm";
 import { ROUTES, type PostType, type UserType, VALIDATE } from "src/lib";
 
-const NewReviewForm = () => {
+export const NewReviewForm = () => {
   const { authUser } = useAuth();
   const content = useContext(ContentContext);
   const {
@@ -105,5 +105,3 @@ const NewReviewForm = () => {
     </form>
   );
 };
-
-export default NewReviewForm;

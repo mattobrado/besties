@@ -2,7 +2,7 @@ import { AvatarProps, Avatar as ChakraAvatar } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 import { ROUTES, type UserType } from "src/lib";
 
-const Avatar = ({
+export const Avatar = ({
   user,
   avatarProps,
   children,
@@ -27,5 +27,3 @@ const Avatar = ({
     />
   );
 };
-
-export default Avatar;

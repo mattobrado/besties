@@ -4,7 +4,7 @@ import { NextButton } from "src/components/registration";
 import { useAuth, useUpdateUser } from "src/hooks";
 import { TOAST_PROPS } from "src/lib";
 
-const RadioOptions = ({
+export const RadioOptions = ({
   options,
   goToNext,
   field,
@@ -52,5 +52,3 @@ const RadioOptions = ({
     </RadioGroup>
   );
 };
-
-export default RadioOptions;

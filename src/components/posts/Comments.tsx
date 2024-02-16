@@ -2,10 +2,9 @@ import { useNavigate, useParams } from "react-router-dom";
 import { Container } from "@chakra-ui/react";
 import { useComments, usePost } from "src/hooks";
 import { ROUTES } from "src/lib";
-import { PostList, Review } from "src/components/posts";
-import NewCommentForm from "src/components/posts/NewCommentForm";
+import { NewCommentForm, PostList, Review } from "src/components/posts";
 
-const Comments = () => {
+export const Comments = () => {
   const { id } = useParams();
   const { post, isLoading } = usePost(id);
   const { comments } = useComments(id);
@@ -25,5 +24,3 @@ const Comments = () => {
     )
   );
 };
-
-export default Comments;

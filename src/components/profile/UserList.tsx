@@ -2,7 +2,7 @@ import { Grid } from "@chakra-ui/react";
 import { UserCard } from "src/components/profile";
 import type { UserType } from "src/lib";
 
-const UserList = ({
+export const UserList = ({
   users,
   onClick,
   showRating,
@@ -33,5 +33,3 @@ const UserList = ({
     </Grid>
   </>
 );
-
-export default UserList;

@@ -1,2 +1,2 @@
-export { default as Search } from "./Search";
-export { default as CustomSearchBox } from "./CustomSearchBox";
+export { Search } from "./Search";
+export { CustomSearchBox } from "./CustomSearchBox";

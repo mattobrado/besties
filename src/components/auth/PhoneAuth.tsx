@@ -20,7 +20,7 @@ import { ContentContext } from "src/context";
 import { FormContainer } from "src/components/auth";
 import { auth } from "src/lib";
 
-const PhoneAuth = ({
+export const PhoneAuth = ({
   isFieldAndButtonOnly,
 }: {
   isFieldAndButtonOnly?: boolean;
@@ -142,5 +142,3 @@ const PhoneAuth = ({
     </Box>
   );
 };
-
-export default PhoneAuth;

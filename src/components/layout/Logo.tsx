@@ -4,7 +4,7 @@ import { Link as ReactRouterLink } from "react-router-dom";
 import { ContentContext } from "src/context";
 import { LOGO_HEIGHT, ROUTES } from "src/lib";
 
-const Logo = () => {
+export const Logo = () => {
   const content = useContext(ContentContext);
   return (
     <Box p={4}>
@@ -18,5 +18,3 @@ const Logo = () => {
     </Box>
   );
 };
-
-export default Logo;

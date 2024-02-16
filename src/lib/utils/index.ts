@@ -1,3 +1,3 @@
-export { default as getStars } from "./getStars";
-export { default as getSongIdFromLink } from "./getSongIdFromLink";
-export { default as getNewRating } from "./getNewRating";
+export { getStars } from "./getStars";
+export { getSongIdFromLink } from "./getSongIdFromLink";
+export { getNewRating } from "./getNewRating";

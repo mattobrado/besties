@@ -2,7 +2,7 @@ import { LoadingScreen } from "src/components";
 import { PostList } from "src/components/posts";
 import { usePosts } from "src/hooks/postHooks";
 
-const PostFeed = () => {
+export const PostFeed = () => {
   const { posts } = usePosts();
 
   return posts ? (
@@ -11,5 +11,3 @@ const PostFeed = () => {
     <LoadingScreen />
   );
 };
-
-export default PostFeed;

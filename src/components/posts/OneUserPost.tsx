@@ -4,7 +4,7 @@ import { AvatarAndFullName } from "src/components/profile";
 import { useUser } from "src/hooks/userHooks";
 import { POST_HEADER_SIZE, type PostType } from "src/lib";
 
-const OneUserPost = ({
+export const OneUserPost = ({
   children,
   post,
   hideCommentButton,
@@ -39,5 +39,3 @@ const OneUserPost = ({
     </Skeleton>
   );
 };
-
-export default OneUserPost;

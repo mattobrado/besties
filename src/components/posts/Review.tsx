@@ -3,7 +3,7 @@ import { TwoUserPost } from "src/components/posts";
 import { ContentContext } from "src/context";
 import { getStars, type PostType } from "src/lib";
 
-const Review = ({
+export const Review = ({
   post,
   children,
   hideCommentButton,
@@ -23,4 +23,3 @@ const Review = ({
     />
   );
 };
-export default Review;

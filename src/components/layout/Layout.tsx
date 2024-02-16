@@ -5,7 +5,7 @@ import { ConfigContext } from "src/context";
 import { BottomNavBar, Logo, TopNavBar } from "src/components/layout";
 import { BOTTOM_NAV_HEIGHT, GLOBAL_PX } from "src/lib";
 
-const Layout = () => {
+export const Layout = () => {
   const config = useContext(ConfigContext);
 
   return (
@@ -21,5 +21,3 @@ const Layout = () => {
     </DarkMode>
   );
 };
-
-export default Layout;

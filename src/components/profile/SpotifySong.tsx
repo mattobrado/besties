@@ -1,4 +1,4 @@
-const SpotifySong = ({ id }: { id: string }) => (
+export const SpotifySong = ({ id }: { id: string }) => (
   <iframe
     src={`https://open.spotify.com/embed/track/${id}?utm`}
     width="100%"
@@ -7,5 +7,3 @@ const SpotifySong = ({ id }: { id: string }) => (
     loading="lazy"
   ></iframe>
 );
-
-export default SpotifySong;

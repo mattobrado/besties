@@ -20,7 +20,7 @@ import { ContentContext } from "src/context";
 import { useAuth } from "src/hooks";
 import { ROUTES } from "src/lib";
 
-const Registration = () => {
+export const Registration = () => {
   const { authUser } = useAuth();
   const content = useContext(ContentContext);
   const { pathname } = useLocation();
@@ -67,5 +67,3 @@ const Registration = () => {
     </DarkMode>
   );
 };
-
-export default Registration;

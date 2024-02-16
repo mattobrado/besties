@@ -1,3 +1,3 @@
-export { default as MainImage } from "./MainImage";
-export { default as Home } from "./Home";
-export { default as LoadingScreen } from "./LoadingScreen";
+export { MainImage } from "./MainImage";
+export { Home } from "./Home";
+export { LoadingScreen } from "./LoadingScreen";
