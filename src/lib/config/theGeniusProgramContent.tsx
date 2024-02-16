@@ -1,3 +1,13 @@
+import { Stack, Text } from "@chakra-ui/layout";
+
+export enum REGISTRATION_STEP_TYPES {
+  RADIO_OPTIONS = "RADIO_OPTIONS",
+  BUTTON_OPTIONS = "BUTTON_OPTIONS",
+  SHORT_RESPONSE = "SHORT_RESPONSE",
+  EDIT_PROFILE = "EDIT_PROFILE",
+  PHONE_AUTH = "PHONE_AUTH",
+}
+
 const PROTECTED = "/members-only";
 const REGISTER = "/iq-test";
 
@@ -37,6 +47,7 @@ export const THE_GENIUS_PROGRAM_CONTENT = {
     favoriteSongPlaceholder: "Paste Spotify link",
     changeAvatar: "Change avatar",
     pleaseEnterName: "Name can't be blank",
+    pleaseEnterResponse: "Please write your thoughts",
     bio: "Bio",
     next: "Next",
     emailAddress: "Email",
@@ -238,12 +249,6 @@ export const VALIDATE = {
       message: THE_GENIUS_PROGRAM_CONTENT.auth.fullNameMinLength,
     },
   },
-  EMAIL_REQUIRED: {
-    required: {
-      value: true,
-      message: "Please enter your email address",
-    },
-  },
   FULL_NAME: {
     required: {
       message: THE_GENIUS_PROGRAM_CONTENT.auth.pleaseEnterName,
@@ -256,7 +261,7 @@ export const VALIDATE = {
   TEXT: {
     required: {
       value: true,
-      message: "Please write your thoughts",
+      message: THE_GENIUS_PROGRAM_CONTENT.auth.pleaseEnterResponse,
     },
     minLength: {
       value: 1,
@@ -268,3 +273,125 @@ export const VALIDATE = {
     },
   },
 };
+
+export const THE_GENIUS_PROGRAM_CONFIG = {
+  showBottomNavBar: false,
+  showPostsOnHomeScreen: false,
+};
+
+export const REGISTRATION_STEPS: {
+  getTitle: (fieldOfExpertise?: string) => string;
+  subtitle?: React.ReactNode;
+  stepType: string;
+  props?: any;
+}[] = [
+  {
+    getTitle: () => "Register",
+    stepType: REGISTRATION_STEP_TYPES.PHONE_AUTH,
+    props: {
+      isFieldAndButtonOnly: true,
+    },
+  },
+  {
+    getTitle: () => "I am a quick learner.",
+    stepType: REGISTRATION_STEP_TYPES.RADIO_OPTIONS,
+    props: {
+      field: "iAmAQuickLearner",
+      options: THE_GENIUS_PROGRAM_CONTENT.agreementLevels,
+    },
+  },
+  {
+    getTitle: () =>
+      "There is evidence from my achievements and results that I'm above average.",
+    stepType: REGISTRATION_STEP_TYPES.RADIO_OPTIONS,
+    props: {
+      field: "iAmAboveAverage",
+      options: THE_GENIUS_PROGRAM_CONTENT.agreementLevels,
+    },
+  },
+  {
+    getTitle: () =>
+      "I actively look for opportunities to update my understanding. I like to find out where I'm wrong.",
+    stepType: REGISTRATION_STEP_TYPES.RADIO_OPTIONS,
+    props: {
+      field: "iAmOpenMinded",
+      options: THE_GENIUS_PROGRAM_CONTENT.agreementLevels,
+    },
+  },
+  {
+    getTitle: () =>
+      "If a bat and a ball cost $11 together and the bat costs $10 more than the ball, how much does the ball cost?",
+    stepType: REGISTRATION_STEP_TYPES.BUTTON_OPTIONS,
+    props: { field: "math", options: ["50 cents", "1 dollar", "10 cents"] },
+  },
+  {
+    getTitle: () => "My main motivation is",
+    stepType: REGISTRATION_STEP_TYPES.BUTTON_OPTIONS,
+    props: {
+      field: "motivation",
+      options: [
+        "Maximizing profits",
+        "Creating utopia",
+        "Living life to the fullest",
+        "Transcending the levels of consciousness",
+        "My art",
+        "Fighting the system",
+        "I am unmotivated",
+        "Revenge",
+      ],
+    },
+  },
+  {
+    getTitle: () => "Choose your field of expertise.",
+    stepType: REGISTRATION_STEP_TYPES.RADIO_OPTIONS,
+    props: {
+      field: "fieldOfExpertise",
+      options: THE_GENIUS_PROGRAM_CONTENT.schoolSubjects.map(
+        (item) => item.subject
+      ),
+    },
+  },
+  {
+    getTitle: (fieldOfExpertise?: string) =>
+      `What are your thoughts on ${
+        THE_GENIUS_PROGRAM_CONTENT.schoolSubjects.find(
+          (item) => item.subject === fieldOfExpertise
+        )?.topic
+      }?`,
+    stepType: REGISTRATION_STEP_TYPES.SHORT_RESPONSE,
+    props: {
+      field: "thoughts",
+    },
+  },
+  {
+    getTitle: () => "About you",
+    stepType: REGISTRATION_STEP_TYPES.EDIT_PROFILE,
+  },
+  {
+    getTitle: () => "Presentation topic",
+    subtitle: (
+      <Stack spacing={5}>
+        <Text fontSize={"xlg"}>
+          The final step required to become a member of The Genius Program is to
+          deliver an in-person presentation. The theme for this batch is{" "}
+          <Text as="b" color={"brand.500"}>
+            mysteries.{" "}
+          </Text>
+          After the judges evaluate your presentation and find it satisfactory,
+          you will officially join The Genius Program.
+        </Text>
+        <Text as={"span"}>
+          Please briefly describe the{" "}
+          <Text as="b" color={"brand.500"}>
+            mystery{" "}
+          </Text>
+          you would like to present on.
+        </Text>
+      </Stack>
+    ),
+    stepType: REGISTRATION_STEP_TYPES.SHORT_RESPONSE,
+    props: {
+      field: "mystery",
+    },
+  },
+];

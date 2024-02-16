@@ -4,6 +4,8 @@ export {
   VALIDATE,
   THE_GENIUS_PROGRAM_CONFIG,
   BESTIES_CONTENT,
+  REGISTRATION_STEPS,
+  REGISTRATION_STEP_TYPES,
 } from "./config";
 export type { UserType, PostType, ToggleLikeType } from "./types";
 export { db, auth } from "./firebase";

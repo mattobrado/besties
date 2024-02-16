@@ -6,7 +6,6 @@ import {
   Center,
 } from "@chakra-ui/react";
 import { useContext, useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { AddIcon } from "@chakra-ui/icons";
 import { useAuth, useUpdateUser } from "src/hooks";
@@ -14,22 +13,17 @@ import { FormContainer, FormField } from "src/components/auth";
 import { ContentContext } from "src/context";
 import {
   INPUT_TYPE,
-  ROUTES,
   VALIDATE,
   type UserType,
   getSongIdFromLink,
 } from "src/lib";
+import type { RegistrationStepPropsType } from "src/lib/types";
 
 export const EditProfile = ({
-  id,
-  goToNext,
-}: {
-  id?: string;
-  goToNext?: () => void;
-}) => {
+  onNextButtonClick,
+}: RegistrationStepPropsType) => {
   const { authUser } = useAuth();
   const content = useContext(ContentContext);
-  const navigate = useNavigate();
   const [color, setColor] = useState("#F40B52");
   useEffect(() => {
     if (authUser?.favoriteColor) {
@@ -48,9 +42,6 @@ export const EditProfile = ({
     formState: { errors },
   } = useForm({ values });
 
-  if (id && id !== authUser?.id) {
-    navigate(ROUTES.HOME);
-  }
   const { updateUser, isLoading, setFile, fileURL } = useUpdateUser(
     authUser?.id
   );
@@ -70,7 +61,7 @@ export const EditProfile = ({
       favoriteColor: color,
     })
       .then(() => {
-        if (goToNext) goToNext();
+        if (onNextButtonClick) onNextButtonClick();
       })
       .catch((e) => console.log(e));
   };
@@ -129,7 +120,7 @@ export const EditProfile = ({
           label={content.auth.emailAddress}
           placeHolder={authUser.email}
           register={register}
-          validate={!authUser.email && VALIDATE.EMAIL_REQUIRED}
+          validate={!authUser.email && VALIDATE.EMAIL}
         />
         <FormField
           error={errors?.bio}
