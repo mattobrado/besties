@@ -2,15 +2,15 @@ import { Center, Grid, Stack, Text } from "@chakra-ui/react";
 import { useNavigate, useParams } from "react-router-dom";
 import { useFriendRequest, useUser } from "src/hooks/userHooks";
 import { useAuth } from "src/hooks";
-import AvatarInAvatar from "src/components/profile/AvatarInAvatar";
 import {
+  AvatarInAvatar,
   ProfileButton,
   ProfilePosts,
   SpotifySong,
 } from "src/components/profile";
 import { ROUTES, getStars } from "src/lib";
 
-const Profile = () => {
+export const Profile = () => {
   const { id } = useParams();
   const { user } = useUser(id);
   const { authUser } = useAuth();
@@ -70,4 +70,3 @@ const Profile = () => {
     )
   );
 };
-export default Profile;

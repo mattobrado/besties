@@ -15,7 +15,7 @@ import {
 import TextareaAutosize from "react-textarea-autosize";
 import { INPUT_TYPE } from "src/lib";
 
-const FormField = ({
+export const FormField = ({
   error,
   inputType,
   label,
@@ -60,5 +60,3 @@ const FormField = ({
     </FormErrorMessage>
   </FormControl>
 );
-
-export default FormField;

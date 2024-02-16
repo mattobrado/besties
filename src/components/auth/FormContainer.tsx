@@ -1,7 +1,7 @@
 import { Stack, Container, Box, Button } from "@chakra-ui/react";
 import { AuthHeading, type AuthHeadingPropsType } from "src/components/auth";
 
-const FormContainer = ({
+export const FormContainer = ({
   authHeadingProps,
   buttonProps,
   children,
@@ -41,5 +41,3 @@ const FormContainer = ({
     </Stack>
   </Container>
 );
-
-export default FormContainer;

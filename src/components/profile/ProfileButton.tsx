@@ -1,6 +1,6 @@
 import { Button, GridItem } from "@chakra-ui/react";
 
-const ProfileButton = ({
+export const ProfileButton = ({
   text,
   onClick,
   isLoading,
@@ -20,5 +20,3 @@ const ProfileButton = ({
     {text}
   </GridItem>
 );
-
-export default ProfileButton;

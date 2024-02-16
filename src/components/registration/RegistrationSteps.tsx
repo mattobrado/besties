@@ -26,7 +26,7 @@ import {
 import { EditProfile } from "src/components/profile";
 import { ContentContext } from "src/context";
 
-const RegistrationSteps = () => {
+export const RegistrationSteps = () => {
   const { authUser } = useAuth();
   const content = useContext(ContentContext);
   const { activeStep, setActiveStep, goToNext, goToPrevious } = useSteps({
@@ -229,4 +229,3 @@ const RegistrationSteps = () => {
     </>
   );
 };
-export default RegistrationSteps;

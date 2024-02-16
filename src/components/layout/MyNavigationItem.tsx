@@ -3,7 +3,7 @@ import { Text } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 import { BOTTOM_NAV_HEIGHT } from "src/lib";
 
-const MyNavigationItem = ({
+export const MyNavigationItem = ({
   icon,
   to,
   onClick,
@@ -18,5 +18,3 @@ const MyNavigationItem = ({
     </BottomNavigationItem>
   </Text>
 );
-
-export default MyNavigationItem;

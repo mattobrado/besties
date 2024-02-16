@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { Avatar } from "src/components/profile";
 import { ROUTES, type UserType } from "src/lib";
 
-const AvatarAndFullName = ({
+export const AvatarAndFullName = ({
   user,
   size,
   isLink = true,
@@ -22,5 +22,3 @@ const AvatarAndFullName = ({
     </Text>
   </HStack>
 );
-
-export default AvatarAndFullName;

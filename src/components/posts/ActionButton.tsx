@@ -2,7 +2,7 @@ import { HStack, Text, Box, IconButton } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 import { ACTION_ICON_SIZE } from "src/lib";
 
-const ActionButton = ({
+export const ActionButton = ({
   onClick,
   icon,
   number,
@@ -29,5 +29,3 @@ const ActionButton = ({
     </HStack>
   </Box>
 );
-
-export default ActionButton;

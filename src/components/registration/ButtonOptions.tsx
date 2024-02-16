@@ -1,7 +1,7 @@
 import { Button, Stack } from "@chakra-ui/react";
 import { useAuth, useUpdateUser } from "src/hooks";
 
-const ButtonOptions = ({
+export const ButtonOptions = ({
   options,
   field,
   goToNext,
@@ -31,5 +31,3 @@ const ButtonOptions = ({
     </Stack>
   );
 };
-
-export default ButtonOptions;

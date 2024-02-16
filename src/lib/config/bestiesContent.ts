@@ -1,4 +1,4 @@
-const BESTIES_CONTENT = {
+export const BESTIES_CONTENT = {
   loginLogo: "👯‍♀️",
   editEmoji: "✏️",
   starEmoji: "⭐️",
@@ -85,5 +85,3 @@ const BESTIES_CONTENT = {
   },
   home: { homeScreenImage: "", heading: "" },
 };
-
-export default BESTIES_CONTENT;

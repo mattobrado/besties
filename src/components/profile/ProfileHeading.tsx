@@ -1,6 +1,6 @@
 import { Center, Heading, Divider } from "@chakra-ui/react";
 
-const ProfileHeading = ({ text }: { text: string }) => (
+export const ProfileHeading = ({ text }: { text: string }) => (
   <>
     <Center>
       <Heading size={"lg"}>
@@ -10,5 +10,3 @@ const ProfileHeading = ({ text }: { text: string }) => (
     <Divider />
   </>
 );
-
-export default ProfileHeading;

@@ -3,7 +3,7 @@ import { formatDistanceToNow } from "date-fns";
 import { useContext } from "react";
 import { ContentContext } from "src/context";
 
-const TimeStamp = ({
+export const TimeStamp = ({
   date,
   textProps,
 }: {
@@ -17,5 +17,3 @@ const TimeStamp = ({
     </Text>
   );
 };
-
-export default TimeStamp;

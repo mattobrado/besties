@@ -1,2 +1,2 @@
-export { default as RatingInput } from "./RatingInput";
-export { default as SelectUser } from "./SelectUser";
+export { RatingInput } from "./RatingInput";
+export { SelectUser } from "./SelectUser";

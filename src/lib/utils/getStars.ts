@@ -1,4 +1,4 @@
-const getStars = (num: number | undefined) => {
+export const getStars = (num: number | undefined) => {
   if (num === undefined) return "";
   if (num >= 4.75) return "⭐️⭐️⭐️⭐️⭐️";
   if (num >= 4.25) return "⭐️⭐️⭐️⭐️½";
@@ -12,5 +12,3 @@ const getStars = (num: number | undefined) => {
   if (num >= 0.25) return "½";
   return "❌";
 };
-
-export default getStars;

@@ -5,7 +5,7 @@ import { ContentContext } from "src/context";
 import { useContext } from "react";
 import { ROUTES, type UserType } from "src/lib";
 
-const UserCard = ({
+export const UserCard = ({
   user,
   onClick,
   showRating = false,
@@ -71,5 +71,3 @@ const UserCard = ({
     </Container>
   );
 };
-
-export default UserCard;

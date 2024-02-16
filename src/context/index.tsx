@@ -1,2 +1,2 @@
-export { default as ConfigContext } from "./ConfigProvider";
-export { default as ContentContext } from "./ContentProvider";
+export { ConfigContext } from "./ConfigProvider";
+export { ContentContext } from "./ContentProvider";

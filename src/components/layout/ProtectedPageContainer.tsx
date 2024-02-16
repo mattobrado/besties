@@ -5,7 +5,7 @@ import { useAuth } from "src/hooks";
 import { LoadingScreen } from "src/components";
 import { ROUTES, TOAST_PROPS } from "src/lib";
 
-const ProtectedPageContainer = () => {
+export const ProtectedPageContainer = () => {
   const { pathname } = useLocation();
   const navigate = useNavigate();
   const { authUser, isLoading } = useAuth();
@@ -38,5 +38,3 @@ const ProtectedPageContainer = () => {
     </Box>
   );
 };
-
-export default ProtectedPageContainer;

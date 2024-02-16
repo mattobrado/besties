@@ -1,4 +1,4 @@
-const getNewRating = ({
+export const getNewRating = ({
   oldRating,
   ratingCount,
   newRating,
@@ -17,8 +17,6 @@ const getNewRating = ({
   });
   return unsafeValue ? unsafeValue : 0;
 };
-
-export default getNewRating;
 
 const calculateRating = ({
   oldRating,

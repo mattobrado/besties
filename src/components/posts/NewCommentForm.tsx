@@ -6,7 +6,7 @@ import { ContentContext } from "src/context";
 import { useContext } from "react";
 import { VALIDATE, type PostType } from "src/lib";
 
-const NewCommentForm = ({ post }: { post: PostType }) => {
+export const NewCommentForm = ({ post }: { post: PostType }) => {
   const { authUser } = useAuth();
   const content = useContext(ContentContext);
   const { id: postId } = post;
@@ -58,5 +58,3 @@ const NewCommentForm = ({ post }: { post: PostType }) => {
     </Flex>
   );
 };
-
-export default NewCommentForm;

@@ -19,6 +19,7 @@ import {
   type UserType,
   getSongIdFromLink,
 } from "src/lib";
+
 export const EditProfile = ({
   id,
   goToNext,
@@ -158,5 +159,3 @@ export const EditProfile = ({
     )
   );
 };
-
-export default EditProfile;

@@ -2,7 +2,7 @@ import { Box, Divider, Stack, Text } from "@chakra-ui/react";
 import { Actions } from "src/components/posts";
 import type { PostType } from "src/lib";
 
-const PostBody = ({
+export const PostBody = ({
   children,
   hideCommentButton,
   post,
@@ -34,5 +34,3 @@ const PostBody = ({
     </>
   );
 };
-
-export default PostBody;

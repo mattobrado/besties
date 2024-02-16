@@ -3,7 +3,7 @@ import { useState, useRef } from "react";
 import { useSearchBox, UseSearchBoxProps } from "react-instantsearch";
 import { TfiSearch } from "react-icons/tfi";
 
-function CustomSearchBox(
+export function CustomSearchBox(
   props: UseSearchBoxProps & { placeholderText: string }
 ) {
   const { query, refine } = useSearchBox(props);
@@ -61,5 +61,3 @@ function CustomSearchBox(
     </form>
   );
 }
-
-export default CustomSearchBox;
